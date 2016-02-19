@@ -869,12 +869,19 @@ thetouchstart=[]
 thetouches=0
 imgclick(sourcey, sourcex) // treat as a click
 }
-else // a slide move request
+else // potentially a slide move request
 {
 var somediffy=thetouchstart[3]-thetouchstart[0]
 var somediffx=thetouchstart[4]-thetouchstart[1]
 thetouchstart=[]
 thetouches=0
+// code to get rid of problem with lack of recognition of taps with some devices
+if (Math.abs(somediffy)<3*scalef && Math.abs(somediffx)<3*scalef) // if very small move treat as tap
+{
+imgclick(sourcey, sourcex) // treat as a click
+return
+}
+
 if (playstatus!="play") {return} // don't allow slide when waiting for tap destination
 if (Math.abs(somediffy)>2*Math.abs(somediffx)) {somediffx=0}
 if (Math.abs(somediffx)>2*Math.abs(somediffy)) {somediffy=0}
