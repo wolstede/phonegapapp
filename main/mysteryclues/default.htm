@@ -1,0 +1,1582 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>Mystery Clues</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='mysteryclues'
+
+var interruptsrequired=0
+
+
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">Mystery Clues</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:purple"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+// All code copyright of TopAccolades Limited
+adfrequency=2
+
+function continueafterad()
+{
+createpuzzle()
+}
+var level=0
+function runonload()
+{
+changeexerciselevel(0)
+createpuzzle()
+}
+
+function ith(someitem, somelist)
+{
+for (var i=0; i<somelist.length; i++)
+{
+if (someitem==somelist[i]) {return i}
+}
+return -1
+}
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+function randominrange(num1, num2)
+{
+// num2 >=num1
+var somediff=num2-num1
+var somerand=randomnumber(somediff+1)
+return (num1-1)+somerand
+}
+
+function differentrandomnumber(somen, somecheck)
+{
+var somerandom=randomnumber(somen)
+if (somerandom!=somecheck) {return somerandom} else {return differentrandomnumber(somen, somecheck)}
+}
+
+function shufflearray(somearray)
+{
+
+var temparray=somearray
+var shuffled=[]
+packsize=somearray.length
+var ran
+var i
+for (var i=0; i<packsize; i++)
+{
+ran = randomnumber(temparray.length)
+shuffled[i] = temparray[ran-1]
+temparray = removeElement(ran-1, temparray)
+}
+return shuffled
+}
+
+function removeElement(index, somearray)
+{
+var beg=somearray.slice(0, index)
+var end=[]
+if (index+1 < somearray.length) {end = somearray.slice(index+1)}
+return beg.concat(end)
+}
+
+function removeitem(someitem, somearray)
+{
+var somebeg=[]
+var someend=[]
+for (var i=0; i<somearray.length; i++)
+{
+if (somearray[i]==someitem) {return somearray.slice(0, i).concat(somearray.slice(i+1))}
+}
+return somearray
+}
+
+
+
+function tailarray(somearray)
+{
+return somearray.slice(1, somearray.length)
+}
+
+function headarray(somearray)
+{
+return somearray[0]
+}
+
+
+
+function empty(array) 
+// checks whether an array is empty:  returns true if so, false if not.
+{
+if (array.length == 0)
+     return true  
+else
+     return false
+
+}
+
+function member(element, array) 
+// checks whether element is a member of array:  returns true if so, false if not.
+{
+var check = false
+var i = 0
+while (i<array.length && !check){check = array[i]==element; i++};
+return check
+
+}
+
+</script>
+<script language="Javascript">
+
+
+// book extract
+
+function copylist(somelist)
+{
+var somereturn=[]
+for (var i=0; i<somelist.length; i++)
+{
+somereturn[i]=somelist[i]
+}
+return somereturn
+}
+
+function numbersort(somea, someb)
+{
+return somea-someb
+}
+
+
+var puzzle
+
+
+var keynum
+
+var availablesuspects=['Ann', 'Ben', 'Caz', 'Dan', 'Ian', 'Jen', 'Kim', 'Liz', 'Mac', 'Ned', 'Pat', 'Rob', 'Sal', 'Tom', 'Una']
+var availableweapons=['Axe', 'Bat', 'Club', 'Drug', 'Gun', 'Iron', 'Lamp', 'Nail', 'Pike', 'Rope', 'Tool', 'Vase', 'Wire']
+var availablerooms=['Bar', 'Dorm', 'Flat', 'Hall', 'Loft', 'Nook', 'Park', 'Quad', 'Shed', 'Tent', 'Wing', 'Yard']
+var availablepeople=availablesuspects.concat(['Vic'])
+var bgcolors=['#00FF66', '#00CCCC', '#669999', '#CC6666', '#CC99FF', '#FF66FF', '#FF6600', '#FF9999', '#FFCC66', '#EDDFFB', '#FFCEA2', '#C47557', '#FF7373', '#90BAAC', '#A4F0B7', '#000000'] 
+var assessments=['Y', 'N', 'P']
+var assessmentcolors=['limegreen', 'red', 'yellow']
+
+
+var suspects
+var weapons
+var rooms
+var killer
+var victim
+var options
+var explanation
+var maxdepth
+var descend
+var control
+var negatives
+var unused
+var theoriginalproof
+
+var scenario
+var victimscenario
+var killerscenario
+var approach
+var somepartials
+var killercontrol
+var victimcontrol
+var initialguesses
+var guesses
+var threepairs=[[0,1], [0,2], [1,2]]
+var theproof
+var textforoptions
+
+var proofrecord
+var baseproofs
+var controlrecord
+
+
+
+
+var thefontsize
+var mainfontsize
+
+
+
+function createpuzzle()
+{
+restartconfirmationrequired=1
+
+errorfound=0
+keynum=level+5
+suspects=shufflearray(availablesuspects).slice(0, keynum)
+weapons=shufflearray(availableweapons).slice(0, keynum)
+rooms=shufflearray(availablerooms).slice(0, keynum)
+killer=shufflearray(suspects).slice(0, 1)
+victim='Vic'
+options=[suspects, weapons, rooms]
+explanation=[]
+maxdepth=level-1
+descend=randomnumber(2)-1
+control=-1
+negatives=0
+theoriginalproof=[]
+theproof=[]
+scenario=[]
+victimscenario=[]
+killerscenario=[]
+approach=[]
+somepartials=[]
+textforoptions=['suspects', 'weapons', 'locations']
+killercontrol
+if (descend==1) {killercontrol=2} else {killercontrol=randomnumber(2)} // ensures that partial and descend occurs, but only for killer.  Logic doesn't work for victim
+victimcontrol=3-killercontrol
+
+for (var i=0; i<keynum; i++)
+{
+scenario[i]=[suspects[i], weapons[i], rooms[i], 'Y', '\r']
+if (suspects[i]==killer) {victimscenario=[victim, weapons[i], rooms[i], 'Y', '\r']; killerscenario=[killer, weapons[i], rooms[i], 'Y', '\r']}
+}
+scenario=scenario.concat([victimscenario])
+
+initialguesses=[]
+makeinitialguesses()
+guesses=shufflearray(initialguesses)
+proofrecord=[0,0]
+controlrecord=descend
+createfullproof()
+
+}
+
+function makeinitialguesses()
+{
+var someweapons=shufflearray(weapons)
+var somerooms=shufflearray(rooms)
+for (var i=0; i<keynum; i++)
+{
+if (someweapons[i]==scenario[i][1] && somerooms[i]==scenario[i][2])
+{
+break
+}
+else
+{
+initialguesses[i]=[suspects[i], someweapons[i], somerooms[i]]
+}
+}
+
+if (initialguesses.length==keynum)
+{
+// alert(initialguesses)
+}
+else
+{
+makeinitialguesses()
+}
+}
+
+function createfullproof()
+{
+var someapproaches
+explanation[explanation.length]=['<b><i>Killer focus:</i></b>','']
+if (killercontrol==2)
+{
+someapproaches=shufflearray(threepairs).slice(0, killercontrol)
+for (var i=0; i<someapproaches.length; i++)
+{
+provepairindirectly(killerscenario, someapproaches[i], 0)
+}
+somescenario=killerscenario
+explanation[explanation.length]=[somescenario[someapproaches[0][0]]+':'+somescenario[someapproaches[0][1]]+'+'+somescenario[someapproaches[1][0]]+':'+somescenario[someapproaches[1][1]],somescenario[0]+':'+somescenario[1]+':'+somescenario[2]]
+
+}
+else // if only doing proof of one pair for killer, ensure killer is named
+{
+someapproaches=shufflearray(threepairs)
+for (var i=0; i<someapproaches.length; i++)
+{
+if (someapproaches[i][0]==0)
+{
+provepairindirectly(killerscenario, someapproaches[i], 0)
+
+break
+}
+}
+}
+
+proofrecord[0]=theproof.length
+explanation[explanation.length]=['<b><i>Victim focus:</i></b>','']
+
+
+if (victimcontrol==2)
+{
+someapproaches=shufflearray(threepairs).slice(0, victimcontrol)
+for (var i=0; i<someapproaches.length; i++)
+{
+provepairindirectly(victimscenario, someapproaches[i], 0)
+}
+somescenario=victimscenario
+explanation[explanation.length]=[somescenario[someapproaches[0][0]]+':'+somescenario[someapproaches[0][1]]+'+'+somescenario[someapproaches[1][0]]+':'+somescenario[someapproaches[1][1]],somescenario[0]+':'+somescenario[1]+':'+somescenario[2]]
+}
+else // if only doing proof of one pair for victim, ensure victim is named
+{
+someapproaches=shufflearray(threepairs)
+for (var i=0; i<someapproaches.length; i++)
+{
+if (someapproaches[i][0]==0)
+{
+provepairindirectly(victimscenario, someapproaches[i], 0)
+
+break
+}
+}
+}
+
+baseproofs=theproof.length
+proofrecord[1]=theproof.length
+// next add in any names that haven't been used
+unused=[[],[],[]]
+for (var i=0; i<unused.length; i++)
+{
+for (var j=0; j<options[i].length; j++)
+{
+var somecheck=0
+for (var k=0; k<theproof.length; k++)
+{
+if (options[i][j]==theproof[k][i]) {somecheck=1}
+}
+if (somecheck==0) {unused[i]=unused[i].concat([options[i][j]])}
+}
+}
+var maxmissing=0
+var sometriple=[0,0,0, 0, '\r']
+var someitem
+for (var i=0; i<unused.length; i++)
+{
+if (unused[i].length>maxmissing) {maxmissing=unused[i].length}
+}
+for (var i=0; i<maxmissing; i++)
+{
+for (var j=0; j<unused.length; j++)
+{
+if (i<unused[j].length)
+{
+someitem=unused[j][i]
+}
+else
+{
+someitem=shufflearray(removeitem(killerscenario[j], options[j]))[0]
+}
+sometriple[j]=someitem
+}
+sometriple[3]=score(sometriple)
+addproof(sometriple)
+}
+unused=[[],[],[]]
+for (var i=0; i<unused.length; i++)
+{
+for (var j=0; j<options[i].length; j++)
+{
+var somecheck=0
+for (var k=0; k<theproof.length; k++)
+{
+if (options[i][j]==theproof[k][i]) {somecheck=1}
+}
+if (somecheck==0) {unused[i]=unused[i].concat([options[i][j]])}
+}
+}
+while (theproof.length/2!=Math.round(theproof.length/2))
+{
+for (var i=0; i<options.length; i++)
+{
+sometriple[i]=shufflearray(removeitem(killerscenario[i], options[i]))[0]
+}
+sometriple[3]=score(sometriple)
+if (sometriple[3]!='Y') {addproof(sometriple)}
+}
+// next add in two Ps for Vic to add to confusion.  Try to use existing weapon-location pairs in proof to reduce useful additional info
+var somepool=theproof.concat(shufflearray(scenario))
+var somelength=somepool.length
+var somevadd
+var somevcount=0
+for (var i=0; i<somelength; i++)
+{
+somevadd=copylist(somepool[i])
+somevadd[0]=victim
+if (score(somevadd)=='P' && alreadyinproof(somevadd)==false)
+{
+somevadd[3]='P'
+addproof(somevadd)
+somevcount++
+if (somevcount==2) {break}
+}
+
+}
+
+var numys=0
+for (var i=0; i<theproof.length; i++)
+{
+if (theproof[i][3]=='Y')
+{
+numys++
+}
+}
+// check to make sure we haven't both proved a triple as well as given it directly as Y
+var theYs=[]
+for (var i=0; i<theproof.length; i++)
+{
+
+if (theproof[i][3]=='Y') {theYs=theYs.concat([[theproof[i][0], theproof[i][1], theproof[i][2]]])}
+}
+var somedoubleproof=0
+var someitems=[]
+for (var i=0; i<explanation.length; i++)
+{
+if (explanation[i][1].length>0)
+{
+var someitems=explanation[i][1].split(':')
+for (var j=0; j<theYs.length; j++)
+{
+if (allitemsonlist(someitems, theYs[j])==true)
+{
+// alert([i, theYs[j], explanation[i][1]])
+somedoubleproof=1
+}
+}
+}
+}
+
+if ((keynum-numys)<3 || somedoubleproof==1 || errorfound==1 || theproof.length>26)
+{
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout('createpuzzle()', 1)
+
+}
+else
+{
+theproof=shufflearray(theproof)
+createthebooktext()
+showcast()
+}
+}
+// end of createfullproof
+
+
+
+
+
+
+function score(someguess)
+{
+var somescore=0
+var somelocalscore
+for (var i=0; i<scenario.length; i++)
+{
+somelocalscore=0
+if (someguess[0]==scenario[i][0] && someguess[1]==scenario[i][1]) {somelocalscore++}
+if (someguess[0]==scenario[i][0] && someguess[2]==scenario[i][2]) {somelocalscore++}
+if (someguess[1]==scenario[i][1] && someguess[2]==scenario[i][2]) {somelocalscore++}
+if (somelocalscore>somescore) {somescore=somelocalscore}
+}
+if (somescore==0) {return 'N'}
+if (somescore==1) {return 'P'}
+if (somescore==2) {return 'P'}
+if (somescore==3) {return 'Y'}
+
+}
+
+
+function scoreguesses()
+{
+var somereturn=[]
+for (var i=0; i<guesses.length; i++)
+{
+somereturn[i]=[guesses[i]+':'+score(guesses[i])+'\r']
+}
+return somereturn
+}
+
+
+function addproof(somescenario)
+{
+for (var i=0; i<theproof.length; i++)
+{
+if (somescenario[0]==theproof[i][0] && somescenario[1]==theproof[i][1] && somescenario[2]==theproof[i][2])
+{return}
+}
+var somescore=score(somescenario)
+if (somescore != somescenario[3]) {errorfound=1}
+theproof=theproof.concat([copylist(somescenario)])
+theoriginalproof=theoriginalproof.concat([copylist(somescenario)])
+}
+
+function produceproof(somescenario, somecontrol)
+{
+
+var someapproaches=shufflearray(threepairs)
+provepairindirectly(copylist(somescenario), someapproaches[0], somecontrol)
+provepairindirectly(copylist(somescenario), someapproaches[1], somecontrol)
+explanation[explanation.length]=[somescenario[someapproaches[0][0]]+':'+somescenario[someapproaches[0][1]]+'+'+somescenario[someapproaches[1][0]]+':'+somescenario[someapproaches[1][1]],somescenario[0]+':'+somescenario[1]+':'+somescenario[2]]
+
+}
+
+function thirdindex(somepair)
+{for (var i=0; i<3; i++)
+{
+if (member(i, somepair)==false) {return i}
+}
+}
+
+
+function provepairindirectly(somescenario, somepair, somecontrol)
+{
+control++
+if (descend==control && somecontrol<=maxdepth) // time to descend.  Note: controls ensure you don't descend for victim - no good (see note below)
+{
+partialanddescend(copylist(somescenario), somepair, somecontrol)
+}
+else
+{
+var someapproach
+var someapproaches
+if (negatives==1) {someapproaches=[1,2,4]} else {someapproaches=[1,2,3,4]} // don't allow negatives if already done so.
+if (somescenario[0]==victim) {someapproaches=removeitem(1, someapproaches)} // for victim, one partial plus proving third item has some other relationship does not prove the other two's relationship
+someapproach=shufflearray(someapproaches)[0]
+if (someapproach==1) {partialanddirect(copylist(somescenario), somepair, somecontrol)}
+if (someapproach==2) {threepartials(copylist(somescenario), somepair, somecontrol)}
+if (someapproach==3) {provepairbyeliminatingalternatives(copylist(somescenario), somepair, somecontrol)}
+if (someapproach==4) {partial2Ns(copylist(somescenario), somepair, somecontrol)}
+
+}
+}
+
+function partial2Ns(somescenario, somepair, somecontrol)
+{
+// first get a partial
+var someindex=thirdindex(somepair)
+var someitem=somescenario[someindex]
+var sometriple=[0,0,0, 'P', '\r']
+for (var i=0; i<somepair.length; i++)
+{
+sometriple[somepair[i]]=somescenario[somepair[i]]
+}
+
+var someremainingoptions=options[someindex]
+someremainingoptions=removeitem(someitem, someremainingoptions)
+someremainingoptions=removeitem(killerscenario[someindex], someremainingoptions)
+someremainingoptions=removeitem(victimscenario[someindex], someremainingoptions)
+
+someitem=shufflearray(someremainingoptions)[0]
+
+sometriple[someindex]=someitem
+addproof(sometriple)
+// next find two Ns involving the other two pairs
+var some3pairs=[[0,1], [0, 2], [1,2]]
+var somepairs=[]
+for (var i=0; i<some3pairs.length; i++)
+{
+if (some3pairs[i][0]!=somepair[0] || some3pairs[i][1]!=somepair[1])
+{
+somepairs=somepairs.concat([some3pairs[i]])
+}
+}
+var somenewpair
+var someotherindex
+var somenegtriple
+var someotherlist
+var someother
+
+for (var j=0; j<2; j++)
+{
+somenewpair=somepairs[j]
+someotherindex=thirdindex(somenewpair)
+somenegtriple=copylist(sometriple)
+somenegtriple[3]='N'
+for (var i=0; i<options[someotherindex].length; i++)
+{
+somenegtriple[someotherindex]=options[someotherindex][i]
+if (score(somenegtriple)=='N') {addproof(somenegtriple);break}
+
+}
+
+} // end for
+
+explanation[explanation.length]=[sometriple[0]+':'+sometriple[1]+':'+sometriple[2]+':P+Ns:<br>'+sometriple[somepairs[0][0]]+':'+sometriple[somepairs[0][1]]+'+'+sometriple[somepairs[1][0]]+':'+sometriple[somepairs[1][1]], sometriple[somepair[0]]+':'+sometriple[somepair[1]]]
+
+}
+
+function partialanddescend(somescenario, somepair, somecontrol)
+{
+// first get a partial
+var someindex=thirdindex(somepair)
+var someitem=somescenario[someindex]
+var sometriple=[0,0,0, 'P', '\r']
+for (var i=0; i<somepair.length; i++)
+{
+sometriple[somepair[i]]=somescenario[somepair[i]]
+}
+
+var someremainingoptions=options[someindex]
+someremainingoptions=removeitem(someitem, someremainingoptions)
+someremainingoptions=removeitem(killerscenario[someindex], someremainingoptions)
+someremainingoptions=removeitem(victimscenario[someindex], someremainingoptions)
+
+someitem=shufflearray(someremainingoptions)[0]
+
+sometriple[someindex]=someitem
+addproof(sometriple)
+// then prove the third has true relationship indirectly
+
+var somefact
+for (var i=0; i<scenario.length; i++)
+{
+if (scenario[i][someindex]==someitem)
+{
+somefact=copylist(scenario[i]); break
+}
+}
+descend++
+produceproof(copylist(somefact), somecontrol+1)
+explanation[explanation.length]=[sometriple[0]+':'+sometriple[1]+':'+sometriple[2]+':P+ '+somefact[0]+':'+somefact[1]+':'+somefact[2],somescenario[somepair[0]]+':'+somescenario[somepair[1]]]
+}
+
+function partialanddirect(somescenario, somepair, somecontrol)
+{
+// first get a partial
+var someindex=thirdindex(somepair)
+var someitem=somescenario[someindex]
+var sometriple=[0,0,0, 'P', '\r']
+for (var i=0; i<somepair.length; i++)
+{
+sometriple[somepair[i]]=somescenario[somepair[i]]
+}
+
+var someremainingoptions=options[someindex]
+someremainingoptions=removeitem(someitem, someremainingoptions)
+someremainingoptions=removeitem(killerscenario[someindex], someremainingoptions)
+someremainingoptions=removeitem(victimscenario[someindex], someremainingoptions)
+someitem=shufflearray(someremainingoptions)[0]
+
+sometriple[someindex]=someitem
+addproof(sometriple)
+// then prove the third has true relationship directly
+
+var somefact
+for (var i=0; i<scenario.length; i++)
+{
+if (scenario[i][someindex]==someitem)
+{
+somefact=copylist(scenario[i]); break
+}
+}
+// show a fact involving the item, which removes all other possibilities
+addproof(somefact)
+explanation[explanation.length]=[sometriple[0]+':'+sometriple[1]+':'+sometriple[2]+':P+ '+somefact[0]+':'+somefact[1]+':'+somefact[2]+':Y', somescenario[somepair[0]]+':'+somescenario[somepair[1]]]
+
+}
+
+function threepartials(somescenario, somepair, somecontrol)
+{
+var someindex=thirdindex(somepair)
+var someitem=somescenario[someindex]
+var sometriple=[0,0,0, 'P', '\r']
+for (var i=0; i<somepair.length; i++)
+{
+sometriple[somepair[i]]=somescenario[somepair[i]]
+}
+
+var someremainingoptions=options[someindex]
+someremainingoptions=removeitem(someitem, someremainingoptions)
+someremainingoptions=removeitem(killerscenario[someindex], someremainingoptions)
+someremainingoptions=removeitem(victimscenario[someindex], someremainingoptions)
+someitem=shufflearray(someremainingoptions)[0]
+sometriple[someindex]=someitem
+addproof(sometriple)
+// now add two more partials
+someremainingoptions=removeitem(someitem, someremainingoptions)
+someitem=shufflearray(someremainingoptions)[0]
+sometriple[someindex]=someitem
+addproof(sometriple)
+
+someremainingoptions=removeitem(someitem, someremainingoptions)
+someitem=shufflearray(someremainingoptions)[0]
+sometriple[someindex]=someitem
+addproof(sometriple)
+explanation[explanation.length]=['3 Ps with '+somescenario[somepair[0]]+':'+somescenario[somepair[1]],somescenario[somepair[0]]+':'+somescenario[somepair[1]]]
+}
+
+
+
+function provepairbyeliminatingalternatives(somescenario, somepair, somecontrol)
+{
+negatives=1
+var someran
+if (somescenario[0]==victim) {someran=0} else {someran=randomnumber(2)-1} // must make sure victim is named for negatives
+var someindexfixed=somepair[someran]
+var somefixed=somescenario[someindexfixed]
+
+var someindexvar=somepair[1-someran]
+var somevar=somescenario[someindexvar]
+var someotherindex=thirdindex(somepair)
+var somenegtriple=[0,0,0, 'N', '\r']
+somenegtriple[someindexfixed]=somefixed
+var somenewtriple=copylist(somenegtriple)
+var someotherlist
+var someother
+for (var i=0; i<options[someindexvar].length; i++)
+{
+if (options[someindexvar][i] != somevar)
+{
+somenewtriple[someindexvar]=options[someindexvar][i]
+someotherlist=shufflearray(options[someotherindex])
+for (var j=0; j<someotherlist.length; j++)
+{
+somenewtriple[someotherindex]=someotherlist[j]
+if (score(somenewtriple)=='N') {addproof(somenewtriple);break}
+}
+}
+}
+var somepairtext=somefixed+':'+somevar
+if (someindexfixed>someindexvar) {somepairtext=somevar+':'+somefixed}
+explanation[explanation.length]=[somefixed+': '+(keynum-1)+'/'+keynum+' '+textforoptions[someindexvar]+' N', somepairtext]
+
+}
+
+
+
+function allitemsonlist(someitems, somelist)
+{
+for (var i=0; i<someitems.length; i++)
+{
+if (member(someitems[i], somelist)==false) {return false}
+}
+return true
+}
+
+function alreadyinproof(somescenario)
+{
+for (var i=0; i<theproof.length; i++)
+{
+if (somescenario[0]==theproof[i][0] && somescenario[1]==theproof[i][1] && somescenario[2]==theproof[i][2])
+{return true}
+}
+return false
+}
+
+function lasttext(somelargetext, somesmalltext)
+{
+if (somesmalltext.length>somelargetext.length) {return false}
+var somestart=somelargetext.length-somesmalltext.length
+if (somelargetext.slice(somestart)==somesmalltext) {return true}
+
+
+return false
+
+}
+
+
+var cluestext
+var casttext
+var solutiontext
+var victimexplanationtext
+var killerexplanationtext
+
+function createthebooktext()
+{
+var tablewidth='100%'
+thefontsize=Math.floor(scalef*10)+'px'
+mainfontsize=Math.floor(scalef*10)+'px'
+
+// clues text
+var somebooktext=''
+var bgcolor0, bgcolor1, bgcolor2,bgcolor3, bgcolor4, bgcolor5, bgcolor6, bgcolor7
+somebooktext=somebooktext+'<table align=center border=0 cellpadding=0 width=100%  height=100% bgcolor="silver" cellspacing=2 style="font-size:'+thefontsize+';color:black;font-weight:bold; text-align:left">'
+var someval
+for (var i=0; i<theproof.length/2; i++)
+{
+somebooktext=somebooktext+'<tr style="text-align:center">'
+bgcolor0=bgcolors[ith(theproof[2*i][0], availablepeople)]
+bgcolor1=bgcolors[ith(theproof[2*i][1], availableweapons)]
+bgcolor2=bgcolors[ith(theproof[2*i][2], availablerooms)]
+bgcolor3=assessmentcolors[ith(theproof[2*i][3], assessments)]
+bgcolor4=bgcolors[ith(theproof[2*i+1][0], availablepeople)]
+bgcolor5=bgcolors[ith(theproof[2*i+1][1], availableweapons)]
+bgcolor6=bgcolors[ith(theproof[2*i+1][2], availablerooms)]
+bgcolor7=assessmentcolors[ith(theproof[2*i+1][3], assessments)]
+var color0='black'; if (theproof[2*i][0]==victim) {color0='white'}
+var color4='black'; if (theproof[2*i+1][0]==victim) {color4='white'}
+somebooktext=somebooktext+'<td style="background-color:'+bgcolor0+';color:'+color0+'">'+theproof[2*i][0]+'</td>'+'<td  style="background-color:'+bgcolor1+';color:black">'+theproof[2*i][1]+'</td>'+'<td  style="background-color:'+bgcolor2+';color:black">'+theproof[2*i][2]+'</td>'+'<td  ><span style="width:100%;background-color:'+bgcolor3+';color:black">'+theproof[2*i][3]+'</span></td>'+'<td style="width:2px;background-color:silver"></td>'+'<td  style="background-color:'+bgcolor4+';color:'+color4+'">'+theproof[2*i+1][0]+'</td>'+'<td  style="background-color:'+bgcolor5+';color:black">'+theproof[2*i+1][1]+'</td>'+'<td  style="background-color:'+bgcolor6+';color:black">'+theproof[2*i+1][2]+'</td>'+'<td  ><span style="width:100%;background-color:'+bgcolor7+';color:black">'+theproof[2*i+1][3]+'</span></td>'
+
+somebooktext=somebooktext+'</tr>'
+}
+somebooktext=somebooktext+'</table>'
+
+cluestext=somebooktext
+
+// cast text
+
+somebooktext='<table align=center border=0 cellpadding=0 width=100%  height='+Math.floor(scalef*100)+' bgcolor="silver" cellspacing=2 style="font-size:'+thefontsize+';color:black;font-weight:bold; text-align:left">'
+somebooktext=somebooktext+'<tr><td style="text-align:center;font-weight:bold">Suspects</td><td width='+Math.floor(scalef*20)+'></td><td style="text-align:center;font-weight:bold">Weapons</td><td width='+Math.floor(scalef*20)+'></td><td style="text-align:center;font-weight:bold">Locations</td></tr>'
+
+
+for (var i=0; i<keynum; i++)
+{
+bgcolor0=bgcolors[ith(suspects[i], availablepeople)]
+bgcolor1=bgcolors[ith(weapons[i], availableweapons)]
+bgcolor2=bgcolors[ith(rooms[i], availablerooms)]
+
+somebooktext=somebooktext+'<tr><td style="text-align:center;font-weight:normal;background-color:'+bgcolor0+'">'+suspects[i]+'</td><td width='+Math.floor(scalef*20)+'></td><td style="text-align:center;font-weight:normal;background-color:'+bgcolor1+'">'+weapons[i]+'</td><td width='+Math.floor(scalef*20)+'></td><td style="text-align:center;font-weight:normal;background-color:'+bgcolor2+'">'+rooms[i]+'</td></tr>'
+
+
+}
+somebooktext=somebooktext+'</table>'
+somebooktext=somebooktext+keynum+' locations, each with a suspect and a weapon. Vic has been murdered in one of these locations, by the suspect and with the weapon found there. Press Clues for clues to help you find who, what and where in '+basetimeavailable+'s.'
+casttext=somebooktext
+
+// facts text
+somebooktext='<table align=center border=0 cellpadding=0 width=100%  height='+Math.floor(scalef*100)+' bgcolor="silver" cellspacing=2 style="font-size:'+thefontsize+';color:black;font-weight:bold; text-align:left">'
+somebooktext=somebooktext+'<tr><td style="text-align:center;font-weight:bold">Person</td><td width='+Math.floor(scalef*20)+' align=center>:</td><td style="text-align:center;font-weight:bold">Weapon</td><td width='+Math.floor(scalef*20)+' align=center>:</td><td style="text-align:center;font-weight:bold">Location</td></tr>'
+
+var someperson
+var someweapon
+var somelocation
+var somepersoncolour
+for (var i=0; i<scenario.length; i++)
+{
+someperson=scenario[i][0]
+someweapon=scenario[i][1]
+somelocation=scenario[i][2]
+bgcolor0=bgcolors[ith(someperson, availablepeople)]
+bgcolor1=bgcolors[ith(someweapon, availableweapons)]
+bgcolor2=bgcolors[ith(somelocation, availablerooms)]
+somepersoncolour='black'
+if (i==scenario.length-1) {somepersoncolour='white'}
+somebooktext=somebooktext+'<tr><td style="text-align:center;font-weight:normal;color:'+somepersoncolour+';background-color:'+bgcolor0+'">'+someperson+'</td><td width='+Math.floor(scalef*20)+' align=center>:</td><td style="text-align:center;font-weight:normal;background-color:'+bgcolor1+'">'+someweapon+'</td><td width='+Math.floor(scalef*20)+' align=center>:</td><td style="text-align:center;font-weight:normal;background-color:'+bgcolor2+'">'+somelocation+'</td></tr>'
+
+
+}
+somebooktext=somebooktext+'</table>'
+
+
+
+factstext=somebooktext
+
+
+determineexplanationtext()
+
+}
+
+
+
+
+var solutiontext
+var victimexplanationtext
+var killerexplanationtext
+var factstext
+
+function determineexplanationtext()
+{
+var someindex
+for (var i=0; i<explanation.length; i++)
+{
+if (explanation[i][0]=='<b><i>Victim focus:</i></b>') {someindex=i; break}
+}
+
+killerexplanationtext=oneexplanationtext(explanation.slice(1, someindex))
+victimexplanationtext=oneexplanationtext(explanation.slice(someindex+1))
+
+
+var sometext='<table width=100% border=0><tr><td colspan=2 style="text-align:center;font-weight:bold">Solution</td></tr>'
+
+var bgcolor0, bgcolor1, bgcolor2,bgcolor3
+bgcolor0=bgcolors[ith(killerscenario[0], availablepeople)]
+bgcolor1=bgcolors[ith(killerscenario[1], availableweapons)]
+bgcolor2=bgcolors[ith(killerscenario[2], availablerooms)]
+
+var somesolution='<table border=0 align=center><tr><td style="text-align:center;background-color:'+bgcolor0+'">'+killerscenario[0]+'</td><td>&nbsp;with the&nbsp;</td><td style="text-align:center;background-color:'+bgcolor1+'">'+killerscenario[1]+'</td><td>&nbsp;in the&nbsp;</td><td style="text-align:center;background-color:'+bgcolor2+'">'+killerscenario[2]+'</td></tr></table>'
+sometext=sometext+'<tr><td colspan=2 style="text-align:center;font-weight:normal"><br>'+somesolution+'</td></tr>'
+
+sometext=sometext+'<tr><td colspan=2 style="text-align:center;font-weight:normal"><br>because we can show<br>&nbsp;</td></tr>'
+
+sometext=sometext+'<tr><td>'+explanation[explanation.length-1][1]+'</td><td><table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showvictimexplanation()">How</td></tr></table></td></tr>'
+
+sometext=sometext+'<tr><td>'+explanation[someindex-1][1]+'</td><td><table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showkillerexplanation()">How</td></tr></table></td></tr>'
+sometext=sometext+'<tr><td>&nbsp;</td><td>&nbsp;</td></tr>'
+
+sometext=sometext+'<tr><td>See all facts:</td><td><table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showfacts()">Facts</td></tr></table></td></tr>'
+
+sometext=sometext+'</table>'
+
+
+solutiontext=sometext
+
+
+}
+
+function oneexplanationtext(somearray)
+{
+var sometext=''
+sometext=sometext+'<table height=100% cellpadding=0 cellspacing=0 border=0 width=100%><tr><td><table width=100% border=0 cellspacing=0 cellpadding=0 align=center valign=middle style="text-align:left;color:black;font-weight:normal">'
+for (var i=0; i<somearray.length; i++)
+{
+sometext=sometext+'<tr><td valign=bottom style="color:gray">'+somearray[i][0]+'</td><td valign=bottom style="color:black">'+somearray[i][1]+'</td></tr>'
+}
+
+sometext=sometext+'</table></td></tr></table>'
+return sometext
+
+
+}
+
+function showcast()
+{
+changetextvalue('problem', casttext)
+changetextvalue('buttontext', '<table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showclues(1)">Clues</td></tr></table>')
+document.getElementById('timetakentable').style.backgroundColor='limegreen'
+
+changetextvalue('timetaken', 0)
+
+clearTimeout(countuptimer)
+
+
+}
+
+function showclues(someval)
+{
+changetextvalue('problem', cluestext)
+changetextvalue('buttontext', '<table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showanswer()">Solve</td></tr></table>')
+if (someval==1) {startcountup()}
+}
+
+function showanswer()
+{
+restartconfirmationrequired=0
+
+changetextvalue('problem', solutiontext)
+changetextvalue('buttontext', '<table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showclues()">Back</td></tr></table>')
+if (countuptimer != null) {clearTimeout(countuptimer)}
+
+}
+
+function showkillerexplanation()
+{
+changetextvalue('problem', killerexplanationtext)
+changetextvalue('buttontext', '<table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showanswer()">Back</td></tr></table>')
+
+}
+
+function showvictimexplanation()
+{
+changetextvalue('problem', victimexplanationtext)
+changetextvalue('buttontext', '<table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showanswer()">Back</td></tr></table>')
+
+}
+
+function showfacts()
+{
+changetextvalue('problem', factstext)
+changetextvalue('buttontext', '<table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showanswer()">Back</td></tr></table>')
+
+}
+
+// end book
+
+
+var thedivs=['maingame', 'more']
+function displaydiv(somediv)
+{
+for (var i=0; i<thedivs.length; i++)
+{
+document.getElementById(thedivs[i]).style.display = 'none'
+
+
+}
+document.getElementById(thedivs[somediv]).style.display = 'inline'
+handleclickproblem()
+
+}
+
+var basetimes=[90, 120, 150]
+var basetimeavailable=basetimes[level]
+var thetimeavailable
+function changeexerciselevel(someval)
+{
+
+var somenewlevel=level+someval
+if (somenewlevel==3) {somenewlevel=2}
+if (somenewlevel==-1) {somenewlevel=0}
+level=somenewlevel
+changetextvalue("exerciselevel", level+1)
+basetimeavailable=basetimes[level]
+
+}
+
+var timer
+var countuptimer
+
+var timetaken
+function startcountup()
+{
+timetaken=0
+document.getElementById('timetakentable').style.backgroundColor='limegreen'
+
+thetimeavailable=basetimeavailable
+var somesecs=Math.floor(timetaken)
+changetextvalue('timetaken', somesecs)
+
+if (countuptimer != null) {clearTimeout(countuptimer)}
+
+countuptimer= setTimeout('countup()', 1000)
+
+}
+
+
+
+function countup()
+{
+timetaken++
+
+var somesecs=Math.floor(timetaken)
+if (somesecs>=thetimeavailable) 
+{
+document.getElementById('timetakentable').style.backgroundColor='red'
+
+}
+if (somesecs>999) {somesecs='End'}
+changetextvalue('timetaken', somesecs)
+
+if (countuptimer != null) {clearTimeout(countuptimer)}
+
+countuptimer= setTimeout('countup()', 1000)
+
+}
+
+
+
+</script>
+<script language="Javascript">
+
+documentwrite('<form name="playform"><div id="maingame" style="position:relative;display:inline"><div style="width:100%; height:'+Math.floor(scalef*5)+'px"></div><table border=1 bgcolor=lemonchiffon width=100%  cellpadding=0 cellspacing=0>')
+
+documentwrite('<tr><td><div id="problem" style="width:100%;height:'+Math.floor(scalef*200)+'px;background-color:lemonchiffon;display:block"></div></td></tr>')
+
+documentwrite('<tr><td><table border=0 width=100% ><tr>')
+documentwrite('<td>')
+documentwrite('<table border=1 id="timetakentable" cellpadding=0 cellspacing=0 style="text-align:center;width:'+Math.floor(scalef*30)+'px;background-color:limegreen"><tr><td style="text-align:center"><div id="timetaken">0</div></td></tr></table>')
+documentwrite('</td>')
+documentwrite('<td>')
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'px><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showad()">New</td></tr></table>')
+documentwrite('</td>')
+documentwrite('<td>')
+documentwrite('<div id="buttontext"><table border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*40)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showclues()">Clues</td></tr></table></div>')
+documentwrite('</td>')
+documentwrite('<td  width='+Math.floor(scalef*20)+'>')
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 width=100%><tr><td style="background-image:url(buttonbg.jpg);text-align:center;width:'+Math.floor(scalef*20)+'px" onClick="changeexerciselevel(-1)">-</td></tr></table></td><td><table border=1 bgcolor=white cellpadding=0 cellspacing=0 width='+Math.floor(scalef*20)+'px><tr><td style="text-align:center"><div id="exerciselevel">1</div></td></tr></table></td><td width='+Math.floor(scalef*20)+'><table border=1 cellpadding=0 cellspacing=0 width=100%><tr><td style="background-image:url(buttonbg.jpg);text-align:center;width:'+Math.floor(scalef*20)+'px" onClick="changeexerciselevel(1)">+</td></tr></table>')
+documentwrite('</td>')
+documentwrite('</tr>')
+documentwrite('</table>')
+documentwrite('</td></tr></table>')
+documentwrite('</div></form>')
+
+</script>
+
+
+</div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#levels">Levels and times</a><br><a href="#terms">Terms of use</a><br><br>')}
+</script>
+
+
+<a name="intro"></a>Mystery Clues is a logic puzzle.
+
+  
+<br><br> 
+Vic has been murdered. There are several locations, each with one suspect and a different weapon. When the puzzle opens, or whenever you press the <i>New</i> button, these suspects, weapons and locations are presented to you as lists (please note that the rows do not indicate relationships between them - these are just lists).
+Vic is found in one of the locations with his killer and the murder weapon. Work out who killed Vic, with what, and where from a set of clues obtained by pressing the <i>Clues</i> button.
+<br><br>
+Each of the clues presented (there are two on each row) consists of a set of three names: a person (suspect or Vic the victim), a weapon and a location.  Associated with each set is a letter (Y, P or N), which gives you information about all the relationships possible between them, namely: whether the person is with the weapon; whether the person is in the location; and whether the weapon is in the location.  The letter meanings are:
+<ul>
+<li> Y: Yes - all three are correct
+<li> P: Part - only one is correct
+<li> N: No - not one is correct.
+</ul>
+So, Kim Axe Loft P means either that Kim is with the Axe, or that the Axe is in the Loft or that Kim is in the Loft - but only one of these statements is true.
+<br><br>It is important to note that 'Kim Axe Loft Y' means only that Kim is with the Axe, the Axe is in the Loft, and Kim is in the Loft; the Y does not mean imply that Kim is the killer.  The killer is the suspect in the same location as Vic. 
+<br><br>Please note that all suspects, weapons and locations involved in the scenario, as initially listed, are named in the clues, so you don't need to return to the initial lists of these.
+<br><br>When you think you've worked out the murderer, the murder weapon and the murder location, press the Solve button. 
+You are presented with not only the answer but also a high level view of how this could have been shown: one statement about the victim, and one about the killer.   
+With each of these statements is a <i>How</i> button.  Pressing this takes you to a more detailed explanation of the way this statement can be proved from the clues given.  On the left is given the basis for the implication shown on the right. The following examples demonstrate the forms that a basis might take, and indicate the logic required to solve these problems.
+<br><br>Axe:Bar+Ned:Axe implies Ned:Axe:Bar
+<br>If the Axe is in the Bar and Ned has the Axe, then Ned is with the Axe in the Bar.
+<br><br>Ian:Bat:Park:P+Ns: Ian:Bat+Bat:Park implies Ian:Park
+<br>If we know that Ian is not with the Bat and that the Bat is not in the Park, then the P for Ian:Bat:Park must mean that Ian is in the Park.
+<br><br>Sal:Axe:Hall:P+Ned:Axe:Bar(:Y) implies Sal:Hall
+<br>If we are given, or can prove, that Ned is with the Axe in the Bar, then we know that the Axe is not in the Hall and that Sal is not with the Axe, so the P for Sal:Axe:Hall must mean that Sal is in the Hall.
+<br><br>Ned: 6/7 weapons N implies Ned:Axe
+<br>Since we know that Ned does not have 6 of the 7 weapons, he must have the 7th (in this case the Axe).
+<br><br>3 Ps with Caz:Drug implies Caz:Drug
+<br>If there are three P statements that include Caz with the Drug, then Caz must have the Drug.
+<br><br>Important: Beware of applying all of these forms of logic to statements involving Vic;  some apply, some do not.
+<br><br>Press the <i>Back</i> button to go back to the main Solution view.  You can also press the <i>Back</i> button to go back to the Clues view from the Solution view.
+<br><br>Below the <i>How</i> buttons on the main Solution view is a <i>Facts</i> button.  Press this to see the full scenario, then <i>Back</i> to go back to the main Solution view.
+<br><br>This puzzle can be played as a game if two or more people can see the screen.  The winner is the first player to give the correct answer (e.g. by writing it down).
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+
+<br><br><a name="levels"></a><b>Levels and times</b>
+<br><br>
+There are three levels (1-3). The default level is 1.
+<ul>
+<li>At level 1, there are 5 locations, weapons and suspects.
+<li>At level 2, there are 6 locations, weapons and suspects.
+<li>At level 3, there are 7 locations, weapons and suspects.
+</ul>
+As well as increasing the numbers of locations, weapons and suspects, higher levels require deeper logic to solve them.
+<br><br>The current level is shown near the bottom-right corner, with '+' and '-' buttons at the sides, which allow you to change the level.
+<br><br>When the clues are presented, a timer starts (bottom left), which initially has a green background.  For each level, there is a default time suggested, after which the background of the timer changes to red.  The time continues to count up, a second at a time, until the result of the final line is displayed, even when you have exceeded the suggested time.  The suggested times are 90s for level 1, 120s for level 2 and 150s for level 3.
+<br><br>Press the <i>New</i> button at any time for a new puzzle, using the current level setting.
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 2.07 (20160219) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=0
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.com, sexiest-lover.com</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-husband.com, best-lover.com</span>',
+'<span style="color:violet">best-mother.com, best-father.com</span>',
+'<span style="color:violet">best-dad.com, best-daughter.com</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith.best-wife.com</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-mother.com</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Buy our great logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy aginst the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:lime">If you like games such as...</span>',
+'<span style="color:lime">Rummy, 4-in-a-line...</span>',
+'<span style="color:lime">Hangman, Mancala...</span>',
+'<span style="color:lime">Letters Game, Numbers Game...</span>',
+'<span style="color:lime">& more classic & original games</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Games</span> app now</span>',
+'',
+'<span style="color:cyan">If you like puzzles such as...</span>',
+'<span style="color:cyan">Sudoku, Hangman...</span>',
+'<span style="color:cyan">Peg Solitaire, Step Challenge...</span>',
+'<span style="color:cyan">WordSearch & other word puzzles...</span>',
+'<span style="color:cyan">Numberskull & other number puzzles...</span>',
+'<span style="color:cyan">Memory Pairs...</span>',
+'<span style="color:cyan">& more classic & original puzzles</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Puzzles</span> app now</span>',
+'',
+'<span style="color:lime">Beat the Letters Game countdown;</span>',
+'<span style="color:lime">Avoid the Hangman\'s noose;</span>',
+'<span style="color:lime">Look for words in WordSearch+...</span>',
+'<span style="color:lime">And other mind-boggling grids;</span>',
+'<span style="color:lime">Try our original Pentad game;</span>',
+'<span style="color:lime">Find connections in Linkword Snap;</span>',
+'<span style="color:lime">Or solve the Word Ladder.</span>',
+'<span style="color:lime">For word-based games and puzzles...</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Words</span> app now</span>',
+'',
+'<span style="color:magenta">Beat the Numbers Game countdown;</span>',
+'<span style="color:magenta">Take 30 secs for our Step Challenge;</span>',
+'<span style="color:magenta">Or Pyramid Numbers;</span>',
+'<span style="color:magenta">Or try our original Numberskull.</span>',
+'<span style="color:magenta">For number-based games & puzzles...</span>',
+'<span style="color:magenta">Buy our <span style="color:white">Compact Numbers</span> app now</span>',
+'',
+'<span style="color:cyan">Solve Sudoku puzzles, with help;</span>',
+'<span style="color:cyan">Be a mastermind and break the codes,</span>',
+'<span style="color:cyan">Solve equations and use logic...</span>',
+'<span style="color:cyan">In our original Numberskull puzzle;</span>',
+'<span style="color:cyan">Find the killer based on clues...</span>',
+'<span style="color:cyan">In Mystery Clues.</span>',
+'<span style="color:cyan">For logic-based puzzles...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Logic</span> app now</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>

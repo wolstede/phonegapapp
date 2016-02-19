@@ -1,0 +1,1053 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>Mancala</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='mancala'
+
+var interruptsrequired=0
+
+
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">Mancala</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:purple"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Begin
+// All code copyright of TopAccolades Limited
+
+var dishes = new Array()
+dishes = [[4, 4, 4, 4, 4, 4, 0], [4, 4, 4, 4, 4, 4, 0]]
+var nextplayer=[1, 2]
+var pause=null
+
+var colourmoving = null
+var nextpos = 0
+var numbertobedropped = 0
+var movesallowed = true
+
+function runonload()
+{
+newgame()
+}
+
+function continueafterad()
+{
+newgame()
+}
+
+
+
+function newgame()
+{
+restartconfirmationrequired=1
+
+dishes = [[4, 4, 4, 4, 4, 4, 0], [4, 4, 4, 4, 4, 4, 0]]
+
+for (var somecol=0; somecol<2; somecol++)
+{
+for (var somepos=0; somepos<7; somepos++)
+{
+setdishnumber(somecol+1, somepos+1, dishes[somecol][somepos])
+}
+
+}
+
+nextplayer=[1, 2]
+thelaststonecurrent=thelaststone
+var someruleoptions=''
+if (thelaststonecurrent==0) {someruleoptions=someruleoptions+'1 Last stone dropped in own empty tray always moved to Mancala.'} else {someruleoptions=someruleoptions+'1 Last stone dropped in own empty tray moved to Mancala only if opposite tray not empty.'}
+theendgamecurrent=theendgame
+if (theendgamecurrent==0) {someruleoptions=someruleoptions+'<br>2 Game ends when any player has all empty trays after move.'} else {someruleoptions=someruleoptions+'<br>2 Game ends when next mover has all empty trays after move.'}
+
+theendtakercurrent=theendtaker
+if (theendtakercurrent==0) {someruleoptions=someruleoptions+'<br>3 Remaining stones taken by owner.'} else {if (theendtakercurrent==1) {someruleoptions=someruleoptions+'<br>3 Remaining stones taken by opponent.'} else {someruleoptions=someruleoptions+'<br>3 Remaining stones ignored.'}}
+printstatus('Red or Green to start with rules:<br>'+someruleoptions)
+if (pause != null) {clearTimeout(pause)}
+movesallowed=true
+}
+
+
+function printstatus(messagetext)
+{
+
+changetextvalue('statusmessage', messagetext)
+}
+
+
+
+
+function distribute(colour, pos2)
+{
+var i
+var rightplayer=false
+var currentnumber = dishes[colour-1][pos2-1]
+for (i=0; i<nextplayer.length; i++)
+{
+if (colour == nextplayer[i]) {rightplayer=true}
+}
+
+if (rightplayer == true && currentnumber>0) 
+{
+printstatus('Making move')
+movesallowed=false
+setdishnumber(colour, pos2, 0)
+var pos1 = pos2+1
+colourmoving = colour
+colourbeingmoved = colour
+nextpos = pos1
+numbertobedropped = currentnumber
+if (pause != null) {clearTimeout(pause)}
+
+pause=setTimeout("droppebbles()", 1000)
+
+}
+}
+
+function droppebbles()
+{
+var colour=colourmoving
+var colourbeingchanged=colourbeingmoved
+var pos2=nextpos
+var stilltobedropped=numbertobedropped
+var currentnumber = dishes[colourbeingchanged-1][pos2-1]
+if (colour == 1) {colourname = 'Green'; oppcolourname='Red'} else {colourname = 'Red'; oppcolourname='Green'}
+if (pos2==7 && colour != colourbeingchanged)
+{
+colourbeingmoved = colour
+nextpos=1
+droppebbles()
+}
+else
+{
+setdishnumber(colourbeingchanged, pos2, currentnumber+1)
+
+
+numbertobedropped=stilltobedropped-1
+if (numbertobedropped == 0) // if this was last pebble
+{
+opponentscolour=3-colour
+opppos = 7-pos2
+var pebblesinopponentsdish = dishes[opponentscolour-1][opppos-1]
+
+if (currentnumber == 0 && colourbeingchanged == colour && pos2 != 7 && (pebblesinopponentsdish>0 || thelaststonecurrent==0))
+// if the last pebble was dropped into an empty bowl on the player's own side
+{
+// then take this and the pebbles in the opponent's dish opposite and put them in the player's Mancala
+var somesubtext='and stones in opposite tray '
+if (pebblesinopponentsdish==0) {somesubtext=''}
+printstatus('Last stone put in own empty tray - moving this '+somesubtext+'to ' +colourname+' Mancala')
+var currentpebblesinmancala = dishes[colour-1][7-1]
+var newnumberinmancala=currentpebblesinmancala+1+pebblesinopponentsdish
+if (pause != null) {clearTimeout(pause)}
+
+pause=setTimeout("movetomancala("+colour+', '+opponentscolour+', '+pos2+', '+opppos+', '+newnumberinmancala+")", 2000)
+
+
+
+}
+
+else
+// if no moving to a Mancala
+
+{
+if (pos2 != 7) 
+// change colour unless dropped in Mancala
+{
+nextplayer=[3 - colour]; 
+movesallowed=true
+printstatus(oppcolourname+ ' to move')
+checkforendgame()
+
+} 
+else
+{
+movesallowed=true
+printstatus('Last pebble dropped in own Mancala so '+colourname+ ' to move again')
+checkforendgame()
+}
+
+}
+}
+else // not the last pebble
+{
+
+if (pos2==7) 
+{
+colourbeingmoved=3-colour
+nextpos=1
+}
+else
+{
+nextpos=pos2+1
+}
+if (pause != null) {clearTimeout(pause)}
+
+pause=setTimeout("droppebbles()", 1000)
+
+}
+}
+}
+
+function checkforendgame()
+{
+if (dishes[0][6]>24) {printstatus('Green wins as Green\'s Mancala contains over 24 stones, so Red cannot catch up'); movesallowed=false; return}
+if (dishes[1][6]>24) {printstatus('Red wins as Red\'s Mancala contains over 24 stones, so Green cannot catch up'); movesallowed=false; return}
+var greendishestotal=dishes[0][0]+dishes[0][1]+dishes[0][2]+dishes[0][3]+dishes[0][4]+dishes[0][5]
+var reddishestotal=dishes[1][0]+dishes[1][1]+dishes[1][2]+dishes[1][3]+dishes[1][4]+dishes[1][5]
+var endgame=false
+if (greendishestotal==0 && (nextplayer[0]==1 || theendgamecurrent==0)) {endgame=true} // says it's the end of the game if green is empty and either green is next mover or theendgame status = 0 (any empty ends the game)
+if (reddishestotal==0 && (nextplayer[0]==2 || theendgamecurrent==0)) {endgame=true} // says it's the end of the game if red is empty and either red is next mover or theendgame status = 0 (any empty ends the game)
+if (endgame==true)
+{
+movesallowed=false
+var endmessage
+var greentotal
+var redtotal
+var submessage
+if (theendtakercurrent==0)
+{
+greentotal=dishes[0][6]+greendishestotal
+redtotal=dishes[1][6]+reddishestotal
+submessage='Game over: Stones in remaining trays added to owner\'s total.<br>' 
+}
+if (theendtakercurrent==1)
+{
+greentotal=dishes[0][6]+reddishestotal
+redtotal=dishes[1][6]+greendishestotal
+submessage='Game over: Stones in remaining trays added to opponent\'s total.<br>' 
+}
+if (theendtakercurrent==2)
+{
+greentotal=dishes[0][6]
+redtotal=dishes[1][6]
+submessage='Game over: Stones in remaining trays ignored.<br>' 
+}
+if (greentotal > redtotal) {endmessage=submessage+'Green wins with '+ greentotal+ ' stones. Red has '+redtotal+'.'}
+if (greentotal < redtotal) {endmessage=submessage+'Red wins with '+ redtotal+ ' stones. Green has '+greentotal+'.'}
+if (greentotal == redtotal) {endmessage=submessage+'Game drawn: '+greentotal+' stones each.'}
+printstatus(endmessage)
+restartconfirmationrequired=0
+
+
+}
+
+}
+
+function movetomancala(colour, opponentscolour, pos2, oppos, newnumberinmancala)
+{
+setdishnumber(colour, pos2, 0)
+setdishnumber(opponentscolour, opppos, 0)
+setdishnumber(colour, 7, newnumberinmancala)
+nextplayer=[opponentscolour]; 
+if (opponentscolour == 1) {colourname = 'Green'} else {colourname = 'Red'}
+
+movesallowed=true
+printstatus(colourname+ ' to move')
+checkforendgame()
+
+}
+
+function setdishnumber(colour, pos2, newnumber)
+{
+dishes[colour-1][pos2-1]=newnumber
+var colourname
+if (colour == 1) {colourname = 'green'} else {colourname = 'red'}
+
+
+var numname = newnumber
+changetextvalue(colourname+pos2, numname)
+
+stonedisplay(colour, pos2, newnumber)
+
+}
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+function shufflearray(somearray)
+{
+
+var temparray=somearray
+var shuffled=new Array()
+packsize=somearray.length
+var ran
+var i
+for (i=0; i<packsize; i++)
+{
+ran = randomnumber(temparray.length)
+shuffled[i] = temparray[ran-1]
+temparray = removeElement(ran-1, temparray)
+}
+return shuffled
+}
+
+function removeElement(index, somearray)
+{
+var beg=somearray.slice(0, index)
+var end=[]
+if (index+1 < somearray.length) {end = somearray.slice(index+1)}
+return beg.concat(end)
+}
+
+
+var stoneorder=[[1,1], [1, 0], [1,2], [0,1], [2,1], [0,0], [0,2], [2,0], [2,2]] 
+
+function stonedisplay(colour, pos, somenumber)
+{
+if (pos==7)
+{
+somenumber1=Math.floor(somenumber/2)
+somenumber2=somenumber-somenumber1
+stonedisplay(colour, '7a', somenumber1)
+stonedisplay(colour, '7b', somenumber2)
+}
+else
+{
+for (var i=0; i<3; i++)
+{
+for (var j=0; j<3; j++)
+{
+document.images['stone_'+colour+'_'+pos+'_'+i+'_'+j].src='stone0.png'
+}
+}
+var someindex=1
+var somebreak=false
+for (var k=1; k<=6; k++)
+{
+for (var i=0; i<3; i++)
+{
+for (var j=0; j<3; j++)
+{
+if (someindex<=somenumber)
+ {
+document.images['stone_'+colour+'_'+pos+'_'+i+'_'+j].src='stone'+k+'.png'
+ someindex++
+ }
+else
+ {
+somebreak=true
+break
+ }
+}
+if (somebreak==true){break}
+}
+if (somebreak==true){break}
+}
+}
+}
+
+var thedivs=['maingame', 'more']
+function displaydiv(somediv)
+{
+for (var i=0; i<thedivs.length; i++)
+{
+document.getElementById(thedivs[i]).style.display = 'none'
+
+
+}
+document.getElementById(thedivs[somediv]).style.display = 'inline'
+handleclickproblem()
+
+}
+
+var thelaststone=0
+function laststone(somenum)
+{
+
+thelaststone=somenum
+var oppnum=1-somenum
+document.images['laststone'+somenum].src='selected.gif'
+document.images['laststone'+oppnum].src='unselected.gif'
+
+}
+
+var theendgame=0
+function setendgame(somenum)
+{
+
+theendgame=somenum
+var oppnum=1-somenum
+document.images['endgame'+somenum].src='selected.gif'
+document.images['endgame'+oppnum].src='unselected.gif'
+
+}
+
+var theendtaker=0
+function setendtaker(somenum)
+{
+
+theendtaker=somenum
+document.images['endtaker0'].src='unselected.gif'
+document.images['endtaker1'].src='unselected.gif'
+document.images['endtaker2'].src='unselected.gif'
+
+document.images['endtaker'+somenum].src='selected.gif'
+
+}
+
+var stonesize=Math.floor(scalef*6)
+var traysquaresize=Math.floor(scalef*22)
+function stonetable(someside, somepos)
+{
+if (somepos==7)
+{
+return '<table border=0  cellspacing=0 cellpadding=0><tr><td>'+stonetable(someside, '7a')+'</td></tr><tr><td>'+stonetable(someside, '7b')+'</td></tr></table>'
+}
+else
+{
+stoneorder=shufflearray(stoneorder)
+var sometext='<table align=center valign=middle border=0 cellspacing=0 cellpadding=0 width='+3*stonesize+' height='+3*stonesize+'>'
+var someordernum
+for (var i=0; i<3; i++)
+{
+sometext=sometext+'<tr>'
+for (var j=0; j<3; j++)
+{
+someordernum=(3*i)+j
+sometext=sometext+'<td><img width='+stonesize+' height='+stonesize+' border=0 name="stone_'+someside+'_'+somepos+'_'+stoneorder[someordernum][0]+'_'+stoneorder[someordernum][1]+'" src="stone0.png"></td>'
+
+}
+sometext=sometext+'</tr>'
+}
+sometext=sometext+'</table>'
+return sometext
+}
+}
+
+//  End -->
+
+
+documentwrite('<form name="playform"><div id="maingame" style="display:inline">')
+documentwrite('<center><div style="width:100%;height:'+Math.floor(scalef*5)+'px"></div>')
+documentwrite('<table border=0 cellpadding=0 valign=middle align=center><tr><td><table border=0><tr><td style="background-color:black">')
+documentwrite('<table border="'+Math.floor(scalef*1)+'" cellpadding="0" cellspacing="'+Math.floor(scalef*1)+'">')
+documentwrite('<tr>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle"><div style="color:white; font-weight:bold" id="green7"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(1, 6)"><div style="color:white; font-weight:bold" id="green6"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(1, 5)"><div style="color:white; font-weight:bold" id="green5"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(1, 4)"><div style="color:white; font-weight:bold" id="green4"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(1, 3)"><div style="color:white; font-weight:bold" id="green3"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(1, 2)"><div style="color:white; font-weight:bold" id="green2"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(1, 1)"><div style="color:white; font-weight:bold" id="green1"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle"><div style="color:white; font-weight:bold"></div></td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="background-color:green;background-image:url(greenwoodvert.jpg)" width="'+traysquaresize+'" align="center" valign="middle" height="'+traysquaresize+'" rowspan="2">'+stonetable(1,7)+'</td>')
+documentwrite('<td style="background-color:green;background-image:url(greenwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(1, 6)">'+stonetable(1,6)+'</td>')
+documentwrite('<td style="background-color:green;background-image:url(greenwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(1, 5)">'+stonetable(1,5)+'</td>')
+documentwrite('<td style="background-color:green;background-image:url(greenwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(1, 4)">'+stonetable(1,4)+'</td>')
+documentwrite('<td style="background-color:green;background-image:url(greenwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(1, 3)">'+stonetable(1,3)+'</td>')
+documentwrite('<td style="background-color:green;background-image:url(greenwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(1, 2)">'+stonetable(1,2)+'</td>')
+documentwrite('<td style="background-color:green;background-image:url(greenwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(1, 1)">'+stonetable(1,1)+'</td>')
+documentwrite('<td style="background-color:red;background-image:url(redwoodvert.jpg)" width="'+traysquaresize+'" align="center" valign="middle" height="'+traysquaresize+'" rowspan="2">'+stonetable(2,7)+'</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="background-color:red;background-image:url(redwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(2, 1)">'+stonetable(2,1)+'</td>')
+documentwrite('<td style="background-color:red;background-image:url(redwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(2, 2)">'+stonetable(2,2)+'</td>')
+documentwrite('<td style="background-color:red;background-image:url(redwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(2, 3)">'+stonetable(2,3)+'</td>')
+documentwrite('<td style="background-color:red;background-image:url(redwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(2, 4)">'+stonetable(2,4)+'</td>')
+documentwrite('<td style="background-color:red;background-image:url(redwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(2, 5)">'+stonetable(2,5)+'</td>')
+documentwrite('<td style="background-color:red;background-image:url(redwood.jpg)" width="'+traysquaresize+'" height="'+traysquaresize+'" align="center" valign="middle" onClick="distribute(2, 6)">'+stonetable(2,6)+'</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle"><div style="color:white; font-weight:bold"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(2, 1)"><div style="color:white; font-weight:bold" id="red1"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(2, 2)"><div style="color:white; font-weight:bold" id="red2"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(2, 3)"><div style="color:white; font-weight:bold" id="red3"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(2, 4)"><div style="color:white; font-weight:bold" id="red4"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(2, 5)"><div style="color:white; font-weight:bold" id="red5"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle" onClick="distribute(2, 6)"><div style="color:white; font-weight:bold" id="red6"></div></td>')
+documentwrite('<td style="background-color:black" width="'+traysquaresize+'" height="'+(scalef*12)+'" align="center" valign="middle"><div style="color:white; font-weight:bold" id="red7"></div></td>')
+documentwrite('</tr>')
+documentwrite('<tr><td colspan=8 style="background-color:lemonchiffon;height:'+(scalef*120)+'px" valign=top><table width='+Math.floor(scalef*150)+' height='+Math.floor(scalef*115)+' cellpadding=0 cellspacing=0 border=0 valign=top align=center ><tr><td valign=top align=left id="statusmessage"></td></tr></table></td></tr>')
+
+documentwrite('<tr><td colspan=8><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="showad()">New</td></tr></table><table border=1 cellpadding=0 cellspacing=0 style="align:right" align=right><tr><td style="width:'+(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="displaydiv(1)">More</td></tr></table></td></tr>')
+documentwrite('</table>')
+documentwrite('</td></tr></table>')
+documentwrite('</tr></table>')
+documentwrite('</center>')
+documentwrite('</div><div id="more" style="display:none">')
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*5)+'px;display:block"></div>')
+
+documentwrite('<table cellpadding=1 width=100% bgcolor=silver>')
+documentwrite('<tr><td align=left><table border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="displaydiv(0)">Back</td></tr></table></td></tr>')
+
+documentwrite('<tr><td align=left valign=center ><span style="font-weight:bold">1 Transfer last drop in empty:</span></td></tr>')
+documentwrite('<tr><td ><table cellspacing=0 cellpadding=0 border=1 style="align:center" align:center >')
+documentwrite('<tr><td width='+Math.floor(scalef*90)+' style="background-image:url(buttonbg.jpg); text-align:center; " onClick="laststone(0)">Always</td>')
+documentwrite('<td width='+Math.floor(scalef*90)+' style="background-image:url(buttonbg.jpg); text-align:center; " onClick="laststone(1)">Stones opposite</td></tr>')
+documentwrite('<tr><td style=" text-align:center; "><img width='+Math.floor(scalef*10)+' name="laststone0" src="selected.gif" onClick="laststone(0)"></td>')
+documentwrite('<td style=" text-align:center; "><img width='+Math.floor(scalef*10)+' name="laststone1" src="unselected.gif" onClick="laststone(1)"></td></tr>')
+documentwrite('</table></td></tr>')
+
+documentwrite('<tr><td align=left valign=center ><span style="font-weight:bold">2 End of game:</span></td></tr>')
+documentwrite('<tr><td ><table cellspacing=0 cellpadding=0 border=1 style="align:center" align:center >')
+documentwrite('<tr><td width='+Math.floor(scalef*90)+' style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setendgame(0)">Any empty</td>')
+documentwrite('<td width='+Math.floor(scalef*90)+' style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setendgame(1)">New mover empty</td></tr>')
+documentwrite('<tr><td style=" text-align:center; "><img width='+Math.floor(scalef*10)+' name="endgame0" src="selected.gif" onClick="setendgame(0)"></td>')
+documentwrite('<td style=" text-align:center; "><img width='+Math.floor(scalef*10)+' name="endgame1" src="unselected.gif" onClick="setendgame(1)"></td></tr>')
+documentwrite('</table></td></tr>')
+
+documentwrite('<tr><td align=left valign=center ><span style="font-weight:bold">3 Remaining stones taken by:</span></td></tr>')
+documentwrite('<tr><td ><table cellspacing=0 cellpadding=0 border=1 style="align:center" align:center >')
+documentwrite('<tr><td width='+Math.floor(scalef*60)+' style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setendtaker(0)">Owner</td>')
+documentwrite('<td width='+Math.floor(scalef*60)+' style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setendtaker(1)">Opponent</td>')
+documentwrite('<td width='+Math.floor(scalef*60)+' style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setendtaker(2)">Neither</td></tr>')
+documentwrite('<tr><td style=" text-align:center; "><img width='+Math.floor(scalef*10)+' name="endtaker0" src="selected.gif" onClick="setendtaker(0)"></td>')
+documentwrite('<td style=" text-align:center; "><img width='+Math.floor(scalef*10)+' name="endtaker1" src="unselected.gif" onClick="setendtaker(1)"></td>')
+documentwrite('<td style=" text-align:center; "><img width='+Math.floor(scalef*10)+' name="endtaker2" src="unselected.gif" onClick="setendtaker(2)"></td></tr>')
+documentwrite('</table></td></tr>')
+
+
+
+documentwrite('</table>')
+
+documentwrite('</div></form>')
+
+</script></div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#rules">Rules (default game)</a><br><a href="#playing">Playing the game</a><br><a href="#newgame">New game</a><br><a href="#options">Options</a><br><a href="#terms">Terms of use</a><br><br>')}
+</script>
+
+
+<a name="intro"></a>Mancala is an ancient African game that has two key elements of a good, enduring game: the rules are simple to learn, but it is a hard game to master.
+<br>
+
+<br>
+Strictly, Mancala is the name of a family of games involving the distribution, capture and collection of stones or seeds in trays.  This application, which provides an electronic board with guidance and feedback for two people to play against each other (you cannot play the system) supports some commonly found variations of Mancala, by enabling you to select options.  There is, of course, a set of default options that are in force when you first open the application, so below we first describe this game but also highlight where options are available.  These options, and their impacts, are described afterwards.
+<br>
+
+<br>
+On the Mancala 'board', each player has 6 small trays plus one larger tray - the Mancala (or kalaha) - at one end.  Although the traditional board does not have different coloured trays and Mancalas, this computerized version has six small trays plus a Mancala for each of two colours: red (reddish-brown) and green.  The two players - Red and Green - own the trays and Mancala of their own colour. 
+At the beginning of the game, each of the small trays has 4 stones.
+<br>
+
+<br>
+The basic idea of the game is that players take turns to select one of their own small trays, take the stones in this tray, and distribute the stones into other trays, by dropping them one at a time into these trays, moving in an anticlockwise direction.  
+<br>
+
+<br>The objective is to end up with the highest total number of stones in their Mancala plus their own trays (but see Options 3 concerned with this) when the game ends - which occurs when one player (see Options 2 concerning this) has no stones left in any of their 6 small trays. 
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+<br>
+
+<br><a name="rules"></a><span style="font-weight:bold">Rules (default game)</span>
+<br><br>
+The players agree who should start - Red or Green.  That player then makes a move, as follows:
+
+<br><br><span style="font-style:italic">A move</span>
+<br><br>
+The player making a move selects one of the six small trays of his or her own colour containing at least one stone.  
+<br>
+
+<br>The stones are removed from the tray and distributed one by one into adjacent trays, moving anticlockwise.  One stone is put into each tray, including the player's own Mancala (large tray) - but if the opponent's Mancala is reached, it is ignored: no stone is put in and distribution of the stones continues in the player's own small trays.
+<br>
+
+<br>
+What happens next depends on where the last stone is dropped:
+<ul>
+<li>if the last stone is dropped in the player's own Mancala, the player has another move;
+</ul>
+
+
+<ul><li>if the last stone is dropped in an empty small tray of the player's own colour, the stone plus any stones in the opponent's small tray directly opposite this are collected and put into the player's Mancala (but see Options 1 concerning this);  the opponent then has a move;
+<li>if the last stone is dropped anywhere else, the opponent then has a move.
+
+</ul>
+<span style="font-style:italic">End of the game</span>
+<br><br>
+The game ends when all the small trays belonging to any one of the players are empty (but see Options 2).  The winner is the player with the highest total of stones in their Mancala plus any still in their 6 small trays (but see Options 3).<br><br>
+If a point is reached before this, where one player already has more than 24 stones in their Mancala, the game ends early with that player declared as the winner, since the opponent cannot catch up.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+<br>
+
+<br><a name="playing"></a><span style="font-weight:bold">Playing the computerized game</span>
+<br><br>
+In this application, the stones in a small tray or Mancala are represented graphically by blue circular discs.  Note: sometimes, when there are many stones in a tray or Mancala, you will see yellow discs, each of which represents 2 stones.  You may also see black discs, each of which represents 3 stones.  In addition to the graphical display, the number of stones is also displayed next to (above or below) the tray or Mancala.
+
+<br><br>
+Moves are made by pressing either on one of the small trays or on its associated number.
+<br>
+
+<br>
+The system will not allow illegal moves.  The text below the board tells you what is happening, whose move it is, and, when the game is over, which player has won.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+<br>
+
+<br><a name="newgame"></a><span style="font-weight:bold">New game</span>
+
+
+
+<br><br>Just press on the <span style="font-style:italic">New</span> button at any time to start a new game.  You will be reminded which options are in force.
+
+
+<br>
+
+<br><a name="options"></a><span style="font-weight:bold">Options</span>
+
+<br><br>
+There are three sets of rule options.  To choose or change these, press the <span style="font-style:italic">More</span> button, select the desired choices, then press the <span style="font-style:italic">Back</span> button to return.  Please note that selected options come into force only when a new game is started.
+<br><br>Options 1 - what happens when the last stone to be distributed lands in an empty small tray on the mover's own side.
+<br><br>These options are found under <i>1 Transfer last drop in empty:</i> on the <i>More</i> page.
+<br><br>
+The default behaviour is that the stone together with any stones in the small tray opposite it are moved to the player's Mancala - regardless of whether the tray opposite contains any stones.  This option is represented by 'Always'.
+<br><br>The alternative behaviour is that the last stone dropped in the player's own empty small tray is transferred to the Mancala only if the tray opposite contains stones, which are transferred to the Mancala together with the last stone dropped.  If the tray opposite is empty, the last stone dropped is not transferred to the Mancala.  This option is represented by 'Stones opposite'.
+<br><br>Options 2 - when the game ends.
+<br><br>These options are found under <i>2 End of game:</i> on the <i>More</i> page.
+<br><br>The default behaviour is that at the end of a move, if either player has all six small trays empty the game ends.  This option is represented by 'Any empty'.
+<br><br>The alternative behaviour is that the game ends due to empty trays only if the player about to make a move is unable to because their trays are all empty.  If the opponent has all trays empty this does not, by itself, trigger the end of the game.  This option is represented by 'New mover empty'.
+<br><br>Options 3 - what happens to any stones remaining in small trays when the game ends.
+<br><br>These options are found under <i>3 Remaining stones taken by:</i> on the <i>More</i> page.
+<br><br>The default behaviour is that when the game ends because one player has only empty small trays, any remaining stones left in the opponent's small trays are added to the number of stones in the opponent's Mancala to give the opponent's grand total.  Another way of expressing this is that when the game ends, each player's total is the sum of the stones in their own Mancala plus the number of stones remaining in their own small trays. This option is represented by 'Owner'.
+<br><br>One variant behaviour is that when the game ends because one player has only empty small trays, any remaining stones left in the opponent's small trays are added to the number of stones in the empty player's Mancala to give the empty player's grand total.  Another way of expressing this is that when the game ends, each player's total is the sum of the stones in their own Mancala plus the number of stones remaining in their opponent's small trays. This option is represented by 'Opponent'.
+<br><br>Another variant behaviour is that when the game ends because one player has only empty small trays, any remaining stones left in the opponent's small trays are ignored.  The total for each player is considered to be only the stones in their own Mancalas.  This option is represented by 'Neither'.
+<br><br>These options clearly have an impact on playing strategy and tactics - and the options concerning who takes the remaining stones make a huge impact on strategy.  We hope you enjoy exploring these options.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 2.07 (20160219) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=0
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.com, sexiest-lover.com</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-husband.com, best-lover.com</span>',
+'<span style="color:violet">best-mother.com, best-father.com</span>',
+'<span style="color:violet">best-dad.com, best-daughter.com</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith.best-wife.com</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-mother.com</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Buy our great logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy aginst the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:lime">If you like games such as...</span>',
+'<span style="color:lime">Rummy, 4-in-a-line...</span>',
+'<span style="color:lime">Hangman, Mancala...</span>',
+'<span style="color:lime">Letters Game, Numbers Game...</span>',
+'<span style="color:lime">& more classic & original games</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Games</span> app now</span>',
+'',
+'<span style="color:cyan">If you like puzzles such as...</span>',
+'<span style="color:cyan">Sudoku, Hangman...</span>',
+'<span style="color:cyan">Peg Solitaire, Step Challenge...</span>',
+'<span style="color:cyan">WordSearch & other word puzzles...</span>',
+'<span style="color:cyan">Numberskull & other number puzzles...</span>',
+'<span style="color:cyan">Memory Pairs...</span>',
+'<span style="color:cyan">& more classic & original puzzles</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Puzzles</span> app now</span>',
+'',
+'<span style="color:lime">Beat the Letters Game countdown;</span>',
+'<span style="color:lime">Avoid the Hangman\'s noose;</span>',
+'<span style="color:lime">Look for words in WordSearch+...</span>',
+'<span style="color:lime">And other mind-boggling grids;</span>',
+'<span style="color:lime">Try our original Pentad game;</span>',
+'<span style="color:lime">Find connections in Linkword Snap;</span>',
+'<span style="color:lime">Or solve the Word Ladder.</span>',
+'<span style="color:lime">For word-based games and puzzles...</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Words</span> app now</span>',
+'',
+'<span style="color:magenta">Beat the Numbers Game countdown;</span>',
+'<span style="color:magenta">Take 30 secs for our Step Challenge;</span>',
+'<span style="color:magenta">Or Pyramid Numbers;</span>',
+'<span style="color:magenta">Or try our original Numberskull.</span>',
+'<span style="color:magenta">For number-based games & puzzles...</span>',
+'<span style="color:magenta">Buy our <span style="color:white">Compact Numbers</span> app now</span>',
+'',
+'<span style="color:cyan">Solve Sudoku puzzles, with help;</span>',
+'<span style="color:cyan">Be a mastermind and break the codes,</span>',
+'<span style="color:cyan">Solve equations and use logic...</span>',
+'<span style="color:cyan">In our original Numberskull puzzle;</span>',
+'<span style="color:cyan">Find the killer based on clues...</span>',
+'<span style="color:cyan">In Mystery Clues.</span>',
+'<span style="color:cyan">For logic-based puzzles...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Logic</span> app now</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>

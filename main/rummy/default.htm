@@ -1,0 +1,2383 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>Rummy 7</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='rummy'
+
+var interruptsrequired=0
+
+
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">Rummy 7</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-image:url(blank.gif)"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Begin
+// All code copyright of TopAccolades Limited
+// Compactfun
+
+restartconfirmationrequired=1
+gameturnslimited=1
+numfreeturns=6
+function runonload()
+{
+startnewgame(1)
+
+setmemory(3)
+
+// selectCard(2,7)  // difference
+setcarddisplay(0)  // difference
+}
+
+var delayeddealtype
+function showadspecial(somenum)
+{
+delayeddealtype=somenum
+showad()
+
+}
+
+function continueafterad()
+{
+
+startnewgame(delayeddealtype)
+}
+
+
+function myalert(something)
+{
+
+var newwin=window.open('', '')
+newwin.document.write(something)
+}
+
+
+var thepack = new Array()
+
+function createnewpack()
+{
+var k=0
+for (var i=0; i<13; i++)
+{
+for (var j=0; j<4; j++)
+{
+thepack[k]=[i, j]
+k++
+
+}
+
+}
+}
+
+
+function modulo(somex, somey)
+{
+return somex % somey
+}
+
+function scoreonecard(someval)
+{
+var returnval=0
+if (someval == 1) {returnval=1}
+if (someval == 2) {returnval=-10}
+if (someval == 3) {returnval=-10}
+return returnval
+}
+
+function arraytotal(somearray)
+{
+var sometotal=0
+for (var i=0; i<somearray.length; i++)
+{
+sometotal=sometotal+somearray[i]
+}
+return sometotal
+}
+
+function createmeldpatterns(somearray)
+{
+
+var meldpatterns=[[], []]
+var meldnum=0
+var somescores=[]
+var overallscore=0
+var i
+var j
+
+var cnum1
+var cnum2
+var cnum3
+var cnum4
+var cs1
+var cs2
+var cs3
+var cs4
+// deal with 3card runs
+for (i=0; i<12; i++)
+{
+
+for (j=0; j<4; j++)
+{
+cnum1=i
+cnum2=i+1
+cnum3=modulo(i+2, 13)
+
+somescores=[scoreonecard(somearray[cnum1][j]), scoreonecard(somearray[cnum2][j]), scoreonecard(somearray[cnum3][j])]
+overallscore=arraytotal(somescores)
+if (overallscore<0) {overallscore=-1}
+
+meldpatterns[0][meldnum]=[[3, "run"], [[cnum1, j],[cnum2, j], [cnum3, j]], somescores, overallscore]
+meldnum++
+}
+}
+
+// deal with 3card same num
+for (i=0; i<13; i++)
+{
+for (j=0; j<4; j++)
+{
+
+cs1=j
+cs2=modulo(j+1, 4)
+cs3=modulo(j+2, 4)
+
+somescores=[scoreonecard(somearray[i][cs1]), scoreonecard(somearray[i][cs2]), scoreonecard(somearray[i][cs3])]
+overallscore=arraytotal(somescores)
+if (overallscore<0) {overallscore=-1}
+
+meldpatterns[0][meldnum]=[[3, "same"], [[i, cs1],[i, cs2], [i, cs3]], somescores, overallscore]
+meldnum++
+
+}
+}
+
+
+meldnum=0
+// deal with 4card runs
+for (i=0; i<11; i++)
+{
+
+for (j=0; j<4; j++)
+{
+cnum1=i
+cnum2=i+1
+cnum3=i+2
+cnum4=modulo(i+3, 13)
+
+somescores=[scoreonecard(somearray[cnum1][j]), scoreonecard(somearray[cnum2][j]), scoreonecard(somearray[cnum3][j]), scoreonecard(somearray[cnum4][j])]
+overallscore=arraytotal(somescores)
+if (overallscore<0) {overallscore=-1}
+
+meldpatterns[1][meldnum]=[[4, "run"], [[cnum1, j],[cnum2, j], [cnum3, j], [cnum4, j]], somescores, overallscore]
+meldnum++
+}
+}
+
+
+// deal with 4card same num
+for ( i=0; i<13; i++)
+{
+
+
+cs1=0
+cs2=1
+cs3=2
+cs4=3
+
+somescores=[scoreonecard(somearray[i][cs1]), scoreonecard(somearray[i][cs2]), scoreonecard(somearray[i][cs3]), scoreonecard(somearray[i][cs4])]
+overallscore=arraytotal(somescores)
+if (overallscore<0) {overallscore=-1}
+
+meldpatterns[1][meldnum]=[[4, "same"], [[i, cs1],[i, cs2], [i, cs3], [i, cs4]], somescores, overallscore]
+meldnum++
+
+}
+
+return meldpatterns
+}
+
+var moverecord=[]
+var hands=[[], []]
+var discardpile=[]
+var turnnum=0
+var currentplayer=1
+var opponentplayer=2
+var displayhands=[["blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank"],["blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank"]]
+var selections=[7, 7]  // difference
+var computermemory=3
+var gameunderway=false
+var unacceptablediscard=[-1, -1]
+
+function setmemory(level)
+{
+computermemory=level
+document.images["memory0"].src="unselected.gif"
+document.images["memory1"].src="unselected.gif"
+document.images["memory2"].src="unselected.gif"
+document.images["memory3"].src="unselected.gif"
+document.images["memory"+level].src="selected.gif"
+
+}
+
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+function shufflearray(somearray)
+{
+
+var temparray=somearray
+var shuffled=new Array()
+packsize=somearray.length
+var ran
+var i
+for (i=0; i<packsize; i++)
+{
+ran = randomnumber(temparray.length)
+shuffled[i] = temparray[ran-1]
+temparray = removeElement(ran-1, temparray)
+}
+return shuffled
+}
+
+function removeElement(index, somearray)
+{
+var beg=somearray.slice(0, index)
+var end=[]
+if (index+1 < somearray.length) {end = somearray.slice(index+1)}
+return beg.concat(end)
+}
+
+function changeplayer()
+{
+var messagetext
+currentplayer=opponentplayer
+opponentplayer=3-currentplayer
+if (currentplayer==1)
+{messagetext="My turn"}
+else
+{messagetext="Press discard or stock pile to take card"}
+messagedisplay(messagetext)
+}
+
+function changeplayerafterdeal()
+{
+var messagetext
+currentplayer=opponentplayer
+opponentplayer=3-currentplayer
+if (currentplayer==1)
+{messagetext="My turn"}
+else
+{messagetext="Arrange cards then press discard or stock pile to take card"}
+messagedisplay(messagetext)
+}
+
+function initialize()
+{
+thepack=[]
+moverecord=[]
+hands=[[], []]
+discardpile=[]
+turnnum=0
+displayhands=[["blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank"],["blank", "blank", "blank", "blank", "blank", "blank", "blank", "blank"]]
+selections=[7, 7]  // difference
+unacceptablediscard=[-1, -1]
+showselections()  // difference
+
+
+messagedisplay('')
+
+
+
+
+}
+
+function startnewgame(somedealer)
+{
+
+initialize()
+currentplayer=somedealer
+opponentplayer=3-somedealer
+createnewpack()
+thepack=shufflearray(shufflearray(thepack))
+gameunderway=true
+dealcards()
+initializedisplayhands()
+messagedisplay('')
+changeplayerafterdeal()
+selections[1]=-1
+showselections()
+showallhands()
+showdiscardpile()
+
+if (currentplayer==1)
+{
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout("carryoutcomputerturn()", 2000)
+}
+}
+
+
+function initializedisplayhands()
+{
+var thishand
+for (var i=0; i<2; i++)
+{
+thishand=hands[i]
+for (var j=0; j<thishand.length; j++)
+{
+
+insertdisplayhand(i, thishand[j])
+}
+}
+}
+
+function insertdisplayhand(someindex, somecard)
+{
+
+var blankindex=-1
+for (var i=0; i<displayhands[someindex].length; i++)
+{
+
+if ((blankindex == -1) && (displayhands[someindex][i] == "blank")) {blankindex = i}
+}
+displayhands[someindex][blankindex]=somecard
+}
+
+
+function showallhands()
+{
+var thishand
+for (var i=0; i<2; i++)
+{
+thishand=displayhands[i]
+for (var j=0; j<thishand.length; j++)
+{
+
+displayonecard(i+1, j, displayhands[i][j])
+}
+}
+}
+
+function showselections()
+{
+
+
+
+
+
+for (var i=1; i<2; i++)
+{
+for (var j=0; j<8; j++)
+{
+if (selections[i]== j)
+{
+var somecard=displayhands[1][j]
+changetextvalue(('card'+2)+j, imageforselected(somecard))
+
+}
+
+
+}
+}
+}
+
+
+
+
+
+function showdiscardpile()
+{
+if (discardpile.length>0)
+{
+var somecard = discardpile[0]
+}
+else
+{
+somecard='emptydiscard'
+
+}
+changetextvalue('discard', imagefor(somecard))
+}
+
+
+showcomputercards=false
+// difference - next function is new
+function setcarddisplay(someval)
+{
+if (someval==0) {showcomputercards=false; document.playform.carddisplay0.src='selected.gif'; document.playform.carddisplay1.src='unselected.gif'} else {showcomputercards=true; document.playform.carddisplay0.src='unselected.gif'; document.playform.carddisplay1.src='selected.gif'}
+showallhands()
+}
+
+var autoselectpick=0
+function setautopick(someval)
+{
+if (someval==0) {autoselectpick=0; document.playform.autoselectpick0.src='selected.gif'; document.playform.autoselectpick1.src='unselected.gif'} else {autoselectpick=1; document.playform.autoselectpick0.src='unselected.gif'; document.playform.autoselectpick1.src='selected.gif'}
+}
+
+function flipcomputercards()
+{
+if (showcomputercards==true) {showcomputercards=false} else {showcomputercards=true}
+showallhands()
+}
+
+function displayonecard(someplayer, somepos, somecard)
+{
+var somepic
+if (someplayer==1 && showcomputercards==false && somecard != "blank")
+{
+somepic='back'
+}
+else
+{
+somepic=somecard
+}
+changetextvalue(('card'+someplayer)+somepos, imagefor(somepic))
+
+
+}
+
+function cardtextdesc(somenum, somesuit)
+{
+var numdesc
+somenum=somenum+1
+numdesc=somenum
+if (somenum == 1) numdesc="Ace"
+if (somenum == 11) numdesc="Jack"
+if (somenum == 12) numdesc="Queen"
+if (somenum == 13) numdesc="King"
+var suitdesc
+if (somesuit == 0) {suitdesc = "Hearts"}
+if (somesuit == 1) {suitdesc = "Clubs"}
+if (somesuit == 2) {suitdesc = "Diamonds"}
+if (somesuit == 3) {suitdesc = "Spades"}
+return numdesc+' '+suitdesc
+
+}
+
+function picturedesc(somepos, somecard)
+{
+if (somecard=="blank") {return "blank"}
+else
+{
+var numdesc = somecard[0]+1
+if (numdesc == 1) numdesc="ace"
+if (numdesc == 11) numdesc="jack"
+if (numdesc == 12) numdesc="queen"
+if (numdesc == 13) numdesc="king"
+var suitdesc = somecard[1]
+var suitcolour = "black"
+if (suitdesc == 0) {suitdesc = "hearts"; suitcolour = "red"}
+if (suitdesc == 1) {suitdesc = "clubs"; suitcolour = "black"}
+if (suitdesc == 2) {suitdesc = "diamonds"; suitcolour = "red"}
+if (suitdesc == 3) {suitdesc = "spades"; suitcolour = "black"}
+
+if (somepos=="top") {return suitcolour+numdesc}
+else
+{return suitdesc}
+
+}
+
+}
+
+
+function handindex(someplayer)
+{
+return someplayer-1
+
+}
+
+function tailarray(somearray)
+{
+return somearray.slice(1, somearray.length)
+}
+
+function headarray(somearray)
+{
+return somearray[0]
+}
+
+function addhead(someitem, somearray)
+{
+return [someitem].concat(somearray)
+}
+
+
+function dealcards()
+{
+restartconfirmationrequired=1
+var somecard
+for (var i=0; i<7; i++)
+{
+somecard=headarray(thepack)
+hands[handindex(opponentplayer)]=addhead(headarray(thepack), hands[handindex(opponentplayer)])
+thepack=tailarray(thepack)
+notemove(turnnum, currentplayer, 4, opponentplayer, somecard)
+
+somecard=headarray(thepack)
+hands[handindex(currentplayer)]=addhead(headarray(thepack), hands[handindex(currentplayer)])
+thepack=tailarray(thepack)
+notemove(turnnum, currentplayer, 4, currentplayer, somecard)
+
+
+}
+// somecard=headarray(thepack)
+// hands[handindex(opponentplayer)]=addhead(headarray(thepack), hands[handindex(opponentplayer)])
+// thepack=tailarray(thepack)
+// notemove(turnnum, currentplayer, 4, opponentplayer, somecard)
+
+somecard=headarray(thepack)
+discardpile=addhead(headarray(thepack), discardpile)
+thepack=tailarray(thepack)
+notemove(turnnum, currentplayer, 4, 3, somecard)
+
+turnnum++
+
+
+}
+
+
+function notemove(someturn, someplayer, somesource, somedestination, somecard)
+{
+
+moverecord=moverecord.concat([[someturn, someplayer, somesource, somedestination, somecard]])
+}
+
+
+
+
+
+
+
+
+function cardmove(someplayer, somedirection, someindex)
+{
+var thisplayer=someplayer-1
+var thishand=displayhands[thisplayer]
+var thiscard=thishand[someindex]
+var swapindex=someindex+somedirection
+var swapcard=thishand[swapindex]
+thishand[someindex]=swapcard
+thishand[swapindex]=thiscard
+displayhands[thisplayer]=thishand
+showallhands()
+}
+
+var leftright='left'
+function presscard(someindex)
+{
+if (currentplayer==2)
+{
+var selectedindex=selections[1]
+var someplayerhand=displayhands[1]
+if (selectedindex>=0)
+{
+var somedisplayhand=[]
+for (var i=0; i<8; i++)
+{
+if (i==someindex)
+{
+if (someindex==selectedindex)
+{
+somedisplayhand=somedisplayhand.concat([someplayerhand[selectedindex]])
+
+}
+else
+{
+if (leftright=='left')
+ {
+ somedisplayhand=somedisplayhand.concat([someplayerhand[selectedindex], someplayerhand[i]])
+ }
+ else
+ {
+ somedisplayhand=somedisplayhand.concat([someplayerhand[i], someplayerhand[selectedindex]])
+ }
+}
+}
+else
+{
+if (i!=selectedindex)
+{
+somedisplayhand=somedisplayhand.concat([someplayerhand[i]])
+}
+}
+}
+displayhands[1]=somedisplayhand
+squashplayerhand()
+}
+else
+{
+if (someindex==7 && displayhands[1][7]=='blank')
+{return}
+selectCard(2, someindex)
+
+}
+}
+}
+
+function squashplayerhand()
+{
+var somedisplayhand=displayhands[1]
+// next squash hand up (remove blanks)
+var somenewplayerhand=[]
+for (var i=0; i<somedisplayhand.length; i++)
+{
+if (somedisplayhand[i]!='blank')
+{
+somenewplayerhand=somenewplayerhand.concat([somedisplayhand[i]])
+}
+}
+// add on a blank in case not 8
+somenewplayerhand=somenewplayerhand.concat(['blank'])
+//
+displayhands[1]=[]
+for (var i=0; i<8; i++)
+{
+displayhands[1][i]=somenewplayerhand[i]
+}
+
+
+selections[1]=-1
+showallhands()
+showselections()
+}
+
+function selectCard(someplayer, someindex)
+{
+
+selections[handindex(someplayer)]=someindex
+
+showselections()
+}
+
+function moveselected(someplayer, somedirection)
+{
+var thisindex=selections[handindex(someplayer)]
+var potentialindex=thisindex+somedirection
+if (potentialindex>-1 && potentialindex<8)
+{
+cardmove(someplayer, somedirection, selections[handindex(someplayer)])
+selectCard(someplayer, potentialindex)
+}
+}
+
+function discardselected(someplayer)
+{
+if (runcheck()==true)
+{
+var thisplayer=handindex(someplayer)
+if (gameunderway==true && currentplayer==someplayer && hands[thisplayer].length==8 && selections[thisplayer]>=0)
+{
+var thisindex=selections[thisplayer]
+var thiscard=displayhands[thisplayer][thisindex]
+if (equalcards(thiscard, unacceptablediscard)==false)
+{
+discardpile=addhead(thiscard, discardpile)
+hands[thisplayer]=removeonecard(thiscard, hands[thisplayer])
+displayhands[thisplayer]=discardonecard(thiscard, displayhands[thisplayer])
+showallhands()
+showdiscardpile()
+notemove(turnnum, someplayer, someplayer, 3, thiscard)
+unacceptablediscard=[-1, -1]
+squashplayerhand()
+checktocontinue()
+}
+else
+{
+messagedisplay('Card selected from discard pile - discard not allowed')
+selections[1]=-1
+showallhands()
+showselections()
+}
+}
+}
+}
+
+function discardcomputerselection(thisindex)
+{
+var thisplayer=0
+var thiscard=hands[thisplayer][thisindex]
+discardpile=addhead(thiscard, discardpile)
+hands[thisplayer]=removeonecard(thiscard, hands[thisplayer])
+displayhands[thisplayer]=discardonecard(thiscard, displayhands[thisplayer])
+showallhands()
+showdiscardpile()
+notemove(turnnum, 1, 1, 3, thiscard)
+checktocontinue()
+
+}
+
+function removeonecard(somecard, somearray)
+{
+var index=ithitem(somecard, somearray)
+
+
+return removeElement(index, somearray)
+
+}
+
+function discardonecard(somecard, somearray)
+{
+var index=ithitem(somecard, somearray)
+
+var beg=somearray.slice(0, index)
+var end=[]
+if (index+1 < somearray.length) {end = somearray.slice(index+1)}
+return beg.concat(["blank"].concat(end))
+
+}
+
+function ithitem(someitem, somearray)
+{
+var someindex=-1
+for (var i=0; i<somearray.length; i++)
+{
+if (somearray[i][0]==someitem[0] && somearray[i][1]==someitem[1])
+{
+someindex=i
+}
+}
+return someindex
+}
+
+function pressdiscard()
+{
+var thisplayer=handindex(currentplayer)
+if (gameunderway==true && hands[thisplayer].length == 7)
+{
+selecttopdiscard()
+}
+else
+{
+discardselected(2)
+}
+}
+
+function selecttopdiscard()
+{
+var thisplayer=handindex(currentplayer)
+if (gameunderway==true && hands[thisplayer].length == 7)
+{
+var topcard=discardpile[0]
+hands[thisplayer]=hands[thisplayer].concat([topcard])
+insertdisplayhand(thisplayer, topcard)
+discardpile=tailarray(discardpile)
+notemove(turnnum, currentplayer, 3, currentplayer, topcard)
+unacceptablediscard=topcard
+if (discardpile.length > 0)
+{
+// note that this move reveals a new top card in the discard pile - assuming non-empty
+notemove(turnnum, currentplayer, 3, 3, discardpile[0])
+}
+
+
+showdiscardpile()
+if (currentplayer==2 && autoselectpick==1) {selections[1]=7}
+showallhands()
+showselections()
+
+if (currentplayer==2) {messagedisplay("Arrange cards then select card & press the discard pile")} // difference
+
+
+}
+}
+
+function selecttopstock()
+{
+
+
+var thisplayer=handindex(currentplayer)
+if (gameunderway==true && hands[thisplayer].length == 7)
+{
+var topcard=thepack[0]
+
+
+hands[thisplayer]=hands[thisplayer].concat([topcard])
+insertdisplayhand(thisplayer, topcard)
+
+thepack=tailarray(thepack)
+notemove(turnnum, currentplayer, 4, currentplayer, topcard)
+unacceptablediscard=[-1, -1]
+if (thepack.length == 0)
+{
+transferdiscardtopack()
+
+}
+
+if (currentplayer==2 && autoselectpick==1) {selections[1]=7}
+showallhands()
+showselections()
+if (currentplayer==2) {messagedisplay("Arrange cards then select card & press the discard pile")} // difference
+
+}
+}
+
+function transferdiscardtopack()
+{
+var bottomdiscardpack=tailarray(discardpile)
+thepack=shufflearray(shufflearray(bottomdiscardpack))
+discardpile=[headarray(discardpile)]
+for (var i=0; i<thepack.length; i++)
+{
+notemove(turnnum, currentplayer,3, 4, thepack[i])
+}
+alert("The last card in the stock pile was taken, so a new stockpile will be formed by taking and shuffling all the cards in the discard pile, except the top one.")
+}
+
+
+
+function messagedisplay(messagetext)
+{
+changetextvalue('statusmessage', messagetext)
+
+}
+
+function checktocontinue()
+{
+window.focus
+if (currentplayerwon()==true)
+{
+gameunderway=false
+var displaymessage=''
+if (currentplayer==1) {displaymessage='I win'} else {displaymessage='You win'}
+messagedisplay(displaymessage)
+var currentshowcomputercards=showcomputercards
+showcomputercards=true
+showallhands()
+showcomputercards=currentshowcomputercards
+restartconfirmationrequired=0
+}
+else
+{
+
+turnnum++
+changeplayer()
+if (currentplayer == 1)
+{
+
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout("carryoutcomputerturn()", 1000)
+
+
+
+}
+}
+}
+
+function currentplayerwon()
+{
+
+var currentstate
+currentstate=determinecardstatecurrentplayer()
+
+var handscore=findhandscore(currentstate)
+
+if (handscore[0]==7) {return true} else {return false}
+
+
+}
+
+
+var timer = null
+
+function computerselect(discardorstock)
+{
+var unavailablefordiscard=[]
+if (discardorstock=="stock") {selecttopstock()} else {unavailablefordiscard=[discardpile[0]]; selecttopdiscard()}
+
+computerdiscard(unavailablefordiscard)
+
+}
+
+function computerdiscard(unavailablefordiscard)
+{
+var currentstate=determinecardstate()
+if (discardpile.length>0)
+{
+var topdiscardcard=discardpile[0]
+currentstate[topdiscardcard[0]][topdiscardcard[1]] = 3 // inform computer of top discard card (no longer available)
+}
+for (var i=0; i<7; i++) // confirm computer's current hand in case not aware
+{
+currentstate[hands[0][i][0]][hands[0][i][1]] = 1
+}
+// difference - below looks crucial, including time completetimedcomputerdiscard
+// var cardtodiscard = determinecomputerdiscard(hands[0], unavailablefordiscard, currentstate)
+determinecomputerdiscard(hands[0], unavailablefordiscard, currentstate)
+}
+// timed
+function completetimedcomputerdiscard(cardtodiscard)
+{
+messagedisplay('I discard '+cardtextdesc(hands[0][cardtodiscard][0], hands[0][cardtodiscard][1])+'.')
+if (timer != null) {clearTimeout(timer)}
+var command='discardcomputerselection('+cardtodiscard+')'
+
+timer= setTimeout(command, 2000)
+
+}
+
+
+function carryoutcomputerturn()
+{
+
+var currentstate=determinecardstate()
+// alert(currentstate)
+var topdiscardcard=discardpile[0]
+currentstate[topdiscardcard[0]][topdiscardcard[1]] = 5 // inform computer of top discard card - available
+
+for (var i=0; i<7; i++) // and confirm computer's current hand in case not aware
+{
+currentstate[hands[0][i][0]][hands[0][i][1]] = 1
+}
+determinecomputerselection(topdiscardcard, currentstate)
+}
+// timed
+function completetimedcarryoutcomputerturn(discardorstock)
+{
+messagedisplay('I take from '+discardorstock+' pile')
+
+if (timer != null) {clearTimeout(timer)}
+var command='computerselect("'+discardorstock+'")'
+
+timer= setTimeout(command, 2000)
+}
+
+
+function determinecardstate()
+{
+
+var packstate=[]
+for (var cardnum=0; cardnum<13; cardnum++)
+{
+packstate[cardnum]=[]
+for (var suit=0; suit<4; suit++)
+{
+
+packstate[cardnum][suit]=4
+}
+}
+
+var turnmemory=0
+var turnrecord
+var turncard
+if (computermemory==0) {turnmemory=turnnum}
+if (computermemory==1) {turnmemory=turnnum-5}
+if (computermemory==2) {turnmemory=turnnum-20}
+if (computermemory==3) {turnmemory=0}
+for (var i=0; i<moverecord.length; i++)
+{
+turnrecord=moverecord[i]
+if (turnrecord[0] < turnmemory) {true} else
+{
+if (turnrecord[3] == 1) {packstate[turnrecord[4][0]][turnrecord[4][1]]=1} 
+if (turnrecord[3] == 2 && turnrecord[2] == 3) {packstate[turnrecord[4][0]][turnrecord[4][1]]=2} 
+if (turnrecord[3] == 3) {packstate[turnrecord[4][0]][turnrecord[4][1]]=3} 
+if (turnrecord[3] == 4) {packstate[turnrecord[4][0]][turnrecord[4][1]]=4} 
+
+}
+}
+return packstate
+
+}
+
+function determinecardstatecurrentplayer()
+{
+
+var packstate=[]
+for (var cardnum=0; cardnum<13; cardnum++)
+{
+packstate[cardnum]=[]
+for (var suit=0; suit<4; suit++)
+{
+
+packstate[cardnum][suit]=3
+}
+}
+
+var thishand=hands[currentplayer-1]
+
+for (var i=0; i<7; i++)
+{
+packstate[thishand[i][0]][thishand[i][1]]=1
+}
+
+
+return packstate
+}
+
+
+function displaycomputermemory(somepack)
+{
+var alerttext=''
+var carddesc=''
+var cardloc=0
+var cardlocdesc=''
+for (var cardnum=0; cardnum<13; cardnum++)
+{
+for (var suit=0; suit<4; suit++)
+{
+cardloc=somepack[cardnum][suit]
+if (cardloc != 4)
+{
+
+
+carddesc=cardtextdesc(cardnum, suit)
+if (cardloc == 1) {cardlocdesc='Computer, '}
+if (cardloc == 2) {cardlocdesc='Opponent, '}
+if (cardloc == 3) {cardlocdesc='Discard, '}
+
+alerttext=alerttext+' '+carddesc+': '+cardlocdesc
+
+}
+}
+}
+// alert(alerttext)
+}
+
+var decision
+var handscore
+function determinecomputerselection(topdiscardcard, thecurrentstate)
+{
+var currentstate=copypack(thecurrentstate)
+decision='stock'
+handscore=findhandscore(currentstate)
+var possibles=handscore[2]
+currentstate[topdiscardcard[0]][topdiscardcard[1]]=1
+
+bestscoreusingtopdiscard(hands[0], currentstate)
+}
+// timed
+function completetimeddeterminecomputerselection()
+{
+var handscore2=maxscore
+if (handscore2[0]>handscore[0]) {decision='discard'}
+if (handscore[0]>=4 && handscore[0]==handscore2[0] && handscore2[2].length > handscore[2].length) {decision='discard'}
+// so, if discard gives an increase in total score, select it
+// if current score 4 or above, select discard even if no overall increase in total, but it gives an increase in cards that can be selected to complete
+completetimedcarryoutcomputerturn(decision)
+}
+
+function cardtextdescs(somearray)
+{
+var sometext=''
+for (var i=0; i<somearray.length; i++)
+{
+sometext=sometext+', '+cardtextdesc(somearray[i][0], somearray[i][1])
+}
+return sometext
+}
+
+
+
+var discardable
+var newmax
+var thescorearray
+var maxscore
+var maxscorenum
+var theglobalcurrentstate
+var throwindex
+
+function bestscoreusingtopdiscard(handarray, currentstate)
+{
+discardable=handarray
+newmax=false
+thescorearray=[]
+maxscore=[0, [], [], 0, [], []]
+maxscorenum=0
+theglobalcurrentstate=currentstate
+
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout("completetimedbestscoreusingtopdiscard(0)", 1)
+
+}
+
+// timed
+function completetimedbestscoreusingtopdiscard(j)
+{
+var somecard
+var somescore
+var someoverallscore
+var thisscorenum
+var currentstate=theglobalcurrentstate
+if (j<discardable.length)
+{
+
+newmax=false
+somecard=discardable[j]
+
+someoverallscore=scorewithcardthrown(somecard, currentstate)
+
+thisscorenum=someoverallscore[0]*100000+1000*someoverallscore[2].length+someoverallscore[3]*100+someoverallscore[5].length
+if (thisscorenum>maxscorenum) {newmax=true}
+if (newmax==true) {maxscore=someoverallscore; throwindex=j; maxscorenum=thisscorenum}
+
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout("completetimedbestscoreusingtopdiscard("+(j+1)+")", 1)
+
+}
+else
+{
+somecard=discardable[throwindex]
+thescorearray=thescorearray.concat(['\n<BR>', cardtextdesc(somecard[0], somecard[1]), 'Score: ', maxscorenum, ' Cards: ', cardtextdescs(maxscore[2]), melddescs(maxscore[1])])
+
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout("completetimeddeterminecomputerselection()", 1)
+
+}
+}
+
+
+function melddescs(somearray)
+{
+var sometext=[]
+for (var i=0; i<somearray.length; i++)
+{
+sometext=sometext.concat(['<BR>', somearray[i][0][0], cardtextdescs(somearray[i][0][1]), somearray[i][1][0], cardtextdescs(somearray[i][1][1])])
+}
+return sometext
+}
+
+
+var topcombo
+var thehandarray
+var thecurrentstateglobal
+function determinecomputerdiscard(handarray, unavailablefordiscard, currentstate)
+{
+discardable=[]
+if (unavailablefordiscard.length==0) {discardable=handarray}
+else
+{
+for (var i=0; i<handarray.length; i++)
+{
+if (equalcards(unavailablefordiscard[0], handarray[i])==false) {discardable=discardable.concat([handarray[i]])}
+}
+}
+
+thehandarray=handarray
+thecurrentstateglobal=currentstate
+newmax=false
+thescorearray=[]
+maxscore=[0, 0, 0, 0]
+maxscorenum=0
+topcombo=[]
+
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout("completetimeddeterminecomputerdiscard(0)", 1)
+}
+
+// timed
+function completetimeddeterminecomputerdiscard(j)
+{
+var handarray=thehandarray
+var currentstate=copypack(thecurrentstateglobal)
+var somecard
+var somescore
+var someoverallscore
+var thisscorenum
+
+if (j<discardable.length)
+{
+newmax=false
+somecard=discardable[j]
+
+someoverallscore=scorewithcardthrown(somecard, currentstate)
+
+// alert([cardtextdescs([somecard]), someoverallscore[0], someoverallscore[2].length])
+thisscorenum=someoverallscore[0]*100000+1000*someoverallscore[2].length+someoverallscore[3]*100+someoverallscore[5].length
+if (thisscorenum>maxscorenum) {newmax=true}
+if (newmax==true) {topcombo=someoverallscore[1]; maxscore[0]=someoverallscore[0]; maxscore[1]=someoverallscore[2].length; maxscore[2]=someoverallscore[3]; maxscore[3]=someoverallscore[5].length; throwindex=j; maxscorenum=thisscorenum}
+// thescorearray=thescorearray.concat(['\n<BR>', cardtextdesc(somecard[0], somecard[1]), 'Score: ', thisscorenum, ' Cards: ', cardtextdescs(someoverallscore[2])])
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout("completetimeddeterminecomputerdiscard("+(j+1)+")", 1)
+}
+else
+{
+somecard=discardable[throwindex]
+var returnindex
+for (var k=0; k<handarray.length; k++)
+{
+if (equalcards(somecard, handarray[k])==true) {returnindex=k}
+}
+
+displayonetopcombo(topcombo, somecard)
+// alert(['Discard: ', cardtextdescs([somecard])])
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout("completetimedcomputerdiscard("+returnindex+")", 1)
+}
+}
+
+
+function displayonetopcombo(topcombo, thediscard)
+{
+var cardsinhand=hands[0]
+var begcarddisplay=[]
+var endcarddisplay=[]
+var incombosanddiscard=[]
+
+
+if (topcombo.length>0)
+{
+var allcombos=topcombo[0][0][1].concat(topcombo[0][1][1])
+
+
+for (var i=0; i<allcombos.length; i++)
+{
+if (ismember(allcombos[i], cardsinhand)==true)
+	{
+	begcarddisplay=begcarddisplay.concat([allcombos[i]])
+	}
+}
+// alert(['beg', begcarddisplay])
+incombosanddiscard=begcarddisplay.concat([thediscard])
+for (var j=0; j<cardsinhand.length; j++)
+{
+if (ismember(cardsinhand[j], incombosanddiscard)==false)
+	{
+	endcarddisplay=[cardsinhand[j]].concat(endcarddisplay)
+	}
+
+}
+// alert(['end', endcarddisplay])
+displayhands[0]= begcarddisplay.concat(endcarddisplay.concat([thediscard]))
+} // end if
+
+}
+
+
+
+function scorewithcardthrown(somecard, currentstate)
+{
+// alert(somecard)
+
+var somearray=copypack(currentstate)
+// alert([currentstate, somearray])
+somearray[somecard[0]][somecard[1]]=3
+// alert([currentstate, somearray])
+return findhandscore(somearray)
+
+}
+
+function copypack(somepack)
+{
+var someresult=[]
+for (var i=0; i<13; i++)
+{
+someresult[i]=[]
+for (var j=0; j<4; j++)
+{
+someresult[i][j]=somepack[i][j]
+}
+}
+return someresult
+}
+
+function findhandscore(somearray)
+{
+
+var handscorearray=createmeldpatterns(somearray)
+
+var sortedscoresarray=putscoresinbuckets(handscorearray)
+
+var combosarray=findmaxlegitcombos(sortedscoresarray)
+return combosarray
+}
+
+function putscoresinbuckets(somearray)
+{
+// buckets for scores of -1, 0, 1, 2, 3, (4) for 3- and 4-card melds
+var buckets=[[[], [], [], [], []], [[], [], [], [], [], []]]
+var somescorearray
+var sometotalscore
+for (var i=0; i<2; i++)
+{
+for (var j=0; j<somearray[i].length; j++)
+{
+somescorearray=somearray[i][j]
+sometotalscore=somescorearray[3]
+buckets[i][sometotalscore+1]=buckets[i][sometotalscore+1].concat([somescorearray])
+}
+
+}
+return buckets
+}
+
+function findmaxlegitcombos(sortedscoresarray)
+{
+
+var combopatterns=[[7, [[3, 4]]], [6, [[3, 3], [2, 4]]], [5, [[3, 2], [2, 3], [1, 4]]], [4, [[3, 1], [2, 2], [1, 3], [0, 4]]], [3, [[3, 0], [2, 1], [1, 2], [0, 3]]], [2, [[2, 0], [1, 1], [0, 2]]], [1, [[1, 0], [0, 1]]], [0, [[0, 0]]]]
+
+var totalscore = 0
+var scorepattern
+var patternarray
+var combosandrequired=[[], []]
+
+for (var sp=0; sp<combopatterns.length; sp++)
+{
+
+scorepattern=combopatterns[sp]
+totalscore=scorepattern[0]
+patternarray=scorepattern[1]
+
+combosandrequired=determinevalidscorecombos(totalscore, 1, sortedscoresarray, patternarray)
+
+
+if (combosandrequired[0].length>0) {break}  // break out of loop once you come across a non-empty set of valid combinations (as we're working down from 7)
+}
+var secondscore=totalscore-1
+var secondresult=[[], []]
+
+if (secondscore>-1) {secondresult=determinevalidscorecombos(secondscore, 2, sortedscoresarray, combopatterns[7-secondscore][1])}
+return [totalscore, combosandrequired[0], combosandrequired[1], secondscore, secondresult[0], secondresult[1]]
+}
+
+function determinevalidscorecombos(sometotal, someorder, sortedscoresarray, patternarray)
+{
+var index3
+var index4
+var array3
+var array4
+var combos=[]
+var required=[]
+for (var i=0; i<patternarray.length; i++)
+{
+index3=patternarray[i][0]+1
+index4=patternarray[i][1]+1
+array3=sortedscoresarray[0][index3]
+array4=sortedscoresarray[1][index4]
+combos=combos.concat(setofvalidcombos(sometotal, array3, array4))
+if (sometotal<3 && combos.length>0) { break}
+}
+
+if (combos.length>0)
+{
+required=setofuniquecards(combos)
+}
+return [combos, required]
+}
+
+function setofvalidcombos(sometotal, array3, array4)
+{
+var combos=[]
+var foundone=false
+for (var i=0; i<array3.length; i++)
+{
+for (var j=0; j<array4.length; j++)
+{
+if (havenooverlaps(array3[i][0][1], array3[i][1], array4[j][0][1], array4[j][1]) == true) // checks to see if cards in melds overlap
+{
+
+combos=combos.concat([[array3[i], array4[j]]])
+foundone=true
+
+
+}
+if (sometotal<3 && foundone==true) { break}
+
+
+}
+if (sometotal<3 && foundone==true) {break}
+
+}
+return combos
+}
+
+function havenooverlaps(type1, array1, type2, array2)
+// type1 and type2 will be either 'same' or 'run'
+{
+var suit1=array1[0][1]
+var suit2=array2[0][1]
+var first1=array1[0][0]
+var first2=array2[0][0]
+nooverlapfound=true
+if (type1=='run' && type2=='run' && suit1 == suit2)
+{
+if (first1+2>=first2 && first1 <= first2+3) {nooverlapfound=false}
+if (first1==11 && first2==0) {nooverlapfound=false} // deals with Q-A 3-meld
+if (first1==0 && first2==10) {nooverlapfound=false} // deals with J-A 4-meld
+}
+
+
+if (type1=='same' && type2=='same' && first1 == first2)
+{nooverlapfound=false}
+
+
+if (type1=='run' && type2=='same')
+{
+if (first1 <= first2 && first1+2 >= first2) {nooverlapfound=false}
+if (first1==11 && first2==0) {nooverlapfound=false} // deals with Q-A 3-meld and 4 Aces
+}
+
+
+if (type1=='same' && type2=='run')
+{
+secondsuit=array1[1][1]
+thirdsuit=array1[2][1]
+if (suit1==suit2 || secondsuit == suit2 || thirdsuit== suit2)
+{
+if (first2 <= first1 && first2+3 >= first1) {nooverlapfound=false}
+if (first2==10 && first1==0) {nooverlapfound=false} // deals with J-A 4-meld and 3 Aces
+}
+}
+
+return nooverlapfound
+} // end function
+
+function copylist(somepairs)
+{
+var somereturn=[]
+for (var i=0; i<somepairs.length; i++)
+{
+somereturn[i]=[somepairs[i][0], somepairs[i][1]]
+}
+return somereturn
+}
+
+function sortcards()
+{
+if (currentplayer==1) {return}
+var somehand=copylist(hands[1])
+var somegoods=[]
+var someresult
+for (var i=4; i>=2; i--)
+{
+someresult=findsamerank(somehand, i)
+somegoods=somegoods.concat(someresult[0])
+somehand=someresult[1]
+someresult=findruns(somehand, i)
+somegoods=somegoods.concat(someresult[0])
+somehand=someresult[1]
+someresult=findrunsaceshigh(somehand, i)
+somegoods=somegoods.concat(someresult[0])
+somehand=someresult[1]
+
+}
+hands[1]=somegoods.concat(somehand.sort(ranksort))
+displayhands[1]=copylist(hands[1])
+if (displayhands[1].length==7) {displayhands[1]=displayhands[1].concat(['blank'])}
+selections[1]=-1
+showallhands()
+showselections()
+}
+
+function findsamerank(somecards, somenum)
+{
+var somesort=somecards.sort(ranksort)
+var somefound=[]
+var someremainder=[]
+var somerank=-1
+var somegroup=[]
+for (var i=0; i<somesort.length; i++)
+{
+if (somesort[i][0]==somerank)
+{
+somegroup=somegroup.concat([somesort[i]])
+if (somegroup.length==somenum)
+{
+somefound=somefound.concat(somegroup)
+somegroup=[]
+somerank=-1
+}
+}
+else
+{
+somerank=somesort[i][0]
+someremainder=someremainder.concat(somegroup)
+somegroup=[somesort[i]]
+}
+}
+
+return [somefound, someremainder.concat(somegroup)]
+
+}
+
+
+
+function findrunsaceshigh(somecards, somenum)
+{
+var someresult=findruns(replaceranks(somecards, 0, 13), somenum)
+return [replaceranks(someresult[0], 13, 0), replaceranks(someresult[1], 13, 0)]
+}
+
+function replaceranks(somecards, oldnum, newnum)
+{
+var someresult=[]
+for (var i=0; i<somecards.length; i++)
+{
+if (somecards[i][0]==oldnum) {someresult[i]=[newnum, somecards[i][1]]} else {someresult[i]=somecards[i]}
+}
+return someresult
+}
+
+function findruns(somecards, somenum)
+{
+
+var somesort=somecards.sort(suitsort)
+var somefound=[]
+var someremainder=[]
+var somerank=-2
+var somesuit=-1
+var somegroup=[]
+for (var i=0; i<somesort.length; i++)
+{
+if (somesort[i][1]==somesuit && somesort[i][0]==somerank+1)
+{
+somegroup=somegroup.concat([somesort[i]])
+somerank++
+if (somegroup.length==somenum)
+{
+somefound=somefound.concat(somegroup)
+somegroup=[]
+somerank=-2
+somesuit=-1
+}
+}
+else
+{
+somerank=somesort[i][0]
+somesuit=somesort[i][1]
+someremainder=someremainder.concat(somegroup)
+somegroup=[somesort[i]]
+}
+}
+return [somefound, someremainder.concat(somegroup)]
+
+}
+
+
+function ranksort(a, b)
+{
+return a[0]-b[0]
+}
+
+function suitsort(a, b)
+{
+return (100*a[1]+a[0])-(100*b[1]+b[0])
+}
+
+/*
+function setofvalidcombos(array3, array4)
+{
+var combos=[]
+for (var i=0; i<array3.length; i++)
+{
+for (var j=0; j<array4.length; j++)
+{
+if (havenooverlaps(array3[i][1], array4[j][1]) == true) // checks to see if cards in melds overlap
+{
+
+combos=combos.concat([[array3[i], array4[j]]])
+
+
+}
+}
+
+}
+return combos
+}
+
+function havenooverlaps(array1, array2)
+{
+nooverlapfound=true
+for (var i=0; i<array1.length; i++)
+{
+for (var j=0; j<array2.length; j++)
+{
+if (equalcards(array1[i], array2[j])==true) {nooverlapfound=false; break}
+}
+
+}
+return nooverlapfound
+}
+
+*/
+function equalcards(pair1, pair2)
+{
+if (pair1[0]==pair2[0] && pair1[1]==pair2[1]) {return true} else {return false}
+}
+
+function setofuniquecards(combos)
+{
+var allcards=[]
+for (var i=0; i<combos.length; i++)
+{
+allcards=allcards.concat(availablecardsin(combos[i][0]).concat(availablecardsin(combos[i][1])))
+
+}
+allcards=removeduplicates(allcards)
+return allcards
+}
+ 
+function availablecardsin(somescorearray)
+{
+var cardsinmeld=somescorearray[1]
+var scoreforcardsinmeld=somescorearray[2]
+var someresult=[]
+for (var i=0; i<cardsinmeld.length; i++)
+{
+if (scoreforcardsinmeld[i]==0) {someresult=someresult.concat([cardsinmeld[i]])}
+}
+return someresult
+}
+ 
+function removeduplicates(somearray)
+{
+var array2=[]
+for (var i=0; i<somearray.length; i++)
+{
+// alert([somearray[i], array2, ismember(somearray[i], array2)])
+if (ismember(somearray[i], array2)==false) {array2=array2.concat([somearray[i]])}
+}
+return array2
+
+}
+
+function ismember(someitem, somearray)
+{
+var someresult=false
+for (var i=0; i<somearray.length; i++)
+{
+if (equalcards(somearray[i], someitem)==true) {someresult=true; break}
+
+}
+return someresult
+
+}
+
+var thedivs=['maingame', 'more']
+function displaydiv(somediv)
+{
+for (var i=0; i<thedivs.length; i++)
+{
+document.getElementById(thedivs[i]).style.display = 'none'
+
+
+}
+document.getElementById(thedivs[somediv]).style.display = 'inline'
+handleclickproblem()
+
+}
+
+
+//  End -->
+
+</SCRIPT>
+<script language="Javascript">
+
+function imageforselected(somecard)
+{
+var somenum=somecard[0]+1
+if (somenum==1) {somenum='A'}
+if (somenum==11) {somenum='J'}
+if (somenum==12) {somenum='Q'}
+if (somenum==13) {somenum='K'}
+
+var somesuit=somecard[1]
+var somesuitpic
+if (somesuit==0) {somesuitpic="hearts.gif"}
+if (somesuit==1) {somesuitpic="clubs.gif"}
+if (somesuit==2) {somesuitpic="diamonds.gif"}
+if (somesuit==3) {somesuitpic="spades.gif"}
+var someborder=Math.floor(scalef*3)
+var someinnerheight=Math.floor(scalef*40)-2*someborder
+var someinnerwidth=Math.floor(scalef*20)-2*someborder
+return '<div style="position:relative;top:0px;left:0px;width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*40)+'px;background-color:purple"><div style="position:absolute;top:'+someborder+'px;left:'+someborder+'px;width:'+someinnerwidth+'px;height:'+someinnerheight+'px;background-color:white"></div><table style="position:absolute;top:0px;left:0px" align=center border=0 cellpadding=0 cellspacing=0><tr><td style="text-align:center;font-weight:bold;font-size:'+Math.floor(scalef*14)+'px" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">'+somenum+'</td></tr><tr><td style="text-align:center;font-weight:bold;font-size:'+Math.floor(scalef*14)+'px" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"><table cellspacing=0 border=0 cellpadding=0 align=center valign=middle width='+Math.floor(scalef*16)+' height='+Math.floor(scalef*16)+'><tr><td><img width='+Math.floor(scalef*16)+' height='+Math.floor(scalef*16)+' style="display:block" src="'+somesuitpic+'"></td></tr></table></td></tr></table></div>'
+
+
+}
+
+function imagefor(somecard)
+{
+if (somecard=='back') {return '<table align=center border=0 cellpadding=0 cellspacing=0><tr><td><img src="backtop.gif" style="display:block"   width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td></tr><tr><td><img src="backbottom.gif" style="display:block"   width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td></tr></table>'}  
+
+if (somecard=='blank') {return '<table align=center border=0 cellpadding=0 cellspacing=0><tr><td width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">&nbsp;</td></tr><tr><td width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">&nbsp;</td></tr></table>'}
+if (somecard=='emptydiscard') {return '<table align=center border=0 cellpadding=0 cellspacing=0><tr><td width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" style="color:white;background-color:black;text-align:center" valign=middle>&nbsp;</td></tr><tr><td width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" style="background-color:black">&nbsp;</td></tr></table>'}
+var somenum=somecard[0]+1
+if (somenum==1) {somenum='A'}
+if (somenum==11) {somenum='J'}
+if (somenum==12) {somenum='Q'}
+if (somenum==13) {somenum='K'}
+
+var somesuit=somecard[1]
+var somesuitpic
+if (somesuit==0) {somesuitpic="hearts.gif"}
+if (somesuit==1) {somesuitpic="clubs.gif"}
+if (somesuit==2) {somesuitpic="diamonds.gif"}
+if (somesuit==3) {somesuitpic="spades.gif"}
+
+return '<table align=center border=0 cellpadding=0 cellspacing=0><tr><td style="text-align:center;background-color:white;font-weight:bold;font-size:'+Math.floor(scalef*14)+'px" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">'+somenum+'</td></tr><tr><td style="text-align:center;background-color:white;font-weight:bold;font-size:'+Math.floor(scalef*14)+'px" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"><table cellspacing=0 border=0 cellpadding=0 align=center valign=middle width='+Math.floor(scalef*16)+' height='+Math.floor(scalef*16)+'><tr><td><img width='+Math.floor(scalef*16)+' height='+Math.floor(scalef*16)+' style="display:block" src="'+somesuitpic+'"></td></tr></table></td></tr></table>'
+}
+documentwrite('<div style="position:relative;left:0px;top:0px;height:100%;width:100%"><div style="position:absolute;left:0px;top:'+Math.floor(scalef*2)+'px;height:'+Math.floor(scalef*235)+'px;width:100%; background-image:url(blank.gif)">')
+
+
+documentwrite('<div style="vertical-align:top">')
+documentwrite('<form name="playform">')
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*2)+'px;display:block"></div>')
+documentwrite('<div id="maingame" style="display:inline"><center>')
+documentwrite('<table border=0 cellspacing=0 cellpadding=1 align=center valign=top >')
+documentwrite('<tr><td colspan=8 align=center style="height:'+(scalef*3)+'px"></td></tr>')
+documentwrite('<tr>')
+for (var i=0; i<8; i++)
+{
+documentwrite('<td align=center style=" text-align:center; "  width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*40)+'" id="card1'+i+'" >'+imagefor('back')+'</td>')
+}
+documentwrite('</tr>')
+documentwrite('<tr><td colspan=8 align=center style="height:'+(scalef*4)+'px"></td></tr>')
+documentwrite('<tr><td colspan=2 height=5 style="text-align:center"></td><td colspan=4 style=" text-align:center; "><table border=1 cellpadding=0 cellspacing=0 align=center><tr><td style="background-image:url(buttonbg.jpg);width:'+Math.floor(scalef*36)+'px;text-align:center" onClick="showadspecial(1)">Deal</td></tr></table></td><td></td><td></td></tr>')
+documentwrite('<tr><td colspan=8 align=center style="height:'+(scalef*5)+'px"></td></tr>')
+// documentwrite('<tr><td colspan=2 align=center ><table align=center border=0 cellpadding=0 cellspacing=0 style=" text-align:center; " ><tr><td id="discard"   width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*40)+'"  onClick="pressdiscard()" >'+imagefor('emptydiscard')+'</td></tr></table></td><td colspan=4 align=center><table border=1 cellpadding=0 cellspacing=0 align=center style="margin-left:auto;margin-right:auto"><tr><td style="background-image:url(buttonbg.jpg); width:'+Math.floor(scalef*36)+'px;text-align:center" onClick="sortcards()">Sort</td></tr></table></td><td colspan=2 align=center ><table align=center border=0 cellspacing=0 cellpadding=0 style=" text-align:center; "  ><tr><td  width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*40)+'" id="stock"   onClick="selecttopstock()">'+imagefor('back')+'</td></tr></table></td></tr>')
+documentwrite('<tr><td colspan=2 align=center ><table align=center border=0 cellpadding=0 cellspacing=0 style=" text-align:center; " ><tr><td id="discard"   width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*40)+'"  onClick="pressdiscard()" >'+imagefor('emptydiscard')+'</td></tr></table></td><td colspan=4 align=center><table border=0 cellspacing=0 cellpadding=0 align=center width=100% height=100%><tr><td height=*><table border=1 cellpadding=0 cellspacing=0 align=center style="margin-left:auto;margin-right:auto"><tr><td style="background-image:url(buttonbg.jpg); width:'+Math.floor(scalef*36)+'px;text-align:center" onClick="displaydiv(1)">More</td></tr></table></td></tr><tr><td height='+Math.floor(scalef*10)+'></td></tr><tr><td height=*><table border=1 cellpadding=0 cellspacing=0 align=center style="margin-left:auto;margin-right:auto"><tr><td style="background-image:url(buttonbg.jpg); width:'+Math.floor(scalef*36)+'px;text-align:center" onClick="sortcards()">Sort</td></tr></table></td></tr></table></td><td colspan=2 align=center ><table align=center border=0 cellspacing=0 cellpadding=0 style=" text-align:center; "  ><tr><td  width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*40)+'" id="stock"   onClick="selecttopstock()">'+imagefor('back')+'</td></tr></table></td></tr>')
+documentwrite('<tr><td colspan=8 align=center style="height:'+(scalef*5)+'px"></td></tr>')
+documentwrite('<tr><td colspan=2 height=5 style="text-align:center"></td><td colspan=4 style=" text-align:center; "><table border=1 cellpadding=0 cellspacing=0 align=center><tr><td style="background-image:url(buttonbg.jpg);width:'+Math.floor(scalef*36)+'px;text-align:center" onClick="showadspecial(2)">Deal</td></tr></table></td><td></td><td></td></tr>')
+documentwrite('<tr><td colspan=8 align=center style="height:'+(scalef*4)+'px"></td></tr>')
+documentwrite('<tr>')
+for (var i=0; i<8; i++)
+{
+documentwrite('<td align=center style=" text-align:center; "  width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*40)+'" id="card2'+i+'"  onClick="presscard('+i+')">'+imagefor('blank')+'</td>')
+}
+documentwrite('</tr>')
+documentwrite('<tr><td colspan=8 align=center style="height:'+(scalef*3)+'px"></td></tr>')
+
+/*
+documentwrite('<tr>')
+
+for (var i=0; i<8; i++)
+{
+documentwrite('<td style=" text-align:center; height:'+(scalef*4)+'px" id= "selection2'+i+'"    onClick="presscard('+i+')"><img  height="'+Math.floor(scalef*4)+'" name = "selection2'+i+'" src="unselectedcard.gif" ></td>')
+}
+documentwrite('</tr>')
+*/
+/*
+documentwrite('<tr><td colspan=2 ></td><td colspan=4 style=" text-align:center; "><img width="'+Math.floor(scalef*15)+'" height="'+Math.floor(scalef*15)+'"  border=0 src="left.gif" onClick="moveselected(2, -1)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img width="'+Math.floor(scalef*15)+'" height="'+Math.floor(scalef*15)+'" border=0 src="right.gif" onClick="moveselected(2, 1)"></td><td colspan=2 ></td></tr>')
+
+documentwrite('<tr><td colspan=8 align=center style="height:'+(scalef*4)+'px"></td></tr>')
+*/
+documentwrite('<tr><td colspan=8 align=center><div id="statusmessage" style="background-color:lemonchiffon;border:1px solid gray;width:'+Math.floor(scalef*160)+'px;height:'+Math.floor(scalef*25)+'px;overflow: hidden"></div></td></tr>')
+documentwrite('<tr><td colspan=8 align=center style="height:'+(scalef*4)+'px"></td></tr>')
+documentwrite('</table>')
+documentwrite('</center></div>')
+
+
+
+documentwrite('<div id="more" style="display:none;width:100%"><table border=0 cellpadding=2 width=100%><tr><td>')
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*5)+'px;display:block"></div>')
+
+documentwrite('<table border=0 width=100% cellpadding=1 bgcolor=silver>')
+documentwrite('<tr><td align=left><table border=1 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*45)+'px;align:left"><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="displaydiv(0)">Back</td></tr></table></td></tr>')
+documentwrite('<tr><td align=left valign=center"><br><span style="font-weight:bold">Computer Memory Level:</span></td></tr>')
+documentwrite('<tr><td ><table cellspacing=0 cellpadding=0 border=1 ><tr>')
+documentwrite('<td width="'+Math.floor(scalef*20)+'" style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setmemory(0)">&nbsp;1&nbsp;</td>')
+documentwrite('<td width="'+Math.floor(scalef*20)+'" style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setmemory(1)">&nbsp;2&nbsp;</td>')
+documentwrite('<td width="'+Math.floor(scalef*20)+'" style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setmemory(2)">&nbsp;3&nbsp;</td>')
+documentwrite('<td width="'+Math.floor(scalef*20)+'" style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setmemory(3)">&nbsp;4&nbsp;</td>')
+documentwrite('</tr><tr>')
+documentwrite('<td width="'+Math.floor(scalef*20)+'" style=" text-align:center; "><img width="'+Math.floor(scalef*10)+'" height="'+Math.floor(scalef*10)+'"  name="memory0" src="unselected.gif" onClick="setmemory(0)"></td>')
+documentwrite('<td width="'+Math.floor(scalef*20)+'" style=" text-align:center; "><img width="'+Math.floor(scalef*10)+'" height="'+Math.floor(scalef*10)+'"  name="memory1" src="unselected.gif" onClick="setmemory(1)"></td>')
+documentwrite('<td width="'+Math.floor(scalef*20)+'" style=" text-align:center; "><img width="'+Math.floor(scalef*10)+'" height="'+Math.floor(scalef*10)+'"  name="memory2" src="unselected.gif" onClick="setmemory(2)"></td>')
+documentwrite('<td width="'+Math.floor(scalef*20)+'" style=" text-align:center; "><img width="'+Math.floor(scalef*10)+'" height="'+Math.floor(scalef*10)+'"  name="memory3" src="unselected.gif" onClick="setmemory(3)"></td>')
+documentwrite('</tr></table></td></tr>')
+documentwrite('<tr><td align=left valign=center "><span style="font-weight:bold">Computer Card Display:</span></td></tr>')
+documentwrite('<tr><td align=left valign=center>')
+documentwrite('<table cellspacing=0 cellpadding=0 border=1>')
+documentwrite('<tr>')
+documentwrite('<td width="'+Math.floor(scalef*75)+'" style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setcarddisplay(0)">Hide cards</td>')
+documentwrite('<td width="'+Math.floor(scalef*75)+'" style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setcarddisplay(1)">Show cards</td>')
+documentwrite('</tr><tr>')
+documentwrite('<td style=" text-align:center; "><img width="'+Math.floor(scalef*10)+'" height="'+Math.floor(scalef*10)+'"  name="carddisplay0" src="unselected.gif" onClick="setcarddisplay(0)"></td>')
+documentwrite('<td style=" text-align:center; "><img width="'+Math.floor(scalef*10)+'" height="'+Math.floor(scalef*10)+'"  name="carddisplay1" src="unselected.gif" onClick="setcarddisplay(1)"></td></tr></table></td></tr>')
+documentwrite('<tr><td align=left valign=center "><span style="font-weight:bold">Auto-select on pick:</span></td></tr>')
+documentwrite('<tr><td align=left valign=center>')
+documentwrite('<table cellspacing=0 cellpadding=0 border=1>')
+documentwrite('<tr>')
+documentwrite('<td width="'+Math.floor(scalef*75)+'" style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setautopick(0)">Off</td>')
+documentwrite('<td width="'+Math.floor(scalef*75)+'" style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setautopick(1)">On</td>')
+documentwrite('</tr><tr>')
+documentwrite('<td style=" text-align:center; "><img width="'+Math.floor(scalef*10)+'" height="'+Math.floor(scalef*10)+'"  name="autoselectpick0" src="unselected.gif" onClick="setautopick(0)"></td>')
+documentwrite('<td style=" text-align:center; "><img width="'+Math.floor(scalef*10)+'" height="'+Math.floor(scalef*10)+'"  name="autoselectpick1" src="selected.gif" onClick="setautopick(1)"></td></tr></table></td></tr></table></td></tr></table></div></form></div></div></div>')
+setautopick(0)
+</script>
+
+</div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#objectives">Overview and objectives</a><br><a href="#playing">Playing the game</a><br><a href="#newgame">Starting a new game</a><br><a href="#memory">Computer memory and decisions</a><br><a href="#terms">Terms of use</a><br>')}
+</script>
+
+
+
+<p><a name="intro"></a>
+This Rummy game is designed to be played by one person playing against the computer.
+<p>
+For those familiar with Rummy, this is a 7-card version (rather than the usual 10) with the following characteristics:
+
+<ul>
+<li>the game is not played for points - just to be the first to achieve a 3-card and a 4-card meld;
+<li>no melds are shown until the end of the game;
+<li>Ace counts as high or low, but runs cannot include high and low.  i.e. A, 2, 3 or Q, K, A are acceptable melds, but K, A, 2 is not;
+<li>a card selected from the top of the discard pile cannot immediately be discarded;
+<li>after the last card has been taken from the stockpile, a new stockpile is formed by taking all but the top card from the discard pile and shuffling these.
+</ul>
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+<br>
+<br>
+<span style="font-weight:bold"><a name="objectives"></a>Overview and objectives of the game</span>
+<br><br>
+In this version of 7-card Rummy, a dealer is selected who shuffles the pack, deals 7 cards to each player, and then deals the next card face up to form a discard pack, and places the remaining cards 
+face-down to form the stock pile.
+<br><br>
+The opponent then selects one card - either the top card of the discard pile or the top card of the stock pile - adds it to their hand, then discards one of these 8 cards (any one except the card just picked up if this came from the discard pile) by placing it face up on the discard pile. 
+<br><br>
+After this, each player in turn (the dealer's turn is next) does the same, i.e. selects a card from either the discard pile or stock pile and then discards one to the discard pile.
+<br><br>
+The objective of the game is to be the first player to form two melds - one of 3 cards, one of 4 cards - with the 7 cards remaining after the eighth has been discarded.
+<br><br>
+Each meld may be either a run of cards of the same suit, e.g. [9 Hearts, 10 Hearts and Jack Hearts], or a set of cards of the same face value (but different suits, obviously), e.g. [7 Hearts, 7 Clubs, 7 Spades].  Note: for runs, Ace counts as either high (the card above King) or low (the card below 2), but it cannot count as both in that run.  So, valid runs would include [Jack, Queen, King, Ace] or [Ace, 2, 3] but not [King, Ace, 2, 3].
+<br><br>
+When one player achieves the 3-card meld and the 4-card meld, that player wins, the game stops and all cards are revealed.
+<br><br>
+Note: when the last card is taken from the stockpile, a new stockpile is formed by taking all but the top card from the discard pile and shuffling these.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+
+<br><br>
+<span style="font-weight:bold"><a name="playing"></a>Playing the game</span><br><br>
+The computer's hand is shown at the top, while your hand is shown at the bottom.  Your hand is always revealed, while the computer's is, by default, hidden from your view.
+<br><br>
+When the application is first opened, a new game is automatically begun with the computer dealing, so that it will be your turn to select a card from the discard or stock pile.  You may, however, choose to
+start a new game at any time, e.g. one in which you deal first.
+<br><br>
+<span style="font-style:italic">Selecting one of your cards</span><br><br>
+To select a card (if one isn't already selected) - something you need to do when moving or discarding one of your cards - just press on the card.  The selected card will have a purple frame around it.
+<br><br>
+<span style="font-style:italic">Discarding one of your cards</span>
+<br><br>
+To discard one of the cards in your hand, first ensure that it has been selected (purple frame), then press the discard pile (the pile on the left, which is black if it contains no cards).  
+Remember, you can't discard the card you've just taken from the top of the discard pile, and the system won't let you.
+<br><br>
+<span style="font-style:italic">Arranging the cards in your hand</span>
+<br><br>
+It can be helpful to arrange the cards in your hand to show full or partial melds.  To re-arrange the cards, first select a card to be moved.  Then press the card (or the gap for the eighth card) to the right of where you wish the selected card to be placed.  If you have only seven cards in your hand, they are then moved so that the gap for the eighth is at the right end. Note: you can only arrange your cards when it is your turn to go - either before you have selected a card or before discarding.
+<br><br>
+Recognizing patterns and arranging cards is a key Rummy skill, so you should normally do this manually.  However, if you wish for some assistance, press the <i>Sort</i> button and a simple sort into existing melds or partial melds (without gaps in runs) will be carried out for you.  Again, this can only be done when it is your turn. 
+<br><br>
+<span style="font-style:italic">Selecting a card from the discard or stock pile</span>
+<br><br>
+When it is your turn to select a card from the discard or stock pile, simply press on one of these piles (the discard pile is on the left, the stock pile on the right).
+The card will be displayed in the vacant position in your hand (at the right).  
+<br><br>By default, the card you pick will not be automatically selected (with a purple frame).  If you would prefer to have automatic selection of the card you have picked, ready for you to insert it into an appropriate position in your hand or to discard it, press on the <span style="font-style:italic">More</span> button, then select the <span style="font-style:italic">On</span> option for <span style="font-style:italic">Auto-select on pick</span> - followed by the <span style="font-style:italic">Back</span> button to return to the card table.
+<br><br>
+<span style="font-style:italic">The computer's turn</span>
+<br><br>
+When it is the computer's turn to select a card from the discard or stock pile or to discard a card, you will be informed of the computer's decision and see the moves taking place.  
+<br><br>
+<span style="font-style:italic">The message display</span>
+<br><br>
+At the bottom of the playing area is a message board.  This informs you what you need to do or what the computer is doing and announces the winner.
+<br><br>
+<span style="font-style:italic">Finding a winner</span>
+<br><br>
+The system checks at the end of each turn to see whether the player who has just discarded has won.  If so, this is announced and all cards are revealed.
+<br><br>
+<span style="font-style:italic">Cheating</span>
+<br><br>
+If you wish, you can choose to see the computer's hand at any time.  Just press on the <span style="font-style:italic">More</span> button, then select the <span style="font-style:italic">Show cards</span> option - followed by the <span style="font-style:italic">Back</span> button to return to the card table.  You can press the <span style="font-style:italic">Hide cards</span> option to hide the computer's cards again.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+
+<br><br>
+<span style="font-weight:bold"><a name="memory"></a>Computer memory settings</span>
+<br><br>
+If you press the <span style="font-style:italic">More</span> button, you'll see a display of the Computer Memory level near the top (Levels 1-4).  By default, the computer's memory level is 4 (maximum), but you can change this to any of the other settings by pressing one of the other numbers;  the black square beneath the numbers shows the current setting.
+<br><br>
+To understand what these settings mean, you need to understand something about the way the computer behaves and evaluates its moves.
+<br><br>
+The part of the program that decides what the computer should do is provided only 
+with the current status of each card, according to what it should know given a certain memory level.  So, for every card it might be told:
+
+<ul>
+<li>it is in the computer's hand;
+<li>it is in the discard pile (when cards are discarded they are, of course, visible to both players)
+<li>it is in your hand (it will only know this if you took the card from the discard pile and haven't discarded it later)
+<li>its position is unknown (either in the stock pile or in your hand)
+</ul>
+
+The status of each card is determined before each move based on a record of the moves made and on the Computer Memory setting for what the
+computer should 'remember':
+
+<ul>
+<li>if the level is <span style="font-weight:bold">4</span>, the complete record is used, so the computer will have good knowledge of the card locations, and play at its best;
+<li>if the level is <span style="font-weight:bold">3</span>, only the moves made in the last 20 turns are remembered (so, at the beginning of the game, Full and Long memory are indistinguishable);
+<li>if the level is <span style="font-weight:bold">2</span>, only the moves made in the last 5 turns are remembered;
+<li>if the level is <span style="font-weight:bold">1</span>, none of the previous turns are remembered. 
+</ul>
+
+In addition to what the computer should 'remember', it also knows what is visible to it, i.e. its own hand and the top card in the discard pile.
+<br><br>
+Note: you can alter the computer's memory level every turn if you wish, and make the computer a better or worse player accordingly.
+<br><br>
+<span style="font-style:italic">About the computer's decision-making</span>
+<br><br>
+The computer makes all decisions about selecting or discarding based only on its objective to create its own melds.  It does not try to prevent your melds by holding back cards that
+might be beneficial to you.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+
+<br><br>
+<span style="font-weight:bold"><a name="newgame"></a>Starting a new game</span><br><br>
+To start a new game at any time, press on one of the two <span style="font-style:italic">Deal</span> buttons: the one at the top, near the computer's cards, for the computer to deal, or the one at the bottom, near your cards, for you to deal.  Note: Computer Memory level settings and the hiding/revealing of
+the computer's cards are unaffected when a new game starts.
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 2.07 (20160219) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=0
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.com, sexiest-lover.com</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-husband.com, best-lover.com</span>',
+'<span style="color:violet">best-mother.com, best-father.com</span>',
+'<span style="color:violet">best-dad.com, best-daughter.com</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith.best-wife.com</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-mother.com</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Buy our great logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy aginst the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:lime">If you like games such as...</span>',
+'<span style="color:lime">Rummy, 4-in-a-line...</span>',
+'<span style="color:lime">Hangman, Mancala...</span>',
+'<span style="color:lime">Letters Game, Numbers Game...</span>',
+'<span style="color:lime">& more classic & original games</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Games</span> app now</span>',
+'',
+'<span style="color:cyan">If you like puzzles such as...</span>',
+'<span style="color:cyan">Sudoku, Hangman...</span>',
+'<span style="color:cyan">Peg Solitaire, Step Challenge...</span>',
+'<span style="color:cyan">WordSearch & other word puzzles...</span>',
+'<span style="color:cyan">Numberskull & other number puzzles...</span>',
+'<span style="color:cyan">Memory Pairs...</span>',
+'<span style="color:cyan">& more classic & original puzzles</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Puzzles</span> app now</span>',
+'',
+'<span style="color:lime">Beat the Letters Game countdown;</span>',
+'<span style="color:lime">Avoid the Hangman\'s noose;</span>',
+'<span style="color:lime">Look for words in WordSearch+...</span>',
+'<span style="color:lime">And other mind-boggling grids;</span>',
+'<span style="color:lime">Try our original Pentad game;</span>',
+'<span style="color:lime">Find connections in Linkword Snap;</span>',
+'<span style="color:lime">Or solve the Word Ladder.</span>',
+'<span style="color:lime">For word-based games and puzzles...</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Words</span> app now</span>',
+'',
+'<span style="color:magenta">Beat the Numbers Game countdown;</span>',
+'<span style="color:magenta">Take 30 secs for our Step Challenge;</span>',
+'<span style="color:magenta">Or Pyramid Numbers;</span>',
+'<span style="color:magenta">Or try our original Numberskull.</span>',
+'<span style="color:magenta">For number-based games & puzzles...</span>',
+'<span style="color:magenta">Buy our <span style="color:white">Compact Numbers</span> app now</span>',
+'',
+'<span style="color:cyan">Solve Sudoku puzzles, with help;</span>',
+'<span style="color:cyan">Be a mastermind and break the codes,</span>',
+'<span style="color:cyan">Solve equations and use logic...</span>',
+'<span style="color:cyan">In our original Numberskull puzzle;</span>',
+'<span style="color:cyan">Find the killer based on clues...</span>',
+'<span style="color:cyan">In Mystery Clues.</span>',
+'<span style="color:cyan">For logic-based puzzles...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Logic</span> app now</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>

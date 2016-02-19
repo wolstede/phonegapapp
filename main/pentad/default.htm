@@ -1,0 +1,1582 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>Pentad</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='pentad'
+
+var interruptsrequired=0
+
+
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">Pentad</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:green"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<SCRIPT LANGUAGE="JavaScript">
+
+
+
+// All code copyright of TopAccolades Limited
+// Original game by Dave Wolstenholme
+
+restartconfirmationrequired=1
+gameturnslimited=1
+
+function runonload()
+{
+play()
+}
+
+function continueafterad()
+{
+play()
+}
+
+
+function copysimplevalues(somearray)
+{
+var temparray=[]
+for (var i=0; i<somearray.length; i++)
+{
+temparray[i]=somearray[i]
+}
+return temparray
+}
+
+var cardset = new Array()
+cardset = [
+['Letters', [['A', 9], ['B', 3], ['C', 3], ['D', 4], ['E', 10], ['F', 2], ['G', 4], ['H', 3], ['I', 7], ['J', 1], ['K', 2], ['L', 5], ['M', 3], ['N', 6], ['O', 6], ['P', 3], ['Q', 1], ['R', 5], ['S', 5], ['T', 5], ['U', 4], ['V', 2], ['W', 2], ['X', 1], ['Y', 3], ['Z', 1]], []]
+]
+
+var gameon = 0
+var currentplayer=0
+var playersgone = [0,0,0,0]
+var tile
+var turnarray=[0,0,0,0]
+var turn
+var phasearray=['', '', '', '']
+var movearray=[[],[],[],[]]
+var positionarray=[[],[],[],[]]
+var rewindarray=[[],[],[],[]]
+var numsquares=25
+var scorearray = []
+var currentscore = [[], [],[],[]]
+var lastscore=[[], [],[],[]]
+
+var tilearray=[]
+var ixr
+var ixc
+for (ixr=0; ixr<5; ixr++)
+{
+for (ixc=0; ixc<5; ixc++)
+{
+var txnum=(5*ixr)+ixc+1
+tilearray[txnum-1]=[txnum, ixr, ixc]
+}
+}
+
+function createshuffledpacks() 
+{
+createshuffledpack(0)
+
+}
+
+
+
+
+function createshuffledpack(int1) 
+{
+
+var makeup = cardset[int1][1]
+var n = 0
+var i
+
+for (i=0; i<makeup.length; i++)
+{
+var letter = makeup[i][0]
+var quantity=makeup[i][1]
+
+
+var j
+for (j=0; j<quantity; j++)
+{
+cardset[int1][2][n]=letter
+n = n+1
+} // end for2
+
+} // end for1
+
+cardset[int1][2] = shufflearray(shufflearray(cardset[int1][2]))
+
+}
+
+
+
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+function shufflearray(somearray)
+{
+
+var temparray=somearray
+var shuffled=new Array()
+packsize=somearray.length
+var ran
+var i
+for (i=0; i<packsize; i++)
+{
+ran = randomnumber(temparray.length)
+shuffled[i] = temparray[ran-1]
+temparray = removeElement(ran-1, temparray)
+}
+return shuffled
+}
+
+function removeElement(index, somearray)
+{
+var beg=somearray.slice(0, index)
+var end=[]
+if (index+1 < somearray.length) {end = somearray.slice(index+1)}
+return beg.concat(end)
+}
+
+function reset()
+{
+createshuffledpacks()
+var i
+for (var j=1; j<=4; j++)
+{
+for (i=1;i<26;i++)
+{
+changetextvalue('p'+j+'letter'+i, imagefor('empty'))
+
+}
+changetextvalue('p'+j+'letter13', imagefor('centre'))
+changetextvalue('p'+j+'go', imagefor('empty'))
+changetextvalue('backbutton'+j, '')
+}
+clearscorecards()
+phasearray = ['', '', '', '']
+for (i=0;i<25;i++)
+{
+positionarray[0][i]=''
+positionarray[1][i]=''
+positionarray[2][i]=''
+positionarray[3][i]=''
+
+}
+movearray=[[],[],[],[]]
+
+
+
+
+
+
+
+turnarray=[0,0,0,0]
+rewindarray=[[],[],[],[]]
+
+displayplayer(1)
+}
+
+
+
+function play()
+{
+reset()
+gameon=1
+currentplayer=0
+phasearray[0]='position'
+phasearray[1]='position'
+phasearray[2]='position'
+phasearray[3]='position'
+changetextvalue('p1instructions', "Tap square to place")
+changetextvalue('p2instructions', "Tap square to place")
+changetextvalue('p3instructions', "Tap square to place")
+changetextvalue('p4instructions', "Tap square to place")
+selectLetter(1)
+selectLetter(2)
+selectLetter(3)
+selectLetter(4)
+displayplayer(1)
+}
+
+function selectLetter(player)
+{
+turn=turnarray[player-1]
+if (turn< 25)
+{
+
+tile=cardset[0][2][turn]
+
+changetextvalue('p'+player+'go', imagefor(tile))
+
+turnarray[player-1]++
+}
+else
+{
+gameon=0
+
+}
+}
+
+
+
+function rewind(player)
+{
+changetextvalue('backbutton'+player, '')
+var somerewind=rewindarray[player-1]
+if (somerewind.length>0)
+{
+var someprevphase=somerewind[0]
+var tilenum=somerewind[1]
+if (someprevphase=='position')
+{
+phasearray[player-1]='position'
+turnarray[player-1]=turnarray[player-1]-2
+positionarray[player-1][tilenum-1]=''
+var someimage='empty'
+if (tilenum==13) {someimage='centre'}
+changetextvalue('p'+player+'letter'+tilenum, imagefor(someimage))
+gameon=1
+changetextvalue('p'+player+'total', '+'+turnarray[player-1])
+changetextvalue('p'+player+'instructions', "Tap square to place")
+selectLetter(player)
+}
+else
+{
+phasearray[player-1]='move'
+var movesmade=movearray[player-1].length
+if (movesmade==1 || movesmade==3) // just selected 1st of pair
+{
+var incumbent=positionarray[player-1][tilenum-1]
+var tempimage=incumbent
+changetextvalue('p'+player+'letter'+tilenum, imagefor(tempimage))
+changetextvalue('p'+player+'go', imagefor('swap'))
+changetextvalue('p'+player+'instructions', "Swap: choose 1st")
+changetextvalue('p'+player+'total', 'S'+(movesmade-1))
+}
+else // movesmade == 2 or 4 - just swapped pair
+{
+var firstmove = movearray[player-1][movesmade-2]
+var secondmove=movearray[player-1][movesmade-1]
+swaptwo(player, firstmove, secondmove)
+var incumbent=positionarray[player-1][firstmove-1]
+var tempimage=incumbent
+
+changetextvalue('p'+player+'letter'+firstmove, imagefor('swap'))
+changetextvalue('p'+player+'go', imagefor(tempimage))
+
+changetextvalue('p'+player+'instructions', "Swap: choose 2nd")
+changetextvalue('p'+player+'total', 'S'+(movesmade-1))
+}
+movearray[player-1]=movearray[player-1].slice(0, movesmade-1)
+if (movearray[player-1].length==0) {changetextvalue('p'+player+'total', '+25')
+}
+}
+
+rewindarray[player-1]=[]
+
+}
+}
+
+function positionTile(player, tilenum)
+{
+turn=turnarray[player-1]
+
+
+
+if  (positionarray[player-1][tilenum-1]=='')
+{
+rewindarray[player-1]=['position', tilenum]
+changetextvalue('backbutton'+player, '<table border=1 cellpadding=0 cellspacing=0 style="width:100%; vertical-align=middle;align:center" align=center><tr><td style="text-align:center;background-image:url(\'buttonbg.jpg\')" onClick="rewind('+player+')">&lt;</td></tr></table>')
+
+tile=cardset[0][2][turn-1]
+
+positionarray[player-1][tilenum-1]=tile
+changetextvalue('p'+player+'letter'+tilenum, imagefor(tile))
+changetextvalue('p'+player+'total', '+'+turn)
+
+
+
+if (turn == numsquares) 
+{
+turnarray[player-1]++
+phasearray[player-1]='move';
+changetextvalue('p'+player+'instructions', "Swap: choose 1st")
+changetextvalue('p'+player+'go', imagefor('swap'))
+} 
+else 
+{
+selectLetter(player)
+}
+
+}
+}
+
+
+
+function tileClick(player, tilenum)
+{
+if (runcheck()==true)
+{
+if (phasearray[player-1] == 'position')
+{
+positionTile(player, tilenum)
+
+} // end if
+else
+{
+if (phasearray[player-1] == 'move')
+{
+moveTile(player, tilenum)
+
+} // end if
+else
+{
+if (phasearray[player-1] == 'score')
+{
+scoreTile(player, tilenum)
+}
+} // end else 2
+
+} // end else 1
+}
+} // end function
+
+function moveTile(player, tilenum)
+{
+var movesmade=movearray[player-1].length
+
+if (movesmade < 4)
+{
+rewindarray[player-1]=['move', tilenum]
+changetextvalue('backbutton'+player, '<table border=1 cellpadding=0 cellspacing=0 style="width:100%; vertical-align=middle;align:center" align=center><tr><td style="text-align:center;background-image:url(\'buttonbg.jpg\')" onClick="rewind('+player+')">&lt;</td></tr></table>')
+
+movearray[player-1][movesmade]=tilenum
+}
+if (movesmade == 0 || movesmade== 2) // first or third move
+{
+changetextvalue('p'+player+'letter'+tilenum, imagefor('swap'))
+var incumbent=positionarray[player-1][tilenum-1]
+var tempimage=incumbent
+changetextvalue('p'+player+'go', imagefor(tempimage))
+changetextvalue('p'+player+'instructions', "Swap: choose 2nd")
+changetextvalue('p'+player+'total', 'S'+(movesmade+1))
+
+}
+if (movesmade == 1) // was 1 but now 2!
+{
+var firstmove = movearray[player-1][0]
+var secondmove=tilenum
+swaptwo(player, firstmove, secondmove)
+changetextvalue('p'+player+'instructions', "Swap: choose 1st")
+changetextvalue('p'+player+'total', 'S'+(movesmade+1))
+
+}
+if (movesmade == 3) // was 3 but now 4!
+{
+var firstmove = movearray[player-1][2]
+var secondmove=tilenum
+swaptwo(player, firstmove, secondmove)
+changetextvalue('p'+player+'total', 'S'+(movesmade+1))
+
+}
+if (movearray[player-1].length == 4 ) // moves complete
+{
+phasearray[player-1]='score'
+changetextvalue('p'+player+'instructions', "Score word: choose start")
+changetextvalue('p'+player+'go', imagefor('beg'))
+// changetextvalue('p'+player+'total', 0)
+
+}
+
+
+
+}
+
+function swaptwo(player, firstmove, secondmove)
+{
+var firstval = positionarray[player-1][firstmove-1]
+var secondval = positionarray[player-1][secondmove-1]
+positionarray[player-1][firstmove-1]=secondval
+positionarray[player-1][secondmove-1]=firstval
+changetextvalue('p'+player+'letter'+firstmove, imagefor(secondval))
+changetextvalue('p'+player+'letter'+secondmove, imagefor(firstval))
+changetextvalue('p'+player+'go', imagefor('swap'))
+
+
+}
+
+
+
+function clearscorecards()
+{
+var p
+for (p=1;p<=4;p++)
+{
+player='p'+p
+ptotal=player+'total'
+var i
+changetextvalue(ptotal, '+0')
+changetextvalue(player+'message', '&nbsp;')
+
+for (i=1; i<6; i++)
+{
+rw1=player+'row'+i+'0word'
+rw2=player+'row'+i+'1word'
+rs1=player+'row'+i+'0score'
+rs2=player+'row'+i+'1score'
+cw1=player+'col'+i+'0word'
+cw2=player+'col'+i+'1word'
+cs1=player+'col'+i+'0score'
+cs2=player+'col'+i+'1score'
+
+
+changetextvalue(rw1, '')
+changetextvalue(rw2, '')
+changetextvalue(rs1, '')
+changetextvalue(rs2, '')
+changetextvalue(cw1, '')
+changetextvalue(cw2, '')
+changetextvalue(cs1, '')
+changetextvalue(cs2, '')
+
+}
+
+}
+scorearray= [ [[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]]],  [[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]]],  [[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]]],  [[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]]]]
+currentscore= [[], [], [],[]]
+}
+
+
+
+function scoreTile(player, tilenum)
+{
+rewindarray[player-1]=[]
+changetextvalue('backbutton'+player, '')
+
+var r = rowof(tilenum)
+var c = colof(tilenum)
+var playername='p'+player
+var playerindex=player-1
+begorend=currentscore[playerindex].length  // = 0 if next is beginning, 1 if next is end
+currentscore[playerindex][begorend] = [tilenum, r, c]
+if (begorend == 0) // beginning
+{
+
+changetextvalue(playername+'message', positionarray[playerindex][tilenum-1]+' ...')
+
+changetextvalue(playername+'go', imagefor('end'))
+changetextvalue('p'+player+'instructions', "Score word: choose end")
+
+}
+if (begorend == 1) // end letter
+{
+changetextvalue(playername+'message', ' ...'+positionarray[playerindex][tilenum-1])
+
+handlescoring(player)
+changetextvalue('p'+player+'instructions', "Score word: choose start")
+
+}
+
+}
+
+
+
+function rowof(tilenum)
+{
+return tilearray[tilenum-1][1]
+}
+
+function colof(tilenum)
+{
+return tilearray[tilenum-1][2]
+}
+
+function handlescoring(player)
+{
+var playername='p'+player
+var playerindex=player-1
+var begandend=currentscore[playerindex]
+begtile=begandend[0]
+endtile=begandend[1]
+var validity = 'Error! Invalid'
+var rowcol = 'neither'
+if (begtile[1] == endtile[1] && endtile[2] != begtile[2])  {rowcol='row'; validity='ok'}
+if (begtile[2] == endtile[2] && endtile[1] != begtile[1])  {rowcol='col'; validity='ok'}
+var row = begtile[1]
+var col = begtile[2]
+// row
+if (rowcol == 'row' && endtile[2] < begtile[2])
+{
+scorearray[playerindex][row][0] = []
+scorearray[playerindex][row][1] = []
+var rowname=row+1
+changetextvalue(playername+'message', 'R'+rowname+' scores removed')
+// alert('Reverse selection: any scores in row '+rowname+' have been removed')
+}
+if (rowcol == 'row' && endtile[2] > begtile[2])
+{
+var start=begtile[2]
+var end=endtile[2]
+var pairindex // indicates first or second word in a row (possible)
+
+
+
+if (start > 1) {pairindex = 1} else {pairindex = 0}
+score=end-start+1
+if (score == 5) {score = 10}   // 5 point bonus for 5-letter word
+if (oncentrespot(row, start, end)=='true') {score = 2*score} // double score for centre spot
+var theword=' '
+var ic
+for (ic = start; ic <=end; ic++)
+{
+theword = theword+positionarray[playerindex][5*row+ic]
+}
+removeoverlaps(playerindex, 0, row, start, end)
+
+scorearray[playerindex][row][pairindex] = [start, end, theword, score]
+changetextvalue(playername+'message', theword+': '+score+' pts')
+}
+// col
+if (rowcol == 'col' && endtile[1] < begtile[1])
+{
+scorearray[playerindex][col+5][0] = []
+scorearray[playerindex][col+5][1] = []
+var colname=col+1
+changetextvalue(playername+'message', 'C'+colname+' scores removed')
+
+// alert('Reverse selection: any scores in column '+colname+' have been removed')
+}
+
+if (rowcol == 'col' && endtile[1] > begtile[1])
+{
+var start=begtile[1]
+var end=endtile[1]
+var pairindex // indicates first or second word in a col (possible)
+
+if (start > 1) {pairindex = 1} else {pairindex = 0}
+score=end-start+1
+if (score == 5) {score = 10}   // 5 point bonus for 5-letter word
+if (oncentrespot(col, start, end)=='true') {score = 2*score} // double score for centre spot
+var theword=' '
+var ir
+for (ir = start; ir <=end; ir++)
+{
+theword = theword+positionarray[playerindex][5*ir+col]
+}
+removeoverlaps(playerindex, 1, col, start, end)
+scorearray[playerindex][col+5][pairindex] = [start, end, theword, score]
+changetextvalue(playername+'message', theword+' - scores '+score)
+
+
+}
+
+if (validity != 'ok')
+{
+changetextvalue(playername+'message', validity)
+}
+
+
+displayscores(player)
+changetextvalue(playername+'go', imagefor('beg'))
+
+}
+
+function removeoverlaps(playerindex, rowcol, index, start, end)
+{
+var pairwords = scorearray[playerindex][5*rowcol+index]
+var numoverlaps=0
+var i
+for (i=0; i<2; i++)
+{
+if (pairwords[i].length >2)
+{
+var existingstart=pairwords[i][0]
+var existingend=pairwords[i][1]
+if (overlaps(start, end, existingstart, existingend) == 'yes')
+{
+scorearray[playerindex][5*rowcol+index][i] = []
+numoverlaps = numoverlaps+1
+}
+}
+} //end for
+if (numoverlaps > 0)
+{
+var textover = '1 overlap has '
+if (numoverlaps > 1) {textover= numoverlaps+ ' overlaps have ' }
+var textrowcol = ' row '
+if (rowcol == 1) {textrowcol = ' column '}
+// alert('Be aware! '+textover+'been removed from this'+textrowcol)
+}
+}
+
+
+function overlaps(start, end, exstart, exend)
+{
+var overlap='no'
+
+if (exstart <= end && exend >= start) {overlap='yes'}
+return overlap
+}
+
+
+function oncentrespot(index, start, end)
+{
+var oncentre='false'
+if (index == 2 && start <=2 && end >=2) {oncentre='true'}
+return oncentre
+}
+
+function displayscores(player)
+{
+var playername='p'+player
+var playerindex=player-1
+var playerscores=scorearray[playerindex]
+var ir
+var totalscore = 0
+// rows
+for (ir=0; ir<5; ir++)
+{
+var singlerowscores = playerscores[ir]
+var word1=' '
+var word2=' '
+var score1 = ' '
+var score2 = ' '
+if (singlerowscores[0].length == 4) 
+{
+totalscore=totalscore+singlerowscores[0][3]
+
+word1=singlerowscores[0][2]
+score1=singlerowscores[0][3]
+
+}
+
+if (singlerowscores[1].length == 4) 
+{
+totalscore=totalscore+singlerowscores[1][3]
+word2=singlerowscores[1][2]
+score2=singlerowscores[1][3]
+}
+rind=ir+1
+rw1=playername+'row'+rind+'0word'
+rw2=playername+'row'+rind+'1word'
+rs1=playername+'row'+rind+'0score'
+rs2=playername+'row'+rind+'1score'
+
+
+changetextvalue(rw1, word1)
+changetextvalue(rw2, word2)
+changetextvalue(rs1, score1)
+changetextvalue(rs2, score2)
+}
+
+// cols
+
+for (ir=0; ir<5; ir++)
+{
+var singlerowscores = playerscores[ir+5]
+var word1=' '
+var word2=' '
+var score1 = ' '
+var score2 = ' '
+
+if (singlerowscores[0].length == 4) 
+{
+totalscore=totalscore+singlerowscores[0][3]
+word1=singlerowscores[0][2]
+score1=singlerowscores[0][3]
+}
+
+if (singlerowscores[1].length == 4) 
+{
+totalscore=totalscore+singlerowscores[1][3]
+word2=singlerowscores[1][2]
+score2=singlerowscores[1][3]
+}
+rind=ir+1
+
+rw1=playername+'col'+rind+'0word'
+rw2=playername+'col'+rind+'1word'
+rs1=playername+'col'+rind+'0score'
+rs2=playername+'col'+rind+'1score'
+
+changetextvalue(rw1, word1)
+changetextvalue(rw2, word2)
+changetextvalue(rs1, score1)
+changetextvalue(rs2, score2)
+
+}
+
+ptotal=playername+'total'
+
+changetextvalue(ptotal, totalscore)
+
+
+currentscore[playerindex]=[]
+}
+
+
+
+
+var fullcolors=['#FF0000', '#FFFF00', '#00FF00', '#00B4FF']
+var lightcolors=['#FAAFBE', '#FFF888', '#B1FB17', '#A0B4FF']
+function hideall()
+{
+for (var player=1; player<=4; player++)
+{
+
+document.getElementById('p'+player+'completediv').style.display = 'none'
+
+document.getElementById('playerselect'+player).style.backgroundColor=lightcolors[player-1]
+document.getElementById('playerselect'+player).style.color='gray'
+}
+document.getElementById('hidden').style.display = 'inline'
+
+
+}
+
+function displayplayer(player)
+{
+
+hideall()
+document.getElementById('p'+player+'completediv').style.display = 'inline'
+document.getElementById('playerselect'+player).style.backgroundColor=fullcolors[player-1]
+document.getElementById('playerselect'+player).style.color='black'
+document.getElementById('hidden').style.display = 'none'
+showboard(player)
+
+handleclickproblem()
+}
+
+
+function showscores(player)
+{
+document.getElementById('p'+player+'boarddiv').style.display = 'none'
+document.getElementById('p'+player+'scoresdiv').style.display = 'inline'
+handleclickproblem()
+}
+
+function showboard(player)
+{
+document.getElementById('p'+player+'scoresdiv').style.display = 'none'
+document.getElementById('p'+player+'boarddiv').style.display = 'inline'
+handleclickproblem()
+}
+
+var thedivs=['maingame', 'more']
+function displaydiv(somediv)
+{
+for (var i=0; i<thedivs.length; i++)
+{
+document.getElementById(thedivs[i]).style.display = 'none'
+
+
+}
+document.getElementById(thedivs[somediv]).style.display = 'inline'
+handleclickproblem()
+
+}
+
+
+function imagefor(someletter)
+{
+if (someletter=='swap') {return '<img src="swap.gif" style="display:block;width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;" border=0>'}
+if (someletter=='beg') {return '<img src="beg.gif" style="display:block;width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;" border=0>'}
+if (someletter=='end') {return '<img src="end.gif" style="display:block;width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;" border=0>'}
+if (someletter=='centre') {return '<img src="centre.gif" style="display:block;width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;" border=0>'}
+if (someletter=='empty') {return '<img src="empty.gif" style="display:block;width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;" border=0>'}
+return '<table cellpadding=0 cellspacing=0 style="width:100%;height:100%;border:1px solid black"><tr><td valign=middle align=center style="background-color:#FFFACD;text-align:center;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold">'+someletter+'</td></tr></table>'
+}
+
+
+
+
+</SCRIPT>
+<script language="Javascript">
+
+
+documentwrite('<form name="playform">')
+documentwrite('<div style="position:relative;left:0px;top:0px;height:100%;width:100%"><div style="position:absolute;left:0px;top:'+Math.floor(scalef*2)+'px;height:'+Math.floor(scalef*235)+'px;width:100%">')
+
+documentwrite('<div id="maingame" style="display:inline">')
+
+
+documentwrite('<table border=1 cellpadding=0 width=100%><tr><td><table border=1 cellpadding=0 cellspacing=0 style="width:100%"><tr><td style="text-align:center;background-image:url(buttonbg.jpg)" onClick="showad()">New</td></tr></table></td><td id="playerselect1" onClick="displayplayer(1)" style="background-color:white; text-align:center; font-weight:bold" width='+Math.floor(scalef*30)+'><div id="p1total">0</div></td><td id="playerselect2" onClick="displayplayer(2)" style="background-color:white; text-align:center; font-weight:bold" width='+Math.floor(scalef*30)+'><div id="p2total">0</div></td><td id="playerselect3" onClick="displayplayer(3)" style="background-color:white; text-align:center; font-weight:bold" width='+Math.floor(scalef*30)+'><div id="p3total">0</div></td><td id="playerselect4" onClick="displayplayer(4)" style="background-color:white; text-align:center; font-weight:bold" width='+Math.floor(scalef*30)+'><div id="p4total">0</div></td><td style="background-color:white; text-align:center; font-weight:bold"><table border=1 cellpadding=0 cellspacing=0  style="width:100%"><tr><td style="text-align:center;background-image:url(buttonbg.jpg)" onClick="hideall()">Hide</td></tr></table></td></tr></table>')
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*2)+'px;display:block"></div>')
+documentwrite('<div id="hidden" style="display:none;font-weight:normal">')
+documentwrite('<p>To display one player\'s board, just click on one of the four coloured tabs above (red, yellow, green or blue). These tabs also display the total scores for the players.')
+documentwrite('</div>')
+
+
+
+for (var player=1; player<=4; player++)
+{
+documentwrite('<div id="p'+player+'completediv" style="display:none">')
+documentwrite('<center>')
+documentwrite('<div id="p'+player+'boarddiv" style="display:inline">')
+documentwrite('<table border='+Math.floor(scalef*3)+' cellspacing='+Math.floor(scalef*2)+' cellpadding=0   style="background-color:purple" align=center>')
+var theimagetype
+for (var i=0; i<5; i++)
+{
+documentwrite('<tr>')
+for (var j=0; j<5; j++)
+{
+theimagetype='empty'
+if (i==2 && j==2) {theimagetype='centre'}
+documentwrite('<td style="background-color:white" id="p'+player+'letter'+(1+((5*i)+j))+'" onClick="tileClick('+player+', '+(1+((5*i)+j))+')" width='+Math.floor(scalef*20)+' height='+Math.floor(scalef*20)+'>'+imagefor(theimagetype)+'</td>')
+
+}
+documentwrite('</tr>')
+
+}
+
+
+documentwrite('<tr>')
+documentwrite('<td colspan=2 style="text-align:center; font-weight:bold"></td>')
+documentwrite('<td style="background-color:white" id="p'+player+'go" width='+Math.floor(scalef*20)+' height='+Math.floor(scalef*20)+'>'+imagefor('empty')+'</td>')
+documentwrite('<td colspan=2 style="text-align:center; font-weight:bold"></td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td colspan=2 style="background-color:white; text-align:center; font-weight:bold"><table border=1 cellpadding=0 cellspacing=0 style="width:100%; vertical-align=middle;align:center" align=center><tr><td style="text-align:center;background-image:url(buttonbg.jpg)" onClick="showscores('+player+')">Scores</td></tr></table></td>')
+documentwrite('<td  ><div id="backbutton'+player+'" style="width:100%"></div></td>')
+documentwrite('<td colspan=2 style="background-color:white; text-align:center; font-weight:bold"><table border=1 cellpadding=0 cellspacing=0 style="width:100%; vertical-align=middle;align:center" align=center><tr><td style="text-align:center;background-image:url(buttonbg.jpg)" onClick="displaydiv(1)">&nbsp;More&nbsp;</td></tr></table></td>')
+documentwrite('</tr>')
+documentwrite('</table>')
+documentwrite('<center>')
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*150)+'px;background-color:white;text-align:center"><div id="p'+player+'instructions" style="text-align: center; color:black">&nbsp;</div></td></tr></table>')
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*150)+'px;background-color:white;text-align:center"><div id="p'+player+'message" style="text-align: center; color:black">&nbsp;</div></td></tr></table>')
+documentwrite('</center>')
+documentwrite('</div>')
+
+documentwrite('<div id="p'+player+'scoresdiv" style="display:none">')
+
+documentwrite('<table align=center bgcolor=white>')
+documentwrite('<tr>')
+documentwrite('<td><table border=1 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*45)+'px;vertical-align=middle"><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showboard('+player+')">Back</td></tr></table></td>')
+documentwrite('<td  width='+Math.floor(scalef*35)+'>Word</td>')
+documentwrite('<td  width='+Math.floor(scalef*20)+'>Pts</td>')
+documentwrite('<td  width='+Math.floor(scalef*35)+'>Word</td>')
+documentwrite('<td  width='+Math.floor(scalef*20)+'>Pts</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td >R1</td>')
+documentwrite('<td><div id="p'+player+'row10word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row10score" ></div></td>')
+documentwrite('<td><div id="p'+player+'row11word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row11score" ></div></td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td >R2</td>')
+documentwrite('<td><div id="p'+player+'row20word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row20score" ></div></td>')
+documentwrite('<td><div id="p'+player+'row21word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row21score" ></div></td>')
+documentwrite('</tr><tr>')
+documentwrite('<td >R3</td>')
+documentwrite('<td><div id="p'+player+'row30word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row30score" ></div></td>')
+documentwrite('<td><div id="p'+player+'row31word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row31score" ></div></td>')
+documentwrite('</tr><tr>')
+documentwrite('<td >R4</td>')
+documentwrite('<td><div id="p'+player+'row40word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row40score" ></div></td>')
+documentwrite('<td><div id="p'+player+'row41word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row41score" ></div></td>')
+documentwrite('</tr><tr>')
+documentwrite('<td >R5</td>')
+documentwrite('<td><div id="p'+player+'row50word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row50score" ></div></td>')
+documentwrite('<td><div id="p'+player+'row51word" ></div></td>')
+documentwrite('<td><div id="p'+player+'row51score" ></div></td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td >C1</td>')
+documentwrite('<td><div id="p'+player+'col10word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col10score" ></div></td>')
+documentwrite('<td><div id="p'+player+'col11word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col11score" ></div></td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td >C2</td>')
+documentwrite('<td><div id="p'+player+'col20word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col20score" ></div></td>')
+documentwrite('<td><div id="p'+player+'col21word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col21score" ></div></td>')
+documentwrite('</tr><tr>')
+documentwrite('<td >C3</td>')
+documentwrite('<td><div id="p'+player+'col30word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col30score" ></div></td>')
+documentwrite('<td><div id="p'+player+'col31word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col31score" ></div></td>')
+documentwrite('</tr><tr>')
+documentwrite('<td >C4</td>')
+documentwrite('<td><div id="p'+player+'col40word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col40score" ></div></td>')
+documentwrite('<td><div id="p'+player+'col41word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col41score" ></div></td>')
+documentwrite('</tr><tr>')
+documentwrite('<td >C5</td>')
+documentwrite('<td><div id="p'+player+'col50word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col50score" ></div></td>')
+documentwrite('<td><div id="p'+player+'col51word" ></div></td>')
+documentwrite('<td><div id="p'+player+'col51score" ></div></td>')
+documentwrite('</tr>')
+documentwrite('</table>')
+documentwrite('</div>')
+documentwrite('</center>')
+documentwrite('</div>')
+
+
+
+}
+
+
+documentwrite('</div>')
+
+</script>
+<script language="Javascript">
+
+documentwrite('<div id="more" style="display:none"><table border=0 cellpadding=2 width=100% bgcolor=silver><tr><td>')
+
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*5)+'px;display:block"></div>')
+
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*45)+'px;align:left"><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="displaydiv(0)">Back</td></tr></table>')
+documentwrite('<br>')
+function showDistribution()
+{
+
+documentwrite('<table border=1 align=center bgcolor=white><tr><td colspan=8 style="font-weight:bold;text-align:center;background-image:url(buttonbg.jpg)">Letter Distribution</td></tr>')
+for (var i=0; i<cardset.length; i++)
+{
+
+for (var j=0;j<7;j++)
+{
+if (j<6)
+{
+documentwrite('<tr><td align=center style="font-weight:bold">'+cardset[i][1][j*4][0]+'</td><td align=center>'+cardset[i][1][j*4][1]+'</td><td align=center style="font-weight:bold">'+cardset[i][1][j*4+1][0]+'</td><td align=center>'+cardset[i][1][j*4+1][1]+'</td><td align=center style="font-weight:bold">'+cardset[i][1][j*4+2][0]+'</td><td align=center>'+cardset[i][1][j*4+2][1]+'</td><td align=center style="font-weight:bold">'+cardset[i][1][j*4+3][0]+'</td><td align=center>'+cardset[i][1][j*4+3][1]+'</td></tr>')
+}
+else
+{
+documentwrite('<tr><td align=center style="font-weight:bold">'+cardset[i][1][j*4][0]+'</td><td align=center>'+cardset[i][1][j*4][1]+'</td><td align=center style="font-weight:bold">'+cardset[i][1][j*4+1][0]+'</td><td align=center>'+cardset[i][1][j*4+1][1]+'</td><td align=center style="font-weight:bold"></td><td align=center></td><td align=center style="font-weight:bold"></td><td align=center></td></tr>')
+}
+}
+
+}
+documentwrite('</table>')
+}
+
+showDistribution()
+documentwrite('<br>&nbsp;</td></tr></table></div></div></div></form>')
+
+</script>
+
+</div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#scoring">Scoring</a><br><a href="#playing">Playing the game</a><br><a href="#multi">Two or more players</a><br><a href="#newgame">New game</a><br><a href="#distribution">Letter distribution</a><br><a href="#terms">Terms of use</a><br>')}
+</script>
+
+
+<a name="intro"></a><p>Pentad is a letter and word game.  Pentad can, in theory, be played by any number of players, but this version is for two to four players playing against each other, or for one player to practise or pass the time.
+      <p>The basic idea of Pentad is that 25 letters are selected at random, one
+      at a time, and you must place a tile displaying that
+      letter on one of the empty squares on the board.&nbsp;&nbsp;
+      The objective is to place the tiles so that they form words of two or more
+      letters - either horizontally from left-to-right or vertically from
+      top-to-bottom.&nbsp; The
+      skill comes in how you use these letters to form words
+      and to maximize the points scored.</p>
+      <p>After the initial phase of placing the tiles on the board as the
+      letters are selected, you then have an opportunity to make some
+      minor adjustments to the layout of the board.&nbsp; You can
+      select two pairs of tiles, in turn, and swap the two tiles in the
+      pair.&nbsp;&nbsp; This phase not only provides you with an opportunity
+      to increase your score - it also gives you something else to consider
+      and to optimize during the initial positioning phase.</p>
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+      <p><a name="scoring"></a><span style="font-weight:bold">Scoring</span></p>
+      <p>Pentad scoring is simple, and is based on each of the words formed:</p>
+      <ul>
+        <li>one point is scored for each letter in the word;</li>
+        <li>a 5-point bonus is scored for a five-letter word (i.e. 10 points in
+          total);</li>
+        <li>the score for the word is doubled if the word includes the tile on
+          the centre square (marked with a green spot).&nbsp; So, a 4-letter word on
+          the central row or column scores 8 points, while a 5-letter word
+          scores 20 (2 x (5 + 5 bonus)).</li>
+      </ul>
+      <p>The letters in a given row or column can only be used for one word -
+      you can't have overlapping words.&nbsp; So, for example, a line with the
+      letters WARTH would score 4 for WART;&nbsp; you could not also claim 3 for
+      WAR and 3 for ART.&nbsp; It is important to note that selecting the
+      longest word doesn't necessarily give the best score;&nbsp; for example,
+      the line WARTO is best scored as 3 for WAR and 2 for TO (total 5), rather
+      than just 4 for WART.</p>
+      <p>You can, however, use the same letter for a word in a column and a word
+      in a row.&nbsp;&nbsp;</p>
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+      <p><a name="playing"></a><span style="font-weight:bold">Playing the game</span></p>
+      <p>The 1 - 4 players choose one of the four colours - red, yellow, green or blue - to be their colour.  
+At the top of the screen, there are four boxes, or tabs, one for each of these colours.  
+These display the progress or total score for each player, so that all players can see all scores, even though only one board is visible at a time.
+<p>Pentad has been designed so that you do not need to specify how many players there are.  
+Initally, red's board is shown, so if one player only is playing, the red board would normally be used.  
+To select and see another player's board, simply press on that player's coloured tab.  
+Note: the coloured tab takes on a deeper shade of the colour when selected.</p>
+<p>When the game first opens, or after a new game is started by pressing the 
+<span style="font-style:italic">New</span > button, boards are cleared, each player's score is set to 0, each player's tab shows +0 (0 tiles added and positioned), and a series of 25 letters is set up.  
+The first of these is shown beneath each of the four 5x5 boards.
+<p>The following instructions are for one player of the game.  After these, some options for how two or more players might play are given.
+<p><span style="font-style:italic">Positioning phase</span ></p>
+      <p>During this phase, the player must position the letter shown beneath the 5x5 board on an unoccupied square by pressing on that square.
+
+The letter will then be displayed in this
+      position.  The next letter in the series will then be displayed beneath the board ready for positioning.  This continues until all 25 letters have been positioned by the player.</p>
+<p>The player's tab displays a '+' followed by the number of tiles already added and positioned.
+      <p><span style="font-style:italic">Swapping phase</span ></p>
+      <p>Once all 25 letters have been positioned on the board in this way, the
+      swapping phase takes place, in which the player may swap the positions
+      of two pairs of letter tiles.&nbsp; This phase starts off with the 'swap'
+      icon </p>
+      <p style="text-align:center"><script language="Javascript">documentwrite('<img border="0" src="swap.gif"  width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></p>
+      <p>being displayed under the board.&nbsp; The player must then press on
+      4 squares (2 pairs of squares) on their board.&nbsp; The letters on the
+      first pair pressed will be swapped over, and then the letters on the
+      second pair will be swapped over. (Note: once the first square of a pair
+      has been pressed, the letter on that square is placed underneath the
+      board, and the 'swap' icon is displayed on the square).&nbsp; </p>
+<p>The player's tab displays an 'S' followed by the number of tiles already selected for swapping (1-4).
+      <p>Q. I'm so happy with my layouts that I don't want to swap the letters
+      over on two pairs.&nbsp; How do I achieve this?</p>
+      <p>A. To avoid swapping over two letters, just press any square once, then
+      press it again.&nbsp; It will just be swapped with itself.</p>
+<p>After placing a letter or selecting a letter for swapping, a &lt; button is displayed.  This can be used to undo the last placement or selection if the wrong square has accidentally been pressed.</p>
+      <p><span style="font-style:italic">Scoring phase</span ></p>
+      <p>The last phase is the scoring phase.&nbsp; During this phase, the player must 
+identify words on the board for scoring.&nbsp; 
+      This is done by selecting
+      the first and last letter of the word within any row or column (always
+      select the first before the last - see below for what happens if 
+      the selection is reversed).</p>
+      <p>The system shows which it is expecting next by
+      displaying either the 'first letter' icon</p>
+      <p style="text-align:center"><script language="Javascript">documentwrite('<img border="0" src="beg.gif"  width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></p>
+      <p>or the 'last letter' icon </p>
+            <p style="text-align:center"><script language="Javascript">documentwrite('<img border="0" src="end.gif"  width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></p>
+      <p>below the board.&nbsp; So, at the beginning of this phase, the board
+      will have the 'first letter' icon displayed beneath it.</p>
+      <p>Once the first and last letters of a word have been selected, the word
+      and its score will be added on to the scorecard, and added
+      on to the total, which will be displayed in the player's tab.&nbsp; </p>
+      <p>Notes about scoring:</p>
+      <p>If a player selects a word that overlaps with an existing word on that
+      row or column, the earlier word selected will be removed from the
+      scorecard. No notification is given about this.</p>
+      <p>If a player has scored a word, but this is erroneous, the word and
+      score may be removed by making a reverse selection in the relevant row or
+      column; that is, the first square of the pair selected is to the right of
+      the second square selected in a row, or below it in a column.&nbsp; All
+      word scores in that row or column will be removed (not just any overlapped
+      by the selection).&nbsp; Notification will be given that this has
+      occurred.</p>
+      <p>If a player makes an invalid selection, i.e. the first and second
+      squares are in different rows and columns, or the same square is selected
+      twice, notification is given about this and selection of the two squares
+      must begin again.</p>
+      <p>There is no definite end point to scoring.&nbsp; </p>
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+
+      <p><span style="font-weight:bold"><a name="multi"></a>Two or more players</span>
+<p>
+Each player can play totally independently of the other players, although, importantly, each player makes use of the same series of 25 letters, so the competition  
+is a fair test of skill  - of how these letters are used in the positioning, swapping and scoring phases.
+<p>Because of the independent nature of play, the players may decide between them exactly how they should play.  Some options to consider are:
+<ul>
+<li>The players take turns to place individual letters and to swap pairs, then take turns to score.
+<li>The players take turns to place 5 letters and then take turns to swap pairs and to score.
+<li>One player completes the game then passes over to the next player, and so on.
+
+</ul>
+<p>Players should also agree on a dictionary to use to resolve any challenges to words.
+<p>When first beginning the game, positioning of the pieces should be hidden from the other players.    Pressing the <span style="font-style:italic">Hide</span> button hides all boards.
+However, once more than about 10 have been positioned, it probably makes little difference whether other boards are kept hidden or not, 
+as the states of the board are likely to be very different. 
+<p>The game is over when all players agree that they have finished scoring and all boards have been checked and any adjustments made following resolution of any challenges concerning valid words.  The winner is, of course, the player with the highest score.
+</p>
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+      <p><a name="newgame"></a><span style="font-weight:bold">New game</span></p>
+<p>
+A new game may be started at any time by pressing on the <span style="font-style:italic">New</span > button.
+</p>
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+
+      <p><span style="font-weight:bold"><a name="distribution"></a>Distribution</span><br>
+      <br>
+      When creating the series of 25 letters to be placed on the board, the system mimics the
+      idea of having a shuffled set of letter cards, from which it takes the
+      top 25. You can see how many of each letter are
+      available by pressing on the <span style="font-style:italic">More</span > button.  To return to the main playing board, press on the <span style="font-style:italic">Back</span > button<br>
+      <br>
+      <p><span style="font-style:italic">Pentad is an original game devised by Dr. David Wolstenholme</span >
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 2.07 (20160219) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=0
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.com, sexiest-lover.com</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-husband.com, best-lover.com</span>',
+'<span style="color:violet">best-mother.com, best-father.com</span>',
+'<span style="color:violet">best-dad.com, best-daughter.com</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith.best-wife.com</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-mother.com</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Buy our great logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy aginst the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:lime">If you like games such as...</span>',
+'<span style="color:lime">Rummy, 4-in-a-line...</span>',
+'<span style="color:lime">Hangman, Mancala...</span>',
+'<span style="color:lime">Letters Game, Numbers Game...</span>',
+'<span style="color:lime">& more classic & original games</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Games</span> app now</span>',
+'',
+'<span style="color:cyan">If you like puzzles such as...</span>',
+'<span style="color:cyan">Sudoku, Hangman...</span>',
+'<span style="color:cyan">Peg Solitaire, Step Challenge...</span>',
+'<span style="color:cyan">WordSearch & other word puzzles...</span>',
+'<span style="color:cyan">Numberskull & other number puzzles...</span>',
+'<span style="color:cyan">Memory Pairs...</span>',
+'<span style="color:cyan">& more classic & original puzzles</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Puzzles</span> app now</span>',
+'',
+'<span style="color:lime">Beat the Letters Game countdown;</span>',
+'<span style="color:lime">Avoid the Hangman\'s noose;</span>',
+'<span style="color:lime">Look for words in WordSearch+...</span>',
+'<span style="color:lime">And other mind-boggling grids;</span>',
+'<span style="color:lime">Try our original Pentad game;</span>',
+'<span style="color:lime">Find connections in Linkword Snap;</span>',
+'<span style="color:lime">Or solve the Word Ladder.</span>',
+'<span style="color:lime">For word-based games and puzzles...</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Words</span> app now</span>',
+'',
+'<span style="color:magenta">Beat the Numbers Game countdown;</span>',
+'<span style="color:magenta">Take 30 secs for our Step Challenge;</span>',
+'<span style="color:magenta">Or Pyramid Numbers;</span>',
+'<span style="color:magenta">Or try our original Numberskull.</span>',
+'<span style="color:magenta">For number-based games & puzzles...</span>',
+'<span style="color:magenta">Buy our <span style="color:white">Compact Numbers</span> app now</span>',
+'',
+'<span style="color:cyan">Solve Sudoku puzzles, with help;</span>',
+'<span style="color:cyan">Be a mastermind and break the codes,</span>',
+'<span style="color:cyan">Solve equations and use logic...</span>',
+'<span style="color:cyan">In our original Numberskull puzzle;</span>',
+'<span style="color:cyan">Find the killer based on clues...</span>',
+'<span style="color:cyan">In Mystery Clues.</span>',
+'<span style="color:cyan">For logic-based puzzles...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Logic</span> app now</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>
