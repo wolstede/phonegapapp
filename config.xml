@@ -3,14 +3,14 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.topaccolades.compactfun"
+        id        = "com.topaccolades.pegsolitaire"
         versionCode = "30"
         version   = "3.0">
 
     <name>CompactFun</name>
 
     <description>
-        A set of 31 games and puzzles in one app
+        Peg Solitaire including the Wolstenholme notation
     </description>
 
     <author href="http://topaccolades.com" email="dave@topaccolades.com">
@@ -18,6 +18,7 @@
     </author>
 
     <platform name="android" />
+    <platform name="winphone" />
 
     <!--
         If you do not want any permissions to be added to your app, add the
@@ -87,9 +88,11 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
+/*
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+*/
 
 </widget>
