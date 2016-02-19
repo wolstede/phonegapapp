@@ -7,7 +7,7 @@
         versionCode = "30"
         version   = "3.0">
 
-    <name>CompactFun</name>
+    <name>Peg Solitaire</name>
 
     <description>
         Peg Solitaire including the Wolstenholme notation
