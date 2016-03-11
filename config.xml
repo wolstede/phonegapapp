@@ -3,23 +3,22 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.topaccolades.pegsolitaire"
+        id        = "com.topaccolades.csisherlock2"
         versionCode = "30"
         version   = "3.0">
 
-    <name>Peg Solitaire</name>
+    <name>CSI Sherlock</name>
 
     <description>
-        Peg Solitaire including the Wolstenholme notation
+        An interactive logic puzzle.  Find who killed Vic, with what, and where from the clues given and requested.
     </description>
 
-    <author href="http://topaccolades.com" email="dave@topaccolades.com">
+    <author href="http://www.topaccolades.com" email="wolstedetouch@gmail.com">
         David Wolstenholme
     </author>
 
     <platform name="android" />
-    <platform name="winphone" />
-
+    
     <!--
         If you do not want any permissions to be added to your app, add the
         following tag to your config.xml; you will still have the INTERNET
@@ -34,7 +33,7 @@
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
     <!--
         Define a specific version of PhoneGap to build into your app.
-        <preference name="phonegap-version"       value="3.5.0" />
+        <preference name="phonegap-version"       value="cli-6.0.0" />
     -->
 
     <!-- Plugins -->
