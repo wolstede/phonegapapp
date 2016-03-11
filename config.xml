@@ -28,7 +28,7 @@
 
     <!-- Customize your app and platform with the preference element. 
 
-    <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
+    <preference name="fullscreen"                 value="true" /> 
 
 	-->
     <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
