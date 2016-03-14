@@ -438,6 +438,7 @@ function startnewgame()
 {
 if (showingads==1 || showinghelp==1) {return}
 var somestatus=gamestatus[0]*1
+
 if (somestatus==1 && gamestatus[2]<7)
 {
 mydecision('Please confirm that you wish to begin a new game', 'startnewgame2()', 'continuegame()')
@@ -454,7 +455,6 @@ function startnewgame2()
 {
 SetLocalVal('gamestatus', [0])
 changetextvalue('squaredetails', '')
-
 showad()
 }
 
@@ -1052,6 +1052,7 @@ sometext=sometext+'</td></tr></table><p style="text-align:center">TopAccolades</
 changetextvalue('banner', 'Xword<sup>4x4</sup>  Choose New Game')
 changetextvalue('theboard', sometext)
 changetextvalue('output', '')
+document.getElementById('theboard').style.display='inline'
 for (var i=0; i<4; i++)
 {
 changetextvalue('score'+i, '')
