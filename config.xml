@@ -5,7 +5,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.topaccolades.rummy7"
         versionCode = "10"
-        version   = "1.00">
+        version   = "1.0">
 
     <name>Rummy 7</name>
 
