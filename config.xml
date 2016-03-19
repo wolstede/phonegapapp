@@ -3,14 +3,14 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.topaccolades.kublitzcube"
-        versionCode = "11"
-        version   = "1.1">
+        id        = "com.topaccolades.pegsolitaire"
+        versionCode = "30"
+        version   = "3.0">
 
-    <name>Kublitz Cube</name>
+    <name>Peg Solitaire</name>
 
     <description>
-        Kublitz Cube including the Wolstenholme notation
+        Peg Solitaire including the Wolstenholme notation
     </description>
 
     <author href="http://topaccolades.com" email="wolstede@yahoo.com">
@@ -48,7 +48,7 @@
     <!--
         <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     -->
-    <plugin spec="https://github.com/phonegap/phonegap-mobile-accessibility.git" source="git" />
+
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
