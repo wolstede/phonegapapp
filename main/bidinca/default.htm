@@ -1,0 +1,1239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>Bidinca</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='bidinca'
+
+var interruptsrequired=0
+
+var scalef
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">Bidinca</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:silver"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<SCRIPT LANGUAGE="JavaScript">
+
+// All code copyright of TopAccolades Limited
+
+function runonload()
+{
+newgame()
+
+}
+
+restartconfirmationrequired=1
+
+function continueafterad()
+{
+newgame()
+
+}
+
+var turns=[0,0,0,0,0,0]
+var dicedisplay = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+
+var oneturn=[[0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0]]
+var playstatus = ['throw','throw','throw','throw','throw','throw']
+var lastbids=[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
+
+function recordthrows(player)
+{
+oneturn[player]=[0, 0, 0, 0, 0, 0]
+for (var i=0; i<5; i++)
+{
+oneturn[player][dicedisplay[player][i]-1]++ 
+}
+
+}
+
+
+
+
+function gettextvalue(someitem)
+{
+return document.getElementById(someitem).innerHTML
+}
+
+function selectscore(player, i)
+{
+if (playstatus[player] != "throw" && scorerecord[player][i] == 0)
+{
+var type = scoretypes[i]
+finalscores[player][i]=potentialscores[player][i]
+changetextvalue('p'+player+'total', overallscore(player))
+
+scorerecord[player][i] = 1
+newturn(player)
+
+}
+
+}
+
+function turnsgone(player)
+{
+var sub=0
+for (var i=0; i<scorerecord[player].length; i++)
+{
+sub=sub+scorerecord[player][i]
+
+}
+return sub
+}
+
+function overallscore(player)
+{
+var sub=0
+for (var i=0; i<finalscores[player].length; i++)
+{
+sub=sub+finalscores[player][i]
+
+}
+return sub
+}
+
+var currentbid=[0,0,0]
+var currentplayer=0
+function nextturn()
+{
+
+
+}
+
+function newgame()
+{
+for (var i=0; i<turns.length; i++)
+{
+document.getElementById('playerselect'+i).style.backgroundColor = fullcolors[i]
+}
+hideall()
+// document.getElementById('bidboard').style.display = 'none'
+document.getElementById('options').style.display = 'inline'
+
+handleclickproblem()
+}
+
+function startgame(players)
+{
+turns=[0,0,0,0,0,0]
+for (var i=0; i<players; i++)
+{
+turns[i]=5
+}
+currentplayer=randomnumber(players)-1
+
+nextround()
+
+}
+
+function nextround()
+{
+if (playerswithdice().length>1)
+{
+var numdice
+for (var i=0; i<turns.length; i++)
+{
+document.getElementById('playerselect'+i).style.backgroundColor = fullcolors[i]
+changetextvalue('p'+i+'total', turns[i])
+numdice=turns[i]
+dicedisplay[i]=[0,0,0,0,0]
+for (var j=0; j<numdice; j++)
+{
+dicedisplay[i][j]=randomnumber(6)
+}
+recordthrows(i)
+for (var j=0; j<dicedisplay[i].length; j++)
+{
+document.dice['p'+i+'pos' + j].src='image'+dicedisplay[i][j]+'.png'
+}
+
+}
+lastbids=[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
+currentbid=[0,0,0]
+changetextvalue('currentbidtotal', currentbid[2])
+
+nextturn()
+}
+}
+
+function nextturn()
+{
+if (playerswithdice().length==1) {return}
+hideall()
+var bidtext='This will be the first bid'
+if (currentbid[2]>0) {bidtext='Current bid '+createbidtext(currentbid)}
+changetextvalue('thecurrentbid', bidtext)
+changetextvalue('thenumber', '')
+changetextvalue('thetype', '')
+changetextvalue('message', '')
+bidcheck=0
+
+document.getElementById('nextplayer').style.backgroundColor=fullcolors[currentplayer]
+document.getElementById('bidboard').style.display = 'none'
+
+document.getElementById('gonext').style.display = 'inline'
+
+handleclickproblem()
+
+}
+var bidcheck=0
+function keypad(someval)
+{
+bidcheck=0
+changetextvalue('message', '')
+if (someval=='C')
+{
+changetextvalue('thenumber', '')
+}
+else
+{
+changetextvalue('thenumber', gettextvalue('thenumber')+''+someval)
+
+
+
+if (gettextvalue('thenumber')=='0')
+{
+changetextvalue('thenumber', '')
+}
+else
+{
+if (gettextvalue('thetype')!='') {checkbid()}
+}
+
+}
+
+}
+var tempbid
+function checkbid()
+{
+tempbid=[0,0,0]
+bidcheck=0
+var somescore=0
+var sometype=1*gettextvalue('thetype')
+var somenumber=1*gettextvalue('thenumber')
+if (sometype==1) {somescore=20*somenumber} else {somescore=(10*somenumber)+sometype}
+if (gettextvalue('thenumber')*1>alldice())
+{
+changetextvalue('message', 'Only '+alldice()+' dice!');
+}
+else
+{
+if (somescore<=currentbid[2])
+{
+changetextvalue('message', 'Score not > '+currentbid[2]+'!');
+
+}
+else
+{
+changetextvalue('message', createbidtext([somenumber, sometype, somescore]));
+bidcheck=1
+tempbid=[somenumber, sometype, somescore]
+}
+}
+}
+
+function alldice()
+{
+var sometot=0
+for (var i=0; i<turns.length; i++)
+{
+sometot=sometot+turns[i]
+}
+return sometot
+}
+
+function selecttype(someval)
+{
+bidcheck=0
+changetextvalue('message', '')
+
+changetextvalue('thetype', someval)
+
+if (gettextvalue('thenumber')!='') 
+{
+checkbid()
+}
+}
+
+function submitbid()
+{
+if (bidcheck==1)
+{
+currentbid=copysimplevalues(tempbid)
+lastbids[currentplayer]=copysimplevalues(tempbid)
+currentplayer=nextplayer()
+changetextvalue('currentbidtotal', currentbid[2])
+
+
+nextturn()
+}
+
+}
+
+var successfulchallenge=0
+var thetotals
+var liveplayers
+function challenge()
+{
+liveplayers=copysimplevalues(turns)
+if (currentbid[2]==0) {changetextvalue('message', 'No bids!'); return}
+successfulchallenge=0
+var sometype=currentbid[1]
+var somenumber=currentbid[0]
+var thetotals=[0,0,0,0,0,0]
+for (var i=0; i<oneturn.length; i++)
+{
+for (var j=0; j<6; j++)
+{
+thetotals[j]=thetotals[j]+oneturn[i][j]
+}
+}
+
+var someactual=thetotals[0]
+var somewildstext=''
+if (sometype>1) {someactual=someactual+thetotals[sometype-1]; somewildstext=' (and 1s)'}
+if (someactual<somenumber) {successfulchallenge=1}
+var someloser
+var somenextbidder
+var somechallengetext1
+var somechallengetext2
+if (successfulchallenge==1) 
+{
+somechallengetext1='Challenge successful! The actual number of '+sometype+'s '+somewildstext+' is '+someactual+' whereas the bid was for '+currentbid[0]
+someloser=previousplayer(); 
+somenextbidder=someloser
+var someeliminatedtext=''
+if (turns[someloser]==1) // player eliminated
+{
+someeliminatedtext=' and is eliminated'
+somenextbidder=currentplayer
+}
+somechallengetext2=' loses a die'+someeliminatedtext 
+}
+else
+{
+somechallengetext1='Challenge failed! The actual number of '+sometype+'s '+somewildstext+' is '+someactual+' whereas the bid was for '+currentbid[0]
+someloser=currentplayer
+somenextbidder=someloser
+var someeliminatedtext=''
+if (turns[someloser]==1) // player eliminated
+{
+someeliminatedtext=' and is eliminated'
+somenextbidder=nextplayer()
+}
+somechallengetext2=' loses a die'+someeliminatedtext 
+
+}
+currentplayer=somenextbidder
+turns[someloser]--
+changetextvalue('p'+someloser+'total', turns[someloser])
+changetextvalue('challengefeedback1', somechallengetext1)
+changetextvalue('challengefeedback2', somechallengetext2)
+document.getElementById('losingplayer').style.backgroundColor=fullcolors[someloser]
+hideall()
+document.getElementById('challengediv').style.display='inline'
+handleclickproblem()
+if (playerswithdice().length==1) {changetextvalue('challengefeedback2', somechallengetext2+' - Game over!')
+}
+
+}
+
+
+function previousplayer()
+{
+for (var i=currentplayer-1; i>=0; i--)
+{
+if (turns[i]>0) {return i}
+}
+for (var i=turns.length-1; i>currentplayer; i--)
+{
+if (turns[i]>0) {return i}
+}
+}
+
+function nextplayer()
+{
+for (var i=currentplayer+1; i<turns.length; i++)
+{
+if (turns[i]>0) {return i}
+}
+for (var i=0; i<currentplayer; i++)
+{
+if (turns[i]>0) {return i}
+}
+}
+
+
+function copysimplevalues(somelist)
+{
+var somereturn=[]
+for (var i=0; i<somelist.length; i++)
+{
+somereturn[i]=somelist[i]
+}
+return somereturn
+}
+
+function createbidtext(somebid)
+{
+
+return somebid
+[0]+'x'+somebid[1]+':score='+somebid[2]
+}
+function takebid()
+{
+document.getElementById('gonext').style.display = 'none'
+
+displayplayer(currentplayer)
+document.getElementById('bidboard').style.display = 'inline'
+handleclickproblem()
+
+}
+
+
+
+
+
+
+
+
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+
+var fullcolors=['#FF0000', '#FFFF00', '#00FF00', '#00B4FF', '#FF33CC', '#CC6633']
+var lightcolors=['#FAAFBE', '#FFF888', '#B1FB17', '#A0B4FF', '#FF66CC', '#CC6633']
+var allsame=0
+function hideall()
+{
+for (var player=0; player<6; player++)
+{
+
+document.getElementById('p'+player+'completediv').style.display = 'none'
+}
+document.getElementById('options').style.display = 'none'
+document.getElementById('bidboard').style.display = 'none'
+document.getElementById('challengediv').style.display = 'none'
+document.getElementById('gonext').style.display = 'none'
+document.getElementById('backchallenge').style.display = 'none'
+document.getElementById('backbid').style.display = 'none'
+}
+
+function displayplayer(player)
+{
+
+hideall()
+document.getElementById('p'+player+'completediv').style.display = 'inline'
+handleclickproblem()
+}
+
+function showbids()
+{
+hideall()
+document.getElementById('backbid').style.display = 'inline'
+var someindex=0
+for (var i=0; i<6; i++)
+{
+document.getElementById('bidcolor'+i).style.backgroundColor = 'white'
+changetextvalue('bidtext'+i, '&nbsp;')
+
+
+}
+for (var i=currentplayer; i<lastbids.length; i++)
+{
+if (lastbids[i][2]>0)
+{
+document.getElementById('bidcolor'+someindex).style.backgroundColor = fullcolors[i]
+changetextvalue('bidtext'+someindex, createbidtext(lastbids[i]))
+someindex++
+}
+
+
+}
+
+for (var i=0; i<currentplayer; i++)
+{
+
+if (lastbids[i][2]>0)
+{
+document.getElementById('bidcolor'+someindex).style.backgroundColor = fullcolors[i]
+changetextvalue('bidtext'+someindex, createbidtext(lastbids[i]))
+someindex++
+}
+
+
+}
+
+}
+
+function backbid()
+{
+hideall()
+
+
+document.getElementById('p'+currentplayer+'completediv').style.display = 'inline'
+document.getElementById('bidboard').style.display = 'inline'
+handleclickproblem()
+}
+
+function backchallenge()
+{
+hideall()
+
+
+document.getElementById('challengediv').style.display = 'inline'
+handleclickproblem()
+
+}
+
+function showalldice()
+{
+hideall()
+document.getElementById('backchallenge').style.display = 'inline'
+
+for (var player=0; player<6; player++)
+{
+if (liveplayers[player]>0)
+{
+document.getElementById('p'+player+'completediv').style.display = 'inline'
+}
+}
+handleclickproblem()
+}
+
+function playerswithdice()
+{
+var somereturn=[]
+for (var i=0; i<6; i++)
+{
+if (turns[i]>0) {somereturn=somereturn.concat([i])}
+}
+return somereturn
+}
+
+</script>
+
+
+
+
+
+
+<form name="dice">
+<script language="Javascript">
+documentwrite('<div style="position:relative;left:0px;top:0px;height:100%;width:100%"><div style="position:absolute;left:0px;top:'+Math.floor(scalef*2)+'px;height:'+Math.floor(scalef*235)+'px;width:100%; background-color:#996699">')
+documentwrite('<table border=1 cellpadding=0 width=100%><tr><td style="background-color:white; text-align:center; font-weight:bold"><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center width=100%><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showad()">New</td></tr></table></td><td id="playerselect0" style="background-color:white; text-align:center; font-weight:bold;" width='+Math.floor(scalef*20)+'><div id="p0total">0</div></td><td id="playerselect1" style="background-color:white; text-align:center; font-weight:bold;" width='+Math.floor(scalef*20)+'><div id="p1total">0</div></td><td id="playerselect2" style="background-color:white; text-align:center; font-weight:bold;" width='+Math.floor(scalef*20)+'><div id="p2total">0</div></td><td id="playerselect3" style="background-color:white; text-align:center; font-weight:bold;" width='+Math.floor(scalef*20)+'><div id="p3total">0</div></td><td id="playerselect4" style="background-color:white; text-align:center; font-weight:bold;" width='+Math.floor(scalef*20)+'><div id="p4total">0</div></td><td id="playerselect5" style="background-color:white; text-align:center; font-weight:bold;" width='+Math.floor(scalef*20)+'><div id="p5total">0</div></td><td style="background-color:white; text-align:center; font-weight:bold;" width='+Math.floor(scalef*30)+'><div id="currentbidtotal">0</div></td></tr></table>')
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*5)+'px;display:block"></div>')
+
+documentwrite('<div id="backchallenge" style="display:inline"><table border=0 cellpadding=2 width=100%><tr><td>')
+
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="backchallenge()">Back</td></tr></table><br><br>')
+documentwrite('</td></tr></table></div><div id="backbid" style="display:none"><table border=0 cellpadding=2 width=100%><tr><td>')
+documentwrite('<br><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="backbid()">Back</td></tr></table><br>')
+documentwrite('<table align=center border=1>')
+for (var i=0; i<6; i++)
+{
+documentwrite('<tr><td id="bidcolor'+i+'" style="background-color:white" width='+Math.floor(scalef*20)+'>&nbsp;</td><td style="background-color:white" width='+Math.floor(scalef*80)+'><div id="bidtext'+i+'">&nbsp;</div></td></tr>')
+}
+
+documentwrite('</table></td></tr></table></div>')
+
+var nth
+var c
+for (var player=0; player<6; player++)
+{
+documentwrite('<div id="p'+player+'completediv" style="display:none">')
+documentwrite('<table border=0 cellspacing=2 cellpadding=0 align=center><tr><td style="background-color:'+fullcolors[player]+'" width='+Math.floor(scalef*20)+'></td>')
+
+for (c = 0; c < 5; c++) 
+{
+nth = c+1;
+documentwrite('<td align="center">');
+documentwrite('<img style="display:block"  width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="image' + nth + '.png" name="p'+player+'pos' + c + '" border="0">');
+documentwrite('</td>');
+}
+documentwrite('</tr>')
+
+documentwrite('</table>')
+documentwrite('</div>')
+}
+
+
+documentwrite('<div id="gonext"  style="display:none"><table border=0 cellpadding=2 width=100%><tr><td>')
+
+documentwrite('<table width=100% border=0 cellspacing=2 cellpadding=0 align=center><tr><td id="nextplayer" style="background-color:white" width='+Math.floor(scalef*20)+'></td><td>It\'s your turn to bid or challenge.<br><div id="thecurrentbid"></div><br>Press Go when you\'re ready.</td></tr><tr><td colspan=2 style="text-align:center"><br><br><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="takebid()">&nbsp;Go&nbsp;</td></tr></table></td></tr></table>')
+documentwrite('</td></tr></table></div><div id="options"  style="display:none"><table border=0 cellpadding=2 width=100%><tr><td>')
+
+documentwrite('<p style="font-weight:bold">Number of players')
+documentwrite('<p style="font-weight:normal">Click on the die showing the number of players')
+
+documentwrite('<p><table border=0 cellspacing=2 cellpadding=0 align=center><tr>')
+
+for (c = 2; c <= 6; c++) 
+{
+
+documentwrite('<td align="center">');
+documentwrite('<img style="display:block"  width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="image' + c + '.png" border="0" onClick="startgame('+c+')">');
+documentwrite('</td>');
+}
+documentwrite('</tr>')
+
+documentwrite('</td></tr></table></table>')
+
+
+
+
+documentwrite('</div>')
+
+documentwrite('<div id="challengediv" style="display:none"><table border=0 cellpadding=2><tr><td>')
+documentwrite('<p style="font-weight:bold">Result of challenge')
+documentwrite('<table border=0><tr><td colspan=2><div id="challengefeedback1"></div></td></tr><tr><td colspan=2 height='+Math.floor(scalef*5)+'></td></tr>')
+documentwrite('<tr><td id="losingplayer" width=10%  height='+Math.floor(scalef*20)+'></td><td><div id="challengefeedback2"></div></td></tr>')
+documentwrite('</table><br>')
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showalldice()">Show all dice</td></tr></table><br><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="nextround()">Continue</td></tr></table>')
+documentwrite('</td></tr></table></div>')
+documentwrite('<div id="bidboard" style="display:none;width:100%">')
+documentwrite('<table border=0 align=center valign=middle width=100% cellspacing='+Math.floor(scalef*4)+' cellpadding=0>')
+documentwrite('<tr><td>')
+documentwrite('<table border=1  style="background-color:lemonchiffon" align=center>')
+documentwrite('<tr>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(1)">1</td>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(2)">2</td>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(3)">3</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(4)">4</td>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(5)">5</td>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(6)">6</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(7)">7</td>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(8)">8</td>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(9)">9</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold;color:red" align=center valign=middle onClick="keypad(\'C\')">C</td>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold" align=center valign=middle onClick="keypad(0)">0</td>')
+documentwrite('<td style="width:'+Math.floor(scalef*20)+'px;height:'+Math.floor(scalef*20)+'px;font-size:'+Math.floor(scalef*14)+'px;font-weight:bold;color:red" align=center valign=middle onClick="keypad(\'C\')">C</td>')
+documentwrite('</tr>')
+documentwrite('</table>')
+documentwrite('</td><td></td>')
+documentwrite('<td>')
+documentwrite('<table border=0  align=center>')
+documentwrite('<tr>')
+documentwrite('<td><img style="display:block"  width='+Math.floor(scalef*20)+' height='+Math.floor(scalef*20)+' src="image1.png" onClick="selecttype(1)"></td>')
+documentwrite('<td><img style="display:block"  width='+Math.floor(scalef*20)+' height='+Math.floor(scalef*20)+' src="image2.png" onClick="selecttype(2)"></td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td><img style="display:block"  width='+Math.floor(scalef*20)+' height='+Math.floor(scalef*20)+' src="image3.png" onClick="selecttype(3)"></td>')
+documentwrite('<td><img style="display:block"  width='+Math.floor(scalef*20)+' height='+Math.floor(scalef*20)+' src="image4.png" onClick="selecttype(4)"></td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td><img style="display:block"  width='+Math.floor(scalef*20)+' height='+Math.floor(scalef*20)+' src="image5.png" onClick="selecttype(5)"></td>')
+documentwrite('<td><img style="display:block"  width='+Math.floor(scalef*20)+' height='+Math.floor(scalef*20)+' src="image6.png" onClick="selecttype(6)"></td>')
+documentwrite('</tr>')
+documentwrite('</table>')
+documentwrite('</td><td></td></tr>')
+documentwrite('<tr><td style="text-align:center"><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center width=100% height='+Math.floor(scalef*17)+'><tr><td style="background-color:white;text-align:center;" id="thenumber">&nbsp;</td></tr></table></td><td>&nbsp;X&nbsp;</td><td style="text-align:center"><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center width=100% height='+Math.floor(scalef*17)+'><tr><td style="background-color:white;text-align:center;" id="thetype">&nbsp;</td></tr></table></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center height='+Math.floor(scalef*17)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center;width:'+Math.floor(scalef*35)+'px" onClick="submitbid()">Bid</td></tr></table></td></tr>')
+documentwrite('<tr><td colspan=3><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center width=100% height='+Math.floor(scalef*17)+'><tr><td style="background-color:white;text-align:center" id="message"></td></tr></table></td><td></td></tr>')
+documentwrite('<tr><td colspan=2><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*75)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="showbids()">Show Bids</td></tr></table></td><td colspan=2><table border=1 cellpadding=0 cellspacing=0 style="align:right" align=right><tr><td style="width:'+Math.floor(scalef*75)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="challenge()">Challenge</td></tr></table></td></tr>')
+documentwrite('</table>')
+documentwrite('</div>')
+documentwrite('</div></div>')
+</script>
+</form>
+</div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#overview">Overview</a><br><a href="#playing">Playing the game</a><br><a href="#newgame">New game</a><br><a href="#terms">Terms of use</a><br><br>')}
+</script>
+
+<a name="intro"></a>Bidinca is a game for 2-6 players.  It is derived from a dice game that is believed to have originated in South America.  The generic name of the game in English is Liar's Dice, but there are many variants including commercial ones. This version, Bidinca, is easy to learn, exciting to play, and requires a good blend of bluffing and judgment as well as luck.  
+<br>
+
+<br>This version is ideal for playing on a portable device, such as a phone, tablet, netbook or laptop, that can be handed round from player to player so that only one player can see the screen at a time. 
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+<br><br><a name="overview"></a><span style="font-weight:bold">Overview</span>
+<br><br>
+Each player initially has five dice.  In each round of the game, each player still in the game will have from 1 to 5 dice still in his possession, which are thrown.  A player is able to see his own dice, but not those of the other players.  
+<br>
+
+<br>The players then take turns to make a bid, which represents the minimum number of dice of a certain number that will be found in total when all the players’ hands are revealed.
+<br>
+
+<br>
+The player whose turn it is generally has two choices:  make a higher value bid than the previous bid or else challenge the current highest bidder - the last player to bid.  If a challenge is made, a check is carried out to see whether the bid is supported by the dice thrown by all the players.  If it is, the challenger loses the round;  if it is not, the highest bidder loses.  
+<br>
+
+<br>The loser is penalized by losing one of his dice.  When a player has lost all dice, i.e. five rounds, he is eliminated from the game.  The winner of the game is the only player left when all others have been eliminated.
+<br>
+
+<br>
+A bid takes the general form: so many dice of a particular face value, e.g. 7x5s, 8x2s, or 4x1s.  In Bidinca, 1s are wild, so that they can represent any other number the bidder chooses.  So, a bid of 7x5s means that the total number of 5s and 1s thrown by all the players must be 7 or more.  Obviously, 4x1s just means a minimum of 4 dice showing 1.
+<br>
+
+<br>
+The value of a bid is measured very simply.  For face values 2 through to 6, the value of a bid is (number of dice bid x 10) + the face value.  So, the value of a bid of 7x5s is (7x10) + 5 = 75; that of 3x4s is (3x10) + 4 = 34; that of 9x6s is 96;  that of 11x2s is 112; and so on - easy: just append the face value to the number bid and read it as a number.  
+<br>
+
+<br>1s, being wild, are, not suprisingly, treated differently.  The value of a bid in 1s is number of dice x 20.  So, the values of bids in 1s are: 1x1 = 20; 2x1s = 40; 3x1s =60; 4x1s = 80; 5x1s = 100; and so on.
+<br>
+
+<br>
+At the beginning of the game, the first bidder is determined at random, and all dice are thrown.
+<br><br>
+The first bidder makes a bid, and then it is the turn of the player to his left, and so on.  When a player decides not to make a higher bid but to make a challenge, bidding stops.  Then, a check is made of all the dice thrown to see whether the last (highest) bid is supported by the dice thrown.  
+<br>
+
+<br>
+The loser of the round (the challenger if the bid is supported, the highest bidder if it is not) loses one of his dice.
+<br><br>
+The loser of the round becomes the first bidder in the next round.  However, when a player has lost 5 rounds and all 5 dice, he is eliminated from the game.  In this case, the first bidder in the next round is the player to his left.
+<br>
+
+<br>
+It is worth noting that bluffing is key in this game, so a player making a bid in a certain dice value does not necessarily have to have any of these in his hand.
+<br>
+
+<br>
+ 
+<span style="font-style:italic">An illustrative round</span>
+<br><br>
+Suppose this is the second round of the game and there are 4 players, Red (R), Yellow (Y), Green (G) and Blue (B), sitting in that order clockwise.  All still have 5 dice, except for Yellow who only has 4, having lost the first round.  
+The throws might be:
+<br><br>
+R:	1, 1, 5, 5, 6<br>
+Y:	2, 2, 3, 3<br>
+G:	1, 2, 3, 4, 4<br>
+B:	1, 2, 2, 4, 5<br>
+<br>
+Bidding starts with Y, the loser of the last round, and progresses as follows:
+<br><br>
+Y: 	3x2s  	Value = 32<br>
+G: 	3x4s  	Value = 34<br>
+B: 	5x2s  	Value = 52<br>
+R: 	3x1s  	Value = 60<br>
+Y: 	7x3s  	Value = 73<br>
+G: 	8x3s  	Value = 83<br>
+B: 	Challenges Green<br>
+
+
+<br>
+Therefore, in total, all the dice thrown must show at least 8x3s or 1s, if Green's bid is to be supported and Blue is to lose - otherwise Green loses.
+<br><br>
+R contributes 2x1s;<br>
+Y contributes 2x3s;<br
+G contributes 1x1 and 1x3.<br>
+B contributes 1x1;<br>
+
+
+<br>
+So, the total number of 3s and 1s is 7 - not enough to support the bid of 8.  Blue’s challenge therefore succeeds, and Green loses the round and a die, so now plays only with 4 dice.  Green also becomes first bidder in the next round.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+<br><br><a name="playing"></a><span style="font-weight:bold">Playing the game</span>
+<br><br>
+The game screen has, at the top, 6 coloured boxes: red, yellow, green, blue, magenta and brown.  One player plays as 'red', the next player clockwise plays as 'yellow', the next as 'green', and so on.
+<br><br>
+The game is started by selecting the number of players (2 - 6) by pressing the die displaying this number.
+<br>
+<br>
+The first bidder is selected randomly.  The bidder's colour is displayed.  The device (e.g. phone or computer) is handed to that player, who presses the Go button.
+<br>
+<br>
+Just below the top row showing the number of dice each player has (initially 5 each), the player's colour is displayed together with the dice thrown for him in this round.  The player makes his bid by pressing the keypad numbers on the left (C clears any numbers already entered) to state the number of dice in the bid, and by pressing the face value involved in the bid on the right.  
+
+<br>
+
+<br>So, if the player wished to make a bid of 3x4s, he would press the 3 on the keypad and then press the die displaying 4 on the right.  The number and face value are displayed in the fields below, while the complete bid and its bid value is displayed underneath these.  Once the player is happy with the bid, he states the bid and its value out loud and presses the Bid button.
+<br>
+
+<br>
+The next player's colour is then shown and the phone or other device is handed to that player, who presses Go ready to take his turn.  The value of the current highest bid (last bid) is always visible in the white box at the top-right corner.
+<br><br>
+The next player has a choice of making a bid or of making a challenge, by pressing the Challenge button.  Bids are made as above.
+
+<br>
+
+<br><i>Invalid bids</i>
+<br><br>
+Certain bids are invalid
+<ul>
+<li>A bid whose value is not greater than the current highest bid
+<li>A bid in which the number of dice in the bid exceeds the total number of dice still in the game.
+
+</ul>
+
+
+
+The bidder is informed of problems with the bid in the field that also displays the value of the bid if it is valid.
+<br>
+
+<br>
+Before bidding or challenging, the player may choose to see the last bids made by each player, by pressing <i>Show Bids</i>.  The screen displayed presents the bids and associated values for each player who has made a bid.  The <i>Back</i> button redisplays the bidding screen.
+
+<br>
+
+<br><i>Challenges</i>
+<br><br>
+When a player wishes to challenge the highest bid, he annouces this out loud and presses the <i>Challenge</i> button.  A check is made by the system of every player's dice.  The challenger is informed of the result of the challenge and who loses a die.  
+<br>
+
+<br>Pressing the <i>Show all dice</i> button displays the dice thrown for all players (pressing the <i>Back</i> button redisplays the challenge result screen).  The phone or other device should be passed to all the players so that they can see the result.  
+<br>
+
+<br>
+Once all players have seen the throws, the challenger should press the <i>Continue</i> button on the challenge result screen.  This states who the first bidder is in the next round.  The number of dice each player still has remaining is shown in the coloured box for the player at the top of the screen.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a>')}</script>
+<br><br><a name="newgame"></a><span style="font-weight:bold">New game</span>
+
+<br><br>
+At the end of the game, when the winner is the only player left with any dice, or at any other time, the <i>New</i> button may be pressed, which again prompts you to specify the number of players.
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 3.0 (20160321) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=1
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.com, sexiest-lover.com</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-husband.com, best-lover.com</span>',
+'<span style="color:violet">best-mother.com, best-father.com</span>',
+'<span style="color:violet">best-dad.com, best-daughter.com</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith.best-wife.com</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-mother.com</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Buy our great logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy aginst the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:lime">If you like games such as...</span>',
+'<span style="color:lime">Rummy, 4-in-a-line...</span>',
+'<span style="color:lime">Hangman, Mancala...</span>',
+'<span style="color:lime">Letters Game, Numbers Game...</span>',
+'<span style="color:lime">& more classic & original games</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Games</span> app now</span>',
+'',
+'<span style="color:cyan">If you like puzzles such as...</span>',
+'<span style="color:cyan">Sudoku, Hangman...</span>',
+'<span style="color:cyan">Peg Solitaire, Step Challenge...</span>',
+'<span style="color:cyan">WordSearch & other word puzzles...</span>',
+'<span style="color:cyan">Numberskull & other number puzzles...</span>',
+'<span style="color:cyan">Memory Pairs...</span>',
+'<span style="color:cyan">& more classic & original puzzles</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Puzzles</span> app now</span>',
+'',
+'<span style="color:lime">Beat the Letters Game countdown;</span>',
+'<span style="color:lime">Avoid the Hangman\'s noose;</span>',
+'<span style="color:lime">Look for words in WordSearch+...</span>',
+'<span style="color:lime">And other mind-boggling grids;</span>',
+'<span style="color:lime">Try our original Pentad game;</span>',
+'<span style="color:lime">Find connections in Linkword Snap;</span>',
+'<span style="color:lime">Or solve the Word Ladder.</span>',
+'<span style="color:lime">For word-based games and puzzles...</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Words</span> app now</span>',
+'',
+'<span style="color:magenta">Beat the Numbers Game countdown;</span>',
+'<span style="color:magenta">Take 30 secs for our Step Challenge;</span>',
+'<span style="color:magenta">Or Pyramid Numbers;</span>',
+'<span style="color:magenta">Or try our original Numberskull.</span>',
+'<span style="color:magenta">For number-based games & puzzles...</span>',
+'<span style="color:magenta">Buy our <span style="color:white">Compact Numbers</span> app now</span>',
+'',
+'<span style="color:cyan">Solve Sudoku puzzles, with help;</span>',
+'<span style="color:cyan">Be a mastermind and break the codes,</span>',
+'<span style="color:cyan">Solve equations and use logic...</span>',
+'<span style="color:cyan">In our original Numberskull puzzle;</span>',
+'<span style="color:cyan">Find the killer based on clues...</span>',
+'<span style="color:cyan">In Mystery Clues.</span>',
+'<span style="color:cyan">For logic-based puzzles...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Logic</span> app now</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>

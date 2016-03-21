@@ -1,0 +1,1569 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>WordSearch+</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='wordsearch'
+
+var interruptsrequired=0
+
+var scalef
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">WordSearch+</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:purple"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+
+<SCRIPT LANGUAGE="JavaScript">
+restartconfirmationrequired=1
+
+function runonload()
+{
+runauto()
+}
+
+function continueafterad()
+{
+runauto()
+}
+
+</SCRIPT>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Begin
+// All code copyright of TopAccolades Limited
+function charlist(somestring)
+{
+var someresult=[]
+if (somestring.length==0) {return []} else
+{return [somestring.substring(0, 1)].concat(charlist(somestring.substring(1)))}
+}
+
+
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+function shufflearray(somearray)
+{
+
+var temparray=somearray
+var shuffled=[]
+var packsize=somearray.length
+var ran
+
+for (var i=0; i<packsize; i++)
+{
+ran = randomnumber(temparray.length)
+shuffled[i] = temparray[ran-1]
+temparray = removeElement(ran-1, temparray)
+}
+return shuffled
+}
+
+function removeElement(index, somearray)
+{
+var beg=somearray.slice(0, index)
+
+var end=[]
+if (index+1 < somearray.length) {end = somearray.slice(index+1)}
+return beg.concat(end)
+}
+
+
+
+function tailarray(somearray)
+{
+return somearray.slice(1, somearray.length)
+}
+
+function stringfromlist(somearray)
+{
+var someoutput=''
+for (var i=0; i<somearray.length; i++)
+{
+someoutput=someoutput+somearray[i]
+}
+return someoutput
+}
+
+
+
+
+
+
+
+
+function member(element, array) 
+// checks whether element is a member of array:  returns true if so, false if not.
+{
+var check = false
+var i = 0
+while (i<array.length && !check){check = array[i]==element; i++};
+return check
+
+}
+
+
+
+
+function concatall(somearray)
+{
+someresult=[]
+for (var i=0; i<somearray.length; i++)
+{
+someresult=someresult.concat(somearray[i])
+}
+return someresult
+}
+
+
+
+function numbersort(some1, some2)
+{
+return some1-some2
+}
+
+function copyvalues(somearray)
+{
+var temparray=[]
+for (var i=0; i<somearray.length; i++)
+{
+temparray[i]=[]
+for (var j=0; j<somearray[i].length; j++)
+{
+temparray[i][j]=somearray[i][j]
+}
+}
+return temparray
+}
+
+
+
+
+function copysimplevalues(somearray)
+{
+var temparray=[]
+for (var i=0; i<somearray.length; i++)
+{
+temparray[i]=somearray[i]
+}
+return temparray
+}
+
+
+var theemptygrid
+
+var thestartgrid
+var thegrid
+var thecompletedgrid
+
+
+
+var thebasegrid
+
+
+
+var thedivs=['maingame', 'more']
+function displaydiv(somediv)
+{
+for (var i=0; i<thedivs.length; i++)
+{
+document.getElementById(thedivs[i]).style.display = 'none'
+
+
+}
+document.getElementById(thedivs[somediv]).style.display = 'inline'
+handleclickproblem()
+
+}
+
+var firsttime=1
+
+var theloadedwordsearch
+function loadwordsearch()
+{
+if (firsttime==1)
+{
+firsttime=0
+}
+else
+{
+if (runcheck()==false) {return} // means that it will load a puzzle when opened even without licence
+}
+
+
+
+displaygrid()
+showthemessage('Find the words on the list + one unidentifed word.')
+}
+
+
+
+
+
+
+function showword()
+{
+thegrid=copyvalues(thecompletedgrid)
+displaygrid()
+
+showthemessage(theloadednumberskull[5])
+}
+
+function displaygrid()
+{
+for (var i=0; i<thegrid.length; i++)
+{
+for (var j=0; j<thegrid[i].length; j++)
+{
+changetextvalue('cell'+i+'_'+j, thegrid[i][j])
+}
+}
+
+var somedup=duplicatenumber()
+if (somedup>0) 
+{showthemessage('Warning: '+somedup+' occurs more than once')}
+else
+{showthemessage('')}
+var somerow
+var somecol
+for (var i=0; i<6; i++)
+{
+somerow=resultpositions[i][0]
+somecol=resultpositions[i][1]
+document.getElementById('gridback'+somerow+'_'+somecol).style.backgroundColor='white'
+
+}
+
+
+}
+
+function displaybarenumberskull()
+{
+thestartgrid=copyvalues(theemptygrid)
+thecompletedgrid=copyvalues(theemptygrid)
+for (var i=0; i<theloadednumberskull[0].length; i++)
+{
+thecompletedgrid[loadedpositions[i][0]][loadedpositions[i][1]]=valueof(theloadednumberskull[0][i])
+
+if (loadedpositions[i][0]==6 || loadedpositions[i][1]==6)
+{
+thestartgrid[loadedpositions[i][0]][loadedpositions[i][1]]=valueof(theloadednumberskull[0][i])
+}
+}
+for (var i=0; i<theloadednumberskull[1].length; i=i+2)
+{
+thestartgrid[indextopair(theloadednumberskull[1][i])[0]][indextopair(theloadednumberskull[1][i])[1]]=valueof(theloadednumberskull[1][i+1])
+}
+thegrid=copyvalues(thestartgrid)
+for (var i=0; i<thestartgrid.length; i++)
+{
+for (var j=0; j<thestartgrid[i].length; j++)
+{
+changetextvalue('cell'+i+'_'+j, thestartgrid[i][j])
+}
+}
+loadednumbers=[]
+for (var i=0; i<loadednumberindices.length; i++)
+{
+loadednumbers[i]=theloadednumberskull[0][loadednumberindices[i]]
+}
+loadednumbers=loadednumbers.sort(numbersort)
+for (var i=0; i<loadednumbers.length; i++)
+{
+changetextvalue('numberselect'+i, loadednumbers[i])
+}
+showthemessage('')
+
+}
+
+// start of imported wordsearch code
+var searcharray=[]
+var createrecord=[]
+var wordstobefitted
+var searchrows=10
+var searchcols=10
+var numbercells
+var searchindex=0
+var keywords=[]
+var thesolutions
+var wordstobeidentified=[]
+var highlightarray=[]
+
+function layoutkeywords()
+{
+highlightarray=[]
+for (var i=0; i<searchrows; i++)
+{highlightarray[i]=[]
+for (var j=0; j<searchcols; j++)
+{
+highlightarray[i][j]='white'
+}
+}
+
+
+for (var j=0; j<keywords.length; j=j+4)
+{
+var somechars=charlist(keywords[j])
+var somestartrow=keywords[j+1]*1-1
+var somestartcol=keywords[j+2]*1-1
+var somedirpair=dir8way(ith(keywords[j+3],  directiontexts ))
+var somedy=somedirpair[0]
+var somedx=somedirpair[1]
+var somewordlength=somechars.length
+var somecurrentchar
+for (var i=0; i<somewordlength; i++)
+{
+searcharray[somestartrow][somestartcol]=somechars[i]
+highlightarray[somestartrow][somestartcol]='yellow'
+somestartrow=somestartrow+somedy; somestartcol=somestartcol+somedx
+}
+}
+}
+
+
+var thestate='generating'
+function generatewordsearch()
+{
+thestate='generating'
+thepair=[]
+searchrows=10
+searchcols=10
+searcharray=[]
+clearscreen()
+colourscreen()
+wordstobeidentified=[]
+numbercells=searchrows*searchcols
+for (var i=0; i<searchrows; i++)
+{
+searcharray[i]=[]
+for (var j=0; j<searchcols; j++)
+{
+searcharray[i][j]='-'
+}
+}
+layoutkeywords()
+
+
+showthemessage('')
+
+var somearray=wordsearchwords
+wordstobefitted=copysimplevalues(somearray)
+var sometot=0
+for (var i=0; i<wordstobefitted.length; i++)
+{
+sometot=sometot+wordstobefitted[i].length
+
+
+}
+// alert([wordstobefitted, '\n Total num letters: ', sometot, '\n Percentage of total: ', sometot*100/numbercells])
+somearray=(somearray.sort(wordlengthsort)).reverse()
+var somestartindex
+var somestartdir
+createrecord=[]
+for (var i=0; i<somearray.length; i++)
+{
+
+
+somestartindex=randomnumber(numbercells)-1
+somestartdir=randomnumber(7)-1  // Note: we never start on direction 7 (normal left-to-right) to reduce incidences of these
+// createrecord for a word = [characterlist, initialstartcell, nextstartcell, movedirection, initiallayoutdirection, nextlayoutdirection, cellschanged]
+createrecord[i]=[charlist(somearray[i]), somestartindex, somestartindex, dir2way(randomnumber(2)-1), somestartdir, somestartdir, []]
+
+}
+searchindex=0
+placewords()
+
+}
+
+function placewords()
+{
+
+if (searchindex==-1) {alert('Layout failed'); return}
+var somerecord=createrecord[searchindex]
+// showthemessage([somerecord[0], searchindex, somerecord[1], somerecord[2], somerecord[5]])
+// alert(somerecord)
+var somestartindices=randc(somerecord[2])
+var somestartrow=somestartindices[0]
+var somestartcol=somestartindices[1]
+var somedir=somerecord[5]
+var somedirpair=dir8way(somedir)
+var somedy=somedirpair[0]
+var somedx=somedirpair[1]
+var somechars=somerecord[0]
+var somewordlength=somechars.length
+var somexspace=somewordlength
+var someyspace=somewordlength
+
+if (somedx==1) {somexspace=searchcols-somestartcol}
+if (somedx==-1) {somexspace=somestartcol+1}
+if (somedy==1) {someyspace=searchrows-somestartrow}
+if (somedy==-1) {someyspace=somestartrow+1}
+// alert([somewordlength, somestartrow, someyspace, somestartcol, somexspace])
+if (somewordlength<=somexspace && somewordlength<=someyspace)
+{
+var somecurrentchar
+var somecheck=true
+createrecord[searchindex][6]=[]
+for (var i=0; i<somewordlength; i++)
+{
+somecurrentchar=searcharray[somestartrow][somestartcol]
+if (somecurrentchar==somechars[i]) // cell already has right letter
+  {
+   somestartrow=somestartrow+somedy; somestartcol=somestartcol+somedx
+  }
+  else
+  {
+  if (somecurrentchar=='-')  // cell not filled
+    {
+     searcharray[somestartrow][somestartcol]=somechars[i]
+     createrecord[searchindex][6]=createrecord[searchindex][6].concat([[somestartrow, somestartcol]])
+     somestartrow=somestartrow+somedy; somestartcol=somestartcol+somedx
+    }
+    else //cell contains wrong letter
+    {
+     somecheck=false
+     break 
+    }
+  }
+}
+if (somecheck==true)
+{
+searchindex++
+colourscreen()
+showthemessage(searchindex)
+if (searchindex<createrecord.length)
+  {
+  placewords()
+  }
+  else // finished successfully
+  {
+//  outputpuzzle()
+  thesolutions=[]
+  var somepositions=''
+  var somer
+  var somec
+  var somewordchars
+  var i
+  for (var j=0; j<wordstobefitted.length; j++)
+   {
+   for (var k=0; k<createrecord.length; k++)
+   {
+   if (stringfromlist(createrecord[k][0])==wordstobefitted[j]) {i=k; break}
+   }
+   
+   somer=randc(createrecord[i][2])[0]+1
+   somec=randc(createrecord[i][2])[1]+1
+   thesolutions[j]=[wordstobefitted[j], randc(createrecord[i][2])[0], randc(createrecord[i][2])[1], createrecord[i][5], '\n']
+   somepositions=somepositions+stringfromlist(createrecord[i][0])+' : '+somer+', '+somec+', '+dirname(createrecord[i][5])+'\n'
+
+
+
+   }
+//  showthemessage(thesolutions)
+//  alert('Press OK when ready to generate complete puzzle')
+  completemissingcells()
+  }
+}
+else
+{
+tryalternativelayout()
+}
+}
+else
+{
+tryalternativelayout()
+}
+}
+var timer = null
+
+function completemissingcells()
+{
+var somechar
+for (var i=0; i<searchrows; i++)
+{
+for (var j=0; j<searchcols; j++)
+{
+if (searcharray[i][j]=='-')
+{
+somechar=randomnumber(26)
+searcharray[i][j]=String.fromCharCode(somechar+64)
+}
+}
+}
+var somecount=countoccurrences(wordstobefitted)
+var someswears=countoccurrences(['FU'+'CK', 'CU'+'NT'])
+if (sumlist(somecount)==wordstobefitted.length && sumlist(someswears)==0)
+{
+outputpuzzle()
+for (var i=0; i<thesolutions.length; i++)
+{
+wordstobeidentified[i]=[thesolutions[i], 1] // 1 means visible
+}
+var someinvisible=shufflearray([0,1,2,3,4,5]).slice(0,2)
+wordstobeidentified[someinvisible[0]][1]=0
+wordstobeidentified[someinvisible[1]][1]=0
+thedisplayindex=0
+displaywordstobeidentified()
+thestate='searching'
+thepair=[]
+}
+else // if words occur more than once, start creation again
+{
+if (timer != null) {clearTimeout(timer)}
+timer = setTimeout('runauto()',1);
+
+}
+}
+
+
+function sumlist(somearray)
+{
+var sometot=0
+for (var i=0; i<somearray.length; i++)
+{
+sometot=sometot+somearray[i]
+
+}
+return sometot
+}
+
+function tryalternativelayout()
+{
+
+if (searchindex==-1) {alert('Failed to find a layout'); return}
+var somecheck=true
+var somerecord=createrecord[searchindex]
+var somedsearchindex=0
+// first undo changes made
+var somechanged=somerecord[6]
+for (var i=0; i<somechanged.length; i++)
+{
+searcharray[somechanged[i][0]][somechanged[i][1]]='-'
+}
+createrecord[searchindex][6]=[]
+var somenewstartindex=somerecord[2]+somerecord[3]  // then try the next cell along
+if (somenewstartindex==numbercells) {somenewstartindex=0}
+if (somenewstartindex==-1) {somenewstartindex=numbercells-1}
+createrecord[searchindex][2]=somenewstartindex
+
+var somenextaction='placewords()'
+
+if (somenewstartindex==somerecord[1]) // i.e. we have tried all cells
+{
+var somenewlayoutdir=somerecord[5]+1
+if (somenewlayoutdir==8) {somenewlayoutdir=0}
+if (somenewlayoutdir==somerecord[4]) // i.e. we have tried all directions and are back to start dir
+{
+somedsearchindex=-1
+showthemessage('Trying again')
+somenextaction='runauto()'
+
+// somenextaction='tryalternativelayout()'
+}
+createrecord[searchindex][5]=somenewlayoutdir
+searchindex=searchindex+somedsearchindex
+}
+
+if (timer != null) {clearTimeout(timer)}
+timer = setTimeout(somenextaction,1);
+
+}
+
+function ith(someitem, somelist)
+{
+for (var i=0; i<somelist.length; i++)
+{
+if (someitem==somelist[i]) {return i}
+}
+return -1
+}
+
+function dir2way(somenum)
+{
+if (somenum==1) {return 1} else {return -1}
+}
+
+function dir8way(somenum)
+{
+var somereturns=[[1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1], [0, 1]]
+// var somereturns=[[-1, 1], [-1, -1], [1, 1], [1, -1], [0, -1], [-1, 0], [0, 1], [1, 0]]
+return somereturns[somenum]
+}
+
+var directiontexts=['SE', 'S', 'SW', 'W', 'NW', 'N', 'NE', 'E']
+
+// var directiontexts=['4:30', '6:00', '7:30', '9:00', '10:30', '12:00', '1:30', '3:00']
+
+function dirname(somenum)
+{
+return directiontexts[somenum]
+}
+
+
+function randc(someindex)
+{
+
+var somer=Math.floor(someindex/searchcols)
+var somec=someindex-(searchcols*somer)
+return [somer, somec]
+
+}
+
+
+function wordlengthsort(some1, some2)
+{
+return some1.length-some2.length
+}
+
+function findwords()
+{
+showthemessage('')
+
+var somearray=splitintononemptylines(document.playform.inputtext.value)
+
+var someresult=countoccurrences(somearray)
+
+var sometext=''
+for (var i=0; i<somearray.length; i++)
+{
+sometext=sometext+somearray[i]+' : '+someresult[i]+'\n'
+}
+showthemessage(sometext)
+
+}
+
+function countoccurrences(somearray)
+{
+
+var somechars
+var somecount
+var someresult=[]
+var somerows=searcharray.length
+var somecols=searcharray[0].length
+for (var i=0; i<somearray.length; i++)
+{
+somecount=0
+somechars=charlist(somearray[i])
+for (var j=0; j<somerows; j++)
+{
+for (var k=0; k<somecols; k++)
+{
+if (searcharray[j][k]==somechars[0])
+{
+for (var d=0; d<8; d++)
+{
+
+somecount=somecount+checkforword(somechars, somerows, somecols, j, k, d)
+}
+}
+}
+}
+someresult[i]=somecount
+}
+return someresult
+}
+
+function checkforword(somechars, somerows, somecols, somerow, somecol, somedir)
+{
+var somestartrow=somerow
+var somestartcol=somecol
+var somedirpair=dir8way(somedir)
+var somedy=somedirpair[0]
+var somedx=somedirpair[1]
+var somewordlength=somechars.length
+var somexspace=somewordlength
+var someyspace=somewordlength
+
+if (somedx==1) {somexspace=somecols-somestartcol}
+if (somedx==-1) {somexspace=somestartcol+1}
+if (somedy==1) {someyspace=somerows-somestartrow}
+if (somedy==-1) {someyspace=somestartrow+1}
+var someresult=0
+// alert([somerow, somecol, somedir, somewordlength, somexspace, someyspace])
+if (somewordlength<=somexspace && somewordlength<=someyspace)
+{
+var somecurrentchar
+var somecheck=true
+
+for (var i=0; i<somewordlength; i++)
+{
+somecurrentchar=searcharray[somestartrow][somestartcol]
+if (somecurrentchar==somechars[i]) // cell already has right letter
+  {
+   somestartrow=somestartrow+somedy; somestartcol=somestartcol+somedx
+  }
+  else
+  {
+  
+     somecheck=false
+     break 
+  
+  }
+}
+if (somecheck==true) {someresult=1}
+}
+return someresult
+}
+
+var selectionnums=[2,2,2,2,2,2]
+var thelength=4
+var wordsearchwords=[]
+function selectenough()
+{
+wordsearchwords=[]
+var someword
+var someindex
+for (var i=0; i<selectionnums.length; i++)
+{
+someindex=0
+while (someindex<selectionnums[i])
+{
+someword=getwordoflength(9-i)
+if (foundin(someword, wordsearchwords)==false)
+{
+wordsearchwords=wordsearchwords.concat([someword])
+someindex++
+}
+}
+
+}
+}
+
+function existsin(somelist1, somelist2)
+{
+var somelength1=somelist1.length
+var somelength2=somelist2.length
+var someits=somelength2-somelength1+1
+var somecheck
+for (var i=0; i<someits; i++)
+{
+somecheck=1
+for (var j=0; j<somelength1; j++)
+{
+if (somelist1[j]!=somelist2[i+j]) {somecheck=0; break}
+}
+if (somecheck==1) {return true}
+}
+return false
+}
+
+
+function foundin(someword, somelist)
+{
+var someword1chars=charlist(someword)
+var someword2chars
+for (var i=0; i<somelist.length; i++)
+{
+someword2chars=charlist(somelist[i])
+if (existsin(someword1chars, someword2chars)==true) {return true}
+if (existsin(someword1chars, someword2chars.reverse())==true) {return true}
+}
+return false
+}
+
+
+function runauto()
+{
+if (runcheck()==false) {return}
+wordstobeidentified=[]
+selectenough()
+if (timer != null) {clearTimeout(timer)}
+timer = setTimeout("generatewordsearch()",1);
+}
+
+function getwordoflength(somelevel)
+{
+
+var someindex=somelevel-4
+var somelength=thedictionary[someindex].length
+var somenumwords=somelength/somelevel
+var someran=randomnumber(somenumwords)-1
+return thedictionary[someindex].substr(someran*somelevel, somelevel)
+
+
+}
+
+
+
+function outputpuzzle()
+{
+clearscreen()
+outputpuzzlegrid()
+}
+
+function outputpuzzlegrid()
+{
+for (var i=0; i<searchrows; i++)
+{
+for (var j=0; j<searchcols; j++)
+{
+
+changetextvalue('cell'+i+'_'+j, searcharray[i][j])
+}
+}
+
+
+}
+
+
+
+function showthemessage(sometext)
+{
+thedisplayindex=0
+wordstobeidentified[0]=[[sometext],-2]
+displaywordstobeidentified()
+thedisplayindex=-1
+}
+
+var bgcolors=[
+[0, 'Black', '#000000'],
+[1, 'White','#FFFFFF'],
+[2, 'Black','#000000'],
+[3, 'Red','#FF0000'],
+[4, 'Green','#00FF00'], 
+[5, 'Blue','#0000FF'],
+[6, 'Magenta','#FF00FF'], 
+[7, 'Cyan','#00FFFF'],
+[8, 'Yellow','#FFFF00'],
+[9, 'Grey','#C0C0C0'],
+[10, 'Orange','#FF7F00'],
+[11, 'Silver','#E6E8FA'],
+[12, 'Slate Blue','#007FFF'],
+[13, 'Forest Green','#238E23'],
+[14, 'Brown','#A62A2A'],
+[15, 'Gold','#CD7F32'],
+[16, 'Dark Orchid','#9932CD'],
+[17, 'Pink','#BC8F8F'],
+[18, 'Violet','#4F2F4F'],
+[19, 'Plum','#EAADEA'],
+[20, 'Goldenrod','#DBDB70']
+]
+
+function clearcontent()
+{
+for (var i=0; i<searchrows; i++)
+{
+for (var j=0; j<searchcols; j++)
+{
+changetextvalue('cell'+i+'_'+j, '')
+
+}
+
+}
+}
+
+function whitescreen()
+{
+for (var i=0; i<searchrows; i++)
+{
+for (var j=0; j<searchcols; j++)
+{
+document.getElementById('gridback'+i+'_'+j).style.backgroundColor='white'
+
+}
+
+}
+thepair=[]
+}
+
+function clearscreen()
+{
+whitescreen()
+clearcontent()
+}
+
+function colourscreen()
+{
+for (var i=0; i<searchrows; i++)
+{
+for (var j=0; j<searchcols; j++)
+{
+
+document.getElementById('gridback'+i+'_'+j).style.backgroundColor= bgcolors[randomnumber(20)][2]
+}
+}
+
+}
+/*
+function sortwords()
+{
+var somefound=[]
+var someunfound=[]
+for (var i=0; i<wordstobeidentified.length; i++)
+{
+if (wordstobeidentified[i][1]==-1)
+{
+somefound=somefound.concat([wordstobeidentified[i]])
+}
+else
+{
+someunfound=someunfound.concat([wordstobeidentified[i]])
+}
+}
+wordstobeidentified=someunfound.concat(somefound)
+thedisplayindex=0
+displaywordstobeidentified()
+}
+*/
+var thedisplayindex=0
+
+function displaythetextfor(someelement)
+{
+if (someelement[1]==1) // to be found
+{
+return '<div onClick="showtheword('+"'"+someelement[0][0]+"'"+')" style="display:inline;color:black">'+someelement[0][0]+'</div>'
+}
+if (someelement[1]==0) // hidden
+{
+return '<div onClick="showtheword('+"'"+someelement[0][0]+"'"+')" style="display:inline;color:black">'+'? ('+someelement[0][0].length+' letters)'+'</div>'
+}
+if (someelement[1]==-1) // found
+{
+return '<div onClick="showtheword('+"'"+someelement[0][0]+"'"+')" style="display:inline;color:silver">'+someelement[0][0]+'</div>'
+}
+
+}
+
+function displaywordstobeidentified()
+{
+var sometext=''
+if (wordstobeidentified.length==1)
+{
+sometext=wordstobeidentified[0][0][0]
+}
+else
+{
+sometext=
+displaythetextfor(wordstobeidentified[11])+' '+displaythetextfor(wordstobeidentified[7])+' '+displaythetextfor(wordstobeidentified[3])+'<br>'+
+displaythetextfor(wordstobeidentified[10])+' '+displaythetextfor(wordstobeidentified[6])+' '+displaythetextfor(wordstobeidentified[2])+'<br>'+
+displaythetextfor(wordstobeidentified[9])+' '+displaythetextfor(wordstobeidentified[5])+' '+displaythetextfor(wordstobeidentified[1])+'<br>'+
+displaythetextfor(wordstobeidentified[8])+' '+displaythetextfor(wordstobeidentified[4])+' '+displaythetextfor(wordstobeidentified[0])
+
+/*
+displaythetextfor(wordstobeidentified[0])+' '+displaythetextfor(wordstobeidentified[4])+' '+displaythetextfor(wordstobeidentified[8])+'<br>'+
+displaythetextfor(wordstobeidentified[1])+' '+displaythetextfor(wordstobeidentified[5])+' '+displaythetextfor(wordstobeidentified[9])+'<br>'+
+displaythetextfor(wordstobeidentified[2])+' '+displaythetextfor(wordstobeidentified[6])+' '+displaythetextfor(wordstobeidentified[10])+'<br>'+
+displaythetextfor(wordstobeidentified[3])+' '+displaythetextfor(wordstobeidentified[7])+' '+displaythetextfor(wordstobeidentified[11])
+
+*/
+}
+changetextvalue('analysistext', '<table align=right valign=top border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*32)+'><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showad()">New</td></tr></table>'+sometext)
+// changetextvalue('analysistext', '<div onClick="showad()" style="border:1px gray solid;display:inline;background-image:url(buttonbg.jpg)">&nbsp;New&nbsp;</div> '+sometext)
+
+}
+
+function showtheword(someword)
+{
+if (runcheck()==false) {return}
+var sometobefound=0
+for (var i=0; i<wordstobeidentified.length; i++)
+{
+if (wordstobeidentified[i][0][0]==someword)
+{
+var somerow=wordstobeidentified[i][0][1]
+var somecol=wordstobeidentified[i][0][2]
+var somedirs=dir8way(wordstobeidentified[i][0][3])
+for (var j=0; j<someword.length; j++)
+{
+document.getElementById('gridback'+(somerow+j*somedirs[0])+'_'+(somecol+j*somedirs[1])).style.backgroundColor='limegreen'
+
+}
+wordstobeidentified[i][1]=-1
+
+}
+if (wordstobeidentified[i][1]==1) {sometobefound++}
+}
+
+
+displaywordstobeidentified()
+// if (sometobefound==0) {showthemessage('All found')}
+// showthemessage(someword+':'+sometobefound+' left to find')
+if (timer != null) {clearTimeout(timer)}
+timer = setTimeout('whitescreen()',2000);
+
+}
+
+function scrolldisplay(somenum)
+{
+thedisplayindex=thedisplayindex+somenum
+if (thedisplayindex>wordstobeidentified.length-3) {thedisplayindex=wordstobeidentified.length-3}
+if (thedisplayindex<0) {thedisplayindex=0}
+displaywordstobeidentified()
+
+}
+
+var thepair=[]
+function selectletter(somerow,somecol)
+{
+if (thestate!='searching') {return}
+if (thepair.length==0) 
+{
+thepair[0]=[somerow, somecol]
+document.getElementById('gridback'+somerow+'_'+somecol).style.backgroundColor='yellow'
+
+}
+
+else // second one
+{
+var someendrow
+var someendcol
+var somestartrow=thepair[0][0]
+var somestartcol=thepair[0][1]
+var somewordfound=''
+for (var i=0; i<wordstobeidentified.length; i++)
+{
+if (somestartrow==wordstobeidentified[i][0][1]  && somestartcol== wordstobeidentified[i][0][2])
+{
+someendrow=somestartrow+(wordstobeidentified[i][0][0].length-1)*dir8way(wordstobeidentified[i][0][3])[0]
+someendcol=somestartcol+(wordstobeidentified[i][0][0].length-1)*dir8way(wordstobeidentified[i][0][3])[1]
+// alert([somestartrow, somestartcol, someendrow, someendcol])
+if (someendrow==somerow && someendcol==somecol)
+{
+somewordfound=wordstobeidentified[i][0][0]
+break
+}
+}
+
+} // end for
+thepair=[]
+
+if (somewordfound!="") 
+{
+showtheword(somewordfound)
+}
+else
+{
+whitescreen()
+}
+
+}
+}
+
+//  End -->
+</script>
+<script language="javascript">
+
+
+var cellsize=Math.floor(scalef*18)
+var bordersize=Math.floor(scalef*1)
+var maintablesize=10*cellsize
+var overallsize=maintablesize+2*bordersize
+
+documentwrite('<form name="playform">')
+documentwrite('<div id="maingame" style="display:inline">')
+documentwrite('<center>')
+documentwrite('<table cellspacing=0 cellpadding=0 align=center valign=top style="width:'+overallsize+'px"><tr><td>')
+documentwrite('<div style="position:relative;left:'+bordersize+'px;top:'+bordersize+'px;width:'+maintablesize+'px;height:'+maintablesize+'px;background-color:white;">')
+documentwrite('<div style="position:absolute;left:-'+bordersize+'px;top:-'+bordersize+'px;width:'+overallsize+'px;height:'+overallsize+'px;background-color:silver;"></div>')
+
+
+
+for (var i=0; i<searchrows; i++)
+{
+for (var j=0; j<searchcols; j++)
+{
+documentwrite('<div id="gridback'+i+'_'+j+'" style="position:absolute;left:'+((j*cellsize))+'px;top:'+((i*cellsize))+'px;height:'+cellsize+'px;width:'+cellsize+'px;background-color:white"><table border=1 width=100% height=100% cellspacing=0 cellpadding=0><tr><td align=center valign=middle id="cell'+i+'_'+j+'" style="font-size:'+Math.floor(scalef*12)+'px;font-weight:bold;color:black" onClick="selectletter('+i+','+j+')">&nbsp;</td></tr></table></div>')
+}
+}
+
+
+documentwrite('<div style="position:absolute;top:'+(overallsize+(2*bordersize))+'px;left:0px;width:100%">')
+documentwrite('<table border=0 width=100% height='+Math.floor(scalef*50)+' cellpadding=0 cellspacing=0 style="background-color:#FFFF99">')
+documentwrite('<tr>')
+documentwrite('<td align=left valign=top id="analysistext" >')
+documentwrite('</td>')
+
+
+documentwrite('</tr></table></div></div>')
+documentwrite('</td></tr></table></center>')
+documentwrite('</div>')
+documentwrite('</form>')
+
+
+
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+var thedictionary=
+[
+'ABLYACIDAFARAGOGAHEMAHOYAIRYALLYALTOAMOKAPEXAREAARIAARKSARUMAUTOAVOWAWAYAXEDAXESAXISBABYBACKBALDBANDBANGBANKBAPSBARBBARKBASEBASHBASKBASSBAWLBAYSBEAMBECKBEEFBEENBEERBEESBEETBELLBELTBENTBIASBIBSBIDEBIKEBILLBIRDBITEBITSBLEDBLEWBOARBOASBOATBOBSBODYBOILBOLDBOMBBONDBONEBONYBOOBBOOKBOOMBOONBOOSBOOTBOPSBORNBOTHBRAYBREDBREWBRIMBROWBUCKBUFFBUGSBULKBUMPBUNGBUNKBUOYBURPBUSKBUZZBYREBYTECAGECAKECALFCALLCAMPCANTCAPSCARDCARTCASHCAVECELLCENTCERTCHAPCHATCHEFCHEWCHICCHIPCHOCCHOPCHOWCHUGCITYCLADCLANCLAPCLAWCLEFCLIPCLOGCLOPCLOYCLUBCLUECOAXCOBSCOCKCOGSCOIRCOKECOMACOMBCOMECONKCONSCOOKCOOPCOOSCOOTCOPECOPSCOPYCORDCORECORMCORNCOSHCOSYCOTECOUPCOVECOWLCRABCRAGCRAMCRAWCRIBCROPCROWCRUXCUBECUBSCUFFCULLCULTCURBCURLCURSCURTCUSSCUTECUTSCYANCYSTCZARDADODAFTDAMNDAMPDANKDARKDATADATEDAYSDEADDEBTDECKDEEDDEFTDEFYDELLDESKDEWYDHOWDIEDDIGSDIKEDILLDIMSDINEDINTDIPSDIRKDIRTDISCDISHDOCKDODODOFFDOLLDORMDOURDOVEDOWNDOZEDRAMDREWDRIPDRUBDRUGDRUMDUCKDUCTDUDEDUDSDUELDUETDUFFDUKEDULLDULYDUMBDUMPDUNGDUNKDUOSDUPEDUSKDUTYDYERDYESDYKEEASEEBBSECHOEDGYEGGSEKEDELMSENVYEPICERRSEVENEXAMEXITEYEDEYESFACTFADSFAFFFAGSFAILFAIRFAKEFALLFAMEFANGFANSFARMFAUNFAWNFAZEFEEDFEESFELLFENDFENSFERNFEUDFIATFIBSFIGSFILLFILMFINDFINEFINSFIRMFIRSFISHFIVEFIZZFLABFLAGFLAKFLANFLAPFLATFLAXFLAYFLEDFLEWFLEXFLIPFLOPFLUXFOAMFOBSFOESFOLDFOLKFONDFONTFOODFOOLFOOTFOPSFORDFOREFORKFORTFOULFOURFOXYFRAYFRETFROGFULLFUMEFUNDFUNKFURYFUSEFUSSFUZZGAFFGAGAGAGEGAGSGAINGAITGALEGALLGAMYGANGGATEGAVEGAWKGAWPGAZEGEMSGENEGENSGENTGERMGETSGHEEGIFTGIGSGILDGILLGILTGIRLGIVEGLADGLEEGLENGLIBGLOWGLUMGLUTGNAWGOLDGONEGONGGOODGOUTGOWNGRAMGREWGRIMGROGGROWGULFGULLGURUGUYSGYMSHACKHAFTHAILHAIRHAKEHALFHALLHALOHANDHANGHARDHARKHARMHARPHAVEHAZEHEADHEAPHEEDHEELHEFTHELDHELLHELMHELPHEMPHENSHERBHERDHEREHERSHIGHHIKEHILLHILTHINDHISSHIVEHOAXHOBOHOCKHOEDHOLDHOLEHOLYHOMEHONEHONKHOODHOOFHOOKHOOTHOPEHORNHOURHOVEHOWLHUEDHUESHUFFHUGEHULKHULLHUMPHUNGHUNKHUNTHURLHUSHHUSKHYMNHYPEHYPOIAMBIBEXIBISICESIFFYIMPSINFOINKYINNSINTOIONSIOTAIRISIRONJABSJACKJADEJAGSJAILJAMBJAMSJAPEJARSJAWSJEEPJEERJERKJIBEJIBSJIFFJIGSJILTJINXJIVEJOBSJOLTJOSHJOTSJOWLJOYSJUGSJUMPJUNKJURYJUTEKEGSKELPKEPTKEYSKICKKILLKILOKILTKINDKINGKINKKIRKKITHKNEWKNITKNOTLACELADSLADYLANDLANKLARDLARKLASHLASSLAVALAWNLAZYLENDLENSLENTLESSLEVYLICELICKLIEULIKELILYLIMBLIMPLINTLOADLOAMLOANLOCHLOCKLOFTLOGOLONGLOOKLOOMLOONLORDLOUTLUCKLUNGLURKLUSHLUTELYNXMAINMAKEMALLMALTMAMAMARKMASKMASSMATTMAYOMAZEMEEKMELDMELTMEMOMENDMENUMEREMESSMEWLMEWSMICAMICEMICKMIKEMILDMILKMILLMIMEMINDMINKMINTMINXMITTMOANMOBSMOCKMOLEMOLLMONKMOOSMOOTMOSSMOTHMOVEMOWNMOWSMUCKMUFFMULEMULLMURKMUSKMUTEMUTTMYTHNANSNAVYNAYSNECKNEXTNICKNIGHNINENOOKNOONNOUNNUKENULLNUMBNUNSOATHOBEYOBOEODDSOIKSOILYOKRAOMENOMITONTOONYXOOZEOPALORALOUCHOVALOVENOWEDOXENPACKPACTPADSPAIDPAILPAINPAIRPALLPANGPANTPAPAPARKPAVEPAWNPEAKPECKPEEPPEERPEGSPENSPENTPEPSPERKPERMPERTPHEWPICKPIEDPIESPIGSPILEPILLPIMPPINEPINGPINKPINTPIPEPIPSPITAPITHPITYPLANPLAYPLEBPLODPLOPPLOTPLUSPODSPOETPOKEPOMPPONDPONGPONYPOOPPOORPOPEPOPSPORKPORTPOURPOUTPOXYPRAYPREPPRIMPROPPROSPROWPUBSPUCEPUCKPUFFPUGSPUKEPULEPULLPULPPUMAPUMPPUNKPUNTPUNYPUPAPUPSPURLPURRPUSHPUTSPUTTQUADQUAYQUIDQUIPQUITQUIZRACKRACYRADSRAKERASHRAYSRAZEREEKREINREVSRIBSRICERICHRIDSRIFFRIFTRIGSRIMSRINDRINKRIPSROADROAMROANROARRODSROLLROOFROOKROOTROPYROSYROUXROWSRUCKRUFFRUGSRUINRUMPRUNERUNGRUSHRUSKSACSSAFESAGASAGOSAGSSAKESANDSANESANKSASHSAYSSEASSECTSEEDSEEMSEENSEESSELFSEMISETSSEWSSEXYSHEDSHINSHUNSICKSIGHSINESINSSITSSIZESKEWSKIMSLEDSLEWSLUMSLURSMOGSOAPSOCKSOFTSOMESONSSOONSOOTSOULSOWSSOYASPEDSPRYSPURSTAYSTEMSTIRSUCHSUCKSUDSSUITSULKSUNKSUNSSWABSWIMSWUMTACKTACTTALCTALKTALLTANKTARTTASKTAUTTAXITEATTEEDTEENTEESTELLTEMPTERMTEXTTHANTHATTHEMTHENTHEYTHUDTHUGTICKTIDYTIFFTILTTINTTINYTITSTOADTOESTOFUTOGSTOILTOLLTOMBTOOKTORNTOUTTOYSTREETREKTRIMTRIPTRODTRUETUBETUCKTUFTTUNETURDTURFTURKTUSKTUTSTUTUTWEETWIGTWINTWITTYPETYPOUGLYUNDOUNITUNTOUPONURGEVAINVANSVARYVENDVENTVERBVERYVIALVIBEVICEVISAVOIDVOLTVOWSWADIWAFTWAGEWAIFWAILWAITWALKWALLWANTWARMWARNWARTWAVEWAVYWAXYWEBSWEEDWEEKWEENWEEPWEFTWELLWELTWENDWEPTWHAMWHEYWHIMWHIPWHOMWICKWIDEWIFEWILDWILEWILLWILTWILYWIMPWINDWINEWINGWINKWINSWIPEWIRYWISEWISHWISPWOKEWOMBWOODWOOFWOOLWOOSWORDWOREWORKWORMWORNWOVEWOWSWRENWRITYACKYAKSYANKYAWLYAWNYELLYELPYOGAYOKEYOLKYOREYOURZANYZAPSZEROZINCZIPSZITSZONEZOOMZOOS',
+'ABACKABATEABBEYABBOTABHORABIDEABOUTABOVEABYSSACHEDACORNACRIDACTORACUTEADAGEADAPTADDEDADMITADOPTADULTAFOOTAFTERAGAINAGAPEAGATEAGENTAGILEAGONYAHEADAIDEDAISLEAITCHALARMALBUMALDERALGAEALIBIALIGNALIKEALIVEALLEYALLOWALONEALONGALOUDALPHAALTARAMASSAMAZEAMUSEANKLEANNOYANTICANVILAORTAAPACEAPARTAPHIDAPPLEAPPLYAPRONAREASARENAAROMAARRAYARROWASHENASHESASKEDASSESATLASAUDITAVAILAVERTAVOIDAWAITAWAKEAWARDAWAREAWASHAWOKEAXINGAXIOMAXLESAZUREBACKSBACONBADDYBADGEBAGGYBAITSBAKEDBALLSBALMYBANALBANDSBANDYBANGSBANJOBANKSBARGEBARKSBARMYBARONBASESBASICBASINBASKSBATONBEACHBEAMSBEECHBEEFYBEFITBEGANBEGUNBEIGEBELLSBELLYBENCHBENDSBERETBERTHBERYLBIDESBIGOTBIKERBIKESBILGEBILLSBINDSBINGOBIRCHBIRDSBIRTHBISONBITCHBITESBLACKBLANDBLANKBLASTBLAZEBLEAKBLEEDBLENDBLESSBLINDBLINKBLOATBLOBSBLOCKBLOODBLOOMBLOWNBLOWYBLUFFBLUNTBLUSHBODGEBOGGYBOGUSBOILSBOMBSBONDSBONEDBONESBONGOBOOEDBOOKSBOOTHBOOZEBORAXBOSSYBOUGHBOUNDBOUTSBOWEDBOXEDBOXERBOXESBRANDBRASHBRASSBRATSBRAVEBRIBEBRICKBRINEBRINGBRINKBRINYBRISKBROKEBROODBROOKBROOMBROWNBROWSBUDDYBUILDBUILTBULLSBULLYBUMPSBUNGSBUNNYBUOYSBURLYBURNSBURPSBURSTBUSHYBUSTYBUTCHBUYERCABALCABINCABLECACHECACTICAGESCAIRNCAKEDCAKESCAMELCAMEOCANALCANDYCANNYCARATCARDSCARGOCARRYCARTSCASESCATCHCAVEDCAVESCEASECEDEDCELLOCELLSCHAFECHAFFCHAIRCHALKCHAMPCHAOSCHAPSCHARTCHATSCHECKCHEEKCHEEPCHEERCHEFSCHESSCHEWSCHICKCHIDECHILDCHIMECHIMPCHIPSCHIRPCHITSCHOCKCHOIRCHOMPCHOPSCHORDCHUCKCHUMSCIGARCINCHCIVICCIVILCLAIMCLAMPCLASHCLASSCLAWSCLEARCLERKCLIFFCLIMBCLINGCLIPSCLOAKCLONECLOSECLOTHCLOUTCLOVECLOWNCLUESCLUNGCLUNKCOACHCOCKSCOCKYCOCOACODEDCOLEYCOLONCOMBSCOMESCOMETCOMFYCOMICCOMMACONEDCOOEDCOOKSCOPEDCORGICOUCHCOUGHCOUNTCOURTCOVERCOVEYCOWEDCOYLYCOYPUCRABSCRACKCRAFTCRAMPCRAZECRAZYCREAKCREAMCREEKCRIBSCROAKCROOKCROSSCROWDCROWNCROWSCRUMBCRUSHCRYPTCUBEDCULTSCURIOCURLSCURLYCURRYCURVECURVYCYCLECYNICCYSTSCZARSDADDYDAILYDAISYDAMNSDAMPSDARTSDATEDDAUNTDAZEDDEBTSDECAYDECKSDECOYDEEDSDEIGNDEITYDELAYDEMONDEMURDEPTHDESKSDIALSDICEDDICKYDIGITDIMLYDINEDDINERDIRKSDIRTYDISCODISCSDISHYDITCHDITTODIVASDIVEDDIVOTDODGEDOGMADOLEDDOLLSDOLLYDOPEDDOSEDDOTEDDOUGHDOVESDOWDYDOWNSDOYENDOZEDDOZESDRAFTDRAMADREGSDRESSDRIFTDRILYDRINKDRIPSDRONEDROSSDROWNDRUBSDRUMSDRUNKDUCKSDUCTSDUETSDULLYDUMMYDUNCEDUSKYDWARFDWELLDWELTEAGLEEASEDEASESEATENEATEREAVESEBBEDEDGEDEGGEDEIGHTEJECTEKINGELATEELDERELECTELEGYELITEELOPEELUDEEMAILEMBEDEMBEREMERYEMPTYENACTENDEDENDUEENJOYENEMAENTRYEPOCHEPOXYEQUALERODEERREDERRORERUPTESSAYEVADEEVENTEVERYEVOKEEXACTEXCELEXERTEXILEEXUDEEXULTEYINGFABLEFACETFACIAFACTSFADEDFADESFAILSFAINTFAIRSFAIRYFAITHFAKEDFAKESFALLSFAMEDFAMESFANCYFANGSFARMSFATALFATEDFATTYFAULTFAUNAFAXEDFAXESFAZEDFAZESFEEDSFEIGNFELONFENCEFENDSFERNSFETCHFEVERFEWERFIFTHFIFTYFIGHTFILCHFILLSFILMSFINCHFINDSFINESFIRMSFISHYFIXEDFIXERFIXESFIZZYFLACKFLAGSFLAILFLAKEFLAMEFLANKFLANSFLAPSFLASHFLASKFLATSFLECKFLEETFLINTFLIRTFLOODFLOORFLOPSFLORAFLOSSFLOUTFLOWNFLUIDFLUKEFLUSHFLUTEFLYERFOAMYFOCALFOCUSFOGGYFOILSFOISTFOLDSFOLIOFOLKSFOOLSFORAYFORCEFORDSFORMSFORTEFORTYFORUMFOULSFOURSFOXEDFOXESFOYERFRAMEFRESHFRETSFRILLFRISKFROCKFROGSFRONDFROWNFROZEFRUITFUDGEFUMEDFUMESFUNDSFUNNYFURRYFUSESFUSSYGAGEDGAGESGAILYGAINSGALASGALESGALLSGAMUTGASPSGASSYGAUDYGAUNTGAUZEGAWPSGAZEDGAZESGECKOGEESEGENIEGENTSGENUSGERMSGIANTGIDDYGIRLSGIVENGIVERGIVESGIZMOGLANDGLAZEGLEAMGLINTGLITZGLOATGLOBEGLOOMGLORYGLOVEGLOWSGLUEDGLUTSGNARLGNAWSGNOMEGOINGGOODSGOOSEGOREDGOUGEGOURDGOWNSGRACEGRAFTGRAINGRANTGRAPHGRASPGRASSGRAVEGRAVYGRIEFGRILLGRIMEGRINDGRIPEGROINGROOMGROPEGROSSGROUPGROUTGROVEGROWLGRUELGUESSGUIDEGUILEGUILTGUISEGULCHGUSTSHABITHAIRSHAIRYHALONHANDSHANKYHAPPYHAREMHARSHHASTYHATCHHAUNTHAVENHAVOCHAZELHEATHHEAVEHEAVYHEDGEHEEDSHEELSHEFTYHELIXHELLOHERBSHERTZHIGHSHIKERHIPPOHIPPYHOARDHOARYHOBBYHOISTHOLDSHOLEDHOLESHOLLYHOMEDHONEDHOPEDHOPESHORNYHOTLYHOUNDHOURSHOUSEHOWLSHUBBYHUMANHUMIDHUMPSHUMUSHUNCHHUNKSHUNKYHURLSHURRYHURTSHUSKSHUSKYHUTCHHYENAHYPEDICIERICILYICINGIDIOMIDIOTIDLEDIMAGEIMBUEIMPELIMPLYINEPTINGOTINKEDINTROIRATEIRKEDISLESISSUEITCHYIVORYJADEDJAILSJAMMYJEANSJEERSJEMMYJESTSJETTYJEWELJIFFYJILTSJOINSJOINTJOKEDJOKERJOKESJOLLYJOULEJOUSTJUICEJUMPSJUMPYJURORKICKSKILOSKINGSKINKSKINKYKIOSKKIRKSKIWISKNACKKNEEDKNEELKNIFEKNOWNKUDOSLABELLANDSLANKYLAPELLARCHLARGOLATCHLATHELAUGHLAWNSLAXLYLAZEDLEACHLEAFYLEAKYLEANTLEAVELEDGELEECHLEGALLEGGYLENDSLEVELLIGHTLIKEDLIKENLIKESLILACLIMBOLIMBSLIMITLIMPSLINERLIPPYLOADSLOCALLOCHSLOFTSLOGICLONGSLOOKSLOUSYLOVEDLOVERLOWLYLUCIDLUCKYLUNCHLUNGELUPINLURIDLURKSLYINGLYMPHLYNCHLYRICMACAWMADAMMADLYMAGICMAINSMAIZEMAJORMAKERMAKESMANGYMANICMANKYMANLYMARKSMASKSMASTSMATCHMAUVEMAXIMMEALYMEANTMEANYMEMOSMENDSMENUSMERCYMERRYMESSYMETALMIDGEMIDSTMIGHTMILKSMILKYMILLSMIMEDMIMESMIMICMINCEMINDSMINERMINGYMINORMINTSMINTYMINUSMIRTHMISTSMISTYMIXEDMIXESMODELMODEMMONEYMONKSMONTHMOOCHMOODYMOOEDMOOSEMOPEDMORPHMOTELMOTORMOTTOMOUNDMOUNTMOURNMOUTHMOVEDMOVIEMOWEDMOWERMUCKYMULCHMULESMUMMYMURKYMUSEDMUSICMUSKYMUTEDMUTTSMYNAHMYRRHMYTHSNAIVENANNYNASALNECKSNEEDYNESTSNEWLYNEWTSNEXUSNIECENIFTYNINTHNIPPYNOBLENOBLYNOISYNOMADNOOSENOUNSNOVELNUDGENUTTYNYLONOASESOASISOBESEOBEYSOBOESOCCUROFFALOFTENOKAPIOLDEROMEGAONIONOOZEDOOZESOPIUMORDEROUNCEOVARYOVENSOWINGOWNEROXIDEPACKSPACTSPADDYPALLYPANDAPANICPANSYPAPERPARCHPARTYPATIOPAUSEPAWEDPAYEEPEACEPECANPEEVEPEONYPERILPETERPHIALPHLOXPHONEPHOTOPIANOPIECEPIETYPILOTPINEDPIOUSPIPERPITHSPITHYPIXELPIZZAPLAIDPLAITPLUCKPOACHPOISEPOLARPOLIOPOLYPPONDSPOUNDPREENPRICEPRICKPRIZEPROVEPROXYPSYCHPUMASPURERPUSSYPYLONQUAILQUASHQUEERQUEUEQUICKQUIPSQUOTARADIORAINYRAPIDRARERRAZORREBELREHABREVUERHINORHYMERISKSRIVERROBINROOMYROUGHROUNDROWANRUDERRUGBYRUINGRUMPSRURALSAFESSALADSANDYSAUCYSAUNASCALDSCARYSCOUTSCUBASEEDYSEEPSSEIZESHAGSSHEAFSHIESSHORTSHREWSHRUGSHYLYSIEGESIEVESIGHSSIGHTSINGESIXESSKEINSKIESSKIVESLABSSLEDSSLICESLUGSSLUSHSMIRKSNARLSNORTSNOWYSOLOSSORERSOULSSOUNDSOUPSSPELLSPICYSPOILSPOOKSPOORSPUDSSQUAWSQUIBSTAFFSTAIDSTALLSTAYSSTOCKSTOODSTOOPSTRUMSTUNGSTYMYSUAVESUEDESUITSSURLYSWANSSWIFTSWISHSWUNGSYRUPTALLYTAPIRTAROTTARRYTAUNTTAWNYTAXISTEASETEETHTEMPOTENTHTEXTSTHEFTTHEIRTHICKTHIEFTHUMBTIBIATIMIDTIPSYTOADSTOKENTONICTOWEDTOXICTOYEDTRICETRIERTROOPTRUCKTRULYTRYSTTULIPTUMMYTUTUSTWEEDTYPEDUNCLEUNFITUNIONUNZIPURGEDVAGUEVALETVALUEVAULTVEGANVENDSVENOMVENUEVERVEVEXEDVICARVIDEOVIRUSVITALVIXENVODKAVOICEVOIDSVOWEDWAFERWAIFSWAILSWARNSWAXESWEARYWEAVEWEEKSWEIGHWHARFWHICHWHIMSWHISKWHORLWILDSWIMPSWINDYWINKSWOMANWOOEDWORMSWORRYWOULDWRAPTWREAKWRITEWRYLYYACHTYAHOOYAWEDYEARNYELLSYIELDYODELYOLKSYOUNGYUMMYZEROSZILCHZONESZOOMS',
+'ABACUSABBESSABJECTABOUNDABSENTACACIAACCORDACETICACIDLYACTUALADAGIOADDINGADJUSTADOPTSADVENTAERATEAFFECTAFFRAYAFRESHAGATESAGENTSAGHASTAILINGAIRBAGAIRILYALARMSALBEITALIBISALLAYSALLIESALPACAAMBUSHAMENDSAMOUNTAMULETANGINAANIONSANNALSANNULSANTHEMANYHOWANYWAYAPATHYAPIARYAPLOMBAPPEALARCADEARCANEARENASARGUEDARMADAAROMASAROUSEARROWSASKINGASPECTASSETSASSIGNASTHMAATOMICATTACHATTIREAUDITSAUNTIEAUTHORAVATARAVIDLYAWAITSAWARDSAXIOMSBABIESBACKEDBADGEDBAFFLEBAGMENBAKERYBALKEDBALLSYBANANABANJOSBANTERBARGESBARINGBARONSBARROWBASICSBASKEDBASQUEBATHESBATONSBAWLEDBAZAARBEACONBEAMEDBEAUTYBECKONBEDDEDBEEPEDBEFELLBEGGEDBEHEADBELFRYBELLESBEMOANBENIGNBERETSBESETSBESTOWBETRAYBEWAREBICEPSBIGAMYBIKERSBILLEDBINGEDBIONICBIPEDSBISHOPBITINGBLADESBLAZERBLENDSBLINKSBLONDEBLOTCHBLUESYBLURRYBOBBEDBODICEBOFFINBOLDERBOLSHYBONDEDBONKEDBOOGIEBOOMEDBOOTHSBOPPEDBORROWBOSOMSBOTANYBOUGHTBOVINEBOXERSBRACEDBRANDSBRAVERBRAYEDBREACHBREWEDBRIDGEBRINGSBROGUEBROKERBROOCHBROWNSBRUNCHBRUTALBUCKEDBUDGETBUILDSBUMBLEBUNDLEBUNKERBUOYEDBURIEDBURREDBURSTSBUSIEDBUSSEDBUTTERBUYINGBUZZESBYGONECABBEDCABLEDCACHEDCACTUSCADGESCAGINGCAJOLECALLEDCALMLYCAMBERCAMPUSCANARYCANINECANNONCANVASCAPPEDCARBONCAREERCARPALCARROTCASEINCASHEWCASINGCATCHYCATTLECAVIARCAYMANCELEBSCEMENTCERVIXCHAFESCHALKYCHANGECHARGECHECKSCHEESECHERRYCHEWEDCHIDEDCHIMEDCHINOSCHIRPYCHOIRSCHOOSYCHOSENCHUBBYCHUNKSCHUTESCIGARSCIRRUSCLAIMSCLASSYCLEAVECLEVERCLIFFSCLINGSCLIQUECLOCHECLOCKSCLOSEDCLOSETCLOVENCLUCKSCLUNKYCOATEDCOBBERCOBWEBCOCKLECODIFYCOFFINCOGNACCOHORTCOLDERCOLLARCOLUMNCOMEDYCOMMASCOMPLYCONFERCONMANCONVOYCOOLERCOPIEDCOPPEDCORDEDCORNERCOSHEDCOSMOSCOTTONCOUNTSCOURTSCOVETSCOWLEDCOWRIECRABBYCRAFTYCRANKYCRAYONCREAMYCREEPYCREWEDCRIMESCROAKSCROTCHCROWNSCRUMBYCRYINGCUBISMCUDGELCUPFULCURARECURIOSCURSORCUSSEDCUTESTCYCLEDCYNICSDABBEDDAFTLYDAMAGEDAMPENDANCEDDARKERDATIVEDAUBEDDAZZLEDEAFENDEBTORDECEITDECODEDEEMEDDEFECTDEFILEDEFUSEDELETEDELUXEDEMISEDEMURSDEPICTDEPUTYDETAINDEVOURDIADEMDICINGDIGITSDIMMEDDINGHYDINNERDISCOSDISOWNDITHERDIVIDEDOABLEDOCTORDODGERDOGGEDDOLINGDOMAINDOODLEDORSALDOTINGDOUBLYDOUGHSDOWSEDDOZILYDRAFTYDRAWLSDREDGEDRINKSDRONEDDROWNSDRUNKSDRYISHDUCKEDDULCETDUMBLYDUNCESDUPLEXDUSTEDDYEINGEARFULEATERYECZEMAEDGINGEFFECTEFFUSEEIGHTYEITHERELEVENELITESELUDESEMBALMEMBLEMEMERGEENAMELENCOREENGINEENMESHENSIGNENTITYENZYMEEQUATEERMINEERSATZESSAYSETCHESETHNICEUREKAEVENEDEVOLVEEXCISEEXHALEEXITEDEXPELSEXPORTEXTORTEYEFULFABLEDFACIALFAGGOTFAIRERFAKIRSFALSIEFAMOUSFARINGFASTEDFATHOMFATTERFAXINGFEEBLEFEISTYFELLOWFENCEDFERRETFETISHFEWESTFIASCOFIBBERFIBULAFIELDSFIFTHSFILLEDFILTHYFINIALFIRINGFISHEDFITTERFIXITYFLABBYFLAKEDFLANGEFLATLYFLAYEDFLEECEFLEXESFLINCHFLIRTYFLOORSFLORIDFLOUTSFLUKESFLUTEDFLYINGFOIBLEFOILEDFOISTSFOMENTFOOLEDFORAGEFOREGOFORKEDFOSSILFOURTHFRACASFRAUDSFRIARSFRIEZEFRISKSFROLICFROTHSFROZENFUDGEDFUGUESFULLERFUNGALFURIESFURROWFUSSEDGABLEDGAFFERGAGINGGALAXYGALLONGAMBLEGAMETEGANGLYGARGLEGASHESGASSEDGAUCHEGAZEBOGECKOSGEEINGGEEZERGELDEDGENIUSGENTRYGEYSERGIBBONGIGGLYGIRDERGIVINGGLANCEGLAZESGLITCHGLOBESGLOVEDGLUMLYGNAWEDGOATEEGOBLINGOINGSGOOFEDGOPHERGORILYGOUGEDGOWNEDGRAINYGRAPHSGRATISGRAVESGRAZEDGRILLSGRIPEDGRITTYGROOVYGROTTYGROVELGRUBBYGRUNGEGUFFAWGUINEAGULLEYGUNMANGURNEYGUTTEDGYPSUMHACKERHAILEDHALVEDHAMMERHANKIEHARDENHARLOTHASHEDHATINGHAUNCHHAWKEDHAZARDHEADEDHEAPEDHEAVENHECTORHEELEDHELIUMHEMMEDHERALDHEREOFHEROESHIATUSHIDINGHIKINGHIRINGHOARDSHOBBLEHOGGEDHOLIERHOLLERHOMELYHOMINGHONINGHOOFERHOORAYHOPINGHORRORHOTPOTHOURLYHOWLERHUDDLEHUMANEHUMPEDHUNTERHUSHESHYBRIDHYMNALIAMBICICICLEIDIOCYIGLOOSIMBUESIMPALAIMPORTINBORNINCURSINDOORINFAMYINFIRMINFUSEINJUREINLAIDINNATEINSISTINTONEINTUITINVESTIODINEIRISESISLANDITCHEDJACKEDJAILEDJANGLEJARGONJAZZEDJERKEDJETSAMJIBBEDJIGGLYJINXEDJIVINGJOCUNDJOINEDJOKIERJOSHEDJOTTEDJOUSTSJUDDERJUGGLEJUMBLEJUNGLEJUNKIEJUSTLYKAFTANKAYAKSKEELEDKEEPERKERNELKICKEDKIDNEYKIMONOKINKEDKISSEDKITTENKNEELSKNOCKSKOALASKOSHERLABELSLACINGLADLESLAMBDALANCERLAPELSLARKEDLASERSLATELYLAUGHSLAWFULLAYMANLAZIERLEADEDLEARNSLECHERLEGACYLEGIONLEMURSLESSEELEVELSLIAISELICHENLIKELYLIMBERLIMPETLINEARLININGLIQUIDLITANYLIVINGLOANEDLOCALELOCKETLODGESLONELYLOOMEDLORDEDLOUDLYLOWINGLUMBARLUPINSLUSTEDLYNXESMACAWSMADAMSMAGGOTMAHOUTMAKINGMALLETMAMMALMANFULMANNEDMANTRAMARAUDMARLINMARSHYMASCOTMASSEDMATRIXMAULEDMAXIMSMAYFLYMEADOWMEDICSMEEKLYMELTEDMENDEDMENIALMERELYMESHEDMETHODMETRICMIASMAMIDDLEMIDWAYMILDERMILLEDMIMICSMINERSMININGMINXESMISERYMISHAPMITTENMIXERSMOBILEMODEMSMODULIMOLTENMONKEYMOONEDMOPINGMORASSMORROWMOSQUEMOTIFSMOTORSMOUNDSMOUSERMOVERSMUCKEDMUESLIMUGGEDMULLETMURDERMUSEUMMUSLINMUTANTMUTINYMUZZLEMYRIADNABBEDNAMINGNATIVENAVELSNEATERNEGATENETHERNEWESTNICELYNIECESNINETYNIPPLENOBBLENODULENOODLENORMALNOSILYNOTIFYNOVICENUANCENUDGESNUMBEDNUTMEGNYLONSOBEYEDOBOISTOCTANEOCULARODIOUSOFFENDOGLINGOILINGOLDESTONIONSOOHINGOPAQUEOPIATEOPTINGORATORORIGINORNATEOSPREYOUSTEDOUTDIDOUTINGOUTSETOWNINGOXTAILPACINGPAELLAPAINTSPALINGPALMEDPANICSPAPACYPARADEPARKEDPAROLEPASTORPAUNCHPAWNEDPAYOFFPEAKEDPECKEDPEDDLEPEELERPEEVESPELLETPENCILPENURYPEPTICPERTLYPETITEPEWITSPHLEGMPHONEDPHOOEYPHYSIOPICKEDPICNICPIFFLEPILFERPIMPLEPINKERPIPINGPIRACYPITIEDPIVOTSPLACEDPLAIDSPLANKSPLAYEDPLIGHTPLUCKSPLUMPSPLYINGPOETICPOISONPOLICEPOLKASPONDERPOORERPOPPEDPOROUSPOSITSPOTATOPOTTEDPOUREDPRANCEPRAYERPREFIXPREYEDPRIDEDPRIORSPRIZEDPROBESPROMPTPROVEDPRUNERPUBLICPUFFERPULLETPULSARPUNCHYPUNNEDPUPPETPURIFYPURREDPUSHERPUTRIDPUZZLEPYTHONQUAILSQUANGOQUARTSQUEASYQUENCHQUEUESQUILLSQUIRKYQUOTASRABBISRACISMRADIOSRAFTERRAIDEDRAKISHRAMRODRAPIDSRARINGRATIFYRAVINGREALLYREBELSRECITERECORDREDDERREEFERREFLEXREFUSEREGGAEREHASHRELENTREMAKERENDERRENTERREPOSERETAILREVEREREVOKERHEUMYRHYMESRHYTHMRICHLYRIDINGRINGEDRIPPERRISKEDROADIEROBBERRODENTROLLERROOFEDROOTEDROSIERROTATEROUGHSROWINGRUBBERRUCKEDRUFFLERUMPLERUNNERRUSHEDSACKEDSAFARISAILORSALARYSALSASSANDALSASHAYSAUNASSAVINGSAWFLYSAYINGSCAMPISCARCESCENICSCHOOLSCOLDSSCOPEDSCOURSSCREWSSCROLLSCULPTSEAMANSEDANSSEEMLYSEGUESSENILESEPTETSEQUINSERUMSSEWAGESEXISMSHABBYSHAKENSHANDYSHARKSSHAVESSHEIKHSHERRYSHIFTYSHIRESSHOALSSHOOEDSHOVEDSHREWSSHROUDSHUNTSSICKENSIDINGSIMIANSINEWYSINNERSITCOMSIZZLESKEWERSKIMPSSKIRTSSKIVVYSLACKSSLANTSSLEEPYSLICKSSLOGANSLOWLYSLURPSSMACKSSMEARYSMIRKSSMOGGYSMOOCHSMUTTYSNARESSNEERSSNIPEDSNITCHSNOOTYSNOUTSSOBBEDSOCKETSOFFITSOIREESOLVEDSOONERSORRELSOURERSOWINGSPANKSSPEAKSSPENDSSPICEDSPIGOTSPIRITSPLEENSPLITSSPONGESPOORSSPRAWLSPRUCESPUNKYSQUADSSQUAWKSTABLYSTALKSSTARRYSTAYERSTENCHSTICKYSTINGSSTITCHSTOKEDSTOMPSSTORKSSTOWEDSTREWNSTRONGSTUDIOSTUNTSSUBDUESUBURBSUDDENSUGARYSULLENSUMMEDSUNDAESUNSETSUPINESURETYSURTAXSWAMPSSWARMSSWEATYSWELLSSWIPEDSWITCHSWORDSSYMBOLSYPHONTABBEDTACKLETAKINGTALLERTAMELYTANDEMTANNEDTAPPEDTARMACTATTOOTAUTLYTAXINGTEACUPTEDIUMTEETERTEMPTSTENPINTERSERTHATCHTHEMEDTHIEVETHIRTYTHOUGHTHRIFTTHROWNTHWARTTICKEDTIDDLYTIDINGTIGHTSTIMINGTINIERTINTEDTIPPLETITLESTOFFEETOILETTOMATOTONGUETOPPEDTORRIDTOTTEDTOUTEDTOWERSTOYINGTRANNYTRAUMATRENCHTRICKSTRIMLYTRIVIATROPHYTROWELTRUMPSTRYSTSTUCKEDTUGGEDTUMULTTUNNELTURBANTURKEYTURTLETUSSLETUXEDOTWELVETWILITTWINGETWITCHTYPIFYUDDERSUNBENTUNBORNUNCLOGUNCURLUNDULYUNFAIRUNHANDUNIQUEUNLESSUNMASKUNPLUGUNSAFEUNSEENUNSUNGUNUSEDUNWORNUPENDSUPLIFTUPPITYUPROOTUPWARDURGENTUSEFULUTMOSTVACANTVAINLYVALUERVALVESVANITYVARIEDVAULTSVELLUMVERGERVERIFYVERMINVESTEDVIABLEVICTORVIEWEDVILIFYVIOLASVIRILEVISIONVITALSVOCALSVOLUMEVORTEXVOYAGEWADDEDWAFFLEWAGGLYWAILERWAIVESWALKERWALLOPWANGLEWANTONWARILYWARMTHWASHEDWAVERSWAYLAYWEAKLYWEASELWEDDEDWEEKLYWEEVILWELLEDWENDEDWHACKSWHEELSWHENCEWHILESWHINERWHISKSWHOLLYWICKERWIDGETWIFELYWIGWAMWILLEDWINCEDWINGEDWINKEDWINTRYWIRINGWISHEDWITHINWIZARDWOEFULWOODEDWOOINGWORKEDWORTHYWREATHWRETCHWRONGSYAMMERYANKEEYAWNEDYEARLYYELLOWYIELDSYONDERZANIERZAPPEDZENITHZIPPEDZODIAC',
+'RUNNINGHANDLERABATINGABOUNDSABSCESSABUSINGACCEDEDACCORDSACCUSALACETONEACOLYTEACRIDLYACTUARYADJOURNADJUSTSADOPTEDADULATEADVISEDAFFABLYAFFLICTAGITATEAIMLESSALBINOSALGEBRAALLEGEDALLUREDAMASSEDAMIABLEAMNESTYAMULETSANAGRAMANCIENTANEROIDANGLINGANGULARANIONICANNEXESANNULUSANOTHERANTONYMAPPLAUDARCHIVEARDUOUSARMLESSARRAIGNARRIVALASCETICASPHALTASSAYERASSISTSASSUREDASUNDERATHLETEATOMIZEATTACKSATTIREDAUDITEDAURALLYAVENGESAVIATORAWARDEDBABBLESBACKERSBAFFLEDBAGGIESBALCONYBALKINGBANDITSBANGLESBANNINGBANYANSBAPTIZEBARFINGBARONETBARRELSBASKETSBASTARDBATTERSBAUBLESBAWDILYBEACHEDBEADLESBEANBAGBEARISHBEAVERSBECOMESBEDEVILBEDPANSBEEPERSBEETLEDBEGUINEBELCHESBELIEVEBELTINGBENCHESBEREAVEBESPOKEBETTERSBEWITCHBIGGISHBIGOTRYBILLIONBIOLOGYBIPLANEBIRDIESBISHOPSBITCHESBIVALVEBLACKLYBLANKEDBLARNEYBLAZONSBLEEPERBLESSEDBLINDLYBLOCKEDBLOODEDBLOSSOMBLUNDERBLURTEDBOATMANBOBBLESBODGINGBOLSHIEBONBONSBONUSESBOOGIEDBOOKIESBORDERSBORZOISBOTANICBOTTLESBOUNCESBOXROOMBRAGGEDBRAMBLEBRAVERYBRAZENSBREEZEDBREWERSBRICKEDBRIDLEDBRIOCHEBRISKLYBRITTLEBROILEDBROMINEBRONZESBROTHERBROWSEDBRUISESBUBONICBUDDINGBUFFETSBUGGINGBULLETSBULLISHBUMPKINBUNIONSBUNTINGBURDOCKBURGERSBURNISHBURRITOBUSHIERBUTTOCKBUZZERSCABINETCADAVERCADENZACALMESTCALUMNYCAMERASCANDIDACANNERYCANTEENCAPABLECAPPINGCAPTIVECARAMELCARBINECARDIACCAREFULCASHEWSCATTERYCAVEMANCAVORTSCEDILLACENTURYCHAIREDCHAMBERCHANCEDCHANGESCHANTRYCHAPELSCHARADECHARTERCHATTELCHECKEDCHEEREDCHEMISECHEROOTCHILLEDCHIMNEYCHIRRUPCHOPPEDCHOUGHSCHRONICCHUKKASCHUTNEYCIRCUITCLAMMEDCLARIFYCLASSEDCLAUSESCLEANLYCLEAVEDCLIMBEDCLIPPEDCLOAKEDCLONINGCLOSINGCLOYINGCLUTTERCOARSERCOBBLEDCOCKNEYCODEINECOFFEESCOLLATECOLLIERCOLOBUSCOLUMNSCOMBINGCOMICALCOMMIESCOMMUTECOMPORTCONCEPTCONCISECONDEMNCONDONECONFERSCONFORMCONGESTCONQUERCONSULTCONTENDCONTROLCONVERTCOOKERYCOOLERSCOPIERSCOPPICECOPYINGCORDIALCORRECTCORTEGECOUGARSCOUNCILCOUPLERCOURTLYCOVETEDCOWEREDCOWLINGCOWSLIPCRABBEDCRAMMERCRANKEDCRASSLYCRAYONSCREAKEDCREEPERCREVICECRIBBEDCRINGEDCRISPLYCROCHETCROPPEDCROSSLYCUCKOLDCUFFINGCULPRITCURDLESCURLEWSCURRIEDCURTAILCUSTODYCUTICLECYNICALDABBINGDAGGERSDAMAGEDDAMNINGDAMSELSDANDIESDARKESTDAUBINGDEADPANDEBAUCHDEBUNKSDECAYEDDECIBELDECLINEDECRYPTDEEPENSDEFENCEDEFILESDEFRAUDDEFUSEDDEGRADEDELUGEDDEMEANSDEMONICDENOTEDDENUDEDDEPLETEDEPUTEDDERIVEDDESIGNSDESPONDDEVALUEDEVISESDEVOURSDIAMONDDIDDLEDDIETARYDIGGINGDIKTATSDIMMINGDIOCESEDIPPINGDIRTIERDISCUSSDISOBEYDISPUTEDISTANTDISTURBDITHERSDIVESTSDIVINESDIVVIEDDIZZILYDOCKERSDODGERSDOFFINGDOLLIESDOLTISHDONGLESDOORMANDOUBLETDRAGOONDRAUGHTDREDGERDRINKERDRIVINGDROOPEDDROUGHTDROWSEDDRUGGIEDRUNKERDUNNINGDYNAMICEARACHEEARSHOTECTOPICEDITIONEFFUSEDELUSIVEEMBASSYEMBROILEMOTIONEMPRESSEMULATEENCORESENDEMICENDORSEENGINESENHANCEENQUIREENTENTEENTICESENTREATENVELOPENZYMESEPISODEEPITOMEEPSILONEQUATEDERASERSERRATICESCAPEEESPOUSEESTATESETERNALEVASIONEVICTEDEVINCESEXACTLYEXCERPTEXCITESEXCUSEDEXHALEDEXHUMEDEXITINGEXPENSEEXPLAINEXPOSEDEXTENDSEXTORTSFACINGSFACTUALFAILUREFAIRIESFAJITASFALLINGFALSIFYFANNIESFARROWSFASCISTFATIGUEFAWNINGFEBRILEFEEDERSFELLOWSFENCERSFERRIEDFERVENTFESTIVEFETLOCKFIDDLERFIERCERFIFTHLYFIGUREDFILCHEDFILLIESFINALESFINESSEFIRMESTFISHERYFISSILEFITTERSFIXATESFIZZINGFLAKINGFLANKEDFLEDGEDFLIGHTSFLOATEDFLOOREDFLOTSAMFLOUTERFLUFFEDFLUNKEDFOGGIERFOIBLESFOLIAGEFOLLIESFONDLEDFOOLISHFOOTMENFORAGEDFORBEARFORDINGFOREPAWFORGAVEFORGIVEFORKINGFORMINGFORTIESFOUNDERFRANKLYFREAKEDFREEMANFRESCOSFRETTEDFRIGATEFRINGEDFROGMANFROTHEDFUDDLEDFULSOMEFUNDINGFUNNILYFURNACEFURTHERFUSSINGGABBLEDGADGETSGAGGLESGALLANTGALLONSGAMBLESGANNETSGARAGESGARMENTGASEOUSGASSIERGATHERSGAUGINGGAVOTTEGEARBOXGEEZERSGENDERSGENTLERGEWGAWSGHETTOSGIRAFFEGIZZARDGLEANEDGLITTERGLORIESGLUMMERGNASHEDGOADINGGOBBINGGOBLINSGOLFINGGOODBYEGOSSIPSGOUGINGGRANDLYGRANULEGRASPEDGRATINGGRAZINGGREATLYGRIMACEGRIZZLEGROMMETGROSSLYGROUPIEGROWINGGRUFFLYGUESTEDGULPINGGUNNINGGUSHERSGUTTERSGUZZLERHABITATHADDOCKHAGGLEDHAIRCUTHALIBUTHALOGENHAMMOCKHANDFULHANDLEDHANDSETHANGMANHAPPILYHARLOTSHARPINGHARROWSHARVESTHASTIERHATCHESHAWKERSHAYWIREHEADILYHEADWAYHEAPINGHEARTHSHEAVENSHEAVINGHEDGERSHEFTIERHEIRESSHELIXESHELMETSHEMLOCKHERMITSHERRINGHEYDAYSHICKORYHIGHISHHILLIERHIPBONEHIPSTERHITCHEDHOARDERHOBBIESHOBNOBSHOGGINGHOLDINGHOMBURGHOMONYMHONKIESHOOFERSHOOTINGHORIZONHOSTELSHOTDOGSHOWLERSHUBCAPSHUFFINGHUMBUGSHUNCHESHUNKIERHURTFULHUSSARSHYDRANTIDEALLYIMAGERYIMBIBERIMMERSEIMPALASIMPERILIMPLIEDIMPOSESIMPULSEINANITYINCHINGINCLINEINDEXESINDUCEDINERTLYINFANTSINFLATEINFORMSINJECTSINKBLOTINMATESINSIPIDINSTANTINSULTSINTENTSINVADESINVESTSINVOKEDISSUINGITCHINGJACKETSJAVELINJAZZIERJEMMIESJERKIERJERSEYSJETTIESJIGGLEDJINXINGJOBBINGJOGGINGJOINTEDJOLTINGJOSTLESJOURNEYJOYRIDEJUDGINGJUGGLESJUICINGJUMBLEDJUMPINGJUNKETSKERNELSKETTLESKIBBUTZKIDNEYSKILOTONKINDREDKINKILYKITTENSKNACKERKNEECAPKNOCKEDKNUCKLEKUMQUATLAMPREYLANDINGLANTERNLAPTOPSLATCHEDLAUGHEDLAWSUITLEACHEDLEANINGLEAVINGLECTERNLEGALLYLEGLESSLEISURELENIENTLEPROSYLESSEESLETDOWNLEXICALLICKINGLIKENEDLINDENSLININGSLINSEEDLIQUEFYLITTERSLIVENEDLOAFERSLOBELIALOCKJAWLODGINGLONGINGLOOMINGLOOSELYLOTTERYLOVABLELOWDOWNLUCIDLYLULLABYLUNATICLURKINGLYNCHESMAGPIESMAILBOXMAIMINGMALARIAMALLARDMAMMARYMANAGEDMANDATEMANGLERMANHUNTMARKETSMARLINSMARQUISMARSHALMATADORMATTERSMATUREDMAYPOLEMEANINGMEDDLEDMEDLEYSMELTINGMENACEDMERGINGMESSIERMETHODSMEWLINGMICROBEMIDDLESMILDEWYMILKSOPMILLIONMINGLESMINIMALMINNOWSMINUTEDMISERLYMISHAPSMISNAMEMISSIONMISTILYMISUSEDMOCKINGMODICUMMONGRELMONKEYSMORALLYMORPHEDMOSQUESMOTOREDMOUSERSMOUTHEDMUDDLEDMUDPACKMUFFLEDMUGGINGMUMMIFYMURKIERMUSCLEDMUSKIERMUSSELSMUTATESMUZZLEDMYRTLESNANNIESNATURALNEBULAENEEDFULNEGATESNEMESISNETBALLNEUTRALNEWNESSNIBBLESNIMBLERNIRVANANOBBLEDNOTABLYNULLIFYNUMERALNUTMEGSOBESITYOBLIQUEOBSCUREOCTAVESOINKINGONENESSONSHOREOPACITYOPENINGOPINIONORATINGORDINALOSPREYSOUTBACKOUTCROPOUTGROWOUTLAWSOUTPACEOUTRANKOUTSOLDOVARIESOVERAWEOVERDUEOVERPAYOVERSEEPACKAGEPADDLEDPAGODASPAIRINGPALATALPALLETSPALMISTPANDERSPANOPLYPAPAYASPARASOLPARQUETPARTIALPASCALSPASSINGPASTINGPATELLAPAWNINGPAYLOADPEAKINGPECCARYPEERAGEPELICANPENDANTPEOPLEDPERHAPSPERJUREPERMINGPERSONSPERUSEDPESKILYPETEREDPHALLICPHLOXESPHONEMEPHYSICSPIGEONSPIGGISHPILLAGEPILLORYPIMPLEDPINCHESPINNINGPIOUSLYPITFALLPITTINGPLACARDPLAGUEDPLATOONPLAYBOYPLINTHSPLOPPEDPLOVERSPLUMMETPLUNGEDPLYWOODPOKIESTPOLYMERPONCHOSPONTIFFPOOPINGPORCINEPORTIONPOSSUMSPOTTAGEPOUCHESPOUNDEDPOWDERYPREACHYPREFERSPRELUDEPRESIDEPREVIEWPRICIERPRICKLYPRIMERSPRINTEDPRIVATEPRIZINGPROCEEDPRODUCEPROFILEPROJECTPROMPTSPROPANEPROTONSPROVINGPROWLEDPRUDISHPSYCHEDPUBERTYPUDDINGPUFFINSPULSARSPUNCHESPUPPETSPURGINGPURPORTPURSUESPUSHIERPUSSIESPUZZLESPYRAMIDQUAKINGQUARRELQUASARSQUEENEDQUELLEDQUICHESQUIESCEQUILTEDQUITTERQUIZZESRABBITSRADIANSRAGOUTSRALLIESRAMPAGERANCHERRAPPINGRAWHIDEREALIZEREBIRTHRECEIPTRECITESRECTORSREDEEMSREDWOODREEKINGREFLECTREFUGEEREFUTEDREGATTARELENTSRELYINGREMIXESREMOVEDRENEGESRENTINGREPUTESRESIDUERESPITERESUMESREVAMPSREVEREDREVOLTSREWIRESREWROTERHOMBICRHYMINGRIFLINGRIMMINGRIOTINGRIPTIDERISKINGRIVALRYROADIESROBBERYROMANCEROOFERSROOKIESROOSTEDROSETTEROTTINGROUGHERROUNDERRUCTIONRUFFLESRUMBLEDRUMPLEDRUSTINGSACHETSSADDLEDSALAMISSALOONSSAMOSASSAMPLESSAPPERSSARCOMASATANICSATISFYSAUCIERSAVELOYSAWMILLSCALDEDSCANNEDSCARCERSCHEMEDSCHISMSSCIENCESCORNEDSCRAGGYSCRAWNYSCRIBEDSCRUFFYSCYTHEDSEALANTSECEDEDSECRETESEEDINGSEEPINGSELFISHSEPTETSSEQUOIASERRATESETTLEDSHAKILYSHAMMEDSHARPENSHEATHESHEEREDSHELLACSHERBETSHIFTERSHININGSHIRKERSHOUTEDSHOWERSSHOWMANSHRILLYSHROUDSSHUFFLESHUTEYESHYNESSSICKIESSIGHINGSIGNIFYSILKIERSILVERYSINCERESINNERSSIRLOINSITCOMSSIXFOLDSIZZLEDSKETCHYSKIFFLESKIMPEDSKIRTEDSLACKEDSLAKINGSLATTEDSLEIGHSSLICKEDSLITHERSLOSHESSLOWESTSLUICEDSMALLERSMIDGINSMOKINGSMUDGESSNEEREDSNIPINGSNOOKERSNORINGSNOWMANSNUFFLESOAKINGSOCKETSSOGGIERSOLIDLYSOMEDAYSONNETSSOOTIERSOPRANOSOULFULSPANGLYSPATULASPEAREDSPECKEDSPELLEDSPHERESSPIGOTSSPINNEYSPIRITSSPLAYEDSPLIFFSSPOILERSPOOFEDSPRAINSSPRINTSSQUALLYSQUASHYSQUEEZESQUINTSSQUIRTSSTADIUMSTALLEDSTARDOMSTARVESSTATIONSTEEPENSTELLARSTEPPESSTERNUMSTIFFENSTIGMASSTIPENDSTONINGSTORMEDSTRAFEDSTRATUSSTRINGYSTROKEDSTUBBLYSTUDIESSTUNNERSTYLISHSUBDUESSUBMITSSUBSIDESUBURBSSUCCESSSUCKERSSUGGESTSULKINGSULTANSSUMMINGSUNROOFSUPPOSESURGEONSURPLUSSUSPECTSUTURESSWATHEDSWEATEDSWEETLYSWERVESSWIMMERSWISHESSWOOPEDSYMBOLSSYNONYMTACKINGTACTICSTAGGINGTALENTSTALLIEDTANDEMSTANGOEDTANNERSTANTRUMTAPPINGTARIFFSTARSALSTEACUPSTEASELSTEDDIESTEETERSTELEXESTEMPERSTENABLETENDRILTENSILETENUOUSTERNARYTESTATETEXTILETHAWINGTHEREBYTHIAMINTHIEVEDTHIRDLYTHOUGHTTHRIVEDTHRUSTSTHUMPEDTHYROIDTICKLESTIDINGSTIGHTLYTINNIERTOASTEDTODDLERTOFFEESTOILINGTOMBOLATONNAGETOOTHEDTOPAZESTOPMASTTOPSOILTORSIONTOTALLYTOTTINGTOUGHENTOURISMTOWBOATTOWLINETRACKEDTRAMCARTRAMPLETRAVAILTREATEDTREKKERTRILOGYTRIPLETTRIVETSTROIKASTROOPERTROUGHSTRUANCYTRUDGEDTRUMPETTUNABLETURFINGTURNIPSTURTLESTUTOREDTWEAKEDTWIDDLETWIRLEDTWITTERTYPICALUKELELEUMLAUTSUNAWAREUNBOLTSUNCANNYUNCLASPUNCORKSUNCUREDUNFIXEDUNFUNNYUNGUENTUNIFIESUNLACEDUNLEASHUNLOVEDUNMEANTUNNOTEDUNPLUGSUNREADYUNSTUCKUNTWISTUNWOUNDUPROOTSUPTIGHTURANIUMURETHRAUSUALLYUTILITYUTTEREDVACATEDVAGUELYVALIDLYVALUERSVAMPIREVANTAGEVARIATEVARYINGVAULTEDVENDORSVENTUREVERDICTVERSIFYVESSELSVETERANVIBRATEVICTORSVIEWINGVINEGARVIOLETSVISIBLYVITALLYVITRIOLVOICINGVOMITEDVULPINEWAFFLEDWAGGLESWAILINGWAKENEDWALKWAYWALTZERWARLIKEWARMISHWARPINGWASHINGWASSAILWATCHEDWATTLEDWAVIESTWEAKENSWEANINGWEARILYWEDGINGWEEKENDWEEPIESWEIGHTYWELCOMEWESTERNWHALERSWHATSITWHEEZESWHEREBYWHETTEDWHINERSWHIPPEDWHIRREDWHISTLEWHITHERWHIZZESWHOPPERWIDGETSWILIESTWILLOWYWINDBAGWINNINGWIRIESTWISHINGWOBBLESWONKIERWORKMANWORLDLYWORSENSWRACKEDWREAKEDWRIGHTSWRITHEDWROUGHTYARDARMYELPINGZEALOTSZEROINGZILLIONZOMBIES',
+'AARDVARKABATTOIRABLATIVEABORTIONABRIDGEDABSEILEDABSINTHEABSTAINSABUTMENTACCESSESACCOUNTSACCURSEDACHIEVERACOLYTESACQUITEDACROBATSACTIVELYACTUATESADAPTIVEADDUCINGADHERENTADJOINEDADJUSTEDADMIXINGADORABLYADULTERYADVISINGAERATIONAERONAUTAFFINITYAFFORDEDAGENCIESAGITATORAGONIZESAILERONSAIRCREWSAIRLINERAIRPORTSAIRTIGHTALACRITYALIGNINGALLEGINGALLEYWAYALLUDINGALTHOUGHAMBITIONAMENABLYAMNIOTICAMPHORAEANABOLICANALYSEDANATHEMAANDIRONSANEMONESANGSTROMANNUALLYANOREXIAANTEDATEANTONYMSAPERITIFAPIARIESAPOSTATEAPPEALEDAPPENDIXAPPLIQUEAPPRISEDAPPROVEDAQUARIUMAQUILINEARCANELYARGUMENTARPEGGIOARRIVALSARTEFACTARTIFICEASSAYERSASSESSORASSUAGEDASTERISKATROCITYATTAINEDATTITUDEAUDITORYAUTHOREDAUTONOMYAVERRINGAVIATORSBACILLUSBACKDATEBACKINGSBAGUETTEBALDNESSBALLOTEDBALMIESTBANDAGEDBANDITRYBANISHEDBANTEREDBAPTIZERBARBEREDBARMAIDSBARONIALBASSISTSBATCHINGBATHROOMBATTIESTBEACHINGBEARABLYBEATNIKSBECOMINGBEDEVILSBEDTIMESBEFITTEDBEGGAREDBEHAVINGBELCHINGBELITTLEBELONGEDBEMUSINGBENEFITSBESMIRCHBESTOWEDBETTEREDBICYCLEDBILLETEDBILLOWEDBINOMIALBITINGLYBIVALENTBLACKESTBLANCHEDBLINKERSBLOCKERSBLOODIERBLOOMINGBLOTCHESBLURRIERBLUSTERYBODYSUITBOMBARDSBONNIESTBOOKMARKBOOTLEGSBOTCHINGBOUFFANTBOUNDARYBRAGGARTBRAISINGBRAZENEDBREATHERBREEZIERBRIEFESTBRIMFULLBRITTLERBROILINGBROTHELSBROWNIESBRUISERSBRUSHINGBUBBLIERBUCKLINGBUFFOONSBULLYINGBUNGLERSBURDENEDBURGLINGBUSINESSBUSTLINGBUTTOCKSCADAVERSCALAMINECALCULUSCALFSKINCALORIESCAMISOLECAMPUSESCANNIBALCANOPIEDCAPSIZESCARAMELSCARBOLICCARESSEDCAROUSEDCARYATIDCASEMENTCASTLINGCATACOMBCATAPULTCATHETERCATTIESTCEDILLASCEMENTEDCEPHALICCERVICALCHALICESCHAMPINGCHASTELYCHATEAUXCHEAPESTCHEERFULCHEETAHSCHEROOTSCHICANESCHILLIERCHIMNEYSCHIPMUNKCHIRPINGCHIVALRYCHLORIDECHOMPINGCIRCLETSCISTERNSCIVILIANCLAIMINGCLANNISHCLARINETCLASSINGCLEANESTCLEARINGCLENCHEDCLEVERLYCLIMBERSCLINGIERCLOGGINGCLOTTINGCLUMSILYCLUTCHESCOALESCECOBBLINGCOEXISTSCOGWHEELCOLDNESSCOLLEGESCOLLOQUYCOLONISTCOMEDOWNCOMMANDSCOMMONERCOMMUTERCOMPETEDCOMPOSEDCOMPRESSCONCEALSCONCERNSCONCOCTSCONDONEDCONFETTICONFIRMSCONFRONTCONJOINTCONJURORCONNOTESCONSISTSCONSULTSCONTEMPTCONTINUECONTRIVECONVENESCONVEYEDCONVOKESCORRECTSCORSAIRSCOSSETEDCOTTAGESCOUNSELSCOURIERSCOVERINGCOWARDLYCRADLINGCRAMMINGCRASSESTCREAKIERCREASINGCREEPERSCREOSOTECRISPIERCROAKINGCROTCHETCRUCIFIXCRUNCHEDCRUSADESCRYONICSCUCUMBERCULVERTSCUPBOARDCURATIVECURLIESTCYLINDERDABBLERSDAFFODILDAMPENERDARKENEDDAUGHTERDAYDREAMDEBACLESDEBRIEFSDECAMPEDDECORATEDECREPITDEEPENEDDEFAMINGDEFERREDDEFLATEDDEFRAUDSDEFUSINGDEJECTEDDELICACYDELOUSESDEMEANEDDEMONIZEDENIABLEDENTURESDEPORTEDDEPUTIZEDERISORYDESCRIBEDESIGNEDDESPAIRSDESPOTICDETACHESDEVALUEDDEVIATEDDEVOLVEDDEVOURERDEXTROSEDIAGRAMSDIAMONDSDILIGENTDINGBATSDIPLOMASDIRENESSDISAGREEDISBANDSDISMAYEDDISPIRITDISPOSESDISROBESDISSUADEDISTINCTDISTRUSTDITHEREDDIURETICDIVIDENDDIVINITYDIVULGEDDOCKYARDDOLLOPEDDOMINANTDOODLERSDOPAMINEDOTINGLYDOUBTINGDOWDIESTDOWNFALLDOWNPOURDOWNWINDDRAFTINGDRAININGDRAWINGSDREAMILYDRENCHEDDRIBBLEDDRILLERSDRIVABLEDROWSILYDRUGGISTDRUNKARDDUCKWEEDDUELLISTDUMBNESSDUNGHILLDURATIONDYESTUFFDYSLEXICEARMARKSEARRINGSEASTWARDECLIPSEDECONOMICEDIFICESEFFERENTEFFUSINGEGOISTICEIGHTEENELBOWINGELECTRONELEVATORELLIPSISEMAILINGEMBEDDEDEMBOLDENEMBRACESEMERGINGEMISSARYEMPHASESEMPTIESTEMULSIFYENDEAREDENDORSESENGINEERENHANCEDENLARGERENNOBLEDENROLLEDENSNAREDENTHALPYENTICINGENTRANCEENTRUSTSENVELOPEENVISAGEEPIDEMICEQUALIZEEQUIPPEDERECTORSERUPTIVEESCAPEESESQUIRESEUGENICSEVENTFULEXAMPLESEXCHANGEEXCLUDESEXECUTEDEXEMPLAREXHAUSTSEXPANDEREXPERTLYEXPLICITEXPONENTEXPUNGESEXTOLLEDEXTRUDEDEYEBROWSEYESIGHTFACTIONSFAIRWAYSFALLIBLYFAMILIARFANCIERSFANLIGHTFARRIERSFASCISTSFATALISMFATIGUEDFAULTINGFEARLESSFEATHERYFEEBLESTFEELINGSFEMINIZEFEROCITYFERVENCYFETCHERSFIERCESTFIGURINGFILLETEDFILTHIERFINESSESFIREARMSFIRETRAPFITFULLYFIXATIVEFLABBILYFLAILINGFLANKINGFLASHERSFLATTERYFLATWORMFLEECINGFLEXIBLEFLIGHTEDFLINGINGFLIPPINGFLOGGINGFLOPPIESFLORISTSFLOUNCESFLUNKEYSFLUTTERSFOLDAWAYFONDANTSFOOTHOLDFOOTPATHFOOTWEARFORBORNEFOREBEARFOREFOOTFOREMOSTFORESAILFORETELLFORFEITSFORGOINGFORMLESSFORSWOREFORTUNESFOUNTAINFOXGLOVEFREAKINGFREQUENTFRIENDLYFRILLIERFRONTAGEFROSTILYFRUITFULFUGITIVEFUMIGATEFUNEREALFURRIERSFUSELAGEFUZZIESTGADGETRYGALUMPHSGANGRENEGARGOYLEGAROTTEDGASLIGHTGATHEREDGENETICSGENTLESTGHETTOESGLACIATEGLADNESSGLEAMINGGLITCHESGLOBALLYGLOOMILYGLOSSIESGLUMNESSGLYCOGENGOATSKINGOLDFISHGORGEOUSGOSSIPEDGOVERNEDGRACIOUSGRADUATEGRAMMARSGRAPHICSGRASPINGGREEDILYGREMLINSGRIEVINGGRIMACESGRIPPERSGRIZZLEDGROMMETSGRUBBIERGRUMBLEDGUARDIANGUFFAWEDGUMPTIONGYMNASTSHABITATSHACKSAWSHAGGLINGHAIRPINSHALLWAYSHANDGUNSHANDMADEHANDSOMEHAPPENEDHARDBACKHARDIESTHARDWAREHARMONICHARRYINGHATBANDSHAUNCHESHAWTHORNHEADACHEHEADSHIPHEADWORKHEARTILYHECKLINGHEDONISTHEIGHTENHELLFIREHELPINGSHEREUPONHEROICALHESITATEHIBISCUSHIGHLANDHIJACKEDHILLSIDEHISTORICHOARDINGHOBNAILSHOLLOWEDHOMINIDSHONESTLYHOODWINKHORNIESTHORRIBLYHORSEMENHOTELIERHUMANITYHUMMOCKSHUMPBACKHUNGRILYHYACINTHHYGIENICHYPNOTICICEBOUNDIDEALISTIDEOLOGYIDOLIZESIGNORANTIMAGINESIMITATEDIMMINENTIMMUNITYIMPENDEDIMPISHLYIMPLORESIMPOSTERIMPROVEDINCENSEDINCISIVEINDULGESINFESTEDINFLATEDINFUSIONINHALERSINHUMANEINKWELLSINQUESTSINSOLENTINSTINCTINSURERSINTERIORINTERVALINTONINGINTRUDEDINVADERSINVEIGLEINVESTEDINVOICESINWARDLYIRRITATEJANITORSJAUNTILYJETTISONJINGOISMJOINTINGJOSTLINGJOUSTERSJOYRIDERJUDDEREDJUSTICESKEENNESSKEYBOARDKICKBACKKILOWATTKINGDOMSKNITTINGKNOCKOUTKNUCKLESLACEWINGLACTATESLAMENTEDLANDFALLLANDLORDLANDSLIPLARKSPURLATCHINGLATTICESLAUNCHEDLAVENDERLAWGIVERLEASHINGLECTERNSLEFTISTSLEGALITYLEMONADELEOPARDSLEXICONSLIBRETTILIFELINELIGHTESTLIKENESSLIMBLESSLIQUEURSLITERARYLIVENINGLOADINGSLOATHINGLOCALIZELOCKABLELONGWAYSLOUNGINGLOVELIERLUMINOUSLUSCIOUSLYNCHINGMACAQUESMACHINESMAGAZINEMAGNOLIAMAIMINGSMAINTAINMAJORITYMANACLEDMANDRAKEMANGLINGMANIFESTMANTILLAMANURINGMARATHONMARINADEMARKSMENMARRIAGEMASSEUSEMASTODONMATURITYMEANDERSMEATBALLMEDICINEMEEKNESSMEGAVOLTMEMORIALMENTALLYMESMERICMETAPHORMIGRATEDMILITATEMINERALSMINORITYMINUTINGMISCASTSMISDOINGMISHEARDMISSIONSMISSPENDMISTAKENMISTREATMISUSINGMOBILIZEMODIFIESMOISTUREMOLESKINMONETIZEMONKFISHMONOLITHMONORAILMONSTERSMOROSELYMORTALLYMORTISESMOTHBALLMOTORMENMOUNDINGMOURNINGMOUTHINGMUCILAGEMUGGIESTMULCHINGMULLIONSMUSKETRYMUSTANGSMYSTICALNARRATORNASALIZENATURISMNAVIGATENECROSISNEGLECTSNEONATALNEUROTICNEWCOMERNIGGLINGNITRITESNOBLEMENNOTEBOOKNOTIFIERNUMERACYNUPTIALSNUTRIENTOAFISHLYOBEDIENTOBLIGATEOBSCUREDOBSESSESOBTRUDEDOCCASIONOCCUPIERODYSSEYSOFFSHOOTOMITTINGONLOOKEROPERATEDOPPONENTOPTIMISTORDINARYORGANIZEORIGINALOUTBOARDOUTCASTSOUTDOINGOUTFLANKOUTGROWSOUTLIERSOUTMODEDOUTRIGHTOUTSPENTOUTWEIGHOVERBOLDOVERCOMEOVEREATSOVERFULLOVERHEATOVERLEAFOVERMUCHOVERRIDEOVERSEENOVERSIZEOVERTONEOVERWORKOXIDANTSOXYMORONPACIFISTPAGEANTSPALLIATEPALPABLEPANORAMAPARADISEPARALLELPARAPETSPARDONEDPARODIEDPARQUETSPARTAKESPARTNERSPASSAGESPASTILLEPATCHIERPATENTLYPATRIOTSPAVLOVASPAYPHONEPEEKABOOPELVISESPENKNIFEPENTACLEPEOPLINGPERCEIVEPERISHERPERKIESTPERUSALSPHARMACYPHONETICPHYSICALPICCOLOSPICKIESTPIDDLINGPILFEREDPINBALLSPINIONEDPINPOINTPIPEWORKPITILESSPLACATEDPLANKTONPLATFORMPLAUDITSPLAYBOYSPLECTRUMPLIGHTEDPLOPPINGPLUCKILYPLUMBERSPLUNDERSPODIATRYPOLISHESPOLLSTERPONDEREDPOPULISMPORPOISEPORTENTSPOTBELLYPOTHOLESPOWDEREDPRAIRIESPRATTLEDPREAMBLEPREGNANTPREMISESPRESAGESPRESUMEDPREVAILSPRIGGISHPRIMPINGPRISSILYPROBABLYPROCEEDSPRODIGALPROFFERSPROLIFICPROMOTEDPRONOUNSPROPHECYPROPOSESPROSPECTPROVABLYPROVISOSPROWLINGPUBLICANPULSATESPUNCHIERPUNGENCYPUPATINGPURENESSPURPORTSPURVEYEDPUSHIESTPUSTULESQUAFFINGQUATRAINQUEERESTQUERYINGQUIBBLESQUIETESTRACIALLYRADIATEDRAGGEDLYRAILROADRAKISHLYRANSACKSRAPIDITYRARITIESRATTLERSREACTANTREADYINGREATTACHREBUKINGRECAPPEDRECENTLYRECITINGRECLUSESRECOVERYRECYCLEDREDOUNDSREFEREEDREFLECTSREFROZENREGAINEDREGISTERREINDEERREJOICESRELENTEDRELIEVESRELOCATEREMOTELYRENDEREDRENOVATEREPAYINGREPRISALREPUBLICREQUITEDRESCUERSRESETTLERESISTEDRESOLVERRESPONDSRESTORERRESULTEDRETAINERRETICENTRETRACTSREVENUESREVERTEDREVISIONREVOKINGRHAPSODYRHYTHMICRICKSHAWRIDICULERINGWORMRIPPLINGROBUSTLYROOFINGSROOMMATEROTARIESROTTENLYROULETTERUCKSACKRUEFULLYRUMBLINGRUPTURESSACKINGSSADDLINGSAGACITYSALESMANSALTIESTSAMPLINGSANDWICHSATIRIZESAUNTERSSAWBONESSCABBARDSCAMMINGSCANSIONSCARCELYSCENARIOSCHEMERSSCIATICASCOOTINGSCORNINGSCOURGEDSCRABBLESCREAMEDSCRIBINGSCROUNGESCUFFINGSCUPPERSSCUTTLESSEAFARERSEAPORTSSEASONEDSECRETESSECURITYSEDIMENTSEEDLESSSEGUEINGSELFLESSSEMINARYSENSIBLESENTINELSEQUOIASSERENELYSESSIONSSEVERESTSHACKLEDSHAGGIERSHALLOTSSHAMMIESSHATTERSSHEPHERDSHIFTINGSHIPPINGSHOEHORNSHOPPERSSHOWEREDSHREWISHSHUSHINGSHUTTINGSIDELONGSILICONESINGEINGSISTERLYSIXTIETHSKELETALSKETCHESSKILLETSSKIMPINGSKINNIERSKITTISHSKULLCAPSKYLARKSSLACKENSSLAMMERSSLAPPINGSLEAZILYSLEEPILYSLIGHTLYSLIPSHODSLOBBERYSLOTHFULSLUGGINGSLUMMINGSLUTTISHSMARMIERSMIRKINGSMUGGLEDSNAFFLEDSNAPPIERSNARLINGSNEAKINGSNIPPETSSNOOTIERSNOWFALLSNUBBINGSOAPIESTSOFTENERSOJOURNSSOMBREROSORCERERSPADEFULSPANKINGSPARKLESSPATTERSSPEARINGSPECKLEDSPEEDWAYSPITTINGSPORRANSSPRAYINGSPRINTEDSPRUCESTSPUNKIERSQUASHEDSQUEAKERSQUEEZESSTADIUMSSTAGNATESTALWARTSTARCHESSTARKESTSTARTINGSTEALTHYSTEROIDSSTIFLINGSTINGERSSTINKINGSTIRRUPSSTOCKINGSTOOPINGSTOUTESTSTRAIGHTSTRETCHYSTRINGEDSTROLLERSTRUDELSSTUBBINGSTUFFIERSTUMPINGSTUPIDLYSTYLISTSSUBSONICSUBTRACTSUCCEEDSSUCHLIKESUDDENLYSUFFIXEDSUGARINGSULLENLYSULTRIERSUNBATHESUNBURSTSUNDRESSSUNSHADESUPPLIESSURFACESSURMISEDSURROUNDSURVIVEDSUSTAINSSWADDLESSWEATILYSWIGGINGSWINDLERSWISHINGSWOONINGSYCAMORESYMBOLICSYNOVIALSYSTEMICTACKIESTTAMPEREDTARTNESSTATTEREDTELEVISETEMPEREDTENACITYTENDERLYTERMINUSTERRIERSTEXTILESTHANKFULTHEORISTTHIAMINETHINKINGTHIRSTEDTHOROUGHTHREADEDTHRESHESTHRONGEDTHUMBINGTICKLINGTIGHTESTTIMOROUSTITIVATETODDLERSTOILETRYTOLERATETOMBOLASTOPOLOGYTORCHLITTORRENTSTORTUOUSTOTTEREDTOUGHESTTOURNEYSTRACHEALTRADUCERTRANQUILTRANSMITTREELESSTREKKINGTRENCHESTRIBUTESTRICKLEDTRIMMERSTRIUMPHSTROPHIESTROUBLESTRUDGINGTRUNCATETRUSSINGTRYINGLYTUNGSTENTURNCOATTUTORIALTWANGINGTWELFTHSTWIGGINGTWISTIERTYPECASTULCEROUSUNBIASEDUNBRACEDUNCAPPEDUNCOMBEDUNCOVERSUNDERSEAUNDULATEUNERRINGUNFASTENUNFIXINGUNHANDEDUNICYCLEUNIONIZEUNITEDLYUNJUSTLYUNLEADEDUNLOOSEDUNMANNEDUNNERVEDUNPEELEDUNPROVENUNSALTEDUNSEATEDUNSIGNEDUNSPOILTUNSUBTLEUNTIDIERUNVARIEDUNWARILYUNWIELDYUPLIFTEDUPSTAGEDURBANELYUSEFULLYVACANTLYVAGABONDVANQUISHVARICOSEVEHEMENTVENEEREDVERANDASVERDICTSVERMOUTHVERSIONSVESTIGESVEXATIONVICTUALSVIGOROUSVILLAINYVINTAGESVITALITYVOCALIZEVOLCANICVOUCHERSVULGARLYWALLOWEDWARDROBEWARINESSWASHOUTSWASTEFULWATCHINGWATERMANWAXINESSWEAKNESSWELCOMEDWHACKINGWHATSITSWHEELINGWHENEVERWHINNIESWHISKEYSWHISTLESWHITTLEDWHODUNITWHOPPERSWIGGLINGWINCHINGWINDLASSWIRETAPSWITHEREDWOMANISHWOODCOCKWOODWINDWORKABLEWORKLOADWORMHOLEWOUNDINGWRATHFULWRENCHEDWRIGGLEDYELLOWERYOUNGESTYULETIDE',
+'AARDVARKSABATTOIRSABDUCTORSABJECTIONABOLISHEDABOUNDINGABSCONDEDABSTINENTABUSIVELYACCENTINGACCESSORYACCOMPANYACHIEVERSACOUSTICSACQUITTEDACTIVATEDACTUATIONADDRESSEEADHESIONSADJOURNEDADMIRABLYADOPTIONSADULATINGADVANCINGADVISABLYAEROBATICAFFLUENCEAFTERGLOWAGELESSLYAGGRIEVESAGNOSTICSAGREEMENTAIRFIELDSALABASTERALCHEMISTALIENABLEALLEGEDLYALLEYWAYSALLOTMENTALLUSIONSALONGSIDEALTIMETERAMARETTOSAMBROSIALAMBUSHERSAMERICIUMAMOROUSLYAMPERSANDAMPUTATEDANAEROBESANATOMIESANCHORINGANCILLARYANEURYSMSANGLICIZEANIMATINGANKLEBONEANNOUNCEDANNULMENTANONYMOUSANTEATERSANTHOLOGYANTIKNOCKANTIPODALANTITOXINAPARTHEIDAPERTURESAPOLOGISTAPPELLANTAPPETIZERAPPLIANCEAPPORTIONAQUAPLANEARBORETUMARCHETYPEARGUMENTSARMISTICEARRAIGNEDARROGATESARTERIOLEARTIFACTSASCENDENTASININITYASSEMBLEDASSESSINGASSUMABLEASTHMATICASTRONAUTATHLETICSATROCIOUSATTAINDERATTENDINGATTRACTEDAUSTERITYAUTHORITYAUTOGRAPHAUTONOMICAVALANCHEAVUNCULARAWFULNESSBACHELORSBACKBOARDBACKPACKSBACTERIUMBAGATELLEBALUSTERSBANDOLIERBANJOISTSBANNISTERBAPTISMALBARBARITYBARGEPOLEBARNSTORMBARRACUDABARRISTERBASELINESBASINFULSBATHROBESBATTERINGBEARDLESSBEAUTEOUSBEDSITTERBEEFCAKESBEETROOTSBEFUDDLEDBEGINNERSBELIEVERSBELLYACHEBESEECHEDBESIEGINGBETROTHEDBEWITCHEDBILLYCANSBINOMIALSBIOMETRICBIRTHDAYSBISEXUALSBLABBEREDBLARNEYEDBLAZONINGBLEMISHESBLIGHTINGBLIZZARDSBLONDNESSBLOODSHEDBLOTCHINGBLOWPIPESBLUEBELLSBLUNDERERBOARDWALKBOOKMAKERBOOTBLACKBORROWERSBOUNCIESTBOYFRIENDBREACHINGBREAKEVENBREATHIERBRICKYARDBRIGHTENSBRISKNESSBROADCASTBROCHETTEBROWBEATSBRUSHOFFSBRUTALISMBUCCANEERBUCKSKINSBULKINESSBULLFINCHBURDENINGBURSARIESBUTCHEREDBUTTERNUTCAKEWALKSCALLOUSEDCAMCORDERCAMSHAFTSCANCELINGCANDLELITCANNINESSCANONIZESCANTICLESCAPACIOUSCAPSICUMSCAPTAINEDCARBONATECARDAMOMSCAREENINGCARETAKERCARNIVALSCAROUSELSCARPETINGCARTWHEELCASEWORKSCATECHIZECATHETERSCAUSELESSCAVERNOUSCENSURINGCETACEANSCHALLENGECHANTEUSECHARINESSCHEAPNESSCHEMICALSCHICANERYCHILDHOODCHINAWARECHIPPINGSCHOCOLATECHOPPIESTCHRYSALISCHUNKIESTCIGARETTECINEMATICCIRRHOSISCLAIMANTSCLAMOROUSCLASSMATECLENCHINGCLINCHERSCLIPPINGSCLOSETINGCLUTCHINGCOAGULANTCOALITIONCOBWEBBEDCOCKINESSCOCOONINGCODPIECESCOFFERDAMCOHABITEDCOINCIDEDCOLLATINGCOLLEGIALCOLLOQUIACOLONIZESCOMEDOWNSCOMMANDERCOMMITTEECOMMOTIONCOMMUTERSCOMPANIESCOMPLAINSCOMPLICITCOMPOSITECOMPUTERSCONCEALERCONCERTOSCONCLAVESCONCRETESCONFESSESCONFIGURECONFLUENTCONFUSINGCONGRUENTCONNECTEDCONNUBIALCONSENSUSCONSOLINGCONSPIRESCONSTRUEDCONTACTEDCONTENDEDCONTINUALCONTRALTOCONVECTORCONVERTEDCONVICTEDCONVOYINGCOPIOUSLYCOQUETTESCORKSCREWCORNFIELDCORPUSCLECORRELATECORRUPTEDCOTANGENTCOUCHETTECOUNTDOWNCOURTIERSCOVENANTSCRACKPOTSCRANBERRYCREATURESCREMATIONCRESCENDOCRINOLINECROCHETEDCROOKEDLYCROSSBEAMCROUPIERSCRUCIFIESCRUNCHIERCRYOGENICCUDDLIESTCULTIVATECUPBOARDSCURRYCOMBCURTSYINGCUTLASSESCYPRESSESDACHSHUNDDAIQUIRISDAMNATIONDANCEABLEDARKROOMSDAUNTLESSDEACONESSDEADLINESDEATHBEDSDEBARMENTDEBAUCHESDEBUGGINGDECAMPINGDECEITFULDECIDABLEDECLININGDECORATESDECREASESDEFEATISMDEFECTIVEDEFENSIVEDEFICIENTDEFLOWERSDEFORMITYDEFROSTEDDEJECTINGDELIRIOUSDEMAGOGICDEMISTERSDENIGRATEDEODORANTDEPENDINGDEPLORINGDEPRAVITYDERIVABLEDESCRIBESDESERTIONDESIRABLYDESPERADODESTITUTEDETACHINGDETECTIVEDETERRENTDETONATESDEUTERIUMDEVIATIONDEVOTEDLYDEXTEROUSDIAERESISDIALECTALDIATRIBESDICTATIONDIFFERENTDIFFUSERSDIGESTIVEDIGITIZESDIPHTHONGDIPTEROUSDISABUSEDDISARMINGDISBARREDDISCHARGEDISCOVERYDISEMBODYDISGORGEDDISGUSTEDDISLIKINGDISMEMBERDISPELLEDDISPERSERDISPLAYEDDISROBINGDISSENTEDDISSONANTDISTRACTSDISUNITEDDIVERGINGDIVESTINGDIVORCINGDOCTRINALDOGFISHESDOGMATISMDOMINANTSDOTTINESSDOVECOTESDOWNGRADEDOWNRANGEDOWNSIZESDRAGSTERSDREARIESTDRIBBLINGDROLLNESSDROWSIESTDRUMSTICKDUCTILITYDWELLINGSEARMARKEDEARTHWORKECSTASIESEDUCATINGEFFECTUALEFFULGENTEIGHTIETHELECTORALELEGANTLYELEVATORSELOCUTIONELUCIDATEEMBALMERSEMBARRASSEMBEZZLEREMBROILEDEMIGRATESEMOTIONALEMPHYSEMAEMPRESSESEMULATORSENCAMPINGENCIRCLEDENCOUNTERENDANGERSENDORSERSENGORGINGENHANCERSENJOYMENTENMESHINGENRAPTUREENSEMBLESENSNARINGENTERTAINENTRUSTEDENVELOPERENVISIONSEPIDERMISEPISCOPALEPITOMIZEEQUINOXESEQUITABLYESCALATEDESSENTIALETHNICITYETYMOLOGYEUPHONIUMEVACUATESEVAPORATEEVERYBODYEVILDOINGEXAMINEESEXCAVATOREXCISIONSEXCLUSIONEXCRETORYEXECRABLEEXECUTIVEEXEMPTINGEXFOLIATEEXIGENCESEXOTICISMEXPEDIENTEXPENDINGEXPLAINEDEXPLOITEREXPORTINGEXPRESSESEXTENUATEEXTORTINGEXTREMELYEXTRINSICFACTIONALFACULTIESFALSEHOODFANTASIZEFARMSTEADFASCICLESFASTENINGFATHOMINGFATUOUSLYFEELINGLYFEMINIZESFERTILITYFESTIVITYFIDUCIARYFINALIZESFIREBALLSFISHERMENFLABBIESTFLAGSHIPSFLAMINGOSFLATIRONSFLATULENTFLESHIESTFLIMFLAMSFLOWERINGFLUMMOXEDFOLLOWINGFOOLISHLYFOOTHOLDSFOOTPATHSFOOTSTOOLFOREARMEDFORECLOSEFOREHEADSFOREMASTSFORESTALLFOREWARNSFORGERIESFORLORNLYFORMULATEFORTIFIEDFORWARDEDFOUNDRIESFOXHOUNDSFRAGMENTSFREAKIESTFREEHOLDSFREESTYLEFREIGHTERFRISKIESTFRONTALLYFROSTIESTFRUGALITYFRUMPIESTFULMINATEFUMIGATESFURBISHESFURRINESSFUSILIERSFUZZINESSGALLOPINGGALVANIZEGARLANDEDGARRISONSGARRULOUSGASTRITISGAUCHERIEGEMSTONESGENIALITYGENOTYPESGENUINELYGERUNDIVEGIDDINESSGLADIATORGLANDULARGLASSWAREGLOOMIESTGLUTINOUSGODDESSESGRANULATEGRATITUDEGREASIESTGROCERIESGROUCHILYGROUPINGSGRUBBIESTGRUMBLINGGUARDEDLYGUERILLASGUILLEMOTGUNMETALSGUNSMITHSGYMKHANASHABITUATEHAILSTONEHAMPERINGHANDBILLSHANDCUFFSHANDMAIDSHAPPENINGHARBINGERHARDSHIPSHARLEQUINHARNESSEDHASTINESSHAYMAKINGHEADBANDSHEADFIRSTHEADLINEDHEADRESTSHEADSTOCKHEALTHILYHEARTFELTHEATHLANDHEEDFULLYHEIRESSESHELPFULLYHERBICIDEHEREUNDERHESITANCEHEXAGONALHICCUPPEDHILARIOUSHINDRANCEHISTORIESHOBBYISTSHOGSHEADSHOLLERINGHOMEOWNERHOMEWARDSHONEYBEESHOPEFULLYHOROSCOPEHORSEHIDEHORSEWHIPHOTPLATESHOUSEMAIDHUMANKINDHUNCHBACKHURRAHINGHUSKINESSHYDRANGEAHYPERBOLAHYPHENATEHYPNOTIZEIDEALIZEDIGNITIONSILLEGALLYILLOGICALIMAGININGIMITATINGIMMEDIACYIMMIGRATEIMMUNIZESIMPEACHEDIMPENDINGIMPETUOUSIMPLEMENTIMPLOSIVEIMPOSTERSIMPROMPTUINAUGURALINCENTIVEINCISIONSINCLUSIONINCREMENTINCULCATEINDEMNIFYINDICATORINDISPOSEINDUCTIONINEBRIATEINFECTIVEINFLATINGINFORMINGINGENIOUSINGRAINEDINHERITEDINITIALLYINJURIOUSINNKEEPERINNUENDOSINQUIRIESINSENSATEINSIGNIASINSOLUBLEINSPECTORINSULATEDINSURGENTINTENSELYINTERACTSINTERCOMSINTERLACEINTERMENTINTERRINGINTERWOVEINTRICACYINTROVERTINTUITIONINVASIONSINVENTIONINVISIBLEIRASCIBLYIRONWORKSIRRITABLEIRRUPTIONISOMERISMITERATIONJABBERINGJAUNDICEDJEALOUSLYJESTINGLYJINGOISTSJOINERIESJOYRIDERSJUDGMENTSKINGMAKERKINSWOMENKNIGHTINGKNUCKLINGLABORIOUSLACERATESLACTATINGLAMINATESLANDFILLSLANDOWNERLANGUIDLYLARGENESSLATCHKEYSLAUGHABLELAUNDEREDLEAKINESSLEASEHOLDLEFTWARDSLEGALIZESLEGWARMERLENGTHILYLETHARGICLEVERAGESLIBATIONSLIBERATORLIBRETTOSLIFEBLOODLIMBERINGLIMPIDITYLIONIZINGLITIGATEDLITURGIESLIVESTOCKLOBBYISTSLOCATIONSLODESTONELOQUACITYLOUDMOUTHLUBRICITYLULLABIESLUMPINESSLURIDNESSLUXURIANTLYNCHINGSMACADAMIAMACHININGMADHOUSESMAGICIANSMAGNETITEMAGNITUDEMAHARISHIMAINTAINSMAKEOVERSMALLEABLEMANDATINGMANLINESSMARINADEDMARKDOWNSMARMOSETSMARSHIESTMASTERFULMATCHLESSMATERNITYMAUSOLEUMMEDIATINGMEDICINALMEGAWATTSMELLOWINGMEMORABLEMEMORIZEDMENTIONEDMERCURIALMERRINESSMESQUITESMESSMATESMEZZANINEMICROFILMMIDNIGHTSMIGRATIONMILITATEDMILLENNIAMILLINERYMINEFIELDMINISKIRTMISCOUNTSMISFILINGMISGUIDESMISLAYINGMISPLAYEDMISSHAPENMISTLETOEMITIGATESMOBILIZESMODERATEDMODERNIZEMODULATORMOLESTINGMOMENTOUSMONETIZESMONGOOSESMONOCULARMONOLOGUEMONORAILSMONTHLIESMOONSHINEMORALISTSMORDANTLYMORTALITYMORTGAGORMOSQUITOSMOTIVATEDMOTORCADEMOUTHFULSMUMBLINGSMUNICIPALMURMURINGMUSHROOMSMUTATIONSMUTTERINGMYSTIFIEDNAKEDNESSNARCISSUSNARRATORSNATURISTSNAVIGATEDNECESSITYNEGATIVESNEOPHYTESNETWORKEDNEUTRALLYNEWSPAPERNIGGARDLYNIGHTLIFENIHILISTSNOCTURNESNORTHERLYNOSEDIVESNOTEBOOKSNOURISHEDNOVELTIESNUCLEUSESNUMBINGLYNUMERICALNUTRITIONOBLATIONSOBLIVIOUSOBSCURELYOBSERVERSOBSTINATEOBVIATINGOCCLUSIONOCCUPIERSOFFENDERSOFFICIALSOFFSHOOTSOLIGOPOLYOMNIBUSESONLOOKERSOPERATINGOPPORTUNEOPTIMIZESORDERLIESORGIASTICORPHANAGEOSSIFYINGOTHERNESSOUTBOARDSOUTFLANKSOUTHOUSESOUTNUMBEROUTRAGINGOUTSHINEDOUTSPENDSOUTVOTINGOVERBUILTOVERCROWDOVERDRAWSOVERFEEDSOVERGROWNOVERHEARSOVERLOADSOVERPOWEROVERREACTOVERSEXEDOVERSPENDOVERSTOCKOVERTHROWOVERTURESOVERWRITEPACHYDERMPACKAGINGPAGINATEDPALOMINOSPANATELLAPANICKINGPANTHEONSPAPERBACKPARACHUTEPARAKEETSPARALYTICPARAMOUNTPARASITICPARLAYINGPARTAKINGPASSINGLYPASSWORDSPATCHWORKPATIENTLYPAWNSHOPSPEACETIMEPEDAGOGICPEDICUREDPEEVISHLYPELLETINGPENNILESSPENTAGRAMPEPPERONIPERCUSSEDPERFECTEDPERFUMERSPERIMETERPERMANENTPEROXIDEDPERSEVEREPERSONNELPERTINENTPESSARIESPETHIDINEPETTIFOGSPHALANGESPHEROMONEPHOSPHATEPICKETINGPICTURINGPILFERAGEPILLORIEDPINAFORESPIRATICALPITHINESSPIZZERIASPLACATORYPLACENTASPLAINTIFFPLAYMATESPLEASURESPLENTIFULPLURALISMPLUTOCRATPOCKETINGPOISONERSPOLARIZESPOLICEMENPOLITICOSPOLLUTERSPOLYMATHSPONYTAILSPOPPADUMSPORTICOESPOSSESSORPOSTDATESPOSTULATEPOTENTATEPOULTICESPOWERLESSPRATTLINGPRECIPICEPRECOOKEDPREFERREDPREJUDGESPREPARINGPRESCHOOLPRESENTEDPRESSINGSPRETENDERPRETTYINGPREVISIONPRIMROSESPROBOSCISPRODUCERSPROFESSESPROGNOSISPROLAPSEDPROMINENTPROPAGATEPROPOSALSPROSTATESPROTESTEDPROTOZOICPROVIDENTPSEUDONYMPSYCHOSISPUBLICANSPUBLISHESPULSATIONPUNCHBOWLPUNCTUATEPUPPETEERPURGATIVEPURPOSELYPURVEYORSPUSSYCATSPYROMANIAQUADRUPEDQUALIFIERQUARRYINGQUATRAINSQUENCHERSQUICKENEDQUIESCENTQUINTETTERACETRACKRADIANTLYRADICCHIORAILROADSRAINPROOFRAMPAGINGRANSOMINGRAREFYINGRAVISHINGREADDRESSREAPPLIEDREARWARDSREASSURESREBIDDINGREBURYINGRECEIPTEDRECEPTIVERECLINERSRECOMPUTERECOVEREDRECRUITERRECURRINGREDRESSEDREDUNDANTREFERRINGREFLECTORREFOLDINGREFRAINEDREGAININGREGRESSEDREHANGINGREHEATINGREIMPOSESREINVENTSREKINDLESRELEGATESRELIGIOUSRELOCATESREMARRIEDREMEMBERSRENEWABLEREPAIRINGREPEALINGREPENTINGREPLICATEREPREHENDREPRIMANDREPTILIANREPUTABLEREQUISITERESENTFULRESETTLESRESISTIVERESONANCERESPRAYEDRESTOCKEDRESURGENTRETALIATERETENTIONRETOOLINGRETREADEDREUNIFIEDREVEILLESREVERENDSREVIEWERSREVOLTINGREWRITINGROBBERIESROCKETINGROMANCINGRUMINATEDRUPTURINGSACKCLOTHSADDLEBAGSAINTHOODSAMPLINGSSANDBLASTSANDSTORMSANITIZEDSARCASTICSATELLITESATURATESSAXOPHONESCALINESSSCANTNESSSCARIFIESSCAVENGERSCHEDULEDSCHOOLINGSCIMITARSSCOLDINGSSCOUNDRELSCRAGGIERSCRAPHEAPSCRATCHEDSCREAMINGSCRIMSHAWSCROUNGEDSCRUBLANDSCRUMPINGSEABOARDSSEALSKINSSEASONINGSECATEURSSECONDERSSEEMINGLYSEIGNEURSSEMBLANCESEMIOTICSSENIORITYSENSUALLYSEPARABLYSERENADERSERVILELYSEVENFOLDSHAKEABLESHAMANISMSHAMROCKSSHEATHINGSHELTEREDSHIFTLESSSHIPLOADSSHIPYARDSSHODDIESTSHOGUNATESHORTCUTSSHOWGIRLSSHREDDERSSHROUDINGSHUFFLINGSIDEBANDSSIDEWALLSSIGHTSEERSILKWORMSSIMPATICOSIMULATORSINGLETONSINUOUSLYSKETCHERSSKEWERINGSKULLCAPSSKYLIGHTSSLATHEREDSLEAZIESTSLEIGHINGSLIPKNOTSSMILINGLYSNAKEBITESNATCHERSSNIGGEREDSNOWDRIFTSOCIALISMSOCIOPATHSOFTWOODSSOLDIEREDSOLIDNESSSOMEWHERESONGSTERSSORROWFULSOUNDLESSSOUTHPAWSSPACESHIPSPAGHETTISPARERIBSSPASMODICSPEARHEADSPECTATESSPHERICALSPINDLINGSPIRITINGSPLUTTERSSPOOKIESTSPRAININGSPRINGILYSPRITZERSSQUABBLEDSQUALIDLYSQUATNESSSQUEAMISHSQUELCHESSQUIRMINGSTALEMATESTAMMERERSTANDARDSSTARCHIERSTARGAZERSTARTLINGSTATIONERSTEADFASTSTEELYARDSTEERSMANSTEWARDEDSTIFFNESSSTIMULANTSTIPULATESTOCKADESSTOCKPOTSSTOLIDITYSTONEWARESTOPPABLESTORMIESTSTRADDLEDSTRAIGHTSSTRANGLERSTRETCHEDSTRIDENCYSTRIPLINGSTRONGBOXSTRUMMINGSTUDBOOKSSTURGEONSSTYMIEINGSUBDIVIDESUBJECTEDSUBLIMELYSUBMERGEDSUBNORMALSUBSCRIPTSUBSTRATASUBTITLEDSUCKLINGSSUFFRAGANSUITCASESSUMMATIONSUMMONSESSUPERIORSSUPPORTEDSURPASSESSURRENDERSURVEYORSSWALLOWEDSWEATBANDSWELTEREDSWINDLERSSWORDSMENSYMBIOSISSYMMETRICSYNCOPATESYRINGINGTABULATEDTACTILITYTAILGATERTARNISHEDTAWDRIESTTEAMSTERSTECHNIQUETELECASTSTELEOLOGYTELESCOPETELLINGLYTEMPORARYTENSENESSTERRORISMTHANKLESSTHERAPIESTHEREWITHTHICKENERTHIRTIETHTHRASHERSTHREEFOLDTHRIFTILYTHRONGINGTHRUMMINGTHUNDEREDTHYROIDALTIMETABLETINDERBOXTIPTOEINGTITTERINGTOBOGGANSTOLERANCETOMBOYISHTOOTHACHETORPEDOEDTORTURINGTOUCHIESTTOWNSFOLKTRAGEDIESTRAMPLINGTRANSMUTETRAVERSESTREASURESTRENDIESTTRIBESMANTRICKLINGTRIMARANSTRISECTORTROMBONESTRUCKLOADTRUNCATESTURBIDITYTURNTABLETWIDDLINGTWISTIESTTYPIFYINGULCERATESUMBILICUSUNBINDINGUNBUTTONSUNCHAINEDUNCLAIMEDUNCLEARERUNCLOUDEDUNCOUPLEDUNDAUNTEDUNDERARMSUNDERDONEUNDERGONEUNDERLINGUNDERPASSUNDERSELLUNDERTOOKUNDILUTEDUNDULATESUNENGAGEDUNEXCITEDUNFANCIEDUNFITTESTUNFROCKEDUNHELPFULUNHURRIEDUNINJUREDUNIONISTSUNIVERSALUNLIGHTEDUNLOCKINGUNMERITEDUNNATURALUNPAINTEDUNPLUMBEDUNREACHEDUNREVISEDUNSADDLEDUNSEALINGUNSHACKLEUNSKILLEDUNSTUDIEDUNTANGLESUNTRIMMEDUNUSUALLYUNWORRIEDUPRAISINGUPSTAGINGUSELESSLYVACUOUSLYVAINGLORYVANISHINGVAPORIZESVARIETIESVEGETATESVERMILIONVERTEBRAEVESTIBULEVEXATIOUSVIBRATORSVIGILANCEVINDICATEVIOLENTLYVIRTUOSOSVITIATINGVIVARIUMSVOCALISTSVOLUNTARYVOUCHSAFEWAISTBANDWALLOWINGWARDROBESWARMONGERWASHBOARDWATERSIDEWAYFARERSWEAKENINGWEARISOMEWEIRDNESSWHEEDLINGWHETSTONEWHISKEREDWHITECAPSWHITEOUTSWHOLESALEWILLINGLYWINDPIPESWISHFULLYWITHDRAWNWITLESSLYWITTINGLYWOLVERINEWOMANIZERWONDERINGWORKHORSEWORMHOLESWRAPPINGSWRONGDOERYACHTSMANYELLOWINGYUPPIFIESZOOPHYTES'
+]
+</SCRIPT></div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#playing">Playing</a><br><a href="#terms">Terms of use</a><br>')}
+</script>
+
+
+
+<p><a name="intro"></a>WordSearch+ is a pastime or puzzle in which a number of words are placed in a grid of letters, the objective being to locate the words.  The words are always laid out in straight lines, horizontal, vertical or diagonal, but may be written in either direction along the line from the starting letter.  So, for example, a word might be written from right-to-left as well as left-to-right.</p>
+<p>There are 12 predetermined words hidden in a 10x10 grid.  You are given ten of the words that you need to search for, but the other two are not specified; instead, you are given the lengths of the words, so you need to identify the words with only this information.
+<p>You are extremely unlikely ever to see the same WordSearch+ layout twice, even if you use it continuously every day of your life, as the layouts presented are generated automatically from a dictionary of over 7500 words, ranging in length from 4 to 9 letters.  The two words that are hidden in the grid but not specified to you contain from 7 to 9 letters, to reduce the likelihood that you might see a word displayed that is not the intended one (you will, for example, often see 4-letter words displayed that are not the intended ones). 
+</p>
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+      <p><a name="playing"><span style="font-weight:bold">Playing</span></p>
+<p>When WordSearch+ opens, the system begins to generate and load a WordSearch+ letter grid.  As it does so, the system has to fix the location of each of the 12 randomly selected words (but checked to ensure that one is not contained within any of the others).  In the text field below the grid, the system tells you how many words have been fixed.  It also changes the grid to display random colours as each word is fixed in the grid.  Once all 12 have been fixed, additional letters are added to complete the grid, and a final check is made to ensure that each of the 12 words can be found only once in the grid.</p>
+<p>Occasionally, you may see the system start the generation again.  This is typically because a word could not be fixed, or because one of the 12 words was found more than once after the grid had been completed.
+<p>Once completed, the letter grid is displayed and the ten specified and two unspecified words (each a question mark followed by the word length) are listed below the grid.  
+<p>When you locate one of the words in the grid, press on the first letter of the word.  The letter you press will be shown with a yellow background.  Next, press the last letter of the word as displayed in the line.  If your selection is correct, the letters of the complete word are shown for a couple of seconds with their backgrounds turned green to confirm that it is correct.  If the word was one of the unspecified ones, the full word is then shown in the list.  Once it has been shown, the text colour of the word becomes grey to make it clear that it has already been located.  In contrast, if your selection is incorrect the yellow highlighting disappears but nothing else happens.  Please note that an unspecified word is never a complete part of another of the 12 words or vice versa.  
+<p>Because other words of the correct length may be generated accidentally, you may occasionally find that you select an English word of the correct length but this is rejected by the system, since only an intended one will be accepted as correct.
+<p>If you can not find the word in the grid, just press the word in the list.  The effect is as if you had selected the word in the grid yourself.
+<p>Press the <i>New</i> button at any time to load a new WordSearch+ letter grid.
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 3.0 (20160321) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=1
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.com, sexiest-lover.com</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-husband.com, best-lover.com</span>',
+'<span style="color:violet">best-mother.com, best-father.com</span>',
+'<span style="color:violet">best-dad.com, best-daughter.com</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith.best-wife.com</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-mother.com</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Buy our great logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy aginst the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:lime">If you like games such as...</span>',
+'<span style="color:lime">Rummy, 4-in-a-line...</span>',
+'<span style="color:lime">Hangman, Mancala...</span>',
+'<span style="color:lime">Letters Game, Numbers Game...</span>',
+'<span style="color:lime">& more classic & original games</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Games</span> app now</span>',
+'',
+'<span style="color:cyan">If you like puzzles such as...</span>',
+'<span style="color:cyan">Sudoku, Hangman...</span>',
+'<span style="color:cyan">Peg Solitaire, Step Challenge...</span>',
+'<span style="color:cyan">WordSearch & other word puzzles...</span>',
+'<span style="color:cyan">Numberskull & other number puzzles...</span>',
+'<span style="color:cyan">Memory Pairs...</span>',
+'<span style="color:cyan">& more classic & original puzzles</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Puzzles</span> app now</span>',
+'',
+'<span style="color:lime">Beat the Letters Game countdown;</span>',
+'<span style="color:lime">Avoid the Hangman\'s noose;</span>',
+'<span style="color:lime">Look for words in WordSearch+...</span>',
+'<span style="color:lime">And other mind-boggling grids;</span>',
+'<span style="color:lime">Try our original Pentad game;</span>',
+'<span style="color:lime">Find connections in Linkword Snap;</span>',
+'<span style="color:lime">Or solve the Word Ladder.</span>',
+'<span style="color:lime">For word-based games and puzzles...</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Words</span> app now</span>',
+'',
+'<span style="color:magenta">Beat the Numbers Game countdown;</span>',
+'<span style="color:magenta">Take 30 secs for our Step Challenge;</span>',
+'<span style="color:magenta">Or Pyramid Numbers;</span>',
+'<span style="color:magenta">Or try our original Numberskull.</span>',
+'<span style="color:magenta">For number-based games & puzzles...</span>',
+'<span style="color:magenta">Buy our <span style="color:white">Compact Numbers</span> app now</span>',
+'',
+'<span style="color:cyan">Solve Sudoku puzzles, with help;</span>',
+'<span style="color:cyan">Be a mastermind and break the codes,</span>',
+'<span style="color:cyan">Solve equations and use logic...</span>',
+'<span style="color:cyan">In our original Numberskull puzzle;</span>',
+'<span style="color:cyan">Find the killer based on clues...</span>',
+'<span style="color:cyan">In Mystery Clues.</span>',
+'<span style="color:cyan">For logic-based puzzles...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Logic</span> app now</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>

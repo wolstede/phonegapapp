@@ -3,14 +3,14 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.topaccolades.pegsolitaire"
+        id        = "com.topaccolades.compactfun2"
         versionCode = "30"
         version   = "3.0">
 
-    <name>Peg Solitaire</name>
+    <name>Compact Fun</name>
 
     <description>
-        Peg Solitaire including the Wolstenholme notation
+        Compact Fun - 31 games and puzzles in one app
     </description>
 
     <author href="http://topaccolades.com" email="wolstede@yahoo.com">
@@ -48,7 +48,6 @@
     <!--
         <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     -->
-
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />

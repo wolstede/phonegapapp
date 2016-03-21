@@ -1,0 +1,1258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>Linkword Snap</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='linkwordsnap'
+
+var interruptsrequired=0
+
+var scalef
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">Linkword Snap</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:purple"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Begin
+// All code copyright of TopAccolades Limited
+// Original game by Dave Wolstenholme
+
+restartconfirmationrequired=1
+gameturnslimited=1
+
+var playedbefore=0
+function playconditionally()
+{
+if (playedbefore==0)
+{
+playedbefore=1
+play()
+}
+else
+{
+showad()
+}
+}
+
+function runonload()
+{
+reset()
+}
+
+function continueafterad()
+{
+play()
+}
+
+
+var cardtypes = new Array()
+cardtypes = 
+[
+[
+
+['Begins', ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']],
+
+['Ends', ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']],
+
+['Two', ['AL', 'AN', 'BB', 'BR', 'CC', 'CH', 'CK', 'CR', 'DD', 'DR', 'EA', 'EE', 'EI', 'ER', 'EX', 'FF', 'GE', 'GG', 'GH', 'GR', 'IO', 'LE', 'LL', 'MB', 'MM', 'ND', 'NG', 'NK', 'NN', 'ON', 'OO', 'RN', 'OR', 'PH', 'PP', 'PR', 'QU', 'RK', 'RR', 'RS', 'RT', 'SH', 'ST', 'TH', 'TI', 'TR', 'UN', 'VE', 'WH', 'WR', 'XE', 'YE', 'ZZ']],
+
+['Number letters', [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
+['Consecutive consonants', [3, 4]],
+['Letters', ['Form a palindrome\r(same backwards or forwards)', 'Are in ascending alphabetical order', 'Are in descending alphabetical order']],
+['Excludes', ['random', 'random', 'random', 'random', 'random', 'random', 'random']],
+['Includes', ['random', 'random', 'random', 'random', 'random', 'random', 'random', 'random', 'random', 'random', 'random']],
+
+['Three', ['(3 cards to be displayed)', '(3 cards to be displayed)', '(3 cards to be displayed)']]
+
+], 
+
+[
+
+['Type of', ['Tree', 'Flower', 'Bird', 'Fish', 'Mammal', 'Reptile (inc. Dinosaur) or Amphibian', 'Fungus', 'Insect, Spider or other Creepy-Crawly', 'Vegetable', 'Fruit or Nut', 'Furniture', 'Clothing or Footwear', 'Electrical Appliance', 'Occupation or Job', 'Pastime', 'Tool', 'Transport', 'Cat or Dog (Breed)']],
+
+['Name of', ['A Game or Sport', 'A Country', 'A State of the U.S.A., India or Australia', 'A County', 'A Language', 'A Lake, Sea or Ocean', 'A River', 'A Mountain or Range', 'A City, Town, Borough or Village', 'A Capital City', 'An Underground, Subway or Metro Station', 'An Island', 'A Public Company', 'A Car (Make or Model)', 'An Astronomical Body', 'A Ship', 'A Football Team', 'A Battle', 'A Book of the Bible', 'A Religion, Belief or Philosophy', 'A Part of the Human Body', 'A Chemical Element', 'A Currency or Coin', 'A Unit of Measurement', 'A Colour', 'A Nationality, Tribe or Ethnic Group', 'A Band or Group']],
+['Title of', ['A Novel', 'A Movie', 'A TV or Radio Programme', 'A Newspaper or Magazine', 'A Song or Piece of Music', 'A Music Album']],
+['Type or brand of', ['Drink', 'Food']],
+['Name given to', ['A Boy', 'A Girl']],
+['Family or only name of', ['A Philosopher', 'An Actor or Actress', 'A Sports Personality', 'An Author', 'A Painter or Sculptor', 'A Composer or Songwriter', 'A Military Leader', 'A Singer', 'A President (of a Country)', 'A Prime Minister', 'A Monarch', 'A TV or Radio Presenter', 'A Film Director or Producer', 'A Scientist or Engineer', 'A Comedian', 'A Cartoon Character', 'A Fictional Character', 'A Biblical Character', 'An Entrepreneur or Business Leader']],
+
+['Word or name closely associated with', ['Education or Schools', 'Law and Order', 'A National or Religious Festival', 'Shopping', 'Mathematics', 'Climate, Weather or Natural Disasters', 'The Sea or Shipping', 'Sport', 'Computers or Computing', 'A House or Domestic Life', 'Music', 'Painting or Sculpture', 'Fire', 'The Air or Sky', 'Health or Medicine', 'Personal Relationships', 'Driving', 'Transport or Means of transport', 'Fashion', 'Religion', 'Philosophy', 'TV or Movies', 'Theatre or Stage', 'Pets or Zoos', 'Biology', 'Physics', 'Engineering', 'War or the Military', 'Politics or Government', 'Communications', 'Horses', 'Holidays or Vacations', 'Banking, Finance or Economics', 'Environmental Issues', 'Manufacturing', 'Archaeology', 'Architecture', 'Farming or Agriculture', 'Publishing', 'Cooking or Eating', 'Gardening', 'Dancing or Clubbing', 'Drinking', 'London', 'Paris', 'New York', 'United States of America', 'Japan', 'Germany', 'India', 'Egypt', 'Australia', 'Mexico', 'Canada', 'Russia', 'Italy', 'South Africa', 'France', 'Brazil', 'England', 'Ireland', 'Scotland', 'Wales', 'Harry Potter books or movies', 'The Lord of the Rings books or movies', 'Mobile phones']],
+
+['Three', ['(3 cards to be displayed)', '(3 cards to be displayed)', '(3 cards to be displayed)']]
+
+]
+]
+
+var theconsonants=['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z']
+var thevowels=['A', 'E', 'I', 'O', 'U']
+var theitem=0
+var cardset=[[], []]
+var packlength=[0, 0]
+
+function createcards()
+{
+var somea
+var someb
+var sometop
+var somebottom
+var someother
+for (var k=0; k<2; k++)
+{
+for (var i=0; i<cardtypes[k].length; i++)
+{
+for (var j=0; j<cardtypes[k][i][1].length; j++)
+{
+somea=cardtypes[k][i][0]
+someb=cardtypes[k][i][1][j]
+sometop=somea
+somebottom=someb
+if (sometop=='Begins') {sometop='Word or name beginning with'; somebottom=someb+' ..'}
+if (sometop=='Ends') {sometop='Word or name ending with'; somebottom='.. '+someb}
+if (sometop=='Two') {sometop='Word or name containing the sequence'; somebottom=someb}
+if (sometop=='Number letters') {sometop='Word or name containing'; somebottom='Exactly '+someb+'\rletters'}
+if (sometop=='Letters') {sometop='Word or name whose letters'; somebottom=someb}
+if (sometop=='Consecutive consonants') {sometop='Word or name containing'; somebottom='At least '+someb+'\rconsecutive consonants'}
+if (sometop=='Excludes') 
+{sometop='Word or name whose letters'; 
+ someother=someb;
+ if (someb=='random') 
+   {
+   someother=newexclusion()
+   }
+   somebottom='Do NOT include\r'+someother
+   
+}
+if (sometop=='Includes') 
+{sometop='Word or name whose letters'; 
+ someother=someb;
+ if (someb=='random') 
+   {  
+   someother=newinclusion()
+   }
+   somebottom='Include ONLY\r'+someother
+   
+}
+cardset[k]=cardset[k].concat([[sometop, somebottom]])
+}
+}
+packlength[k]=cardset[k].length
+}
+}
+
+var inclusions=[]
+var exclusions=[]
+function newinclusion()
+{
+var somevowels=firstn(shufflearray(thevowels), 3)
+var someconsonants=firstn(shufflearray(theconsonants), 11)
+var someother=firstn(shufflearray(somevowels.concat(someconsonants)), 13).sort()
+var somecheck
+for (var i=0; i<inclusions.length; i++)
+{
+somecheck=true
+for (var j=0; j<someother.length; j++)
+{
+if (someother[j]!=inclusions[i][j])
+{
+somecheck=false
+break
+}
+}
+if (somecheck==true)
+return newinclusion()
+}
+inclusions=[someother].concat(inclusions)
+return letterlist(someother)
+}
+
+function newexclusion()
+{
+var somevowels=firstn(shufflearray(thevowels), 2)
+var someconsonants=firstn(shufflearray(theconsonants), 5)
+var someother=shufflearray(somevowels.concat(someconsonants)).sort()
+var somecheck
+for (var i=0; i<exclusions.length; i++)
+{
+somecheck=true
+for (var j=0; j<someother.length; j++)
+{
+if (someother[j]!=exclusions[i][j])
+{
+somecheck=false
+break
+}
+}
+if (somecheck==true)
+return newexclusion()
+}
+exclusions=[someother].concat(exclusions)
+return letterlist(someother)
+}
+
+function letterlist(somearray)
+{
+var someresult=''
+for (var i=0; i<somearray.length; i++)
+{
+someresult=someresult+somearray[i]+' '
+}
+return someresult
+}
+
+function firstn(somelist, somen)
+{
+var someresult=[]
+for (var i=0; i<somen; i++)
+{
+someresult[i]=somelist[i]
+}
+return someresult
+}
+
+
+
+
+
+
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+function shufflearray(somearray)
+{
+
+var temparray=somearray
+var shuffled=new Array()
+packsize=somearray.length
+var ran
+var i
+for (i=0; i<packsize; i++)
+{
+ran = randomnumber(temparray.length)
+shuffled[i] = temparray[ran-1]
+temparray = removeElement(ran-1, temparray)
+}
+return shuffled
+}
+
+function removeElement(index, somearray)
+{
+var beg=somearray.slice(0, index)
+var end=[]
+if (index+1 < somearray.length) {end = somearray.slice(index+1)}
+return beg.concat(end)
+}
+
+var playingpack=[[], []]
+
+var nextcard=[0, 0]
+var nextpos=[[0, 0, 0], [0, 1, 1]]
+
+var numlinks=2
+var cardstores=[0, 0, 0]
+var currentcards=[[-1, '', ''], [-1, '', ''], [-1, '', '']]
+var scores=[0, 0, 0, 0]
+var gameon='no'
+var maxpos=3
+var timer=null
+
+
+function displaycards()
+{
+var somepos
+var cardcolor
+
+for (var i=0; i<maxpos; i++)
+{
+somepos=i
+cardcolor='#996699'
+if (currentcards[i][0]==0) {cardcolor='#B1FB17'}
+if (currentcards[i][0]==1) {cardcolor='#3BB9FF'}
+document.getElementById('cardcolor'+somepos).style.backgroundColor=cardcolor
+document.getElementById('texttop'+somepos).innerHTML =currentcards[i][1]
+document.getElementById('textbottom'+somepos).innerHTML =currentcards[i][2]
+}
+}
+
+function reset()
+{
+currentcards=[[0, 'Press "New" to start', 'Two cards are usually displayed'], [0, 'Be first to call out a word matching both', 'Press first caller\'s score box (or "No") '], [0, '"Three" card displays 3 cards', 'Link word must link all three']]
+displaycards()
+
+nextpos=[[0, 0, 0], [0, 1, 1]]
+nextcard=[0, 0]
+numlinks=2
+cardstores=[0, 0, 0]
+scores=[0, 0, 0, 0]
+gameon='pause'
+document.getElementById('cardsleft0').innerHTML=packlength[0]
+document.getElementById('cardsleft1').innerHTML=packlength[1]
+}
+
+
+
+function updatetotalavailable()
+{
+var sometotal=0
+for (var i=0; i<maxpos; i++)
+{
+sometotal=sometotal+cardstores[i]
+}
+document.getElementById('availablescore').innerHTML=sometotal
+}
+
+function nolink()
+{
+if (gameon=='choose')
+{
+var somerandom=randomnumber(6)
+var somenext
+var somedisplay='&nbsp;'
+if (somerandom==1) {somenext=[2, 0, 0]; somedisplay='A->1'}
+if (somerandom==2 && numlinks==2) {somenext=[2, 0, 0]; somedisplay='A->1'}
+if (somerandom==2 && numlinks==3) {somenext=[2, 0, 2]; somedisplay='A->3'}
+if (somerandom==3 && numlinks==2) {somenext=[2, 0, 1]; somedisplay='A->2'}
+if (somerandom==3 && numlinks==3) {somenext=[4, -1, 0]; somedisplay='Two'}
+if (somerandom==4) {somenext=[2, 1, 1]; somedisplay='B->2'}
+if (somerandom==5 && numlinks==2) {somenext=[2, 1, 1]; somedisplay='B->2'}
+if (somerandom==5 && numlinks==3) {somenext=[2, 1, 2]; somedisplay='B->3'}
+if (somerandom==6 && numlinks==2) {somenext=[2, 1, 0]; somedisplay='B->1'}
+if (somerandom==6 && numlinks==3) {somenext=[4, -1, 0]; somedisplay='Two'}
+nextpos=[somenext]
+document.images['drawdie'].src='image'+somerandom+'.png'
+changetextvalue('draw', somedisplay) 
+if (timer != null) {clearTimeout(timer)}
+timer = setTimeout("takeaturn()",1000);
+
+}
+}
+
+function updatescore(someplayer)
+{
+if (gameon=='choose')
+{
+var sometotal=0
+for (var i=0; i<maxpos; i++)
+{
+sometotal=sometotal+cardstores[i]
+}
+scores[someplayer]=scores[someplayer]+sometotal
+
+displayscores()
+currentcards=[[-1, '', ''], [-1, '', ''], [-1, '', '']]
+cardstores=[0, 0, 0]
+displaycards()
+nextpos=[[0, 0, 0], [0, 1, 1]]
+numlinks=2
+document.images['drawdie'].src='unknown.png'
+changetextvalue('draw', '&nbsp;')
+
+if (timer != null) {clearTimeout(timer)}
+timer = setTimeout("takeaturn()",1000);
+}
+}
+
+function displayscores()
+{
+for (var i=0; i<4; i++)
+{
+document.getElementById('playerscore'+i).innerHTML=scores[i]
+// document.playform['playerscore'+i].value=scores[i]
+}
+}
+
+
+function tailarray(somearray)
+{
+return somearray.slice(1, somearray.length)
+}
+
+
+function takeaturn()
+{
+gameon='pause'
+var somemeans=nextpos[0][0]
+var somepack=nextpos[0][1]
+var somepos=nextpos[0][2]
+nextpos=tailarray(nextpos)
+
+if (somemeans==4) // return from 3 to 2 cards due to draw (3 or 6)
+{ // move the card from the 3rd pile to the 1st pile (note: it will immediately be covered up)
+currentcards[0]=currentcards[2]
+currentcards[2]=[-1, '', '']
+cardstores[0]++
+cardstores[2]=0
+numlinks=2
+nextpos=[[5, 0, 0], [5, 1, 1]] // 5 indicates that this is the result of a draw not a Three card
+displaycards()
+// document.playform.draw.value=''
+
+if (timer != null) {clearTimeout(timer)}
+timer = setTimeout("takeaturn()",1000);
+
+}
+else
+{
+
+if (nextcard[somepack]>=packlength[somepack]) 
+   {
+   gameon='pause'
+   changetextvalue('timerdisplay', 'End')
+   return
+   }
+var thiscard=playingpack[somepack][nextcard[somepack]]
+currentcards[somepos]=[somepack, thiscard[0], thiscard[1]]
+cardstores[somepos]++
+document.getElementById('cardsleft'+somepack).innerHTML=packlength[somepack]-nextcard[somepack]-1
+nextcard[somepack]++
+updatetotalavailable()
+displaycards()
+document.images['drawdie'].src='unknown.png'
+
+changetextvalue('draw', '&nbsp;')
+if (thiscard[0]!='Three')
+{
+var furthercardsneeded=false
+
+if (nextpos.length>0) {furthercardsneeded=true}
+
+if (furthercardsneeded==true)
+{
+if (timer != null) {clearTimeout(timer)}
+timer = setTimeout("takeaturn()",1000);
+}
+else
+{
+gameon='choose'
+starttimer()
+}
+}
+else // if Three Card
+{
+// currentcards=[[-1, '', ''], [-1, '', ''], [-1, '', '']]
+
+numlinks=3
+
+nextpos=[[3, 0, 0], [3, 1, 1],[3, somepack, 2]]
+
+
+if (timer != null) {clearTimeout(timer)}
+timer = setTimeout("takeaturn()",2000);
+
+
+
+}
+}
+}
+
+
+function play()
+{
+if (runcheck()==false) {return}
+reset()
+playingpack[0]=shufflearray(shufflearray(cardset[0]))
+playingpack[1]=shufflearray(shufflearray(cardset[1]))
+currentcards=[[-1, '', ''], [-1, '', ''], [-1, '', '']]
+cardstores=[0, 0, 0]
+scores=[0, 0, 0, 0]
+displayscores()
+displaycards()
+changetextvalue('draw', '&nbsp;')
+
+gameon='pause'
+nextpos=[[0, 0, 0], [0, 1, 1]]
+takeaturn()
+}
+
+
+var timeallowed=20
+var countdown=timeallowed
+
+
+function stoptimer()
+{
+if (timer != null) {clearTimeout(timer)}
+}
+
+function starttimer()
+{
+if (timer != null) {clearTimeout(timer)}
+countdown=timeallowed
+runtimer()
+}
+
+function runtimer()
+{
+changetextvalue('timerdisplay', countdown);
+countdown=countdown-1
+timer = setTimeout("runtimer()",1000);
+if (countdown < 0) {changetextvalue('timerdisplay',  "Stop!")}
+}
+
+function settimeallowed(diff)
+{
+
+timeallowed=timeallowed+diff
+if (timeallowed < 10) {timeallowed = 10}
+changetextvalue('timeallowed', timeallowed)
+
+}
+
+createcards()
+
+function textboxlength()
+{
+if (navigator.appName=='Netscape') {return 2} else {return 1}
+}
+
+var thedivs=['maingame', 'more']
+function displaydiv(somediv)
+{
+for (var i=0; i<thedivs.length; i++)
+{
+document.getElementById(thedivs[i]).style.display = 'none'
+
+
+}
+document.getElementById(thedivs[somediv]).style.display = 'inline'
+
+handleclickproblem()
+}
+
+
+
+//  End -->
+</script>
+
+
+<script LANGUAGE="JavaScript">
+documentwrite('<div style="position:relative;left:0px;top:0px;height:100%;width:100%"><div style="position:absolute;left:0px;top:'+Math.floor(scalef*2)+'px;height:'+Math.floor(scalef*235)+'px;width:100%; background-color:#996699">')
+
+documentwrite('<form name="playform"><div id="maingame" style="display:inline"><center>')
+documentwrite('<table border=1 width=100% cellpadding=0><tr><td onClick="updatescore(0)" style="background-color:#FF0000; text-align:center; font-weight:bold" width='+Math.floor(scalef*30)+'><div id="playerscore0">0</div></td><td onClick="updatescore(1)" style="background-color:#FFFF00; text-align:center; font-weight:bold" width='+Math.floor(scalef*30)+'><div id="playerscore1">0</div></td><td onClick="updatescore(2)" style="background-color:#00FF00; text-align:center; font-weight:bold" width='+Math.floor(scalef*30)+'><div id="playerscore2">0</div></td><td onClick="updatescore(3)" style="background-color:#00B4FF; text-align:center; font-weight:bold" width='+Math.floor(scalef*30)+'><div id="playerscore3">0</div></td><td style="background-color:white; text-align:center; font-weight:bold"><table style="height:100%;width:100%" height=100% border=1 cellpadding=0 cellspacing=0><tr><td  height=100% style="text-align:center;background-image:url(buttonbg.jpg)" onClick="nolink()">No</td></tr></table></td></tr></table>')
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*2)+'px;display:block"></div>')
+
+documentwrite('<table border=0 width=100% cellpadding=0 cellspacing=2><tr><td width='+Math.floor(scalef*140)+'><table width=100%>')
+
+
+for (var i=0; i<3; i++)
+{
+documentwrite('<tr><td height='+Math.floor(scalef*55)+' id="cardcolor'+i+'" style="background-color:#B1FB17"><div id="texttop'+i+'" style="text-align: center; color:black"></div><div id="textbottom'+i+'" style="text-align: center; color:black; font-weight:bold"></div></td></tr>')
+
+}
+
+
+documentwrite('</table></td>')
+documentwrite('<td style="text-align:center;vertical-align:top" align=center valign=top>')
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;background-color:white;text-align:center"><div id="timerdisplay" style="text-align: center; color:black">20</div></td></tr></table>')
+documentwrite('<table border=0 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;height:'+Math.floor(scalef*6)+'px"</td></tr></table>')
+documentwrite('<image align="center" name="drawdie" src="unknown.png" width='+Math.floor(scalef*24)+' height='+Math.floor(scalef*24)+'><br>')
+documentwrite('<table border=0 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;height:'+Math.floor(scalef*6)+'px"</td></tr></table>')
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;background-color:white;text-align:center"><div id="draw" style="text-align: center; color:black">&nbsp;</div></td></tr></table>')
+documentwrite('<table border=0 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;height:'+Math.floor(scalef*6)+'px"</td></tr></table>')
+documentwrite('Packs<br>A<table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;background-color:#B1FB17;text-align:center"><div id="cardsleft0" style="text-align: center; color:black; font-weight:bold"></div></td></tr></table>')
+documentwrite('B<table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;background-color:#3BB9FF;text-align:center"><div id="cardsleft1" style="text-align: center; color:black; font-weight:bold"></div></td></tr></table>')
+documentwrite('<br><table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;background-color:white; text-align:center; font-weight:bold"><div id="availablescore">0</div></td></tr></table>')
+documentwrite('</td></tr>')
+documentwrite('<tr><td colspan=2 style="height:'+Math.floor(scalef*2)+'px"></td></tr>')
+documentwrite('<tr><td ><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*40)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="playconditionally()">New</td></tr></table>')
+documentwrite('</td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="displaydiv(1)">More</td></tr></table>')
+documentwrite('</td></tr></table>')
+documentwrite('</center>')
+documentwrite('</div>')
+documentwrite('<div id="more" style="display:none"><table border=0 cellpadding=2 width=100%><tr><td>')
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td width='+Math.floor(scalef*45)+' style="background-image:url(buttonbg.jpg);text-align:center" onClick="displaydiv(0)">Back</td></tr></table>')
+documentwrite('<br>Time allowed:<br>')
+documentwrite('<table border=0 style="align:center" align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center><tr><td style="width:'+Math.floor(scalef*30)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="settimeallowed(-10)">-</td></tr></table></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left"><tr><td style="width:'+Math.floor(scalef*40)+'px;background-color:white;text-align:center"><div id="timeallowed" style="text-align: center; color:black">20</div></td></tr></table></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center><tr><td style="width:'+Math.floor(scalef*30)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="settimeallowed(10)">+</td></tr></table></td><tr></table></td><tr></table></div>')
+documentwrite('</form></div></div>')
+
+</script>
+
+</div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#playing">Playing the game</a><br><a href="#valid">Valid words</a><br><a href="#deadheats">Dead heats</a><br><a href="#countdown">Countdown time</a><br><a href="#newgame">New game</a><br><a href="#terms">Terms of use</a><br>')}
+</script>
+
+
+<p><a name="intro"></a>Linkword Snap is a game that can, in principal, be played by any number of players greater than one.  This version is designed for up to four players.  It also makes a great pastime for one player.
+<br>
+
+<br>
+Snap is, of course, a game for young children, in which cards are dealt out one at a time, and if a player notices that the latest card dealt is the same as the previous card dealt, then that player shouts 'Snap' and takes all the cards dealt.   
+<br><br>Linkword Snap is a version of Snap intended for older minds.  
+<br>
+
+<br>
+In outline, cards are dealt and normally there are two cards showing at any one time.  Each card has on it a definition or condition, some of which are essentially reliant on general knowledge, such as:
+
+<ul>
+<li> Word or name closely associated with <b>France</b>
+<li> Type of <b>Mammal</b>
+<li> Family or only name of <b>A President (of a Country)</b>
+</ul>
+
+while others are based on the structure or spelling of the word, for example:
+
+<ul>
+<li> Word or name beginning with <b>C</b>
+<li> Word or name containing <b>Exactly 6 letters</b>
+<li> Word or name whose letters <b>Are in ascending alphabetical order</b>
+</ul>
+
+
+
+The players try to be the first to find a word or name that links or matches both the definitions or conditions.
+<br><br>
+So, for example, if the two cards were:
+
+<ul>
+<li> Type of <b>Mammal</b>
+<li> Word or name beginning with <b>C</b>
+</ul>
+
+a player might shout out 'Camel', or 'Cat'.
+<br>
+
+<br>
+More difficult are words that match two cards based on general knowledge, but these can often be found.  For example, if the cards were:
+
+<ul>
+<li> Family or only name of <b>A President (of a Country)</b>
+<li> Name of <b>A Car (Make or Model)</b>
+</ul>
+
+then a player might shout out the answer 'Ford', or, maybe, 'Lincoln'.
+<br>
+
+<br>
+Sometimes, three cards are displayed, in which case the players are expected to shout out an answer that matches all three cards.
+<br><br>
+The player that calls out the first acceptable linking word takes all the cards currently on the table.  If nobody calls out an acceptable linking word, another card is dealt out and placed on one of the two displayed cards.
+<br>
+
+<br>The winner is the player with the most cards in his possession when the cards run out, or when some agreed time has been reached (or otherwise as agreed by the players).
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+<h1><a name="playing"></a>Playing the game</h1>
+Before a game begins, the players should agree when the game is considered to have ended, at which point the player with the highest score is the winner.  Typical end points are:
+
+
+
+<ul>
+<li>When a card is to be dealt from one of the two packs but there are no cards available.  Note: if this situation is reached, the game automatically ends;
+<li>When a certain time has been reached;
+<li>When one player has gained a certain target score (i.e. number of cards), e.g. 100
+
+</ul>
+
+To begin a new game, press the <i>New</i> button.  
+<br><br>
+The players of the game each play as one of the four colours at the top: red, yellow, green or blue.
+<br>
+
+<br>
+Conceptually, there are two pack of cards from which cards are dealt:
+<ul>
+<li> Pack A, with pale green cards containing conditions based on the word structure
+<li> Pack B, with pale blue cards containing definitions or conditions requiring general knowledge
+</ul>
+
+The number of cards in each pack is shown on the right in green and blue boxes.
+<br><br>
+The two packs are each shuffled, and play then continues as a series of rounds.
+<br>
+
+<br>
+<i>A round</i>
+<br><br>
+Initially, one card is taken from pack A and placed in the top card position (1), and another card is taken from pack B and placed in the middle card position (2).  A countdown is started (displayed just above the die).
+<br>
+
+<br>
+The players must then try to call out a word or name that matches both the cards, before the countdown ends.  The first player to call out a linking word that is acceptable wins the round.  In that case, the box of that player's colour at the top is pressed.  The total number of cards that have been dealt in the round are then added to the player's score, which is dislayed in that box.  
+<br>
+
+<br>The total number of cards dealt in a round is always visible in the white box at the bottom on the right.
+<br><br>If no player calls out an acceptable linking word in the time available, the <i>No</i> button is pressed.  A die is thrown by the system, and the number thrown determines how the next card is dealt:
+
+
+
+<ul>
+<li> 1: Deal a card from pack A onto position 1
+<li> 2: Deal a card from pack A onto position 1
+<li> 3: Deal a card from pack A onto position 2
+<li> 4: Deal a card from pack B onto position 2
+<li> 5: Deal a card from pack B onto position 2
+<li> 6: Deal a card from pack B onto position 1
+
+</ul>
+
+
+The card is dealt, based on the above, so that one of the cards is changed.  The players then try to be the first to find a linking word for these two cards.
+<br><br>
+The round continues in this way until somebody finds an acceptable linking word, in which case all the cards on the table are added to that player's score (by pressing on that player's coloured score box).
+<br>
+
+<br>
+<i>Three cards</i>
+<br><br>
+Each of the two packs also contains some 'Three' cards.  As soon as one of these is dealt, three cards are dealt:  a card from Pack A is dealt to card position 1, a card from Pack B is dealt to card position 2, while another card is dealt from the same pack as the Three card was dealt from to card position 3.  
+<br>
+
+<br>Words or names must then be found which match all three of these cards.  If a linking word is found, the winning player receives all the cards, and play then continues with the usual two card positions.  If no linking word is found, the die is thrown and the following actions take place:
+
+
+<ul><li> 1: Deal a card from pack A onto position 1
+<li> 2: Deal a card from pack A onto position 3
+<li> 3: Revert to playing with two card positions only
+<li> 4: Deal a card from pack B onto position 2
+<li> 5: Deal a card from pack B onto position 3
+<li> 6: Revert to playing with two card positions only
+</ul>
+
+
+
+When a 3 or 6 is thrown, the cards in card position 3 are moved onto card position 1, but then, immediately, two cards are dealt:  one from pack A onto position 1, and one from pack B onto position 2.
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+<h1><a name="valid"></a>Valid Words</h1>
+
+With any word-based game, there are always grey areas and disputes.  Here we try to give some guidance, but ultimately it is up to the players to decide whether a particular answer is acceptable and to resolve disputes.  
+<br>
+
+<br>It can be useful to have one person appointed as a referee - maybe a non-player or maybe the players take turns to be referee.  It is also useful to agree that a particular dictionary, encyclopedia, or web site be used to resolve disputes.
+<br>
+
+<br>
+A valid word must be used in English and contain 2 or more letters, with no hyphens, apostrophes, spaces, numerals, or other symbols.  
+Proper names, beginning with upper-case letters, are acceptable.  
+Whether letters would normally be lower- or upper-case is irrelevant, so that the name 'Mark' would match up with the word 'mark'.  
+<br>
+
+<br>Accented letters are accepted and treated in their base form, so the word 'resumé' is acceptable and would match with 'resume' (even though they are pronounced differently).  
+Words or names comprising only a set of initials pronounced as individual letters, e.g. NBC, OK or BP are not valid.
+<br>
+
+<br>
+In order to make it more likely that linking words can be found, and to encourage more creativity with answers, words that are spelt differently but sound the same (homophones) are also acceptable.  So, the name 'Forde' could also be matched with the word 'ford' or 'Ford', and the words 'bare' and 'bear' could also be matched up.  This opens up the possibility of finding answers to two apparently incompatible conditions, such as:
+<br>
+
+
+<ul>
+<li> Word or name containing <b>Exactly 4 letters</b>
+<li> Word or name containing <b>Exactly 2 letters</b>
+</ul>
+
+or
+
+<ul>
+<li> Word or name beginning with <b>K</b>
+<li> Word or name beginning with <b>N</b>
+</ul>
+
+In both cases, 'know'/'no' would be an acceptable answer.  Likewise, given the two cards:
+<br>
+
+<ul>
+<li> Type of <b>Vegetable</b>
+<li> Word or name containing the sequence <b>EE</b>
+</ul>
+
+an acceptable answer would be 'bean'/'been'.
+<br>
+
+<br>
+Players may also, at the beginning, agree to relax certain rules.  For example, they might agree that 'words' with hyphens or apostrophes are acceptable (the hyphen or apostrophe not counting as a letter).  
+<br>
+
+<br>
+People's names are a particularly contentious area.  
+Looking for just about any name of a person, e.g. of an Author, Painter or Sculptor, or Sports Personality, 
+beginning with S, the name Smith could probably be proposed, and a search on the internet would be likely to find 
+such a type of person with that name so confirming the answer given.  
+<br>
+
+<br>However, to be acceptable, 
+the person proposing a name should be able to give some information about the person they are thinking of 
+(unless, of course, the name in the given context is so well known that every player agrees it is acceptable).  
+So, for the name of an Author beginning with S, 'Smith' would be acceptable if the player also said 
+'Wilbur', or 'The author of the Courtney series' to support it.
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+<h1><a name="deadheats"></a>Dead heats</h1>
+
+If two or more people all call out an acceptable linking word at the same time, none of them should be awarded the cards in play.  Instead, the game should continue, but for the next turn only those players involved in the dead heat may answer.
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+<h1><a name="countdown"></a>Countdown time</h1>
+
+The time allowed for calling out answers is, by default, 20 seconds.  The time may be adjusted by pressing the <i>More</i> button, and then by pressing the + or - buttons.  These buttons increase or decrease the time allowed (as displayed in the box between these buttons) in 10s increments.  Pressing the <i>Back</i> button displays the main playing screen again.
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+<h1><a name="newgame"></a>New game</h1>
+
+A new game may be started at any time by pressing the <i>New</i> button.
+
+<br><br><i>Linkword Snap is an original game devised by Dr. David Wolstenholme</i>
+
+
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 3.0 (20160321) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=1
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.com, sexiest-lover.com</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-husband.com, best-lover.com</span>',
+'<span style="color:violet">best-mother.com, best-father.com</span>',
+'<span style="color:violet">best-dad.com, best-daughter.com</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith.best-wife.com</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-mother.com</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Buy our great logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy aginst the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:lime">If you like games such as...</span>',
+'<span style="color:lime">Rummy, 4-in-a-line...</span>',
+'<span style="color:lime">Hangman, Mancala...</span>',
+'<span style="color:lime">Letters Game, Numbers Game...</span>',
+'<span style="color:lime">& more classic & original games</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Games</span> app now</span>',
+'',
+'<span style="color:cyan">If you like puzzles such as...</span>',
+'<span style="color:cyan">Sudoku, Hangman...</span>',
+'<span style="color:cyan">Peg Solitaire, Step Challenge...</span>',
+'<span style="color:cyan">WordSearch & other word puzzles...</span>',
+'<span style="color:cyan">Numberskull & other number puzzles...</span>',
+'<span style="color:cyan">Memory Pairs...</span>',
+'<span style="color:cyan">& more classic & original puzzles</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Puzzles</span> app now</span>',
+'',
+'<span style="color:lime">Beat the Letters Game countdown;</span>',
+'<span style="color:lime">Avoid the Hangman\'s noose;</span>',
+'<span style="color:lime">Look for words in WordSearch+...</span>',
+'<span style="color:lime">And other mind-boggling grids;</span>',
+'<span style="color:lime">Try our original Pentad game;</span>',
+'<span style="color:lime">Find connections in Linkword Snap;</span>',
+'<span style="color:lime">Or solve the Word Ladder.</span>',
+'<span style="color:lime">For word-based games and puzzles...</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Words</span> app now</span>',
+'',
+'<span style="color:magenta">Beat the Numbers Game countdown;</span>',
+'<span style="color:magenta">Take 30 secs for our Step Challenge;</span>',
+'<span style="color:magenta">Or Pyramid Numbers;</span>',
+'<span style="color:magenta">Or try our original Numberskull.</span>',
+'<span style="color:magenta">For number-based games & puzzles...</span>',
+'<span style="color:magenta">Buy our <span style="color:white">Compact Numbers</span> app now</span>',
+'',
+'<span style="color:cyan">Solve Sudoku puzzles, with help;</span>',
+'<span style="color:cyan">Be a mastermind and break the codes,</span>',
+'<span style="color:cyan">Solve equations and use logic...</span>',
+'<span style="color:cyan">In our original Numberskull puzzle;</span>',
+'<span style="color:cyan">Find the killer based on clues...</span>',
+'<span style="color:cyan">In Mystery Clues.</span>',
+'<span style="color:cyan">For logic-based puzzles...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Logic</span> app now</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>

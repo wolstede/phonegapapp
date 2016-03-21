@@ -1,0 +1,1657 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>Peg Solitaire</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='solitaire'
+
+var interruptsrequired=0
+
+var scalef
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">Peg Solitaire</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:purple"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Begin
+// All code copyright of TopAccolades Limited
+
+restartconfirmationrequired=1
+function continueafterad()
+{
+startgame()
+}
+
+function setandstart(somenum)
+{
+peggleselect(somenum)
+showad()
+
+}
+
+function runonload()
+{
+startgame()
+}
+var playstatus="play"
+
+var initialboardstatus = [
+["blank", "blank", "peg", "peg", "peg", "blank", "blank"],
+["blank", "blank", "peg", "peg", "peg", "blank", "blank"],
+["peg", "peg", "peg", "peg", "peg", "peg", "peg"],
+["peg", "peg", "peg", "empty", "peg", "peg", "peg"],
+["peg", "peg", "peg", "peg", "peg", "peg", "peg"],
+["blank", "blank", "peg", "peg", "peg", "blank", "blank"],
+["blank", "blank", "peg", "peg", "peg", "blank", "blank"]
+]
+
+var puzzlesolution=[[3,1,3,3], [5,2,3,2], [4,0,4,2], [4,3,4,1], [4,5,4,3], [6,4,4,4],
+[3,4,5,4],[6,2,6,4],[6,4,4,4],[2,2,4,2], [0,2,2,2],[1,4,3,4], [3,4,5,4], [5,4,5,2], [5,2,3,2], [3,2,1,2],
+[2,0,4,0], [4,0,4,2], [4,2,4,4], [2,6,2,4],[2,3,2,5], [4,6,2,6], [2,6,2,4], [0,4,0,2], [0,2,2,2],
+[2,1,2,3], [2,3,2,5], [2,5,4,5], [4,5,4,3], [4,3,2,3],[1,3,3,3]]   
+
+var timer
+var solutionindex
+function solveit()
+{
+if (timer != null) {clearTimeout(timer)}
+
+var row
+var col
+var square
+for (row = 0; row<7; row++)
+{
+for (col = 0; col<7; col++)
+{
+square=thestartlayout[row][col]
+
+if (square == "peg" || square == "empty")
+{
+var pegname='peg'+row+col
+var imagename=square+".png"
+document.images[pegname].src=imagename
+boardstatus[row][col]=square
+
+}
+}
+}
+playstatus="solve"
+solutionindex=0
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout('makenextsolvemove()', 1000)
+
+}
+
+function makenextsolvemove()
+{
+if (solutionindex<thesolution.length)
+{
+var pegname='peg'+thesolution[solutionindex][0]+thesolution[solutionindex][1]
+document.images[pegname].src='pegchoice.png'
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout('makenextsolvemove2()', 1000)
+
+}
+
+}
+
+function makenextsolvemove2()
+{
+movepeg([thesolution[solutionindex][0], thesolution[solutionindex][1]], [thesolution[solutionindex][2], thesolution[solutionindex][3]])
+solutionindex++
+if (timer != null) {clearTimeout(timer)}
+
+timer= setTimeout('makenextsolvemove()', 1000)
+
+}
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+var peggleboard
+var peggleturns
+var peggleturn
+function peggle()
+{
+if (timer != null) {clearTimeout(timer)}
+peggleboard=[]
+peggleturns=pegglepegs-1
+var row
+var col
+var square
+for (row = 0; row<7; row++)
+{
+peggleboard[row]=[]
+for (col = 0; col<7; col++)
+{
+square=initialboardstatus[row][col]
+if (square == "peg")
+{
+peggleboard[row][col]='empty'
+}
+if (square == "empty")
+{
+peggleboard[row][col]='peg'
+}
+if (square == "blank")
+{
+peggleboard[row][col]='blank'
+}
+}
+}
+// now have peggleboard with one peg at middle
+thesolution=[]
+peggleturn=1
+makepeggleturn()
+}
+
+function makepeggleturn()
+{
+var somepegs=[]
+var row
+var col
+var square
+for (row = 0; row<7; row++)
+{
+for (col = 0; col<7; col++)
+{
+if (peggleboard[row][col]=='peg') {somepegs=somepegs.concat([[row, col]])}
+}
+}
+// so now we know all the pegs
+somepegs=shufflearray(somepegs)
+var somedirections=shufflearray([[0,1],[0,-1], [1,0], [-1,0]])
+var row1
+var row2
+var col1
+var col2
+var somefound=0
+for (var i=0; i<somepegs.length; i++)
+{
+for (var j=0; j<somedirections.length; j++)
+{
+row1=somepegs[i][0]+somedirections[j][0]
+row2=somepegs[i][0]+2*somedirections[j][0]
+col1=somepegs[i][1]+somedirections[j][1]
+col2=somepegs[i][1]+2*somedirections[j][1]
+if (row1>=0 && row1<=6 && row2>=0 && row2<=6 && col1>=0 && col1<=6 && col2>=0 && col2<=6)
+{
+if (peggleboard[row1][col1]=='empty' && peggleboard[row2][col2]=='empty')
+{
+somefound=1
+peggleboard[row1][col1]='peg'
+peggleboard[row2][col2]='peg'
+peggleboard[somepegs[i][0]][somepegs[i][1]]='empty'
+thesolution=[[row2, col2, somepegs[i][0], somepegs[i][1]]].concat(thesolution)
+}
+
+
+}
+if (somefound==1) {break}
+}
+if (somefound==1) {break}
+
+}
+if (peggleturn<peggleturns)
+{
+peggleturn++
+makepeggleturn()
+
+}
+else
+{
+thestartlayout=copyvalues(peggleboard)
+boardstatus=copyvalues(peggleboard)
+displaycurrentboard()
+moverecord=[]
+
+playstatus='play'
+}
+}
+
+function shufflearray(somearray)
+{
+
+var temparray=somearray
+var shuffled=new Array()
+packsize=somearray.length
+var ran
+var i
+for (i=0; i<packsize; i++)
+{
+ran = randomnumber(temparray.length)
+shuffled[i] = temparray[ran-1]
+temparray = removeElement(ran-1, temparray)
+}
+return shuffled
+}
+
+function removeElement(index, somearray)
+{
+var beg=somearray.slice(0, index)
+var end=[]
+if (index+1 < somearray.length) {end = somearray.slice(index+1)}
+return beg.concat(end)
+}
+
+
+function copyvalues(somearray)
+{
+var temparray=[]
+for (var i=0; i<somearray.length; i++)
+{
+temparray[i]=[]
+for (var j=0; j<somearray[i].length; j++)
+{
+temparray[i][j]=somearray[i][j]
+}
+}
+return temparray
+}
+
+var thesolution
+var thestartlayout
+var boardstatus = [[], [], [], [], [], [], []]
+
+var choice
+
+function member(pair, array) 
+// checks whether pair is a member of array:  returns true if so, false if not.
+{
+var check = false
+var i = 0
+while (i<array.length && !check){check = ((array[i][0]==pair[0]) && (array[i][1]==pair[1])); i++};
+return check
+
+}
+
+
+function imgclick(row, col)
+{
+if (runcheck()==true)
+{
+if (playstatus == "play")
+{
+if (boardstatus[row][col]=="peg")
+{
+var possibledestinations
+possibledestinations = possdestinations(row, col)
+
+if (possibledestinations.length == 1)
+{
+movepeg([row, col], possibledestinations[0])
+}
+if (possibledestinations.length > 1)
+{
+highlightpossibilities(row, col, possibledestinations)
+}
+}
+}
+else //playstatus=choose
+{
+var pegbeingmoved=choices[0]
+var possibledestinations=choices[1]
+if (member([row, col], possibledestinations))
+{
+for (var pd=0;pd<possibledestinations.length; pd++)
+{
+var r=possibledestinations[pd][0]
+var c=possibledestinations[pd][1]
+document.images['peg'+r+c].src='empty.png'
+}
+movepeg(pegbeingmoved, [row, col])
+playstatus="play"
+choice=null
+}
+}
+}
+}
+
+function highlightpossibilities(row, col, possibledestinations)
+{
+for (var i=0; i<possibledestinations.length; i++)
+{
+var r=possibledestinations[i][0]
+var c=possibledestinations[i][1]
+document.images['peg'+r+c].src="emptychoice.png"
+}
+document.images['peg'+row+col].src="pegchoice.png"
+
+choices=[[row, col], possibledestinations]
+playstatus="choose"
+}
+
+function possdestinations(row, col)
+
+{
+var possibles=[]
+for (var x=-1; x<2; x++)
+{
+for (var y=-1; y<2; y++)
+{
+if ((y*x) == 0)
+{
+var irow=row+x
+var icol=col+y
+var drow=irow+x
+var dcol=icol+y
+if ((dcol<7 && dcol>-1) && (drow<7 && drow>-1))
+{
+if (boardstatus[drow][dcol]=="empty" && boardstatus[irow][icol]=="peg")  
+{
+possibles=possibles.concat([[drow, dcol]])
+}
+}
+}
+}
+}
+return possibles
+}
+
+
+function movepeg(current, dest)
+{
+boardstatus[current[0]][current[1]] = "empty"
+document.images['peg'+current[0]+current[1]].src="empty.png"
+boardstatus[dest[0]][dest[1]] = "peg"
+document.images['peg'+dest[0]+dest[1]].src="peg.png"
+var intermediaterow=(current[0]+dest[0])/2
+var intermediatecol=(current[1]+dest[1])/2
+boardstatus[intermediaterow][intermediatecol]="empty"
+document.images['peg'+intermediaterow+intermediatecol].src="empty.png"
+recordmove(current, dest)
+
+}
+
+var moverecord=[]
+
+function recordmove(current, dest)
+{
+moverecord=moverecord.concat([[current, dest]])
+}
+
+
+function rewind()
+{
+if (playstatus!='solve')
+{
+playstatus="play"
+
+if (moverecord.length>0)
+{
+var lastmove=moverecord[moverecord.length-1]
+moverecord=moverecord.slice(0, moverecord.length-1)
+var current=lastmove[0]
+var dest=lastmove[1]
+var intermediaterow=(current[0]+dest[0])/2
+var intermediatecol=(current[1]+dest[1])/2
+boardstatus[current[0]][current[1]] = "peg"
+boardstatus[intermediaterow][intermediatecol]="peg"
+boardstatus[dest[0]][dest[1]] = "empty"
+displaycurrentboard()
+}
+}
+}
+
+
+function displaycurrentboard()
+{
+var row
+var col
+var square
+for (row = 0; row<7; row++)
+{
+for (col = 0; col<7; col++)
+{
+square=boardstatus[row][col]
+
+if (square == "peg" || square == "empty")
+{
+var pegname='peg'+row+col
+var imagename=square+".png"
+document.images[pegname].src=imagename
+
+}
+
+}
+}
+}
+
+
+
+function startgame()
+{
+if (pegglepegs!=32)
+{
+peggle()
+}
+else
+{
+if (timer != null) {clearTimeout(timer)}
+
+moverecord=[]
+var row
+var col
+var square
+for (row = 0; row<7; row++)
+{
+for (col = 0; col<7; col++)
+{
+square=initialboardstatus[row][col]
+
+if (square == "peg" || square == "empty")
+{
+var pegname='peg'+row+col
+var imagename=square+".png"
+document.images[pegname].src=imagename
+boardstatus[row][col]=square
+
+}
+
+}
+}
+thesolution=copyvalues(puzzlesolution)
+thestartlayout=copyvalues(initialboardstatus)
+
+playstatus="play"
+}
+}
+
+var thedivs=['maingame', 'more']
+function displaydiv(somediv)
+{
+for (var i=0; i<thedivs.length; i++)
+{
+document.getElementById(thedivs[i]).style.display = 'none'
+}
+document.getElementById(thedivs[somediv]).style.display = 'inline'
+handleclickproblem()
+}
+
+var peggleoptions=[6,8,10,12,32]
+var pegglepegs=32
+function peggleselect(somenum)
+{
+pegglepegs=somenum
+}
+
+
+//  End -->
+
+</script>
+
+<script language="Javascript">
+documentwrite('<form name="playform">')
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*3)+'px;display:block"></div>')
+documentwrite('<center>')
+documentwrite('<table border=1 cellspacing=0 align=center background="greenwood.jpg">')
+documentwrite('<tr><td>')
+documentwrite('<table border=0 cellspacing=0 align=center>')
+documentwrite('<tr>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">B</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">C</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">D</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">F</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">G</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">H</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">J</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">A</td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg02" onClick="imgclick(0, 2)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg03" onClick="imgclick(0, 3)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg04" onClick="imgclick(0, 4)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">E</td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg12" onClick="imgclick(1, 2)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg13" onClick="imgclick(1, 3)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg14" onClick="imgclick(1, 4)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">I</td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg20" onClick="imgclick(2, 0)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg21" onClick="imgclick(2, 1)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg22" onClick="imgclick(2, 2)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg23" onClick="imgclick(2, 3)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg24" onClick="imgclick(2, 4)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg25" onClick="imgclick(2, 5)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg26" onClick="imgclick(2, 6)"></td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">O</td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg30" onClick="imgclick(3, 0)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg31" onClick="imgclick(3, 1)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg32" onClick="imgclick(3, 2)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="empty.png" name="peg33" onClick="imgclick(3, 3)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg34" onClick="imgclick(3, 4)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg35" onClick="imgclick(3, 5)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg36" onClick="imgclick(3, 6)"></td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">U</td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg40" onClick="imgclick(4, 0)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg41" onClick="imgclick(4, 1)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg42" onClick="imgclick(4, 2)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg43" onClick="imgclick(4, 3)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg44" onClick="imgclick(4, 4)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg45" onClick="imgclick(4, 5)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg46" onClick="imgclick(4, 6)"></td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">W</td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg52" onClick="imgclick(5, 2)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg53" onClick="imgclick(5, 3)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg54" onClick="imgclick(5, 4)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">Y</td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg62"onClick="imgclick(6, 2)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg63"onClick="imgclick(6, 3)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png" name="peg64"onClick="imgclick(6, 4)"></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('<td style="color:gold;text-align:center;font-weight:bold">&nbsp;&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('</table>')
+documentwrite('</td></tr>')
+documentwrite('</table>')
+documentwrite('<table border=0 cellspacing=2 cellpadding=2 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 align=left><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="rewind()" width='+Math.floor(scalef*35)+'>&lt;</td></tr></table></td>')
+
+documentwrite('<td>&nbsp;</td><td><table border=1 cellpadding=0 cellspacing=0 align=right><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="solveit()" width='+Math.floor(scalef*35)+'>Solve</td></tr></table></td></tr>')
+
+documentwrite('<tr><td colspan=3><table border=1 cellpadding=0 cellspacing=0 align=center><tr><td id="selection6" width='+Math.floor(scalef*35)+' style="text-align:center;background-image:url(buttonbg.jpg)" onClick="setandstart(6)">6</td><td id="selection8" width='+Math.floor(scalef*35)+' style="text-align:center;background-image:url(buttonbg.jpg)" onClick="setandstart(8)">8</td><td id="selection10" width='+Math.floor(scalef*35)+' style="text-align:center;background-image:url(buttonbg.jpg)" onClick="setandstart(10)">10</td><td id="selection12" width='+Math.floor(scalef*35)+' style="text-align:center;background-image:url(buttonbg.jpg)" onClick="setandstart(12)">12</td><td id="selection32" width='+Math.floor(scalef*35)+' style="text-align:center;background-image:url(buttonbg.jpg)" onClick="setandstart(32)">Full</td></tr></table></td></tr></table>')
+documentwrite('</center>')
+
+documentwrite('</form>')
+peggleselect(peggleoptions[randomnumber(peggleoptions.length)-1])
+</script>
+
+
+
+</div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#moves">Legitimate moves</a><br><a href="#playing">Making moves</a><br><a href="#solve">Solve facility</a><br><a href="#newgame">New puzzle</a><br><a href="#solution">Solution and notation</a><br><a href="#mnemonics">Memorizing the solution</a><br><a href="#terms">Terms of use</a><br><br>')}
+</script>
+
+
+<a name="intro"></a>
+This application is based on the puzzle played with pegs in a board (known as Solitaire in Britain and Peg Solitaire in the United States).  In the classic 'English layout' puzzle, the board has 33 holes and 32 pegs, with the central hole empty.
+
+<script language="Javascript">documentwrite('<div align="center">')
+documentwrite('  <center>')
+documentwrite('  <table border="0">')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('  </table>')
+documentwrite('  </center>')
+documentwrite('</div>')</script>
+
+
+
+<p>The objective is to end up with just one peg on the board in the central hole that started off empty, by making a series of simple 'jump and take' moves.</p>
+
+<p>In this application, in addition to the classic full layout, many different starting layouts can be generated for you by the system - still with the objective of ending up with one peg in the middle.  A reduced number of pegs in the starting layout not only makes the puzzle quicker to solve but also makes the puzzle a lot easier - and the full puzzle is undoubtedly very difficult.
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<p><a name="moves"></a><span style="font-weight:bold">Legitimate moves</span></p>
+
+
+
+<p>A legitimate move comprises taking a peg and moving it over
+an occupied hole (with a peg) into an empty hole, moving
+vertically or horizontally (diagonal moves are not allowed).&nbsp; The peg that
+has been jumped over is removed from the board.</p>
+
+
+
+<p>So, for the classic full layout we might move any of the highlighted pegs into the centre hole as our
+first simple move.</p>
+
+<script language="Javascript">documentwrite('<div align="center">')
+documentwrite('  <center>')
+documentwrite('  <table border="0">')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="pegchoice.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="pegchoice.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="pegchoice.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="pegchoice.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('  </table>')
+documentwrite('  </center>')
+documentwrite('</div>')</script>
+
+
+
+<p>Moving the top one would result in a layout as follows:</p>
+<script language="Javascript">documentwrite('<div align="center">')
+documentwrite('  <center>')
+documentwrite('  <table border="0">')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('  </table>')
+documentwrite('  </center>')
+documentwrite('</div>')</script>
+
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<p><a name="playing"></a><span style="font-weight:bold">Making moves</span></p>
+
+
+
+<p>To move a peg into an empty hole, just press on the peg.&nbsp;&nbsp;</p>
+
+
+
+<p>If the peg can legitimately be moved, and there is only one hole that it can be moved to, it will be repositioned and the peg
+jumped over will be removed.</p>
+<p>If the peg can legitimately be moved, but there are two or more possible
+destinations for the peg to go to, the peg itself will be highlighted and the
+possible destination holes will be shown with question marks on them.&nbsp; You
+then have to select the desired destination by pressing the destination
+hole.&nbsp; So, given the following situation</p>
+
+<script language="Javascript">documentwrite('<div align="center">')
+documentwrite('  <center>')
+documentwrite('  <table border="0">')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="emptychoice.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="emptychoice.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="pegchoice.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="emptychoice.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('  </table>')
+documentwrite('  </center>')
+documentwrite('</div>')</script>
+
+<p>you could press any of the three holes with question marks on them.&nbsp;
+Selecting the left one would result in the following layout:</p>
+
+<script language="Javascript">documentwrite('<div align="center">')
+documentwrite('  <center>')
+documentwrite('  <table border="0">')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('    <tr>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td><img border="0" style="display:block"  src="peg.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'"></td>')
+documentwrite('      <td></td>')
+documentwrite('      <td></td>')
+documentwrite('    </tr>')
+documentwrite('  </table>')
+documentwrite('  </center>')
+documentwrite('</div>')</script>
+
+
+<p>If you press a peg that can't be moved, or an empty hole, or a square
+that has no holes, nothing happens.</p>
+
+<p>If you make a wrong move and wish to rewind the move, simply press the <i>&lt;</i> button.  The pegs will be moved back to their original positions.  You can press this button any number of times consecutively - and even rewind back to the starting layout.
+
+</p>
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<p><a name="solve"></a><span style="font-weight:bold">Solve facility</span></p>
+
+If you are unable to solve the puzzle, you can press the <span style="font-style:italic">Solve</span> button.  This shows you the solution, step-by-step, with each peg to be moved shown highlighted before the move takes place.  Note: once you have selected this facility, the rewind facility is no longer available until a new puzzle is started.
+<p>The solution shown for the full layout is as described below in  <span style="font-style:italic">Solution and Notation</span>.
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<p><a name="newgame"></a><span style="font-weight:bold">New puzzle</span></p>
+
+<p>Puzzles can be presented with 6, 8, 10 or 12 pegs in the starting layout, or the full 32-peg classic layout.  When the application is first opened, one of these options is selected at random.  
+
+
+<p>There are buttons at the bottom corresponding to these starting layout options. When you are ready for a new puzzle, just press one of these.
+</p>
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<p><a name="solution"></a><span style="font-weight:bold">Solution and Notation</span></p>
+
+
+
+<p>A solution to the full puzzle was found by Ernest Bergholt in 1912.  This solution is presented below together with a way of helping you to remember how to solve it.  In order to help you memorize the solution, we introduce notation devised by David Wolstenholme. </p>
+<script language="Javascript">
+documentwrite('<table border=0 cellspacing=0 align=center>')
+documentwrite('<tr>')
+documentwrite('<td align=center>&nbsp;</td>')
+documentwrite('<td align=center>B</td>')
+documentwrite('<td align=center>C</td>')
+documentwrite('<td align=center>D</td>')
+documentwrite('<td align=center>F</td>')
+documentwrite('<td align=center>G</td>')
+documentwrite('<td align=center>H</td>')
+documentwrite('<td align=center>J</td>')
+documentwrite('<td align=center>&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td align=center>A</td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td align=center>&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td align=center>E</td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td align=center>&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td align=center>I</td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td align=center>&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td align=center>O</td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="empty.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td align=center>&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td align=center>U</td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td align=center>&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td align=center>W</td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td align=center>&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td align=center>Y</td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="peg.png"></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td><img  style="display:block" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="blank.png" ></td>')
+documentwrite('<td align=center>&nbsp;</td>')
+documentwrite('</tr>')
+documentwrite('</table>')
+</script>
+
+<p>The rows of the board are labelled top-to-bottom with the 5 vowels of the English alphabet, together with the 2 letters that sometimes take the place of a vowel, namely W (the W has a long U or OO sound in 'NEW') and Y (as in 'SKY' or 'HAPPY'); these seven are also the seven vowels of the Welsh language.  The columns are labelled left-to-right with the first seven consonants of the English alphabet from B through to J.  These are shown on the main playing board.  A particular hole is referred to by its column letter followed by its row letter. So, the central hole is referred to as FO.</p>
+<p>A simple 'jump and take' move is specified by the reference name of the starting position of the peg being moved, followed by a letter indicating the direction: R (right), L (left), U (up) or D (down).  So, the first move shown in the example above would be specified as FED.</p>
+<p>The solution to the puzzle as a set of 31 simple moves is given in the first column of the table below.</p>
+<p>Now, this 31-step solution could not be called easy to remember.  To aid memory we introduce some additional notation and some move combinations that form memorable patterns.  The solution using this notation is given in the second column of the table, together with diagrams showing the order and direction of the simple moves that make up these combinations (green is first, red second).  These combo moves and the associated notation are described in detail below the table.</p>
+<script language="Javascript">
+documentwrite('<table border=1 align=center>')
+documentwrite('<tr><td align=left><span style="font-weight:bold">Simple Move</span></td><td align=center><span style="font-weight:bold">Combo move</span></td><td align=center><span style="font-weight:bold">Type</span></td></tr>')
+documentwrite('<tr><td align=left>1 COR</td><td align=center rowspan=2>COT<br><img width="'+Math.floor(scalef*46)+'" style="display:block"    src="cot.gif"></td><td align=center rowspan=2>Tee</td></tr>')
+documentwrite('<tr><td align=left>2 DWU</td></tr>')
+documentwrite('<tr><td align=left>3 BUR</td><td align=center rowspan=2>BUM<br><img width="'+Math.floor(scalef*61)+'" style="display:block"    src="bum.gif"></td><td align=center rowspan=2>Meet-<br>and-<br>match</td></tr>')
+documentwrite('<tr><td align=left>4 FUL</td></tr>')
+documentwrite('<tr><td align=left>5 HUL</td><td align=center rowspan=2>HUT<br><img width="'+Math.floor(scalef*46)+'" style="display:block"    src="hut.gif"></td><td align=center rowspan=2>Tee</td></tr>')
+documentwrite('<tr><td align=left>6 GYU</td></tr>')
+documentwrite('<tr><td align=left>7 GOD</td><td align=center>GO<br><img width="'+Math.floor(scalef*18)+'" style="display:block"    src="down1.gif"></td><td align=center>Single</td></tr>')
+documentwrite('<tr><td align=left>8 DYR</td><td align=center rowspan=2>DYS<br><img width="'+Math.floor(scalef*46)+'" style="display:block"    src="dys.gif"></td><td align=center rowspan=2>Side-step</td></tr>')
+documentwrite('<tr><td align=left>9 GYU</td></tr>')
+documentwrite('<tr><td align=left>10 DID</td><td align=center rowspan=2>DIC<br><img width="'+Math.floor(scalef*18)+'" style="display:block"    src="dic.gif"></td><td align=center rowspan=2>Cascade</td></tr>')
+documentwrite('<tr><td align=left>11 DAD</td></tr>')
+documentwrite('<tr><td align=left>12 GED</td><td align=center rowspan=5>GEF<br><img width="'+Math.floor(scalef*48)+'" style="display:block"    src="gef.gif"></td><td align=center rowspan=5>Five</td></tr>')
+documentwrite('<tr><td align=left>13 GOD</td></tr>')
+documentwrite('<tr><td align=left>14 GWL</td></tr>')
+documentwrite('<tr><td align=left>15 DWU</td></tr>')
+documentwrite('<tr><td align=left>16 DOU</td></tr>')
+documentwrite('<tr><td align=left>17 BID</td><td align=center rowspan=3>BILL<br><img width="'+Math.floor(scalef*74)+'" style="display:block"    src="bill.gif"></td><td align=center rowspan=3>Long-L</td></tr>')
+documentwrite('<tr><td align=left>18 BUR</td></tr>')
+documentwrite('<tr><td align=left>19 DUR</td></tr>')
+documentwrite('<tr><td align=left>20 JIL</td><td align=center rowspan=2>JIM<br><img width="'+Math.floor(scalef*61)+'" style="display:block"    src="jim.gif"></td><td align=center rowspan=2>Meet-<br>and-<br>match</td></tr>')
+documentwrite('<tr><td align=left>21 FIR</td></tr>')
+documentwrite('<tr><td align=left>22 JUU</td><td align=center rowspan=2>JUS<br><img width="'+Math.floor(scalef*46)+'" style="display:block"    src="jus.gif"></td><td align=center rowspan=2>Side-step</td></tr>')
+documentwrite('<tr><td align=left>23 JIL</td></tr>')
+documentwrite('<tr><td align=left>24 GAL</td><td align=center rowspan=2>GAS<br><img width="'+Math.floor(scalef*46)+'" style="display:block"    src="gas.gif"></td><td align=center rowspan=2>Side-step</td></tr>')
+documentwrite('<tr><td align=left>25 DAD</td></tr>')
+documentwrite('<tr><td align=left>26 CIR</td><td align=center rowspan=5>CIF<br><img width="'+Math.floor(scalef*74)+'" style="display:block"    src="cif.gif"></td><td align=center rowspan=5>Five</td></tr>')
+documentwrite('<tr><td align=left>27 FIR</td></tr>')
+documentwrite('<tr><td align=left>28 HID</td></tr>')
+documentwrite('<tr><td align=left>29 HUL</td></tr>')
+documentwrite('<tr><td align=left>30 FUU</td></tr>')
+documentwrite('<tr><td align=left>31 FED</td><td align=center>FE<br><img width="'+Math.floor(scalef*18)+'" style="display:block"    src="down1.gif"></td><td align=center>Single</td></tr>')
+documentwrite('</table>')
+</script>
+
+
+<p><span style="font-weight:bold;font-style:italic">Move combinations and notation</span>
+<p><span style="font-weight:bold">Single move</span><br><br>
+If, with the board layout at the time, a peg in a particular hole can be moved in only one direction, the direction part of the move specification may be omitted.  So, for example, move 7 above may be specified as just GO rather than GOD.</p>
+<p><span style="font-style:italic">Related moves by two different pegs</span>
+<p><span style="font-weight:bold">Tee move (T)</span><br><br>
+A Tee move is a combination of two simple moves by different pegs.  It consists of a simple horizontal move (left or right, whichever is possible), followed by an upward move of a different peg into the empty hole formed when the peg jumped over is removed (the two moves form a T-shape as shown in the diagrams).  This sequence of moves is referred to by the starting position of the first peg moved followed by the letter T.  So, for example, moves 1 and 2 of the solution can be referred to as COT.</p>
+<p><span style="font-weight:bold">Meet-and-match move (M)</span><br><br>
+A Meet-and-match move is again a combination of two simple moves by different pegs.  The first is a simple horizontal move (left or right, whichever is possible).  The second is also a horizontal move, by a different peg, in the opposite direction, again into the hole formed when the peg jumped over is removed; essentially, the peg moved in the first simple move meets its match as it is removed by the peg it meets in the first move.  This sequence of moves is referred to by the starting position of the first peg moved followed by the letter M.  So, moves 3 and 4 of the solution can be referred to as BUM.</p>
+<p><span style="font-weight:bold">Cascade move (C)</span><br><br>
+A Cascade move is again a combination of two simple moves by different pegs.  The first is a simple downward peg move.  The second is also a downward move, by a second peg, which lands in the hole originally occupied by the first peg; that is, the peg moved in the first simple move is replaced by one from two holes above - a cascade.  This sequence of moves is referred to by the starting position of the first peg moved followed by the letter C.  So, moves 10 and 11 of the solution can be referred to as DIC.</p>
+<p><span style="font-style:italic">Complex moves by a single peg</span>
+<p><span style="font-weight:bold">Side-step move (S)</span><br><br>
+A Side-step move is a combination of two simple moves by the same peg around the edge of the board in an anticlockwise (counterclockwise) direction.  The first is a simple move in one direction, as appropriate, while the second is a move by the same peg, in a direction at 90 degrees to the initial direction - a side-step.  This sequence of moves is referred to by the starting position of the peg moved followed by the letter S.  So, moves 8 and 9 of the solution can be referred to as DYS.</p>
+<p><span style="font-weight:bold">Long-L move (LL)</span><br><br>
+A Long-L move is a combination of three simple moves by the same peg.  The first is a simple move downwards.  The second and third are two moves to the right by the same peg (these moves form the shape of a letter L, with a long base). This sequence of moves is referred to by the starting position of the peg moved followed by the letters LL.  So, moves 17, 18 and 19 of the solution can be referred to as BILL.  </p>
+<p><span style="font-weight:bold">Five move (F)</span><br><br>
+A Five move is a combination of five simple moves by the same peg.  The first two moves must be in the same direction.  The third move is at 90 degrees to this. The fourth move is at 90 degrees to the third move.  The fifth move must be upwards.  This sequence of moves (two-turn-turn-up) is referred to by the starting position of the peg moved followed by the letter F.  So, moves 12, 13, 14, 15 and 16 of the solution - a U-shaped set of moves - can be referred to as GEF, while moves 26, 27, 28, 29 and 30 - a saucepan-shaped set of moves - can be referred to as CIF.</p>
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<p><a name="mnemonics"></a><span style="font-weight:bold">Memorizing the solution</span></p>
+<p>Most of the 13 move specifications in the third column form words or names, or nearly, so become easier to remember.  A way to remember the first 12 of these (the last is so simple anyway) is to think of the following little story.</p>
+<table border=1 align=center width=75%><tr><td>
+<p align=center><span style="font-weight:bold">Tramp gassed in hut</span></p>
+<p>
+On a COT lies a BUM in a HUT, gasping for breath.  He tries to GO but DYS (dies). <br><br>
+Four cops arrive to investigate: DIC (Dick), GEF (Geoff), BILL and JIM.<br><br>It's JUS' GAS, they conclude, finding a leak near a bottle of CIF.</p>
+</td></tr></table>
+
+
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 3.0 (20160321) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=1
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.com, sexiest-lover.com</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-husband.com, best-lover.com</span>',
+'<span style="color:violet">best-mother.com, best-father.com</span>',
+'<span style="color:violet">best-dad.com, best-daughter.com</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith.best-wife.com</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-mother.com</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Buy our great logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy aginst the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:lime">If you like games such as...</span>',
+'<span style="color:lime">Rummy, 4-in-a-line...</span>',
+'<span style="color:lime">Hangman, Mancala...</span>',
+'<span style="color:lime">Letters Game, Numbers Game...</span>',
+'<span style="color:lime">& more classic & original games</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Games</span> app now</span>',
+'',
+'<span style="color:cyan">If you like puzzles such as...</span>',
+'<span style="color:cyan">Sudoku, Hangman...</span>',
+'<span style="color:cyan">Peg Solitaire, Step Challenge...</span>',
+'<span style="color:cyan">WordSearch & other word puzzles...</span>',
+'<span style="color:cyan">Numberskull & other number puzzles...</span>',
+'<span style="color:cyan">Memory Pairs...</span>',
+'<span style="color:cyan">& more classic & original puzzles</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Puzzles</span> app now</span>',
+'',
+'<span style="color:lime">Beat the Letters Game countdown;</span>',
+'<span style="color:lime">Avoid the Hangman\'s noose;</span>',
+'<span style="color:lime">Look for words in WordSearch+...</span>',
+'<span style="color:lime">And other mind-boggling grids;</span>',
+'<span style="color:lime">Try our original Pentad game;</span>',
+'<span style="color:lime">Find connections in Linkword Snap;</span>',
+'<span style="color:lime">Or solve the Word Ladder.</span>',
+'<span style="color:lime">For word-based games and puzzles...</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Words</span> app now</span>',
+'',
+'<span style="color:magenta">Beat the Numbers Game countdown;</span>',
+'<span style="color:magenta">Take 30 secs for our Step Challenge;</span>',
+'<span style="color:magenta">Or Pyramid Numbers;</span>',
+'<span style="color:magenta">Or try our original Numberskull.</span>',
+'<span style="color:magenta">For number-based games & puzzles...</span>',
+'<span style="color:magenta">Buy our <span style="color:white">Compact Numbers</span> app now</span>',
+'',
+'<span style="color:cyan">Solve Sudoku puzzles, with help;</span>',
+'<span style="color:cyan">Be a mastermind and break the codes,</span>',
+'<span style="color:cyan">Solve equations and use logic...</span>',
+'<span style="color:cyan">In our original Numberskull puzzle;</span>',
+'<span style="color:cyan">Find the killer based on clues...</span>',
+'<span style="color:cyan">In Mystery Clues.</span>',
+'<span style="color:cyan">For logic-based puzzles...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Logic</span> app now</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>

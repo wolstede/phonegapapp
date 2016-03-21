@@ -1,0 +1,1144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>Yak</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='yak'
+
+var interruptsrequired=0
+
+var scalef
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">Yak</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:purple"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Begin
+// All code copyright of TopAccolades Limited
+
+restartconfirmationrequired=1
+
+function runonload()
+{
+setgametype(0)
+setconfirmselection(0)
+
+newgame()
+}
+
+function continueafterad()
+{
+newgame()
+}
+
+var turn=[0,0,0,0]
+var dicedisplay = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+var holds = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+
+var oneturn=[[0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0]]
+var potentialscores = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+var finalscores = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+var scorerecord = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+var playstatus = ['throw','throw','throw','throw']
+var selections=[-1, -1, -1, -1]
+
+function recordthrows(player)
+{
+oneturn[player]=[0, 0, 0, 0, 0, 0]
+for (var i=0; i<5; i++)
+{
+oneturn[player][dicedisplay[player][i]-1]++ 
+}
+
+}
+
+
+function selectscore(player, i)
+{
+if (playstatus[player] != "throw" && scorerecord[player][i] == 0)
+{
+var confirmationmessage='Confirm: '+scoretypetexts[i]+': '+potentialscores[player][i]
+changetextvalue('p'+player+'confirmation', confirmationmessage)
+selections[player]=i
+document.getElementById('p'+player+'confirmation').style.backgroundColor='lime'
+if (confirmselection==0)
+{
+selectscore2(player)
+}
+}
+
+}
+
+function deselectplayer(player)
+{
+changetextvalue('p'+player+'confirmation', '&nbsp;')
+document.getElementById('p'+player+'confirmation').style.backgroundColor='white'
+
+selections[player]=-1
+}
+
+function selectscore2(player)
+{
+var i=selections[player]
+
+if (i>=0)
+{
+var type = scoretypes[i]
+finalscores[player][i]=potentialscores[player][i]
+changetextvalue('p'+player+'total', overallscore(player))
+
+scorerecord[player][i] = 1
+deselectplayer(player)
+newturn(player)
+}
+}
+
+function turnsgone(player)
+{
+var sub=0
+for (var i=0; i<scorerecord[player].length; i++)
+{
+sub=sub+scorerecord[player][i]
+
+}
+return sub
+}
+
+function overallscore(player)
+{
+var sub=0
+for (var i=0; i<finalscores[player].length; i++)
+{
+sub=sub+finalscores[player][i]
+
+}
+return sub
+}
+var prethrows=[[],[],[],[]]
+var prethrowsindex=[0,0,0,0]
+
+function newgame()
+{
+prethrows=[[],[],[],[]]
+prethrowsindex=[0,0,0,0]
+var somethrow
+if (allsame==1) 
+{
+for (var i=0; i<210; i++)
+{
+somethrow=randomnumber(6)
+for (var j=0; j<4; j++)
+{
+prethrows[j][i]=somethrow
+}
+}
+} 
+else 
+{
+for (var i=0; i<210; i++)
+{
+for (var j=0; j<4; j++)
+{
+somethrow=randomnumber(6)
+prethrows[j][i]=somethrow
+}
+}
+}
+
+
+finalscores = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+scorerecord = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+for (var player=0; player<4; player++)
+{
+for (var i=0; i<scoretypes.length; i++)
+{
+changetextvalue('p'+player+'select'+scoretypes[i], '&nbsp;')
+changetextvalue('p'+player+'selectthis'+scoretypes[i], '&nbsp;')
+
+}
+if (allsame==1) {changetextvalue('p'+player+'total', '?')} else {changetextvalue('p'+player+'total', 0)}
+
+
+playstatus[player]="throw"
+
+newturn(player)
+
+}
+displayplayer(0)
+
+}
+
+function togglehold(player, index)
+{
+holds[player][index]=1-holds[player][index]
+if (holds[player][index]==0) {document.images['p'+player+'hold'+index].src='unselected.gif'} else {document.images['p'+player+'hold'+index].src='selected.gif'}
+
+
+}
+
+function newturn(player)
+{
+deselectplayer(player)
+oneturn[player]=[0, 0, 0, 0, 0, 0]
+for (var i=0; i<scoretypes.length; i++)
+{
+var val
+changetextvalue('p'+player+'selectthis'+scoretypes[i], '&nbsp;')
+if (scorerecord[player][i] == 1) {val=finalscores[player][i]} else {val = '&nbsp;'}
+
+changetextvalue('p'+player+'select'+scoretypes[i], val)
+
+}
+for (var c=0; c<5; c++)
+{
+document.images['p'+player+'pos'+c].src='unknown.png'
+holds[player][c]=0
+document.images['p'+player+'hold'+c].src='unselected.gif'
+}
+if (turnsgone(player) == scorerecord[player].length)
+{
+changetextvalue('p'+player+'instructions', "Finished!")
+playstatus[player]="score"  // but not actually any opportunity to do so, so this is OK
+}
+else
+{
+playstatus[player]="throw"
+changetextvalue('p'+player+'instructions', "1: press Throw")
+turn[player]=1
+}
+
+}
+
+function throwClick(player)
+{
+deselectplayer(player)
+var goesremaining
+if (playstatus[player] != "score")
+{
+throwDice(player)
+recordthrows(player)
+showscores(player)
+if (turn[player] < 4) 
+{
+playstatus[player]="throworscore"
+goesremaining=4-turn[player]
+changetextvalue('p'+player+'instructions', turn[player]+ ": score or Hold+Throw")
+
+
+}
+else
+{
+playstatus[player]="score"
+changetextvalue('p'+player+'instructions', "Now score")
+
+}
+
+}
+else
+if (turnsgone(player) == scorerecord[player].length)
+{
+changetextvalue('p'+player+'instructions', "Sorry! No more")
+
+}
+else
+{
+changetextvalue('p'+player+'instructions', "You must score")
+}
+}
+
+
+
+
+function throwDice(player)
+{
+
+var i
+var display
+// var hold=document.dice.hold
+for (i=0; i <5; i++)
+{
+var posname ='p'+player+'pos'+i
+var throwable = 'throw'
+if (turn[player] > 1 && holds[player][i]) {throwable='dontthrow'}
+if (throwable == 'throw')
+{
+
+display=prethrows[player][prethrowsindex[player]]
+prethrowsindex[player]++
+// display=randomnumber(6)
+
+dicedisplay[player][i]=display
+
+document.images[posname].src= 'image' + display + '.png'
+}
+}
+turn[player] = turn[player]+1
+
+}
+
+
+
+
+
+function showscores(player)
+{
+turnscore(player)
+for (var i=0; i<scoretypes.length; i++)
+{
+if (scorerecord[player][i] == 0)
+{
+changetextvalue('p'+player+'select'+scoretypes[i], '<span style="color:silver">'+maxscores[i]+'<\/span>')
+changetextvalue('p'+player+'selectthis'+scoretypes[i], potentialscores[player][i])
+}
+else
+{
+changetextvalue('p'+player+'select'+scoretypes[i], finalscores[player][i])
+changetextvalue('p'+player+'selectthis'+scoretypes[i], '&nbsp;')
+
+}
+
+}
+
+}
+
+
+function turnscore(player)
+{
+
+// ones through sixes
+potentialscores[player][0] = oneturn[player][0] * 1   // ones
+potentialscores[player][1] = oneturn[player][1] * 2
+potentialscores[player][2] = oneturn[player][2] * 3
+potentialscores[player][3] = oneturn[player][3] * 4
+potentialscores[player][4] = oneturn[player][4] * 5
+potentialscores[player][5] = oneturn[player][5] * 6   // sixes
+
+// lowstraight
+var lowstraight = 1
+
+for (var i=0; i<5; i++)
+{
+if (oneturn[player][i] == 0) {lowstraight = 0}
+}
+
+potentialscores[player][7] = lowstraight*15
+
+// highstraight
+var highstraight = 1
+
+for (var i=1; i<6; i++)
+{
+if (oneturn[player][i] == 0) {highstraight = 0}
+}
+
+potentialscores[player][8] = highstraight*20
+
+// three of a kind
+
+var threeofakind = 0
+
+for (var i=0; i<6; i++)
+{
+if (oneturn[player][i] > 2) {threeofakind = 15}
+}
+
+potentialscores[player][9]=threeofakind
+
+// two pairs
+
+var twopairs = 0
+var twopairsscore = 0
+
+for (var i=0; i<6; i++)
+{
+if (oneturn[player][i] > 1) {twopairs=twopairs+oneturn[player][i]}
+}
+
+if (twopairs > 3) {twopairsscore=20}
+potentialscores[player][10] = twopairsscore
+
+// fullhouse
+
+var fullhouse = 0
+var fullhousescore=0
+
+for (var i=0; i<6; i++)
+{
+if (oneturn[player][i] > 1) {fullhouse=fullhouse+oneturn[player][i]}
+
+}
+
+if (fullhouse == 5) { fullhousescore = 25}
+
+potentialscores[player][11] = fullhousescore
+
+// four of a kind
+
+var fourofakind = 0
+
+for (var i=0; i<6; i++)
+{
+if (oneturn[player][i] > 3) {fourofakind = 30}
+}
+
+potentialscores[player][12] = fourofakind
+
+
+// Yak
+
+var yak = 0
+
+for (var i=0; i<6; i++)
+{
+if (oneturn[player][i] == 5) {yak = 50}
+}
+ potentialscores[player][13] = yak
+
+// Free
+
+var free = 0
+
+for (var i=0; i<6; i++)
+{
+free = free+ (oneturn[player][i]*(i+1))
+}
+ potentialscores[player][6] = free
+
+}
+
+
+var maxscores=[5,10,15,20,25,30,30,15,20,15,20,25,30,50]
+
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+
+var fullcolors=['#FF0000', '#FFFF00', '#00FF00', '#00B4FF']
+var lightcolors=['#FAAFBE', '#FFF888', '#B1FB17', '#A0B4FF']
+var allsame=0
+function hideall()
+{
+for (var player=0; player<4; player++)
+{
+if (allsame==1) {changetextvalue('p'+player+'total', '?')} else {changetextvalue('p'+player+'total', overallscore(player))}
+
+
+
+document.getElementById('p'+player+'completediv').style.display = 'none'
+
+document.getElementById('playerselect'+player).style.backgroundColor=lightcolors[player]
+document.getElementById('playerselect'+player).style.color='gray'
+}
+document.getElementById('hidden').style.display = 'inline'
+
+
+}
+
+function displayplayer(player)
+{
+hideall()
+changetextvalue('p'+player+'total', overallscore(player))
+
+
+
+document.getElementById('p'+player+'completediv').style.display = 'inline'
+document.getElementById('playerselect'+player).style.backgroundColor=fullcolors[player]
+document.getElementById('playerselect'+player).style.color='black'
+document.getElementById('hidden').style.display = 'none'
+
+handleclickproblem()
+}
+
+var thedivs=['maingame', 'more']
+function displaydiv(somediv)
+{
+for (var i=0; i<thedivs.length; i++)
+{
+document.getElementById(thedivs[i]).style.display = 'none'
+
+
+}
+document.getElementById(thedivs[somediv]).style.display = 'inline'
+handleclickproblem()
+
+}
+
+
+function setgametype(level)
+{
+allsame=level
+for (var i=0; i<2; i++)
+{
+document.images["gametype"+i].src="unselected.gif"
+}
+document.images["gametype"+level].src="selected.gif"
+
+}
+
+var confirmselection=0
+
+function setconfirmselection(level)
+{
+if (level==0) {confirmselection=0} else {confirmselection=1}
+for (var i=0; i<2; i++)
+{
+document.images["confirmselection"+i].src="unselected.gif"
+}
+document.images["confirmselection"+level].src="selected.gif"
+
+}
+
+//  End -->
+</script>
+
+
+
+
+
+
+<script language="Javascript">
+documentwrite('<div style="position:relative;left:0px;top:0px;height:100%;width:100%"><div style="position:absolute;left:0px;top:'+Math.floor(scalef*2)+'px;height:'+Math.floor(scalef*235)+'px;width:100%">')
+
+documentwrite('<div id="maingame" style="display:inline"><form name="dice">')
+
+documentwrite('<table border=1 cellpadding=0 width=100%><tr><td><table width=100% border=1 cellpadding=0 cellspacing=0 style="align:center" align=center><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="showad()">New</td></tr></table></td><td id="playerselect0" onClick="displayplayer(0)" style="background-color:white; text-align:center; font-weight:bold;color:#FFFFFF" width='+Math.floor(scalef*25)+'><div id="p0total">0&nbsp;</div></td><td id="playerselect1" onClick="displayplayer(1)" style="background-color:white; text-align:center; font-weight:bold;color:#FFFFFF" width='+Math.floor(scalef*25)+'><div id="p1total">0&nbsp;</div></td><td id="playerselect2" onClick="displayplayer(2)" style="background-color:white; text-align:center; font-weight:bold;color:#FFFFFF" width='+Math.floor(scalef*25)+'><div id="p2total">0&nbsp;</div></td><td id="playerselect3" onClick="displayplayer(3)" style="background-color:white; text-align:center; font-weight:bold;color:#FFFFFF" width='+Math.floor(scalef*25)+'><div id="p3total">0&nbsp;</div></td><td style="background-color:white; text-align:center; font-weight:bold"><table width=100% border=1 cellpadding=0 cellspacing=0 style="align:center" align=center><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="hideall()">Hide</td></tr></table></td></tr></table>')
+
+documentwrite('<div id="hidden" style="display:none;font-weight:normal"><p>To display one player\'s dice and scorecard, just click on one of the four coloured tabs above (red, gold, green or blue). These tabs also display the total scores for the players.</div>')
+
+
+
+var scoretypes=['ones', 'twos', 'threes', 'fours', 'fives', 'sixes', 'free', 'lowstraight', 'highstraight', '3ofakind', 'twopairs', 'fullhouse', '4ofakind', 'yak']
+
+var scoretypetexts=['1s', '2s', '3s', '4s', '5s', '6s', 'All', 'Run 1-5', 'Run 2-6', '3 same', '2 pairs', '2+3 same', '4 same', '5 same']
+var nth
+var c
+for (var player=0; player<4; player++)
+{
+
+documentwrite('<div id="p'+player+'completediv" style="display:none"><br>')
+documentwrite('<table border=0 cellspacing=0 cellpadding=2 align=center bgcolor='+fullcolors[player]+'><tr>')
+
+for (c = 0; c < 5; c++) 
+{
+nth = c+1;
+documentwrite('<td align="center">');
+documentwrite('<img width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'" src="image' + nth + '.png" name="p'+player+'pos' + c + '" border="0"  onClick="togglehold('+player+','+c+')">');
+documentwrite('</td>');
+}
+documentwrite('<td width='+Math.floor(scalef*10)+'></td><td valign=center align=center ><table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="throwClick('+player+')">Throw</td></tr></table></td></tr>')
+documentwrite('<tr>')
+for (c = 0; c < 5; c++) 
+{
+nth = c+1;
+documentwrite('<td style="text-align:center"><img name="p'+player+'hold'+c+'" src="unselected.gif" width='+Math.floor(scalef*10)+'  onClick="togglehold('+player+','+c+')">');
+documentwrite('</td>');
+}
+documentwrite('<td width='+Math.floor(scalef*10)+'></td><td>Hold</td></tr>')
+documentwrite('</table>')
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*5)+'px;display:block"></div>')
+
+documentwrite('<table border=1 cellspacing=0 cellpadding=0 align=center bgcolor=lemonchiffon>')
+for (var j=0; j<7; j++)
+{
+documentwrite('<tr>')
+documentwrite('<td width='+Math.floor(scalef*25)+'>'+
+scoretypetexts[j]+'</td><td width='+Math.floor(scalef*20)+' style="text-align:center"><div id="p'+player+'select'+scoretypes[j]+'"></div></td><td width='+Math.floor(scalef*20)+' style="text-align:center" onClick="selectscore('+player+', '+(j)+')"><div style="color:red;font-weight:bold" id="p'+player+'selectthis'+scoretypes[j]+'"></div></td>')
+documentwrite('<td width='+Math.floor(scalef*55)+'>'+
+scoretypetexts[j+7]+'</td><td width='+Math.floor(scalef*20)+' style="text-align:center"><div id="p'+player+'select'+scoretypes[j+7]+'"></div></td><td width='+Math.floor(scalef*20)+' style="text-align:center" onClick="selectscore('+player+', '+(j+7)+')"><div style="color:red;font-weight:bold" id="p'+player+'selectthis'+scoretypes[j+7]+'"></div></td>')
+
+documentwrite('</tr>')
+}
+documentwrite('<tr><td colspan=6 style="background-color:white;text-align:center" id="p'+player+'instructions"  >&nbsp;</td></tr>')
+documentwrite('<tr><td colspan=4 onClick="selectscore2('+player+')" style="background-color:white;text-align:center" id="p'+player+'confirmation"  >&nbsp;</td><td colspan=2><table border=1 cellpadding=0 cellspacing=0 width=100% style="align:center" align=center><tr><td style="width:100%;background-image:url(buttonbg.jpg);text-align:center" onClick="displaydiv(1)">More</td></tr></table></td></tr>')
+documentwrite('</table>')
+
+documentwrite('</div>')
+}
+
+documentwrite('</form></div><div id="more" style="display:none">')
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*5)+'px;display:block"></div>')
+
+documentwrite('<table bgcolor=silver cellspacing=3><tr><td align=left><table border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="displaydiv(0)">Back</td></tr></table></td></tr>')
+documentwrite('<tr><td align=left valign=center ><span style="font-weight:bold"><br>Dice throws for players:</span></td></tr>')
+documentwrite('<tr><td align=left valign=center>')
+documentwrite('<table cellspacing=0 cellpadding=0 border=1>')
+documentwrite('<tr>')
+documentwrite('<td style="background-image:url(buttonbg.jpg); text-align:center; "  width='+Math.floor(scalef*75)+' onClick="setgametype(0)">Independent</td>')
+documentwrite('<td style="background-image:url(buttonbg.jpg); text-align:center; "  width='+Math.floor(scalef*75)+' onClick="setgametype(1)">Identical</td>')
+documentwrite('</tr>')
+documentwrite('<tr>')
+documentwrite('<td style=" text-align:center; "><img name="gametype0" src="selected.gif" width='+Math.floor(scalef*10)+'  onClick="setgametype(0)"></td>')
+documentwrite('<td style=" text-align:center; "><img name="gametype1" src="unselected.gif" width='+Math.floor(scalef*10)+'  onClick="setgametype(1)"></td>')
+documentwrite('</tr>')
+documentwrite('</table>')
+documentwrite('</td></tr>')
+documentwrite('<tr><td align=left valign=center ><span style="font-weight:bold"><br>Confirm Selection:</span></td></tr>')
+documentwrite('<tr><td align=left valign=center>')
+documentwrite('<table cellspacing=0 cellpadding=0 border=1>')
+documentwrite('<tr>')
+documentwrite('<td style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setconfirmselection(0)">&nbsp;&nbsp;&nbsp;&nbsp;Off&nbsp;&nbsp;&nbsp;&nbsp;</td>')
+documentwrite('<td style="background-image:url(buttonbg.jpg); text-align:center; " onClick="setconfirmselection(1)">&nbsp;&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;&nbsp;&nbsp;</td>')
+documentwrite('</tr><tr>')
+documentwrite('<td style=" text-align:center; "><img name="confirmselection0" src="selected.gif" width='+Math.floor(scalef*10)+'  onClick="setconfirmselection(0)"></td>')
+documentwrite('<td style=" text-align:center; "><img name="confirmselection1" src="unselected.gif" width='+Math.floor(scalef*10)+'  onClick="setconfirmselection(1)"></td>')
+documentwrite('</tr>')
+documentwrite('</table><br>&nbsp;</td></tr></table></div></div></div>')
+
+
+</script>
+
+</div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#scoring">Scoring methods</a><br><a href="#settingup">Setting up for play</a><br><a href="#playing">Taking a turn</a><br><a href="#newgame">New game</a><br><a href="#options">Options</a><br><a href="#terms">Terms of use</a><br><br>')}
+</script>
+
+
+<a name="intro"></a>Yak is a sophisticated browser-based implementation of a variation of the
+      Victorian dice game called Yacht.&nbsp; This version allows up to four people to play, although
+      it can also be played by one player in practice mode.
+      <p>In Yak, each player has an identical scorecard containing fourteen
+      scoring methods.&nbsp; Seven of these, on the left, involve counting the spots on some or all of the dice to produce a score, while the other seven, on the right, are concerned
+      with achieving patterns, each of which has an associated score if achieved, or 0 if not achieved.
+<p>The basic idea of Yak is that each player has five dice,
+      and in each of fourteen rounds the player must
+      make up to three throws of all or some of the dice.&nbsp; The player must elect to
+      score the final layout of the dice in a round against one of the scoring methods not already
+      used. 
+<p>When played by two or more players, the winner of the game is the player with the highest total
+      score at the end of the players' fourteen rounds.</p>
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+
+      <p><a name="scoring"></a><b>Scoring methods</b></p>
+
+<p>
+For the spot counting scoring methods on the left, the score is simply the total number of spots on the relevant dice.  So, for <i>3s</i>, the score will be 3 times the number of dice displaying a 3, while for <i>6s</i> the score will be 6 times the number of dice displaying a 6. The <i>All</i> score is simply the sum of all the numbers displayed on the five dice.
+<p>For the Patterns on the right, the meaning of the patterns and the scores if the patterns are achieved (0 if not) are given below.  Please note that the order of the numbers displayed is irrelevant.
+<ul>
+<li><b>Run 1-5. Score 15</b> if the numbers 1, 2, 3, 4, and 5 are displayed. Example: 5,2,1,3,4 scores 15.  Also called Low Straight.
+<li><b>Run 2-6. Score 20</b> if the numbers 2, 3, 4, 5, and 6 are displayed. Example: 5,6,2,4,3 scores 20.  Also called High Straight.
+<li><b>3 same.  Score 15</b> if any three dice display an identical number. Example: 5,2,5,3,5 scores 15, as does 5,5,5,3,5.
+<li><b>2 pairs.  Score 20</b> if any two dice display an identical number and another two dice also display an identical number (which may be the same as or different from the number displayed by the first two). Example: 2,3,1,3,2 scores 20 as does 2,2,1,2,2.
+<li><b>2+3 same. Score 25</b> if two dice display an identical number and the other three dice also display an identical number (which may be the same as or different from the number displayed by the first two). Example: 2,3,3,3,2 scores 25 as does 2,2,2,2,2. Also called Full House.
+<li><b>4 same. Score 30</b> if any four dice display an identical number. Example: 5,2,5,5,5 scores 30, as does 5,5,5,5,5.
+<li><b>5 same. Score 50</b> if all five dice display an identical number. Example: 2,2,2,2,2 scores 50, as does 5,5,5,5,5.  Also called Yak.
+</ul>
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+
+
+      <p><a name="settingup"></a><b>Setting up for play</b></p>
+      <p>All players need their own scorecards and dice. There are four sets available, each associated with one of the colours red, yellow, green and blue: the dice are on a background of that colour.
+To display one of these sets, press the relevant coloured tab near the top on the left.  This tab also displays the current total score for that player.
+</p>
+<p>If there are two or more players, they should also agree on the order of play.  Yak allows very flexible ordering, since each player essentially plays his or her own game separately from the other players, with the winner being simply the player who achieves the highest total score.  This means that one player could complete all fourteen rounds before play passes to the next player.  However, to maintain all players' interest, it is 
+probably better for the players to play one round each before moving on to the next round.  The players should, in that case, agree the order in which they play a particular round.
+</p>
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+
+
+      <p><a name="playing"></a><b>Taking a turn in a round</b></p>
+      <p>To take a turn, the player should press the <i>Throw</i>
+      button.&nbsp; This will result in all five dice being 'rolled', so that
+      they each show a number from 1 through to 6.</p>
+      <p>On the scorecard below the dice, the scores
+      against each of the available scoring methods will be displayed in red, while the maximum possible scores against these scoring methods (or the only possible non-zero scores for the Patterns) are shown, in grey, to the left of the red scores.&nbsp; The player could choose to select one of
+      these scores, by pressing on the red score, after this first throw, in which case the turn ends and the score is
+      displayed, in black, in the column between the scoring method and the red score.  Once used, that scoring method may not be used by the player in any future round of the game. Alternatively, the player may choose a different scoring method and score, or continue with a second throw (see next).</p>
+      <p>The player may choose to re-throw some or all of the
+      dice to try to achieve a better pattern.&nbsp; The player should check the
+      Hold box (the box beneath the die) for any die to be held (i.e. not to be thrown), by pressing on the die or on the Hold box beneath the die.</p>
+      <p>After this second throw, the revised scores will again be shown in red on the scorecard, and the player may choose to select one of these, by pressing on the red score,
+      and so end the turn.&nbsp; Alternatively, the player may again choose to
+      throw all or some of the dice for a third and last time.&nbsp; Note: the
+      player may choose to throw dice that were held for the second throw;
+      by default, however, the held dice will also be held for the third throw, so any dice no longer to be held must have their Hold box unchecked (again by pressing on the die or the Hold box beneath it).</p>
+      <p>After the third throw, the player <i>must</i> select one of the
+      available scores displayed in red, by pressing on it.</p>
+<p>Note: if the message below the scorecard starts with a number, this indicates which throw of three would occur if the <i>Throw</i> button were pressed.
+</p>   
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+
+
+      <p><a name="newgame"></a><b>New game</b></p>
+</p>
+      <p>To start a new game, one player should press the <i>New</i> button.  The game begins with the dice sequences determined according to the option selected (see next).
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+
+
+      <p><a name="options"></a><b>Options</b></p>
+</p>
+      <p>When the <i>More</i> button is pressed, certain choices are presented.
+<p>First, there is a choice concerned with the sequences of the dice throws for the players. 
+<p>1. Independent
+<p>
+This option corresponds to the way a game with real dice would be played. 
+<p>With this option, all total scores are shown on the players' coloured tabs at the top.
+<p>2. Identical  
+<p>With this option, a sequence of throws (1-6) is determined at the beginning (unseen to the players, of course), and this sequence is allocated to each player.  Whenever a player throws one of the dice, the next number from the sequence is displayed.  This option allows a game to be played that is a better test of skill and judgment, since 
+all players are playing with the same sequence of throws, and no player can claim that they were unlucky to receive poor throws.  Of course, the decisions on when to hold and score mean that the final scores are likely to be very different.
+<p>With this option, it is clearly important that the throws made by one player should not be seen by the others.  The players should therefore look away while throws are being made and scores added. To ensure that one player's scorecard is hidden from the other players, a player should press the <i>Hide</i> button to hide all the scorecards before passing play to the next player. 
+<p>Because a player's score can provide information to other players about the dice thrown, the total scores are not shown on the players' coloured tabs at the top, which instead show a '?'.  An individual player's total score is shown in the coloured tab only when that player's scorecard is displayed.
+
+<p>The chosen option is applied only when a new game is started.  The default is to have independent throws, and when Yak is first started, the game is set up with independent dice throws.
+</p>
+<p>Second, there is a choice that determines whether or not selected scoring methods and scores need to be confirmed. 
+<p>By default, when confirmation of selection is off, as soon as a score is selected it is applied, and there is no chance given to the player to revoke this selection.  However, when playing using a small touchscreen, it can be quite easy to select the wrong score.   
+<p>If this is found to cause a problem, the option to confirm selection may be turned on.  When switched on, the selection of the score is not immediately applied.  Instead, the selected scoring method and associated score are displayed in the box at the bottom left, which then has a green background.  The player may then choose to confirm the selection by pressing the green box, or may choose to ignore it: either by selecting a different score or by taking another throw (if available).
+<p>Pressing the <i>Back</i> button redisplays the main screen.
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 3.0 (20160321) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=1
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.com, sexiest-lover.com</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-husband.com, best-lover.com</span>',
+'<span style="color:violet">best-mother.com, best-father.com</span>',
+'<span style="color:violet">best-dad.com, best-daughter.com</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith.best-wife.com</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-mother.com</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Buy our great logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy aginst the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:lime">If you like games such as...</span>',
+'<span style="color:lime">Rummy, 4-in-a-line...</span>',
+'<span style="color:lime">Hangman, Mancala...</span>',
+'<span style="color:lime">Letters Game, Numbers Game...</span>',
+'<span style="color:lime">& more classic & original games</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Games</span> app now</span>',
+'',
+'<span style="color:cyan">If you like puzzles such as...</span>',
+'<span style="color:cyan">Sudoku, Hangman...</span>',
+'<span style="color:cyan">Peg Solitaire, Step Challenge...</span>',
+'<span style="color:cyan">WordSearch & other word puzzles...</span>',
+'<span style="color:cyan">Numberskull & other number puzzles...</span>',
+'<span style="color:cyan">Memory Pairs...</span>',
+'<span style="color:cyan">& more classic & original puzzles</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Puzzles</span> app now</span>',
+'',
+'<span style="color:lime">Beat the Letters Game countdown;</span>',
+'<span style="color:lime">Avoid the Hangman\'s noose;</span>',
+'<span style="color:lime">Look for words in WordSearch+...</span>',
+'<span style="color:lime">And other mind-boggling grids;</span>',
+'<span style="color:lime">Try our original Pentad game;</span>',
+'<span style="color:lime">Find connections in Linkword Snap;</span>',
+'<span style="color:lime">Or solve the Word Ladder.</span>',
+'<span style="color:lime">For word-based games and puzzles...</span>',
+'<span style="color:lime">Buy our <span style="color:white">Compact Words</span> app now</span>',
+'',
+'<span style="color:magenta">Beat the Numbers Game countdown;</span>',
+'<span style="color:magenta">Take 30 secs for our Step Challenge;</span>',
+'<span style="color:magenta">Or Pyramid Numbers;</span>',
+'<span style="color:magenta">Or try our original Numberskull.</span>',
+'<span style="color:magenta">For number-based games & puzzles...</span>',
+'<span style="color:magenta">Buy our <span style="color:white">Compact Numbers</span> app now</span>',
+'',
+'<span style="color:cyan">Solve Sudoku puzzles, with help;</span>',
+'<span style="color:cyan">Be a mastermind and break the codes,</span>',
+'<span style="color:cyan">Solve equations and use logic...</span>',
+'<span style="color:cyan">In our original Numberskull puzzle;</span>',
+'<span style="color:cyan">Find the killer based on clues...</span>',
+'<span style="color:cyan">In Mystery Clues.</span>',
+'<span style="color:cyan">For logic-based puzzles...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">Compact Logic</span> app now</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Buy our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>
