@@ -1507,7 +1507,7 @@ documentwrite('<a href="#intro">Introduction</a><br><a href="#playing">Using the
 
 
 
-<a name="intro"></a>A Numberskull puzzle consists of a grid with 6 = signs and 6 whole number results already on it, together with 9 given whole numbers, all different.  You simply have to fill in the grid by placing each of the nine numbers into the nine white squares, one in each, and placing any one of the four basic arithmetic operators (+, -, x, ÷) into the grey squares, so that 6 correct equations are formed (3 in left-to-right rows, 3 in top-to-bottom columns). 
+<a name="intro"></a>A Numberskull puzzle consists of a grid with 6 = signs and 6 whole number results already on it, together with 9 given whole numbers, all different.  You simply have to fill in the grid by placing each of the nine numbers into the nine white squares, one in each, and placing any one of the four basic arithmetic operators (+, -, x, &divide;) into the grey squares, so that 6 correct equations are formed (3 in left-to-right rows, 3 in top-to-bottom columns). 
 <script language="Javascript">
 var helpbasecolours=
 [
@@ -1571,8 +1571,8 @@ documentwrite('</table>')
 <script language="Javascript">
 thepuzzle=
 [
-['6','÷','2','+','49','=','52'],
-['-','','x','','÷','',''],
+['6','&divide;','2','+','49','=','52'],
+['-','','x','','&divide;','',''],
 ['3','+','44','-','7','=','40'],
 ['+','','-','','+','',''],
 ['11','-','40','+','31','=','2'],
@@ -1619,7 +1619,7 @@ thetable=
 ['6','+','44','+','2','=','52'],
 ['44','+','2','+','6','=','52'],
 ['44','+','6','+','2','=','52'],
-['6','÷','2','+','49','=','52'],
+['6','&divide;','2','+','49','=','52'],
 ['6','-','3','+','49','=','52'],
 ['6','+','49','-','3','=','52'],
 ['49','-','3','+','6','=','52'],
@@ -1645,7 +1645,7 @@ helpshowtable(-1)
 <p>Example:  Given the nine numbers 2,3,6,7,11,31,40,44,49, suppose the result to be achieved is 38.  This can be achieved in only one way:
 
 <p><script language="Javascript">
-thetable=[[49,	'÷',	7,	'+',	31,	'=',	38]]
+thetable=[[49,	'&divide;',	7,	'+',	31,	'=',	38]]
 
 helpshowtable(-1)
 </script>
@@ -1820,10 +1820,10 @@ helpshowtable(-1)
 <p>Given the nine numbers 3,6,9,10,12,14,21,32,35, suppose the result to be achieved in the top row is 80 and the result to be achieved in the left column is 91.  The 80 can be achieved in several ways:
 <p><script language="Javascript">
 thetable=[['14','-','6','x','10','=','80'],
-['32','÷','14','x','35','=','80'],
-['32','x','35','÷','14','=','80'],
-['35','÷','14','x','32','=','80'],
-['35','x','32','÷','14','=','80']]
+['32','&divide;','14','x','35','=','80'],
+['32','x','35','&divide;','14','=','80'],
+['35','&divide;','14','x','32','=','80'],
+['35','x','32','&divide;','14','=','80']]
 
 helpshowtable(0)
 </script>
