@@ -726,7 +726,7 @@ documentwrite('<div id="numberselect'+((3*i)+j)+'" style="position:absolute;left
 
 
 var theoperators=['+', '-', '*', '/']
-var thedisplayoperators=['+', '-', 'x', '÷']
+var thedisplayoperators=['+', '-', 'x', '&divide;']
 var oppositions=[[6,1],[6,3],[1,6],[3,6]]
 var someleft
 var someright
@@ -740,7 +740,7 @@ documentwrite('<td><table border=1 cellpadding=0 cellspacing=0 width=100% height
 documentwrite('<td><div id="operatorselect0" style="background-color:cyan"><table border=1 cellpadding=0 cellspacing=0 width=100% height='+Math.floor(scalef*20)+'px><tr><td style="text-align:center;font-size:'+Math.floor(revisedscalef*12)+'px;font-weight:bold;width:'+Math.floor(scalef*15)+'px" onClick="selectoperator(0)">+</td></tr></table></div></td>')
 documentwrite('<td><div id="operatorselect1" style="background-color:cyan"><table border=1 cellpadding=0 cellspacing=0 width=100% height='+Math.floor(scalef*20)+'px><tr><td style="text-align:center;font-size:'+Math.floor(revisedscalef*12)+'px;font-weight:bold;width:'+Math.floor(scalef*15)+'px" onClick="selectoperator(1)">-</td></tr></table></div></td>')
 documentwrite('<td><div id="operatorselect2" style="background-color:cyan"><table border=1 cellpadding=0 cellspacing=0 width=100% height='+Math.floor(scalef*20)+'px><tr><td style="text-align:center;font-size:'+Math.floor(revisedscalef*12)+'px;font-weight:bold;width:'+Math.floor(scalef*15)+'px" onClick="selectoperator(2)">x</td></tr></table></div></td>')
-documentwrite('<td><div id="operatorselect3" style="background-color:cyan"><table border=1 cellpadding=0 cellspacing=0 width=100% height='+Math.floor(scalef*20)+'px><tr><td style="text-align:center;font-size:'+Math.floor(revisedscalef*12)+'px;font-weight:bold;width:'+Math.floor(scalef*15)+'px" onClick="selectoperator(3)">÷</td></tr></table></div></td>')
+documentwrite('<td><div id="operatorselect3" style="background-color:cyan"><table border=1 cellpadding=0 cellspacing=0 width=100% height='+Math.floor(scalef*20)+'px><tr><td style="text-align:center;font-size:'+Math.floor(revisedscalef*12)+'px;font-weight:bold;width:'+Math.floor(scalef*15)+'px" onClick="selectoperator(3)">&divide;</td></tr></table></div></td>')
 documentwrite('<td><table border=1 cellpadding=0 cellspacing=0 width=100% height='+Math.floor(scalef*20)+'px><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="shownumberskull()">Solve</td></tr></table></td>')
 documentwrite('<td><table border=1 cellpadding=0 cellspacing=0 width=100% height='+Math.floor(scalef*20)+'px><tr><td style="background-image:url(buttonbg.jpg);text-align:center" onClick="displaydiv(1)">More</td></tr></table></td>')
 documentwrite('</tr></table></td></tr>')
