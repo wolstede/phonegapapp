@@ -1,0 +1,1594 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>4-in-a-line</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='4inaline'
+
+var interruptsrequired=0
+
+var scalef
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">4-in-a-line</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:lemonchiffon"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Begin
+// All code copyright of TopAccolades Limited
+
+
+
+function runonload()
+{
+begingame('red')
+}
+
+var delayedstartcolour
+function showad1(somecolour)
+{
+delayedstartcolour=somecolour
+showad()
+}
+
+function continueafterad()
+{
+begingame(delayedstartcolour)
+}
+
+var pause=null
+var playstatus="play"
+var mouseinput=true
+var nextplaytype="computer"
+var playtype="computer"
+var pause=null
+
+var currentcolour="red"
+var startingcolour="red"
+var initialboardstatus = [
+["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+["empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+["empty", "empty", "empty", "empty", "empty", "empty", "empty"]
+]
+
+var boardstatus = initialboardstatus
+	
+function computerplay()
+{
+playtype="computer"
+
+}
+
+function opposite(colour)
+{
+if (colour == "red") {return "yellow"} else {return "red"}
+}
+
+function imgclick(col)
+{
+if (runcheck()==true)
+{
+if (playstatus == "play" && mouseinput==true)
+{
+mouseinput=false
+var row=-1
+for (var i=5; i>-1; i--)
+{
+if (boardstatus[i][col] =="empty") {row=i;break}
+}
+if (row > -1) 
+{
+var presentcolour=currentcolour
+document.images['counter'+row+col].src=currentcolour+'.png'
+boardstatus[i][col]=currentcolour
+currentcolour = opposite(currentcolour)
+document.images['nextcounter'].src=currentcolour+'counter.png'
+checkforwin(col, row, presentcolour)
+cleardropimages()
+document.images['drop'+col].src='white.png'
+
+}
+if (playstatus == "play" && playtype=="computer")
+{
+mouseinput=false
+if (pause != null) {clearTimeout(pause)}
+
+pause=setTimeout("makeredmove()", 1)
+
+
+}
+else
+{
+mouseinput=true
+
+}
+}
+}
+}
+
+function dropthedisc(col)
+{
+var presentcolour=currentcolour
+var row=-1
+for (var i=5; i>-1; i--)
+{
+if (boardstatus[i][col] =="empty") {row=i;break}
+}
+document.images['drop'+col].src=currentcolour+'counter.png'
+if (pause != null) {clearTimeout(pause)}
+
+pause=setTimeout("dropdisc("+i+", "+col+", "+row+")", 1000)
+}
+
+function dropdisc(i, col, row)
+{
+document.images['drop'+col].src='white.png'
+document.images['counter'+row+col].src=currentcolour+'.png'
+boardstatus[i][col]=currentcolour
+currentcolour = opposite(currentcolour)
+document.images['nextcounter'].src=currentcolour+'counter.png'
+checkforwin(col, row, opposite(currentcolour))
+cleardropimages()
+if (playstatus == "play")
+{
+mouseinput=true
+}
+// alert(updateSpaceArray('red', boardstatus, copy2Darray(initSpaceArray)))
+
+}
+
+function cleardropimages()
+{
+for (var i=0; i<7; i++)
+{
+document.images['drop'+i].src='white.png'
+}
+}
+
+function makeredmove()
+{
+var cscores=determinecolumnscores("red", boardstatus)
+// alert(cscores)
+var col=determinecolumntodropdown(cscores)
+// alert(col)
+if (col != -1) dropthedisc(col)
+
+
+}
+
+function checkforwin(col, row, presentcolour)
+{
+var won=0
+var winningcounters=[]
+var samecolour11 = samecolourindirection(col, row, presentcolour, 1, 1)
+var samecolour1_1 = samecolourindirection(col, row, presentcolour, 1, -1)
+var samecolour_1_1 = samecolourindirection(col, row, presentcolour, -1, -1)
+var samecolour_11 = samecolourindirection(col, row, presentcolour, -1, 1)
+var samecolour01 = samecolourindirection(col, row, presentcolour, 0, 1)
+var samecolour10 = samecolourindirection(col, row, presentcolour, 1, 0)
+var samecolour0_1 = samecolourindirection(col, row, presentcolour, 0, -1)
+var samecolour_10 = samecolourindirection(col, row, presentcolour, -1, 0)
+if (samecolour11.length+samecolour_1_1.length > 2) {won=1; winningcounters=winningcounters.concat(samecolour11.concat(samecolour_1_1))}
+if (samecolour10.length+samecolour_10.length > 2) {won=1; winningcounters=winningcounters.concat(samecolour10.concat(samecolour_10))}
+if (samecolour01.length+samecolour0_1.length > 2) {won=1; winningcounters=winningcounters.concat(samecolour01.concat(samecolour0_1))}
+if (samecolour1_1.length+samecolour_11.length > 2) {won=1; winningcounters=winningcounters.concat(samecolour1_1.concat(samecolour_11))}
+if (won == 1)
+{
+restartconfirmationrequired=0
+playstatus="stop"
+mouseinput=false
+cleardropimages()
+document.images['nextcounter'].src='white.png'
+
+document.images['counter'+row+col].src='highlight'+presentcolour+'.png'
+
+for (var i=0; i< winningcounters.length; i++)
+
+{
+var winningcounter
+winningcounter=winningcounters[i]
+document.images['counter'+winningcounter[0]+winningcounter[1]].src='highlight'+presentcolour+'.png'
+}
+}
+// next check for end of game but a draw
+var totalempties=0
+for (var col=0; col<7; col++)
+{
+for (var row=0; row<6; row++)
+{
+if (boardstatus[row][col]=="empty") totalempties=totalempties+1
+
+}
+
+}
+if (totalempties==0)
+{
+playstatus="stop"
+mouseinput=false
+cleardropimages()
+document.images['nextcounter'].src='white.png'
+
+}
+}
+
+function samecolourindirection(col, row, colour, y, x)
+{
+var col1=col+y
+var row1=row+x
+var same=[]
+if ((col1<7 && col1>-1) && (row1<6 && row1>-1))
+{if (boardstatus[row1][col1] == colour)
+{
+
+same = [[row1, col1]].concat(samecolourindirection(col1, row1, colour, y, x))
+}
+}
+
+return same
+}
+
+
+function showcurrentcolour(col)
+{
+if (mouseinput==true)
+document.images['drop'+col].src=currentcolour+'counter.png'
+}
+
+function showwhite(col)
+{
+if (mouseinput==true)
+document.images['drop'+col].src='white.png'
+}
+
+function changegametype(ptype)
+{
+nextplaytype=ptype
+var oppptype='person'
+if (ptype=='person') {oppptype='computer'}
+
+document.getElementById('playcomputer').style.backgroundColor="white"
+
+document.getElementById('playperson').style.backgroundColor="white"
+document.getElementById('play'+ptype).style.backgroundColor="limegreen"
+
+}
+
+function begingame(colour)
+{
+restartconfirmationrequired=1
+startgame(colour, nextplaytype)
+
+}
+
+function startgame(colour, ptype)
+{
+
+playtype=ptype
+startingcolour=colour
+if (ptype=="computer" && colour == "red") 
+{mouseinput=false}
+else
+{mouseinput=true}
+for (var col=0; col<7; col++)
+{
+document.images['drop'+col].src="white.png"
+
+for (var row=0; row<6; row++)
+{
+boardstatus[row][col]="empty"
+document.images['counter'+row+col].src="empty.png"
+}
+
+}
+
+playstatus="play"
+currentcolour=colour
+document.images['nextcounter'].src=colour+'counter.png'
+if (playtype=="computer" && colour == "red")
+{
+mouseinput=false
+makeredmove()
+
+}
+}
+
+
+
+// linesArray is a list of the indices of all lines on the board
+var linesArray = [[[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6]], [[1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6]], [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6]], [[3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5], [3, 6]], [[4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5], [4, 6]], [[5, 0], [5, 1], [5, 2], [5, 3], [5, 4], [5, 5], [5, 6]], 
+[[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]], [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1]], [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2]], [[0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3]], [[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4]], [[0, 5], [1, 5], [2, 5], [3, 5], [4, 5], [5, 5]], [[0, 6], [1, 6], [2, 6], [3, 6], [4, 6], [5, 6]], 
+[[0, 0]], [[1, 0], [0, 1]], [[2, 0], [1, 1], [0, 2]], [[3, 0], [2, 1], [1, 2], [0, 3]], [[4, 0], [3, 1], [2, 2], [1, 3], [0, 4]], [[5, 0], [4, 1], [3, 2], [2, 3], [1, 4], [0, 5]], [[5, 1], [4, 2], [3, 3], [2, 4], [1, 5], [0, 6]], [[5, 2], [4, 3], [3, 4], [2, 5], [1, 6]], [[5, 3], [4, 4], [3, 5], [2, 6]],  [[5, 4], [4, 5], [3, 6]], [[5, 5], [4, 6]], [[5, 6]], 
+[[5, 0]], [[4, 0], [5, 1]], [[3, 0], [4, 1], [5, 2]], [[2, 0], [3, 1], [4, 2], [5, 3]], [[1, 0], [2, 1], [3, 2], [4, 3], [5, 4]], [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]], [[0, 2], [1, 3], [2, 4], [3, 5], [4, 6]], [[0, 3], [1, 4], [2, 5], [3, 6]],  [[0, 4], [1, 5], [2, 6]], [[0, 5], [1, 6]], [[0, 6]]] 
+
+// set all elements of a SpaceArray to -3 initially (so that a -1 setting override the initial)
+var initSpaceArray = [[-3, -3, -3, -3, -3, -3, -3], [-3, -3, -3, -3, -3, -3, -3], [-3, -3, -3, -3, -3, -3, -3], [-3, -3, -3, -3, -3, -3, -3], [-3, -3, -3, -3, -3, -3, -3], [-3, -3, -3, -3, -3, -3, -3]]
+
+
+
+function updateSpaceArray(colour, LayoutArray, SpaceArray)
+{
+
+for (var i=0; i<linesArray.length; i++)
+{
+updateOneLine(colour, LayoutArray, SpaceArray, linesArray[i])
+
+}
+return SpaceArray
+
+}
+
+var checkgroup=new Array()
+
+function updateOneLine(colour, LayoutArray, SpaceArray, indices)
+{
+if (indices.length < 4) {updateOneGroup(colour, LayoutArray, SpaceArray, indices, -1)}  // too short so update with value =-1
+
+else // 4 or more elements
+{
+
+for (var i=0; i<indices.length-3; i++)
+{
+
+var numcolour=0
+var potential4=1
+var elementColour
+var defaultscore
+checkgroup=[indices[i+0], indices[i+1], indices[i+2], indices[i+3]]
+
+for (var j=0; j<4; j++)
+{
+
+elementColour=LayoutArray[checkgroup[j][0]][checkgroup[j][1]] 
+if (elementColour==colour) {numcolour=numcolour+1}
+else 
+{
+if (elementColour!="empty") {potential4=0}
+} 
+
+}
+
+if (potential4==1) 
+{defaultscore=numcolour}
+else 
+{defaultscore=-1}
+// if it is a potential group of 4, update each element of the group with the number of the colour already in the 4, otherwise set to -1 (not part of four)
+updateOneGroup(colour, LayoutArray, SpaceArray, checkgroup, defaultscore)
+
+}
+
+}
+
+}
+
+
+function updateOneGroup(colour, LayoutArray, SpaceArray, indices, defaultscore)
+{
+for (var i=0; i<indices.length; i++)
+{
+var row=indices[i][0]
+var col=indices[i][1]
+if (LayoutArray[row][col] == "empty")
+{
+var elementscore=defaultscore
+if (defaultscore == 3 && wouldbethiscolour(colour, row) == true) elementscore=3.5; // if an empty element and one of a group of 3, score it as 3.5 if the element woul be filled by this colour of this was the last column to be filled
+if (elementscore>SpaceArray[row][col]) 
+{
+SpaceArray[row][col]=elementscore
+}
+}
+else
+{
+SpaceArray[row][col]=-2
+}
+}
+}
+// wouldbethiscolour checks whether an element in a given row would end up being the named colour if this was the last column to be filled in, i.e. a final column trap.
+// These spaces are valuable because if you get a three and leave this blank, you know it will be yours at the end of the game if it continues this long.
+function wouldbethiscolour(colour, row)
+{
+var wouldbecolour = true
+if (startingcolour == colour && row % 2 == 0) wouldbecolour=false
+if (startingcolour != colour && row % 2 == 1) wouldbecolour=false
+return wouldbecolour
+}
+
+function determinecolumntodropdown(ScoreArray)
+{
+var dropcol=-1
+var avoidance=[]
+for (var col=0; col<7; col++)
+ {
+ if (ScoreArray[0][col]==3000) dropcol=col 
+ }
+if (dropcol>-1)  return dropcol  // always go for a win first
+else
+{
+dropcol=-1
+for (var col=0; col<7; col++)
+ {
+ if (ScoreArray[1][col]==3000) dropcol=col 
+ }
+if (dropcol>-1)  return dropcol  // then prevent opponent from winning directly
+else
+{
+var wouldgivegameaway=0
+var numtoavoid=0
+for (var col=0; col<7; col++)
+ {
+ if (ScoreArray[2][col]==3000) {wouldgivegameaway=1; avoidance[numtoavoid]=col; numtoavoid=numtoavoid+1}
+ }
+// determine which columns would give game away to opponent directly: avoidance list
+
+dropcol=-1
+for (var col=0; col<7; col++)
+ {
+ if (ScoreArray[0][col]==2800 && ismember(col, avoidance) == false ) dropcol=col 
+ }
+if (dropcol>-1)  return dropcol  // then go for any space that would give you a sure win next time - as long as it doesn't give game away next go
+else
+{
+dropcol=-1
+for (var col=0; col<7; col++)
+ {
+ if (ScoreArray[1][col]==2800 && ismember(col, avoidance) == false ) dropcol=col 
+ }
+if (dropcol>-1)  return dropcol  // then go for any space that prevents your opponent getting an open 3 (sure win next time) - as long as it doesn't give game away next go
+else
+{
+// determine the best score: what you get minus what you give away by going there
+wouldgivegameaway=0
+numtoavoid=0
+var avoidancenextgo=[]
+for (var col=0; col<7; col++)
+ {
+ if (ScoreArray[2][col]==2800) {wouldgivegameaway=1; avoidancenextgo[numtoavoid]=col; numtoavoid=numtoavoid+1}
+ }
+// determine which columns would give game away to opponent directly or next go: avoidancenextgo list
+
+
+bestscore=-20000
+dropcol=-1
+var tempdiff=0
+var finalcolumnscoring = new Array()
+for (var col=0; col<7; col++)
+ {
+ if (ScoreArray[0][col] != -1)
+ {
+ tempdiff=ScoreArray[0][col]-ScoreArray[2][col]
+ if (ismember(col, avoidance)== true) tempdiff=tempdiff-10000  // go heavily weighted against those that give game away this time 
+ if (ismember(col, avoidancenextgo)== true) tempdiff=tempdiff-5000  // go heavily weighted (but less than above) against those that give game away next time
+ if (tempdiff>bestscore) {bestscore=tempdiff; dropcol=col} 
+ finalcolumnscoring[col]=tempdiff
+ }
+ else 
+ {
+ finalcolumnscoring[col]='full'
+ }
+ }
+
+
+return dropcol
+
+}
+}
+}
+}
+}
+
+function ismember(item, alist)
+{
+checkval=false
+for (var i=0; i<alist.length; i++)
+{
+if (item == alist[i]) checkval=true
+}
+return checkval
+}
+
+function determinecolumnscores(colour, LayoutArray)
+{
+var OwnSpaceArray=copy2Darray(initSpaceArray)
+var OpponentSpaceArray=copy2Darray(initSpaceArray)
+updateSpaceArray(colour, LayoutArray, OwnSpaceArray)
+updateSpaceArray(opposite(colour), LayoutArray, OpponentSpaceArray)
+var nextpiecearray=nextpiecesincolumns(LayoutArray)
+var ownscorearray=scoresforcolumns(colour, LayoutArray, OwnSpaceArray, nextpiecearray)
+var opponentscorearray=scoresforcolumns(opposite(colour), LayoutArray, OpponentSpaceArray, nextpiecearray)
+var giveopponentscorearray=determinescoresgiventoopponent(colour, LayoutArray)
+
+
+return [ ownscorearray, opponentscorearray, giveopponentscorearray]
+}
+
+function determinescoresgiventoopponent(colour, LayoutArray)
+{
+var temparray=[-1, -1, -1, -1, -1, -1, -1]
+for (var col=0; col<7; col++)
+{
+
+temparray[col]=giveopponentscoreforonecolumn(col, colour, LayoutArray)
+}
+return temparray
+}
+
+function giveopponentscoreforonecolumn(col, colour, LayoutArray)
+{
+
+var row=-1
+
+for (var i=0; i<6; i++)
+{
+if (LayoutArray[i][col] == "empty")
+row=i
+}
+// above returns row of bottom empty space in column
+if (row==-1) return -1
+else
+{
+var newLayoutArray=copy2Darray(LayoutArray)
+newLayoutArray[row][col]=colour // first assume this colour has been dropped in the column
+// then determine the scores the opponent would get by dropping down each of the columns
+var newSpaceArray=copy2Darray(initSpaceArray)
+updateSpaceArray(opposite(colour), newLayoutArray, newSpaceArray)
+var nextpiecearray=nextpiecesincolumns(newLayoutArray)
+var oppscorearray = new Array()
+oppscorearray = scoresforcolumns(opposite(colour), newLayoutArray, newSpaceArray, nextpiecearray)
+// and return the highest score as the score for this column - this is the worst you're giving away
+
+var oppmaxscore = -1
+for (var j=0; j<7; j++)
+{
+if (oppscorearray[j]>oppmaxscore) oppmaxscore = oppscorearray[j]
+}
+return oppmaxscore
+}
+}
+
+function scoresforcolumns(colour, LayoutArray, ASpaceArray, nextpiecearray)
+{
+var temparray=[-1, -1, -1, -1, -1, -1, -1]
+var SpaceArrayStats=summaryspacestats(ASpaceArray)
+for (var col=0; col<7; col++)
+{
+
+temparray[col]=scoreforonecolumn(nextpiecearray[col], col, colour, LayoutArray, ASpaceArray, SpaceArrayStats)
+}
+
+
+return temparray
+}
+
+function summaryspacestats(ASpaceArray)
+{
+
+var num35=0
+var num3=0
+var num2=0
+var num1=0
+var num3vp=0  // number of vertical pairs of 3 or 3.5s
+var AScore
+for (var col=0; col<7; col++)
+{
+for (var row=0; row<6; row++)
+{
+AScore = ASpaceArray[row][col]
+if ( AScore == 3.5) num35=num35+1
+else 
+if (AScore == 3) num3=num3+1
+else if (AScore == 2) num2=num2+1
+else if (AScore == 1) num1=num1+1
+}
+for (var row=0; row<5; row++)
+{
+if (ASpaceArray[row][col] >= 3 && ASpaceArray[row+1][col] >= 3) num3vp=num3vp+1
+}
+}
+return [num35, num3, num2, num1, num3vp]
+}
+
+function scoreforonecolumn(row, col, colour, LayoutArray, ASpaceArray, SpaceArrayStats)
+{
+var tempscore=0
+
+if (row==-1) tempscore=-1 // lowestscore - means can't physically drop one down
+else if (ASpaceArray[row][col]>=3) 
+tempscore=3000 // highest score - go for win
+else
+{
+
+var newLayoutArray=copy2Darray(LayoutArray)
+newLayoutArray[row][col]=colour // test what happens when you drop colour down this column
+var newSpaceArray=copy2Darray(initSpaceArray)
+
+updateSpaceArray(colour, newLayoutArray, newSpaceArray)
+
+// first look at the next blank spaces in each column and count up how many are members of a group of 3 - potential winner for you next time.
+
+var nextpiecearray=nextpiecesincolumns(newLayoutArray)
+newnum3s = 0
+var newrow
+for (var i=0; i<7; i++)
+{
+newrow=nextpiecearray[i]
+if (newrow !=-1)
+{
+if (newSpaceArray[newrow][i] >=3) newnum3s=newnum3s+1
+}
+}  // end for
+
+// then check to see whether you end up with two potential winning spaces next time - unbeatable.
+
+if (newnum3s >=2)  tempscore=2800 // if this creates 2 spaces that you can win next time, second best score of 2800
+
+else 
+if (newnum3s == 1 && (row>1 && (newSpaceArray[row-1][col]>=3 && newSpaceArray[row-2][col]>=3))) tempscore=2800
+// if there is a 3 directly above new disc, and there is another 3 above this (vertical pair trap), also unbeatable so score = 2800
+
+
+else // now down to checking for newly created positions
+{
+
+var newSpaceArrayStats=summaryspacestats(newSpaceArray)
+
+// next compare the changes in number of 3.5s, 3s, 2s and 1s and 3vps
+var delta35=newSpaceArrayStats[0]-SpaceArrayStats[0]; if (delta35<0) delta35=0
+var delta3=newSpaceArrayStats[1]-SpaceArrayStats[1]; if (delta3<0) delta3=0
+var delta2=newSpaceArrayStats[2]-SpaceArrayStats[2]; if (delta2<0) delta2=0
+var delta1=newSpaceArrayStats[3]-SpaceArrayStats[3]; if (delta1<0) delta1=0
+var delta3vp=newSpaceArrayStats[4]-SpaceArrayStats[4]; if (delta3vp > 0) delta3vp=1
+tempscore=delta35*500+delta3*410+delta2*25+delta1*1+delta3vp*401  
+
+// Finally, some scoring that will help to avoid blocking your traps and to spring your own traps.
+var num3vp=0
+for (var k=0; k<5; k++)
+{
+if (newSpaceArray[k][col]>=3 && newSpaceArray[k+1][col]>=3) num3vp=num3vp+1
+}
+// num3vp is number of own colour vertical pairs above space
+
+// if there's a already vertical trap above (2 3s vertically adjacent), then increase score by 251 as you want to move towards springing the trap.  
+if (num3vp>0) tempscore=tempscore+251
+
+if (row>0)
+{
+if (newSpaceArray[row-1][col]==3) tempscore=tempscore-149
+if (newSpaceArray[row-1][col]==3.5) tempscore=tempscore-299
+// if space above the blank space you're considering would make a 4 for you, avoid filling this space as it will let your opponent block it.
+// Weight more heavily for final column traps, which you really want to leave till the end. 
+
+}
+
+// note: scoring system always gives preference to the creation of the higher number groups
+}
+} // end else
+
+return tempscore
+} // end func
+
+
+// returns a list of the next row (where pieces will land) in each column (-1 indicates the column's full)
+function nextpiecesincolumns(LayoutArray)
+{
+var temparray=[-1, -1, -1, -1, -1, -1, -1]
+for (var col=0; col<7; col++)
+{
+for (var row=0; row<6; row++)
+{
+if (LayoutArray[row][col] == "empty")
+temparray[col]=row
+}
+}
+
+return temparray
+
+}
+/*
+*/
+
+
+function copy1Darray(Orig)
+{
+var Temp = new Array()
+for (var i = 0; i<Orig.length; i++)
+{
+Temp[i]=Orig[i]
+}
+return Temp
+}
+
+function copy2Darray(Orig)
+{
+var Temp1 = new Array()
+for (var i = 0; i<Orig.length; i++)
+{
+var Temp2 = new Array()
+for (var j = 0; j<Orig[i].length; j++)
+{
+Temp2[j]=Orig[i][j]
+}
+Temp1[i]=Temp2
+}
+return Temp1
+}
+
+function copy3Darray(Orig)
+{
+var Temp1 = new Array()
+for (var i = 0; i<Orig.length; i++)
+{
+var Temp2 = new Array()
+for (var j = 0; j<Orig[i].length; j++)
+{
+var Temp3 = new Array()
+for (var k = 0; k<Orig[i][j].length; k++)
+{
+Temp3[k]=Orig[i][j][k]
+}
+Temp2[j]=Temp3
+}
+Temp1[i]=Temp2
+}
+return Temp1
+}
+/*
+*/
+
+var RedSpaceArray = new Array([0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0])
+var YellowSpaceArray = new Array([0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0])
+
+
+
+//  End -->
+</script>
+
+
+
+<form name="playform">
+<div id="maingame" style="display:inline">
+
+
+
+
+<script language="Javascript">
+documentwrite('<div style="width:100%;height:'+Math.floor(scalef*2)+'px;display:block"></div>')
+
+documentwrite('<center><table border=0 cellspacing=0 cellpadding=0 align=center><tr><td colspan=2></td><td></td><td ><img style="display:block" width="'+Math.floor(scalef*25)+'" height="'+Math.floor(scalef*25)+'" src="redcounter.png" name="nextcounter"></td><td></td><td colspan=2></td></tr><tr>')
+for (var i=0; i<7; i++)
+{
+documentwrite('<td ><img style="display:block" width="'+Math.floor(scalef*25)+'" height="'+Math.floor(scalef*25)+'" src="white.png" name="drop'+i+'" onMouseover="showcurrentcolour('+i+')" onMouseout="showwhite('+i+')" onClick="imgclick('+i+')"></td>')
+}
+
+
+for (var j=0; j<6; j++)
+{
+documentwrite('<tr>')
+for (var i=0; i<7; i++)
+{
+documentwrite('<td ><img style="display:block" width="'+Math.floor(scalef*25)+'" height="'+Math.floor(scalef*25)+'" src="empty.png" name="counter'+j+''+i+'" onClick="imgclick('+i+')"></td>')
+}
+
+}
+
+documentwrite('<tr><td colspan=7 style="text-align:center;font-weight:bold">New game</td></tr><tr><td colspan=2><table border=1 cellpadding=0 cellspacing=0 height=100% width=100%><tr><td id="playcomputer" style="background-color:limegreen;text-align:center"  onClick="changegametype(\'computer\')" >System</td></tr></table></td><td colspan=3 style="text-align:center"><img style="display:inline" src="redcounter.png" border=0 onClick="showad1(\'red\')" width="'+Math.floor(scalef*25)+'" height="'+Math.floor(scalef*25)+'"> &nbsp; <img style="display:inline" src="yellowcounter.png" border=0 onClick="showad1(\'yellow\')" width="'+Math.floor(scalef*25)+'" height="'+Math.floor(scalef*25)+'"></td><td colspan=2><table border=1 cellpadding=0 cellspacing=0 height=100% width=100%><tr><td id="playperson" style="background-color:white;text-align:center" onClick="changegametype(\'person\')" >Person</td></tr></table></td></tr></table></center>')
+</script>
+</div>
+</form>
+</div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#person">Playing a person</a><br><a href="#system">Playing the system</a><br><a href="#newgame">New game</a><br><a href="#opponent">Changing your opponent</a><br><a href="#terms">Terms of use</a><br><br>')}
+</script>
+<a name="intro"></a>4-in-a-line is a game for two players or for one player playing against the system.
+<br><br>The 4-in-a-line 'board' represents a 7x6 vertical frame, with slots along the
+top, down which are dropped counters into the columns of the frame.&nbsp; When a counter is dropped, 
+it sits on top of any counters already in the column.
+
+
+<br>
+<div align="center">
+  <center>
+  <table border=0 cellspacing=0 cellpadding=0 align=center>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+     </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<br>
+
+<br>Each player plays with different coloured counters: one player with yellow,
+the other with red.
+Players take turns to drop one counter of their colour down a slot into any
+column that is not yet full.&nbsp;&nbsp;&nbsp;
+<br><br>The objective of the game is to be the first to achieve four (or more)
+counters of their colour connected together in a line, either vertically,
+horizontally or diagonally.
+<br>
+
+
+<br>When 4-in-a-line is first opened, a new game starts, playing against the system, in which the system (playing red) goes first.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+
+<h1><a name="person"></a>Playing the game - against another person</h1>
+To play another person, you first need to press the <span style="font-style:italic">Person</span> box at the bottom right.  This turns its background green (to show that it is now selected) and the background of the <span style="font-style:italic">System</span> box white.
+<br>
+
+<br>To begin a new game, press either the red counter or yellow counter below the board, depending on who is to go first.
+<br><br>Above the frame is a counter showing which
+colour is to be dropped next. The player whose turn it is presses just above or in the column into which the counter is to be dropped. 
+<br><br>When a winning position has been achieved, the counters forming the winning
+line (or lines if several were achieved at once) are highlighted, and no more
+moves are possible.&nbsp;
+<br>
+
+<br>So, given the following position, with yellow about to drop a counter into the third column from the left:
+<div align="center">
+  <center>
+  <table border=0 cellspacing=0 cellpadding=0 align=center>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+     </tr>
+  </table>
+  </center>
+</div>
+<br>
+
+<br>you would see yellow's winning position highlighted as follows (two lines of
+four achieved simultaneously).
+<br><br>
+<div align="center">
+  <center>
+  <table border=0 cellspacing=0 cellpadding=0 align=center>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+     <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script><h1><a name="system"></a>Playing the game - against the system</h1>
+By default, games are played against the system.  However, if you've played a person and then wish to play against the system, you need to press the <span style="font-style:italic">System</span> box, which will turn its background green.  
+
+<br>
+
+<br>To begin a new game, press either the red counter or yellow counter below the board, depending on who is to go first.  The system always plays red.
+
+<br><br>The method of play is the same as for the two-player game, except that the system will make red's move.  
+<br>
+
+<br>Below are some hints about the system's strategy and tactics.  But, first, here are some definitions of terms that are used:
+
+<h2>Vertical trap</h2>
+A vertical trap is a position where one colour has two potential lines of 4, with one blank in each, where these two blanks are vertically adjacent.  It is a trap because if 
+the opponent drops a counter to block the first 4-in-a-line, this then opens up the one above for the player to win.
+<br>
+
+<br>Below is an example of a vertical trap.  In the central column, both the 2nd and the 3rd row up would complete a 4-in-a-line for yellow (lines highlighted), so if yellow were to drop a counter down this column, red could block the first but then yellow would win with the next.
+
+<div align="center">
+  <center>
+  <table border=0 cellspacing=0 cellpadding=0 align=center>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="white.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+    <tr>
+
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="empty.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="highlightyellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="yellow.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+      <td><script language="Javascript">documentwrite('<img style="display:block" border="0" src="red.png" width="'+Math.floor(scalef*20)+'" height="'+Math.floor(scalef*20)+'">')</script></td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<h2>Final column trap</h2>
+A final column trap is a position in which there is a potential 4-in-a-line with one blank, and the blank is 
+in a position such that if the column it is in were to be the last column not yet completely full
+(when the game is coming to an end), the blank would be filled by the colour that would complete the 4-in-a-line.  This is a useful
+position to have in the background - just in case the game is not won earlier on.
+
+<h2>The system's strategy and tactics</h2>
+
+First, of course, it looks to see whether it can make 4-in-a-line with the next counter or whether it needs to prevent yellow from doing so.
+<br>
+
+<br>Then it looks to see whether it can drop a counter that will create an unbeatable position - either because red then has two ways of making 4-in-a-line, or because there is a red 'vertical trap' just above the counter to be dropped.
+Of course, it also checks to make sure that dropping this counter wouldn't immediately let yellow win the game.
+<br>
+
+<br>Next, it looks to see whether yellow is about to create an unbeatable position, but dropping a red counter would prevent this.
+<br>
+
+<br>Lastly, it tries to create good positions, while giving least away to yellow:
+
+<ul>
+<li>It tries to create potential lines of 4 with 3 counters in them - weighted towards creating vertical traps and final column traps.</li>
+<li>If these aren't possible, it tries to create potential lines of 4 with 2 counters or 1 counter in them</li>
+</ul>
+
+
+When evaluating these positions, it also has a tendency towards filling columns containing one of its vertical traps, but tries to avoid putting a counter in the blank below one of its final column traps, as this would allow yellow to block the trap early.
+
+<br><br>During all this positioning, it tries to avoid giving the game to yellow, of course.
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script><h1><a name="newgame"></a>New Game</h1>
+Start a new game at any time by pressing the red or yellow counter below the board.
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script><h1><a name="opponent"></a>Changing opponent</h1>
+To change your opponent from the system to a person, or vice versa, press either System or Person - as you wish. 
+<br><br>Please note that the setting you choose here comes into force only when you start a new game by pressing the red or yellow counter; there is no impact on any game already underway.
+
+
+
+
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 3.0 (20170323) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=1
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.in-the-whole.world</span>',
+'<span style="color:violet">sexiest-lover.in-the.land</span>',
+'<span style="color:violet">best-husband.in-the-whole.world</span>',
+'<span style="color:violet">best-lover.in-the.land</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-dad.in-the-whole.world</span>',
+'<span style="color:violet">best-mother.in-the.land</span>',
+'<span style="color:violet">best-in-the.world</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith-best-wife.in-the.land</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-in-the.world</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Try our great, free logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy against the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our free Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our free <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Try our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>

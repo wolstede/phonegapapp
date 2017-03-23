@@ -1,0 +1,852 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title>15 Puzzle</title>
+<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+<script language="Javascript">
+
+
+function changetextvalue(someitem, someval)
+{
+document.getElementById(someitem).innerHTML = someval
+}
+
+function documentwrite(someitem)
+{
+document.write(someitem)
+}
+
+function changepage(somepage)
+{
+location.href='../'+somepage+'/default.htm'
+}
+
+
+
+var combinationattributes=[0,30]
+
+var cfpackage='compactfun'
+
+
+var thiscfpage='15puzzle'
+
+var interruptsrequired=0
+
+var scalef
+var screenwidth=window.innerWidth
+var screenheight=window.innerHeight
+
+var overallwidthscale=screenwidth/190
+var overallheightscale=screenheight/270
+if (overallwidthscale<overallheightscale) {scalef=Math.floor(10*overallwidthscale)/10} else {scalef=Math.floor(10*overallheightscale)/10}
+if (scalef<1.0) {scalef=1.0}
+
+var heightspacer=(Math.floor(screenheight-Math.floor(scalef*270))/2)-2
+if (heightspacer<0) {heightspacer=0}
+
+documentwrite('<style type="text/css">      \nbody {color: black; background-color: white; font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left}      \nh1 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: bold; font-style: normal; text-align: left} \nh2 {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: italic; text-align: left} \np {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \nli {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntable {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; text-align: left} \ntd {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \ntextarea {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; overflow:hidden;} \ninput {font-family: sans-serif; font-size: '+(scalef*10)+'px; font-weight: normal; font-style: normal; } \n * {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}\n</style> \n')
+
+
+
+</script>
+
+</head>
+<body onLoad="showstartad()" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 style="background-color:black; width:100%; height:100%"><script language="Javascript">
+
+
+function showpicturesfordownloading()
+{
+
+if (document.getElementById('theimages').style.display == 'none')
+{document.getElementById('theimages').style.display = 'inline'}
+else
+{document.getElementById('theimages').style.display = 'none'}
+
+
+
+}
+
+
+var runcheckvalue='ok'
+function runcheck()
+{
+return true
+}
+
+var helpdisplayed=0
+function togglehelp()
+{
+if (document.getElementById('addivtotal').style.display=='none' && document.getElementById('therestart').style.display=='none')
+{
+helpdisplayed=1-helpdisplayed
+if (helpdisplayed==1) {document.getElementById('help').style.display = 'inline'; document.getElementById('thegame').style.display = 'none'}
+if (helpdisplayed==0) {document.getElementById('help').style.display = 'none'; document.getElementById('thegame').style.display = 'inline'}
+handleclickproblem()
+}
+}
+</script><div style="width:100%; height:100%">
+<script language="Javascript">documentwrite('<table border=0 width=100% cellspacing=0 cellpadding=0 style="text-align: left" align=center><tr><td valign=bottom style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white; vertical-align: bottom; background-image:url(buttonbg.jpg)"><a name="Top"></a><table border=0 cellpadding=2 width=100% height='+Math.floor(scalef*14)+' cellspacing=0 valign=middle ><tr><td style="text-align: left; font-weight: bold; font-size: '+Math.floor(scalef*12)+'px; color: white">15 Puzzle</td><td valign=middle align=center width='+Math.floor(scalef*20)+'></td><td style="width:'+Math.floor(scalef*30)+'px;font-size:'+Math.floor(scalef*12)+'px;text-align:center;font-weight:bold;color:black"  onClick="togglehelp()">?</td></tr></table>')</script></td></tr><tr><td style="text-align: left; font-weight: normal; color: black; vertical-align: top;background-color:forestgreen"><div id="therestart" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table cellspacing=0 cellpadding=0 border=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+
+<script language="Javascript">
+var restartconfirmationrequired=0
+var adfrequency=1
+
+window.onbeforeunload=checkforunload;
+
+function checkforunload()
+{
+if (restartconfirmationrequired==1) 
+{
+return "Confirmation of leaving page"
+}
+
+}
+
+function displayrestartconfirmation()
+{
+document.getElementById('thegame').style.display = 'none'; 
+document.getElementById('therestart').style.display = 'inline'; 
+handleclickproblem()
+}
+
+function cancelrestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+}
+
+function continuerestartconfirmation()
+{
+document.getElementById('therestart').style.display = 'none'; 
+document.getElementById('thegame').style.display = 'inline';  
+handleclickproblem()
+showad2() 
+}
+
+</script>
+
+<center><br><br>
+<script language="Javascript">documentwrite('<table border=1 width='+Math.floor(scalef*150)+' style="background-color:silver;vertical-align:middle" valign=middle><tr><td align=center><br><br><img width='+Math.floor(scalef*36)+' src="cflogo.png"><br><br>Please confirm that you wish to restart.<br><br><br><table border=0 align=center><tr><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(redgradient.jpg);text-align:center" onClick="cancelrestartconfirmation()">Cancel</td></tr></table></td><td width='+Math.floor(scalef*20)+'></td><td><table border=1 cellpadding=0 cellspacing=0 style="align:left" align=left><tr><td style="width:'+Math.floor(scalef*60)+'px;background-image:url(greengradient.jpg);text-align:center" onClick="continuerestartconfirmation()">Confirm</td></tr></table></td></tr></table><br><br></td></tr></table></center>')</script>
+
+
+
+</div></div></td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="thegame" style="width:100%;display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=top style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Begin
+// All code copyright of TopAccolades Limited
+
+var playedbefore=0
+function playconditionally()
+{
+if (playedbefore==0)
+{
+playedbefore=1
+shuffle()
+}
+else
+{
+showad()
+}
+}
+
+function continueafterad()
+{
+shuffle()
+}
+
+function runonload()
+{
+
+}
+
+var initiallayout=new Array();
+initiallayout = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
+var currentlayout = new Array();
+currentlayout=initiallayout;
+var blankpos=new Array();
+blankpos=[3, 3];  // [row, col]
+var posArray = new Array()
+
+function imagefor(somenum)
+{
+var someimage
+if (somenum<16)
+{
+someimage='<table border=1 cellpadding=0 ><tr><td style="width:'+Math.floor(scalef*36)+'px;height:'+Math.floor(scalef*36)+'px;background-color:purple;color:white;font-size:'+Math.floor(scalef*20)+'px;text-align:center" valign=middle>'+somenum+'</td></tr></table>'
+}
+else
+{
+someimage=''
+}
+return someimage
+}
+
+function initialize()
+{
+var nth
+for (r = 0; r < 4; r++) {
+document.write('<tr>');
+for (c = 0; c < 4; c++) {
+nth = ((4*r)+c)+1;
+document.write('<td align="center">');
+posArray[nth-1] = ['pos'+ nth, r, c];
+document.write('<div id="pos'+nth+'"   onClick="usermove(' + "'pos" + nth + "')" + '">'+imagefor(nth)+'</div>')
+document.write('</td>');
+}
+document.write('</tr>');
+}
+
+}
+
+function coordsOf(Pos)
+{
+
+var i
+var coords=new Array()
+for (i=0; i<16; i++)
+{
+
+if (posArray[i][0] == Pos)
+{
+
+coords = [posArray[i][1], posArray[i][2]]
+}
+
+
+}
+return coords
+}
+
+function usermove(Pos) 
+{
+if (runcheck()==true)
+{
+var coords = coordsOf(Pos)
+
+var row = coords[0]
+var col = coords[1]
+var validity = 'invalid'
+var choice
+var rowcol
+if (row == blankpos[0]) 
+{validity = 'valid'; 
+rowcol=0, 
+choice = col+1
+if (blankpos[1] < col) {choice = choice - 1}
+}
+if (col == blankpos[1]) 
+{validity = 'valid'; 
+rowcol=1, 
+choice = row+1
+if (blankpos[0] < row) {choice = choice - 1}
+}
+if (row == blankpos[0] && col == blankpos[1]) {validity = 'invalid'}
+if (validity == 'valid')
+{
+
+makeAMove2(rowcol, choice)
+displayBoard()
+}
+}
+}
+
+function displayBoard()
+{
+var i
+var name
+var r
+var c
+var num
+for (i=0; i<16; i++)
+{
+name = posArray[i][0]
+r = posArray[i][1]
+c = posArray[i][2]
+num = currentlayout[r][c]
+changetextvalue(name, imagefor(num))
+}
+}
+    
+
+
+function shuffle() {
+var i
+for (i = 0; i < 150; i++) {
+
+makeAMove()
+} 
+displayBoard()
+}
+
+function randomnumber(num) {
+// returns a random number from 1 to num
+var ran=Math.round(Math.random()*num)
+if (ran == 0) {ran = num}  // ran initially 0 to num - but 0 and num have half the probability of the other numbers
+return ran
+}
+
+function makeAMove() 
+{
+var rowcol=Math.round(Math.random()) // returns 0 or 1 to represent row or col
+var choice=randomnumber(3) // randomly select one of the non-blank spaces in a row or column containing blank
+makeAMove2(rowcol, choice)
+}
+
+function makeAMove2(rowcol, choice)
+{
+
+var rowid
+var colid
+var piecetomove = new Array();
+var currentrowcol = new Array();
+var shuffledrowcol = new Array();
+var i
+if (rowcol == 0) // i.e. a row
+{
+var rowid = blankpos[0]
+currentrowcol = currentlayout[rowid]
+shuffledrowcol = dotheshuffle(currentrowcol, choice)
+var newblankoffset
+
+for (i = 0; i < 4; i++)
+{
+currentlayout[rowid][i] = shuffledrowcol[i]
+if (shuffledrowcol[i] == 16) {newblankoffset=i}
+} // end for
+blankpos = [rowid, newblankoffset]
+} // end if
+
+else // i.e. a column
+{
+
+var colid=blankpos[1]
+currentrowcol = [currentlayout[0][colid], currentlayout[1][colid], currentlayout[2][colid], currentlayout[3][colid]] 
+shuffledrowcol = dotheshuffle(currentrowcol, choice)
+var newblankoffset
+for (i = 0; i < 4; i++)
+{
+currentlayout[i][colid] = shuffledrowcol[i]
+if (shuffledrowcol[i] == 16) {newblankoffset=i}
+} // end for
+blankpos = [newblankoffset, colid]
+} // end else
+} // end func
+
+
+function dotheshuffle(currentrowcol, choice) 
+{
+var choiceoffset
+var direction = 'right'
+var i
+for (i = 0; i < 4 ;i++)
+{
+if (currentrowcol[i] == 16 && choice > 0) {direction = 'left'}
+if (choice == 1) {choiceoffset=i}
+if (currentrowcol[i] != 16) {choice = choice-1}
+} // end for
+// choiceoffset now the position of the selected piece
+if (direction == 'right')
+{
+var started=0
+var finished = 0
+var last
+var next
+for (i = 0; i < 4 ;i++)
+{
+
+if (started == 1 && finished == 0) {next = currentrowcol[i]; currentrowcol[i] = last; last = next}
+if (currentrowcol[i] == 16) {finished = 1 ; currentrowcol[i] = last}
+if (choiceoffset == i) {started = 1; last = currentrowcol[i]; currentrowcol[i] = 16}
+} // end for
+
+} // end if (direction = right)
+
+else // direction = left
+{
+var started=0
+var finished = 0
+var last
+var next
+for (i = 3; i>-1 ;i--)
+{
+
+if (started == 1 && finished == 0) {next = currentrowcol[i]; currentrowcol[i] = last; last = next}
+if (currentrowcol[i] == 16) {finished = 1 ; currentrowcol[i] = last}
+if (choiceoffset == i) {started = 1; last = currentrowcol[i]; currentrowcol[i] = 16}
+} // end for
+
+}
+
+return currentrowcol
+
+} // end func
+
+
+
+//  End -->
+</script>
+
+<script language="javascript">
+documentwrite('<br><table align=center border=0 ><tr><td>')
+documentwrite('<table cellpadding="0" cellspacing="0" border="2" style="background-color: white" align=center>')
+
+initialize()
+
+documentwrite('</table></td></tr>')
+documentwrite('<tr><td height='+Math.floor(scalef*5)+' "></td></tr>')
+documentwrite('<tr><td style="text-align:center">')
+documentwrite('<table border=1 cellpadding=0 cellspacing=0 style="align:center" align=center><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center" onClick="playconditionally()">New</td></tr></table>')
+documentwrite('</td></tr></table>')
+</script>
+</div></div>
+</td></tr></table>
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+</div><div id="addivtotal" style="width:100%; display:none">
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div><table border=0 cellpadding=0 cellspacing=0 style="width:'+Math.floor(scalef*190)+'px;height:'+Math.floor(scalef*240)+'px" align=center>')</script>
+<tr><td valign=middle style="vertical-align:top">
+<div style="position:relative;left:0px;top:0px;height:100%;width:100%">
+<div style="position:absolute;left:0px;top:0px;height:100%;width:100%">
+<script language="Javascript">
+
+
+var startad=1
+
+function showstartad()
+{
+if (interruptsrequired==1 && thiscfpage!='ourproducts' && thiscfpage!=cfpackage )
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+}
+}
+
+
+function showad()
+{
+if (restartconfirmationrequired==1)
+{
+displayrestartconfirmation()
+}
+else
+{
+showad2()
+}
+}
+
+function showad2()
+{
+if (interruptsrequired==1  && thiscfpage!='ourproducts' && thiscfpage!=cfpackage)
+{
+document.getElementById('thegame').style.display = 'none'
+document.getElementById('addivtotal').style.display = 'inline'
+adcountdown(8)
+}
+else
+{
+continueafterad()
+}
+
+}
+
+function showcountdownimages(somenum)
+{
+for (var i=0; i<8; i++)
+{
+document.images['cd'+i].src='unselected.gif'
+}
+for (var i=0; i<somenum; i++)
+{
+document.images['cd'+i].src='selected.gif'
+}
+}
+
+var adtimer=null
+function adcountdown(somenum)
+{
+showcountdownimages(somenum)
+if (somenum==0)
+{
+if (startad==1)
+{
+startad=0
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+runonload()
+
+}
+else
+{
+document.getElementById('addivtotal').style.display = 'none'
+document.getElementById('thegame').style.display = 'inline' 
+handleclickproblem()
+continueafterad()
+}
+}
+else
+{
+if (adtimer != null) {clearTimeout(adtimer)}
+adtimer = setTimeout("adcountdown("+(somenum-1)+")",2000);
+}
+}
+
+
+documentwrite('<div style="height:'+Math.floor(scalef*3)+'px"></div><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*160)+' height='+Math.floor(scalef*100)+'><tr><td align=center><b>Trial Version</b><br><br>The Compact Fun games and puzzles are available without these countdown interrupts and ads in the full <br><b>Compact Fun</b> <br>app, as well as other apps.</td></tr></table>')
+
+
+documentwrite('<br><table style="background-color:red" valign=middle align=center border=0 cellpadding=0 cellspacing=0 width='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' height='+(Math.floor(scalef*36)+Math.floor(scalef*10)+Math.floor(scalef*10))+' onClick="changepage(\'ourproducts\')"><tr><td><img width='+Math.floor(scalef*10)+'   name="cd1" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd0" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd7" src="selected.gif"></td></tr><tr><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd2" src="selected.gif"></td><td align=center><img  width='+Math.floor(scalef*36)+' src="cflogo.png" border=0></td><td valign=middle><img width='+Math.floor(scalef*10)+'   name="cd6" src="selected.gif"></td></tr><tr><td><img width='+Math.floor(scalef*10)+'   name="cd3" src="selected.gif"></td><td align=center><img align=center width='+Math.floor(scalef*10)+'   name="cd4" src="selected.gif"></td><td><img width='+Math.floor(scalef*10)+'   name="cd5" src="selected.gif"></td></tr></table>')
+
+documentwrite('<br><table style="background-color:beige" valign=middle align=center border=1 cellpadding=0 cellspacing=0 width='+Math.floor(scalef*140)+' height='+Math.floor(scalef*50)+'><tr><td align=center>To see details of these and other apps from TopAccolades press the button above.</td></tr></table>')
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</td></tr></table>
+
+<script language="Javascript">documentwrite('<div style="height:'+heightspacer+'px;width:100%"></div>')</script>
+
+</div><div id="help" style="width:100%;display:none;background-color:white"><table bgcolor=white width=100% border=0 cellpadding=1><tr><td><script language="Javascript">var helpindexrequired=0;</script><br><script language="Javascript">documentwrite('<table align=left border=1 cellpadding=0 cellspacing=0><tr><td style="width:'+Math.floor(scalef*45)+'px;background-image:url(buttonbg.jpg);text-align:center"  onClick="togglehelp()">Back</td></tr></table>')</script>
+<br><p><script language="Javascript">
+if (helpindexrequired==1)
+{
+documentwrite('<a href="#intro">Introduction</a><br><a href="#playing">Moving tiles</a><br><a href="#newgame">New puzzle</a><br><a href="#faq">FAQ</a><br><a href="#terms">Terms of use</a><br><br>')}
+</script>
+
+<a name="intro"></a>15 Puzzle is a simple but challenging puzzle.&nbsp; When it first loads,
+      you should see 15 tiles on a 4x4 board.&nbsp; The tiles are numbered 1
+      through to 15, and are laid out in order, with no tile in the bottom right
+      corner as follows:<br><br>
+
+<br><br>
+      <div align="center">
+        <center>
+        <table border="1" cellspacing=0 cellpadding=0>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>1</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>2</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>3</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>4</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>5</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>6</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>7</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>8</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>9</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>10</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>11</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>12</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>13</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>14</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>15</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script></td>
+          </tr>
+        </table>
+        </center>
+      </div><br>
+
+      <br>When you press the <i>New</i> button, the tiles will be
+      re-arranged. 
+      <br><br>The objective of the game is to move the tiles around the board so that
+      you achieve the initial pattern as above.
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<h1><a name="playing"></a>Moving tiles</h1>
+      Tiles are moved by pressing any tile in the row or column containing
+      the gap, i.e. the square with no numbered tile.&nbsp; This tile, together
+      with any tiles between it and the gap, will slide one square along in the
+      direction of the gap, so that the gap is filled.&nbsp; A new gap will, of
+      course, appear where the pressed tile was before.
+<br>
+
+       <br><span style="font-weight:bold">Example:</span> Given the following board layout<br><br>
+      <div align="center">
+        <center>
+        <table border="1"  cellspacing=0 cellpadding=0>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>9</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>2</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>5</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>4</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>13</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>7</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>10</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>1</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>6</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>15</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>11</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>3</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>14</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>12</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>8</td></tr></table></td>
+          </tr>
+        </table>
+        </center>
+      </div>
+<br>
+
+      <br>pressing on 10 would cause the following layout to occur<br><br>
+      <div align="center">
+        <center>
+        <table border="1"  cellspacing=0 cellpadding=0>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>9</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>2</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>5</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>4</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>13</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>7</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>10</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>1</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>6</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>15</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>11</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>3</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>14</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>12</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>8</td></tr></table></td>
+          </tr>
+        </table>
+        </center>
+      </div>
+<br>
+
+      <br>whereas pressing on the 7 would give you:<br><br>
+      <div align="center">
+        <center>
+        <table border="1"  cellspacing=0 cellpadding=0>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>9</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>2</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>5</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>4</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>13</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>7</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>10</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>1</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>6</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>15</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>11</td></tr></table></td>
+          </tr>
+          <tr>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>3</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>14</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>12</td></tr></table></td>
+            <script language="Javascript">documentwrite('<td align="center" width="'+Math.floor(scalef*30)+'" height="'+Math.floor(scalef*30)+'">')</script><table border=1 width=100% height=100% bgcolor=purple><tr><script language="Javascript">documentwrite('<td align=center valign=middle style="color:white;font-size:'+Math.floor(scalef*16)+'">')</script>8</td></tr></table></td>
+          </tr>
+        </table>
+        </center>
+      </div>
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<h1><a name="newgame"></a>New puzzle</h1>
+      Just press <i>New</i> for a new shuffled tile layout at any time.
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<h1><a name="faq"></a>FAQ</h1>
+      Q. I can't solve the puzzle.&nbsp; How can I be sure that the tile
+      re-arrangement is one that can be re-arranged to form the target layout?
+      <br><br>A. The tiles are not laid out at random.&nbsp; The shuffling is carried
+      out by making many moves starting from the initial layout, in the
+      background.&nbsp; This guarantees that the target layout can be achieved.
+      
+
+<script language="Javascript">if (helpindexrequired==1) {documentwrite('<p><a href="#Top"><i>Return to top</i></a></p>')}</script>
+<a name="terms"></a>
+<p style="font-weight: bold;"><a name="terms">Terms of use</a></p>
+<p>This software may be used for personal purposes only.&nbsp;  It may not be used for commercial purposes.</p>
+<p>The software, code and script of this application may not be copied or be distributed to others.</p>
+<p>The software, code and script may not be altered in any way.</p>
+<p >Copyright of the software, code and script, and its
+help
+documentation, is held by TopAccolades Limited.&nbsp; No part of
+the software,
+code, script or documentation may be copied or used in another application or
+document.</p>
+<p >Although
+every effort has been made to ensure that this software functions
+as intended, TopAccolades Limited provides no warranty of
+merchantability, or
+fitness for a particular purpose, in relation to this application or
+its
+support.</p>
+<p >TopAccolades
+Limited shall not be liable for any damages whatsoever arising
+out of the use of or inability to use this application or the
+provision of
+or failure
+to provide support.</p>
+<p style="font-style: italic;">Copyright TopAccolades Limited<br>www.topaccolades.com</p>
+
+Version: 3.0 (20170323) <br>Scale: <script language="Javascript">documentwrite(scalef)</script><br><br>&nbsp;</td></tr></table></div>
+<script language="Javascript">documentwrite('<div id="theimages" style="width:100%;height:'+Math.floor(scalef*12)+'px;overflow:hidden;background-color:black"  onClick="changepage(\'ourproducts\')"><center>');
+var adsrequired=1
+
+var baseonelinermessages=[
+'Press ? for Help', '', 
+'Use device Back for menu/exit', '', 
+'TopAccolades Limited',
+'Specializing in Original & Classic...',
+'Game & Puzzle Apps',
+'']
+
+var admessages=[
+'<span style="color:violet">For Birthdays & Anniversaries...</span>',
+'<span style="color:violet">For Valentine\'s Day...</span>',
+'<span style="color:violet">For Mother\'s & Father\'s Days...</span>',
+'<span style="color:violet">Try with-my-love.com</span>',
+'<span style="color:violet">Make the day really special!</span>',
+'<span style="color:violet">We have web sites such as...</span>',
+'<span style="color:violet">best-wife.in-the-whole.world</span>',
+'<span style="color:violet">sexiest-lover.in-the.land</span>',
+'<span style="color:violet">best-husband.in-the-whole.world</span>',
+'<span style="color:violet">best-lover.in-the.land</span>',
+'<span style="color:violet">supremely.sexy, just-so.sexy</span>',
+'<span style="color:violet">best-dad.in-the-whole.world</span>',
+'<span style="color:violet">best-mother.in-the.land</span>',
+'<span style="color:violet">best-in-the.world</span>',
+'<span style="color:violet">... and many more.</span>',
+'<span style="color:violet">Supply a loved one\'s name...</span>',
+'<span style="color:violet">...to have a page such as...</span>',
+'<span style="color:violet">jane-smith-best-wife.in-the.land</span>',
+'<span style="color:violet">harry-styles.just-so.sexy</span>',
+'<span style="color:violet">laura-brown.best-in-the.world</span>',
+'<span style="color:violet">Go to with-my-love.com...</span>',
+'<span style="color:violet">...and make their day.</span>',
+'',
+'<span style="color:red">Sherlock is at the Bates Hotel</span>',
+'<span style="color:red">Vic has been murdered</span>',
+'<span style="color:red">Who killed Vic?</span>',
+'<span style="color:red">With what?  And where?</span>',
+'<span style="color:red">Ask Sherlock for clues...</span>',
+'<span style="color:red">Then try to solve them</span>',
+'<span style="color:red">Try our great, free logic puzzle...</span>',
+'<span style="color:red">CSI Sherlock</span>',
+'',
+'<span style="color:magenta">Play Rummy against the system...</span>',
+'<span style="color:magenta">...or against a friend</span>',
+'<span style="color:magenta">Full animation of deals and moves</span>',
+'<span style="color:magenta">Game state remembered on exit</span>',
+'<span style="color:magenta">Try our free Rummy 7 app</span>',
+'',
+'<span style="color:cyan">Try our Kublitz Cube app</span>',
+'<span style="color:cyan">Turn the layers to get...</span>',
+'<span style="color:cyan">...the same colour on each side</span>',
+'<span style="color:cyan">Guidance on solving the Cube</span>',
+'<span style="color:cyan">Notation and mnemonics</span>',
+'<span style="color:cyan">Kublitz Cube - it\'s free</span>',
+'',
+'<span style="color:magenta">Try our Peg Solitaire app</span>',
+'<span style="color:magenta">Play with the full 32 pegs...</span>',
+'<span style="color:magenta">...or start with fewer pegs </span>',
+'<span style="color:magenta">Notation and mnemonics...</span>',
+'<span style="color:magenta">...to remember the solution</span>',
+'<span style="color:magenta">Peg Solitaire - it\'s free</span>',
+'',
+'<span style="color:lime">Try our Xword4x4 app</span>',
+'<span style="color:lime">Crossword game for 2-4 players</span>',
+'<span style="color:lime">Pass and Play mode</span>',
+'<span style="color:lime">No internet connection required</span>',
+'<span style="color:lime">You can even design the layout</span>',
+'<span style="color:lime">Or change letter numbers/values</span>',
+'<span style="color:lime">Try our free <span style="color:white">Xword4x4</span> app</span>',
+'',
+'<span style="color:cyan">Exercise your brain;</span>',
+'<span style="color:cyan">10 sets of exercises;</span>',
+'<span style="color:cyan">5 exercises in each set...</span>',
+'<span style="color:cyan">Word power...</span>',
+'<span style="color:cyan">Verbal comprehension...</span>',
+'<span style="color:cyan">Mental arithmetic...</span>',
+'<span style="color:cyan">Memory...</span>',
+'<span style="color:cyan">Pattern-matching...</span>',
+'<span style="color:cyan">Great brain-training exercises...</span>',
+'<span style="color:cyan">Try our <span style="color:white">BrainBoxFun</span> app now</span>',
+''
+
+]
+
+if (adsrequired==1) {baseonelinermessages=baseonelinermessages.concat(admessages)}
+
+var onelinermessages=baseonelinermessages
+documentwrite('<div id="oneliner" style="font-size='+Math.floor(scalef*9)+'px;text-align:center;font-weight:bold;color:white;background-color:black; width:100%">'+onelinermessages[0]+'</div><br><br>&nbsp;')
+var clickproblemtimer=null
+function handleclickproblem()
+{
+if (clickproblemtimer != null) {clearTimeout(clickproblemtimer)}
+clickproblemtimer=setTimeout("modifyoneliner()",50);
+
+}
+
+function modifyoneliner()
+{
+changetextvalue('oneliner', document.getElementById('oneliner').innerHTML)
+// document.getElementById('oneliner').innerHTML = document.getElementById('oneliner').innerHTML 
+}
+
+currentoneliner=0
+function changeoneliner()
+{
+currentoneliner++
+if (currentoneliner==onelinermessages.length) {currentoneliner=0}
+changetextvalue('oneliner', onelinermessages[currentoneliner])
+// document.getElementById('oneliner').innerHTML = onelinermessages[currentoneliner]
+if (onelinertimer != null) {clearTimeout(onelinertimer)}
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+}
+var onelinertimer=null
+onelinertimer=setTimeout("changeoneliner()",5000);
+
+
+</script>
+
+</center></div></td></tr></table></div></body></html>
